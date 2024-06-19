@@ -1,3 +1,5 @@
+import '../styles/sitestyle.css'
+
 const Dashboard = () => {
     return (
         <div className="dashboard">

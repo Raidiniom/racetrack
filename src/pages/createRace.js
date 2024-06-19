@@ -1,3 +1,5 @@
+import '../styles/sitestyle.css'
+
 const Creater = () => {
     return (
         <div className="create">

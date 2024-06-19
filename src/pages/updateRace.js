@@ -1,3 +1,5 @@
+import '../styles/sitestyle.css'
+
 const Updater = () => {
     return (
         <div className="update">
