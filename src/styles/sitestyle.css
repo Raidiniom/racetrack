@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+}
+
+.dashboard {
+    background-color: aquamarine;
+}
+
+.header {
+    border: 1px dashed red;
+}

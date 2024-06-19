@@ -1,10 +1,16 @@
+import { NavLink } from 'react-router-dom'
 import '../styles/sitestyle.css'
 
 const Dashboard = () => {
     return (
         <div class="dashboard">
-            <h2>User Dashboard</h2>
-            <p>THIS THE DASHBOARD</p>
+            <div class="header">
+                <h1>RaceTrack</h1>
+
+                <nav>
+                    <NavLink to="/create">Create Race</NavLink>
+                </nav>
+            </div>
         </div>
     )
 }

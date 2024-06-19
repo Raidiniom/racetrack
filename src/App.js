@@ -10,10 +10,11 @@ function App() {
   return (
     <BrowserRouter>
       <nav>
-        <Link to="/">Dashboard</Link>
-        <Link to="/create">Create Event</Link>
-        <Link to="/update">Update Event</Link>
-        <Link to='/landingpage'>Landingpage</Link>
+        <p>Access to all Pages</p>
+        <Link to="/">Dashboard |</Link>
+        <Link to="/create">Create Event |</Link>
+        <Link to="/update">Update Event |</Link>
+        <Link to='/landingpage'>Landingpage |</Link>
       </nav>
 
       <Routes>
