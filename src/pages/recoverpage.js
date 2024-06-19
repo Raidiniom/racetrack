@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/sitestyle.css'
 
-const Landingpage = () => {
+const Recover = () => {
     return (
         <div class="wholesite">
-            <h2>Landingpage</h2>
-            <p>THIS THE Landingpage</p>
+            <h2>Recover</h2>
+            <p>THIS THE Recover</p>
         </div>
     )
 }
 
-export default Landingpage
+export default Recover

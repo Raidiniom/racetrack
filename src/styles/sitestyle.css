@@ -2,10 +2,8 @@
     margin: 0;
 }
 
-.dashboard {
-    background-color: aquamarine;
-}
-
-.header {
-    border: 1px dashed red;
+.wholesite {
+    background-color: bisque;
+    width: 1920px;
+    height: 940px;
 }

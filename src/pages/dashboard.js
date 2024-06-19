@@ -3,7 +3,7 @@ import '../styles/sitestyle.css'
 
 const Dashboard = () => {
     return (
-        <div class="dashboard">
+        <div class="wholesite">
             <div class="header">
                 <h1>RaceTrack</h1>
 
