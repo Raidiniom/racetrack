@@ -1,8 +1,13 @@
 import '../styles/sitestyle.css'
+import supabase from "../config/supabaseclient"
+import { useEffect, useState } from 'react'
 
 const Db = () => {
+    const [fetchError, setFetchError] = useState(null)
+    
+
     return (
-        <div class="wholesite">
+        <div class="testsite">
             <div class="input">
                 <div class="log">
                     <h2>Login</h2>
