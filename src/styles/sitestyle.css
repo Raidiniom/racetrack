@@ -4,6 +4,28 @@
 
 .wholesite {
     background-color: bisque;
-    width: 1920px;
-    height: 940px;
+    background-size: cover;
+}
+
+.log {
+    background-color: grey;
+    background-size: cover;
+}
+
+.reg {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+}
+
+.rec {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+}
+
+.crr {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
 }
