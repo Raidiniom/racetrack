@@ -4,7 +4,31 @@ import { useEffect, useState } from 'react'
 
 const Db = () => {
     const [fetchError, setFetchError] = useState(null)
-    
+    const [username, setusername] = useState('')
+    const [password, setpassword] = useState('')
+    const [email, setemail] = useState('')
+    const [birth_day, setbrith_day] = useState('')
+    const [gender, setgender] = useState('')
+    const [contact_no, setcontact_no] = useState('')
+
+    .from('user')
+    .insert(
+        [{
+            username: uname,
+            password: pword,
+            email: emailing,
+            birth_day: bdy,
+            gender: gder,
+            contact_no: contno,
+        }]
+    )
+    .select()
+
+    // if (er) {
+        
+    // } else {
+        
+    // }
 
     return (
         <div class="testsite">
@@ -17,6 +41,9 @@ const Db = () => {
                 <div class="reg">
                     <h2>Register</h2>  
                     {/*  */}
+                    <form>
+                        <label>Username</label>
+                    </form>
                 </div>
 
                 <div class="rec">
