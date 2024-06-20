@@ -4,8 +4,49 @@
 
 .wholesite {
     background-color: bisque;
-    width: 1920px;
-    height: 940px;
+    background-size: cover;
+}
+
+.testsite {
+    background-color: bisque;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.log {
+    background-color: grey;
+    background-size: cover;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+.reg {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+.rec {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+.crr {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    color: white;
 }
  
 /* navbar */

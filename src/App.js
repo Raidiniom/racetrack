@@ -8,6 +8,7 @@ import Landingpage from "./pages/landingpage";
 import Login from "./pages/loginpage";
 import Recover from "./pages/recoverpage";
 import Register from "./pages/registerpage";
+import Db from "./pages/ourdb";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Link to='/login'>| Login Page |</Link>
         <Link to='/register'>| Register Page |</Link>
         <Link to='/recover'>| Recover Page |</Link>
+        <Link to='/database'>| Access to Database Page |</Link>
       </nav>
 
       <Routes>
@@ -31,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recover" element={<Recover />} />
+        <Route path="/database" element={<Db />} />
       </Routes>
     </BrowserRouter>
   );
