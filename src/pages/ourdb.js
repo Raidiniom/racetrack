@@ -35,12 +35,12 @@ const Db = () => {
             <div class="input">
                 <div class="log">
                     <h2>Login</h2>
-                    {/*  */}
+                    {/* Testing for logging in */}
                 </div>
 
                 <div class="reg">
                     <h2>Register</h2>  
-                    {/*  */}
+                    {/* This is the register form */}
                     <form>
                         <label>Username</label>
                     </form>
