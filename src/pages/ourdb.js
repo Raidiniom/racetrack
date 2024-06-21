@@ -3,32 +3,20 @@ import supabase from "../config/supabaseclient"
 import { useEffect, useState } from 'react'
 
 const Db = () => {
-    // const [fetchError, setFetchError] = useState(null)
-    // const [username, setusername] = useState('')
-    // const [password, setpassword] = useState('')
-    // const [email, setemail] = useState('')
-    // const [birth_day, setbrith_day] = useState('')
-    // const [gender, setgender] = useState('')
-    // const [contact_no, setcontact_no] = useState('')
+    const [username, setusername] = useState('')
+    const [password, setpassword] = useState('')
 
-    // .from('user')
-    // .insert(
-    //     [{
-    //         username: uname,
-    //         password: pword,
-    //         email: emailing,
-    //         birth_day: bdy,
-    //         gender: gder,
-    //         contact_no: contno,
-    //     }]
-    // )
-    // .select()
+    const [formError, setformError] = useState(null)
 
-    // // if (er) {
-        
-    // // } else {
-        
-    // // }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!username || !password) {
+            setformError('Fill the feilds please')
+            return
+        }
+
+    }
 
     return (
         <div class="testsite">
@@ -36,13 +24,34 @@ const Db = () => {
                 <div class="log">
                     <h2>Login</h2>
                     {/* Testing for logging in */}
+
+                    
                 </div>
 
                 <div class="reg">
                     <h2>Register</h2>  
                     {/* This is the register form */}
-                    <form>
-                        <label>Username</label>
+
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor='username'>Username: </label>
+                        <input
+                            type='text'
+                            id='inputuser'
+                            value={username}
+                            onChange={(e) => setusername(e.target.value)}
+                        />
+
+                    <label htmlFor='password'>Password: </label>
+                        <input
+                            type='text'
+                            id='inputpass'
+                            value={password}
+                            onChange={(e) => setpassword(e.target.value)}
+                        />
+
+                    <button>Submit</button>
+
+                    {formError && <p>{formError}</p>}
                     </form>
                 </div>
 
