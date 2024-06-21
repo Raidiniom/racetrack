@@ -48,7 +48,7 @@ const Db = () => {
 
                 <div class="rec">
                     <h2>Recover</h2>
-                    {/*  */}
+                    {/*This is the Recovery Page for user accounts*/}
                 </div>
 
                 <div class="crr">
