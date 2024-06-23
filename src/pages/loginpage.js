@@ -11,7 +11,7 @@ const Login = () => {
 
                     {/* Logo */}
                     <div className="navbar-logo">
-                        <p>RaceTrack</p>
+                        <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 
                     {/* navbar login and sign up */}
@@ -29,9 +29,9 @@ const Login = () => {
 
             {/* login form */}
             <div className="main-container">
-                <div className="form-position">
+                <div className="login-form-position">
                     <div className="login-form-container">
-                        <h2>Login</h2>
+                        <h2 className="l-h2">Login</h2>
 
                         {/* login form */}
                         <form className="login-form">

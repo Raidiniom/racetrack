@@ -75,10 +75,6 @@ body, html {
     background-color: #cea681;
     padding: 10px 20px;
 }
-
-.RaceTrack-logo {
-    width: 25%;
-}
   
 .navbar-logo p {
     color: #000000;
@@ -157,15 +153,14 @@ body, html {
     margin-right: 8px;
 }
 
-/* login form */
-.login-form-position {
+.recover-form-position {
     margin-top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-form-container {
+.recover-form-container {
     background-color: #cea681; 
     padding: 20px;
     border-radius: 10px;
@@ -177,35 +172,12 @@ body, html {
     text-align: center;
 }
 
-.login-form {
+.recover-form {
     display: flex;
     flex-direction: column;
 }
 
-.login-form label {
-    margin-top: 10px;
-    color: #000000; 
-}
-
-.login-form input {
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.forgot-password-link {
-    margin-top: 10px;
-    color: #000000; 
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.forgot-password-link:hover {
-    text-decoration: underline;
-}
-
-.login-button {
+.recover-button {
     background-color: #ffdca7; 
     color: #000000;
     border: none;
@@ -213,95 +185,4 @@ body, html {
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
-}
-
-.login-button:hover {
-    background-color: #000000;
-    color: #cea681;
-}
-
-/* register form */
-.register-form-position {
-    margin-top: 12%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.register-form-container {
-    background-color: #cea681; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-}
-
-.registration-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.registration-form label {
-    margin-top: 10px;
-    color: #333;
-    width: 100%;
-    text-align: left;
-}
-
-.registration-form input, .registration-form select {
-    padding: 6px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-    margin-right: 20px;
-}
-
-#username {
-    display: flex;
-    flex-direction: column;
-    width: 97%;
-}
-
-.form-group-tos, .form-group-eula {
-    display: flex;
-    gap: 5px;
-    margin-top: 10px;
-    margin-left: 80px;
-    width: 20%;
-}
-
-.form-group-tos label, .form-group-eula label {
-    display: flex;
-    gap: 5px; 
-    white-space: nowrap;
-}
-
-.register-button {
-    background-color: #ffdca7; 
-    color: #000000;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-.register-button:hover {
-    background-color: #000000;
-    color: #cea681;
 }
