@@ -27,9 +27,29 @@ const Login = () => {
                 </nav>
             </div>
 
+            {/* login form */}
             <div className="main-container">
-                <h2>Login</h2>
-                <p>THIS THE Login</p>
+                <div className="login-form-container">
+                    <h2>Login</h2>
+
+                    {/* login form */}
+                    <form className="login-form">
+
+                        {/* input email */}
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" id="email" name="email" required />
+                        
+                        {/* input password */}
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" id="password" name="password" required />
+
+                        {/* forgot password? */}
+                        <NavLink to="/recover" className="forgot-password-link">Forgot Password?</NavLink>
+                        
+                        {/* submit */}
+                        <button type="submit" className="login-button">Login</button>
+                    </form>
+                </div>
             </div>
 
             {/* footer */}
