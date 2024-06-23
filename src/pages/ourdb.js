@@ -20,7 +20,9 @@ const Db = () => {
 
         const {data, error} = await supabase
           .from('testing')
-          .insert({ username: regusername, password: regpassword })
+          .insert({ 
+            username: regusername, 
+            password: regpassword })
           .select('*')
 
    }
@@ -40,7 +42,7 @@ const Db = () => {
                     {/* This is the register form */}
 
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor='username'>Username: </label>
+                    <label htmlFor='username'>Username: </label>
                         <input
                             type='text'
                             id='inputuser'
@@ -50,7 +52,7 @@ const Db = () => {
 
                     <label htmlFor='password'>Password: </label>
                         <input
-                            type='text'
+                            type='password'
                             id='inputpass'
                             value={regpassword}
                             onChange={(e) => setPassword(e.target.value)}
@@ -58,7 +60,7 @@ const Db = () => {
 
                     <button>Submit</button>
 
-                    {formError && <p class="errors">{formError}</p>}
+                    {formError && <p className="errors">{formError}</p>}
                     </form>
                 </div>
 

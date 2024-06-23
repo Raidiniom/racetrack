@@ -1,7 +1,41 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/sitestyle.css'
+import { useState } from 'react'
+import supabase from "../config/supabaseclient"
 
 const Register = () => {
+    const [regUsername, setRegUsername] = useState('')
+    const [regPassword, setRegPassword] = useState('')
+    const [regEmail, setRegEmail] = useState('')
+    const [regBDay, setRegBDay] = useState('')
+    const [regGender, setRegGender] = useState('')
+    const [regContactNo, setRegContactNo] = useState('')
+
+    const [formError, setformError] = useState(null)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!regUsername || !regPassword || !regEmail || !regBDay || !regGender || !regContactNo) {
+            setformError('Please Fill Out all the fields!')
+            return
+        }
+
+        console.log('Debugging Output: ', regUsername, regPassword, regEmail, regBDay, regGender, regEmail)
+
+        const {data, error} = await supabase
+          .from('users')
+          .insert({
+            Username: regUsername,
+            Password: regPassword,
+            Email: regEmail,
+            Birth_day: regBDay,
+            Gender: regGender,
+            Contact_no: regContactNo
+          })
+          .select('*')
+    }
+
     return (
         <div class="wholesite">
             {/* Navbar */}
@@ -33,18 +67,28 @@ const Register = () => {
                         <h2>Register</h2>
 
                         {/* register form */}
-                        <form className="registration-form">
+                        <form className="registration-form" onSubmit={handleSubmit}>
 
                             {/* input username */}
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" name="username" required />
+                            <input 
+                                type='text'
+                                id='inuser'
+                                value={regUsername}
+                                onChange={(e) => setRegUsername(e.target.value)}
+                            />
 
                             <div className="form-row">
                                 <div className="form-group">
 
                                     {/* input password */}
                                     <label htmlFor="password">Password</label>
-                                    <input type="password" id="password" name="password" required />
+                                    <input 
+                                        type='password'
+                                        id='inpass'
+                                        value={regPassword}
+                                        onChange={(e) => setRegPassword(e.target.value)}
+                                    />
                                 </div>
                                 <div className="form-group">
 
@@ -59,13 +103,23 @@ const Register = () => {
 
                                     {/* input email */}
                                     <label htmlFor="email">Email Address</label>
-                                    <input type="email" id="email" name="email" required />
+                                    <input 
+                                        type='email'
+                                        id='inemail'
+                                        value={regEmail}
+                                        onChange={(e) => setRegEmail(e.target.value)}
+                                    />
                                 </div>
                                 <div className="form-group">
 
                                     {/* input phone number */}
                                     <label htmlFor="phone">Phone No.#</label>
-                                    <input type="tel" id="phone" name="phone" required />
+                                    <input 
+                                        type='text'
+                                        id='incontactno'
+                                        value={regContactNo}
+                                        onChange={(e) => setRegContactNo(e.target.value)}
+                                    />
                                 </div>
                             </div>
 
@@ -74,18 +128,24 @@ const Register = () => {
 
                                     {/* input gender */}
                                     <label htmlFor="gender">Gender</label>
-                                    <select name="gender" id="gender">
+                                    <select name="gender" id="gender" value={regGender} onChange={(e) => setRegGender(e.target.value)}>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="prefer-not-to-say">Prefer not to say</option>
                                         <option value="other">Other</option>
+                                        
                                     </select>
                                 </div>
                                 <div className="form-group">
 
                                     {/* input birthday */}
                                     <label htmlFor="birthday">Birthday</label>
-                                    <input type="date" id="birthday" name="birthday" required />
+                                    <input 
+                                        type='date'
+                                        id='indate'
+                                        value={regBDay}
+                                        onChange={(e) => setRegBDay(e.target.value)}
+                                    />
                                 </div>
                             </div>
 
@@ -107,7 +167,9 @@ const Register = () => {
                                 </label>
                             </div>
 
-                            <button type="submit" className="register-button">Submit</button>
+                        <button className="register-button" type='submit'>Submit</button>
+
+                        {formError && <p className='error'>{formError}</p>}    
                         </form>
                     </div>
                 </div>
