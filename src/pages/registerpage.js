@@ -41,10 +41,14 @@ const Register = () => {
 
                             <div className="form-row">
                                 <div className="form-group">
+
+                                    {/* input password */}
                                     <label htmlFor="password">Password</label>
                                     <input type="password" id="password" name="password" required />
                                 </div>
                                 <div className="form-group">
+
+                                    {/* input confirm password */}
                                     <label htmlFor="confirm-password">Confirm Password</label>
                                     <input type="password" id="confirm-password" name="confirm-password" required />
                                 </div>
@@ -52,10 +56,14 @@ const Register = () => {
 
                             <div className="form-row">
                                 <div className="form-group">
+
+                                    {/* input email */}
                                     <label htmlFor="email">Email Address</label>
                                     <input type="email" id="email" name="email" required />
                                 </div>
                                 <div className="form-group">
+
+                                    {/* input phone number */}
                                     <label htmlFor="phone">Phone No.#</label>
                                     <input type="tel" id="phone" name="phone" required />
                                 </div>
@@ -63,10 +71,14 @@ const Register = () => {
 
                             <div className="form-row">
                                 <div className="form-group">
+
+                                    {/* input gender */}
                                     <label htmlFor="gender">Gender</label>
                                     <input type="text" id="gender" name="gender" required />
                                 </div>
                                 <div className="form-group">
+
+                                    {/* input birthday */}
                                     <label htmlFor="birthday">Birthday</label>
                                     <input type="date" id="birthday" name="birthday" required />
                                 </div>
@@ -74,6 +86,8 @@ const Register = () => {
 
                             <div className="form-group-tos">
                                 <label>
+
+                                    {/* tos checkbox */}
                                     <input type="checkbox" name="tos" required />
                                     I agree to the Terms of Service
                                 </label>
@@ -81,6 +95,8 @@ const Register = () => {
 
                             <div className="form-group-eula">
                                 <label>
+
+                                    {/* eula checkbox */}
                                     <input type="checkbox" name="eula" required />
                                     I agree to the EULA
                                 </label>
