@@ -31,11 +31,24 @@ const Landingpage = () => {
             <p>THIS THE Landingpage</p>
 
             {/* footer */}
-                <div className='footer'>
-                    <NavLink to="/create">About Us</NavLink>
-                    <NavLink to="/create">Terms of Service</NavLink>
-                    <NavLink to="/create">End-User License Agreement</NavLink>
-                </div>
+                <footer className='footer'>
+                    <div className='footer-container'>
+                        <div className='group_ab_tos_eula'>
+                            <NavLink to="/about" className="footer-link">
+                                <li>About Us</li>
+                            </NavLink>
+                            <NavLink to="/terms" className="footer-link">
+                                <li>Terms of Service</li>
+                            </NavLink>
+                            <NavLink to="/eula" className="footer-link">
+                                <li>End-User License Agreement</li>
+                            </NavLink>
+                        </div>
+                        <div className="contact-us">
+                            <p className='contact-us'>Contact Us</p>
+                        </div>
+                    </div>
+                </footer>
         </div>
     )
 }

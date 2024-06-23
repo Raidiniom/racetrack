@@ -88,3 +88,35 @@
     background-color: #ddd;
     color: #5d39ff;
 }
+
+/* footer */
+.footer {
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+  
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+  
+.footer-link:hover {
+    color: #ddd;
+}
+
+.group_ab_tos_eula, .contact-us {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.contact-us {
+    color: #fff;
+}
