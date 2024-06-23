@@ -59,9 +59,6 @@ body, html {
 
 .main-container {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .wholesite {
@@ -157,6 +154,13 @@ body, html {
 }
 
 /* login form */
+.form-position {
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-form-container {
     background-color: #cea681; 
     padding: 20px;
