@@ -74,7 +74,12 @@ const Register = () => {
 
                                     {/* input gender */}
                                     <label htmlFor="gender">Gender</label>
-                                    <input type="text" id="gender" name="gender" required />
+                                    <select name="gender" id="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                        <option value="other">Other</option>
+                                    </select>
                                 </div>
                                 <div className="form-group">
 

@@ -246,8 +246,8 @@ body, html {
     text-align: left;
 }
 
-.registration-form input {
-    padding: 8px;
+.registration-form input, .registration-form select {
+    padding: 6px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
