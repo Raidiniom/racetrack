@@ -11,7 +11,7 @@ const Login = () => {
 
                     {/* Logo */}
                     <div className="navbar-logo">
-                        <p>RaceTrack</p>
+                        <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 
                     {/* navbar login and sign up */}

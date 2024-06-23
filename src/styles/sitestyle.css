@@ -75,6 +75,10 @@ body, html {
     background-color: #cea681;
     padding: 10px 20px;
 }
+
+.RaceTrack-logo {
+    width: 25%;
+}
   
 .navbar-logo p {
     color: #000000;
