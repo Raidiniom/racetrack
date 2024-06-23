@@ -1,22 +1,29 @@
 import '../styles/sitestyle.css'
+import { useState } from 'react'
 import supabase from "../config/supabaseclient"
-import { useEffect, useState } from 'react'
 
 const Db = () => {
-    const [username, setusername] = useState('')
-    const [password, setpassword] = useState('')
+   const [regusername, setUsername] = useState('')
+   const [regpassword, setPassword] = useState('')
 
-    const [formError, setformError] = useState(null)
+   const [formError, setFormError] = useState(null)
 
-    const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!username || !password) {
-            setformError('Fill the feilds please')
+        if (!regusername || !regpassword) {
+            setFormError('Please Fill all Fields!')
             return
         }
+        
+        console.log('akoang gipa gawas',regusername, regpassword)
 
-    }
+        const {data, error} = await supabase
+          .from('testing')
+          .insert({ username: regusername, password: regpassword })
+          .select('*')
+
+   }
 
     return (
         <div class="testsite">
@@ -37,21 +44,21 @@ const Db = () => {
                         <input
                             type='text'
                             id='inputuser'
-                            value={username}
-                            onChange={(e) => setusername(e.target.value)}
+                            value={regusername}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
 
                     <label htmlFor='password'>Password: </label>
                         <input
                             type='text'
                             id='inputpass'
-                            value={password}
-                            onChange={(e) => setpassword(e.target.value)}
+                            value={regpassword}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
 
                     <button>Submit</button>
 
-                    {formError && <p>{formError}</p>}
+                    {formError && <p class="errors">{formError}</p>}
                     </form>
                 </div>
 
