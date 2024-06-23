@@ -10,7 +10,7 @@ const Register = () => {
 
                     {/* Logo */}
                     <div className="navbar-logo">
-                        <p>RaceTrack</p>
+                        {/* <img src="/img/fb.png" alt="Facebook" className="footer-image-fb" /> */}
                     </div>
                 
                     {/* navbar login and sign up */}
