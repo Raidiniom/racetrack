@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/sitestyle.css'
+import '../styles/registerpage.css'
 
 const Register = () => {
     return (
