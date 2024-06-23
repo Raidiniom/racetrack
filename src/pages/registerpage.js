@@ -38,10 +38,10 @@ const Register = () => {
     }
 
     return (
-        <div class="wholesite">
+        <div className="wholesite">
             {/* Navbar */}
             <div>
-                <nav class="navbar">
+                <nav className="navbar">
 
                     {/* Logo */}
                     <div className="navbar-logo">

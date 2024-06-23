@@ -3,8 +3,8 @@ import '../styles/sitestyle.css'
 
 const Dashboard = () => {
     return (
-        <div class="wholesite">
-            <div class="header">
+        <div className="wholesite">
+            <div className="header">
                 <h1>RaceTrack</h1>
 
                 <nav>
