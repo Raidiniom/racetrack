@@ -16,10 +16,10 @@ const Landingpage = () => {
                 
                     {/* navbar login and sign up */}
                     <div className="navbar-links">
-                        <NavLink to="/create" className="nav-link">
+                        <NavLink to="/login" className="nav-link">
                             <button className="nav-button">Login</button>
                         </NavLink>
-                        <NavLink to="/create" className="nav-link">
+                        <NavLink to="/register" className="nav-link">
                             <button className="nav-button">Sign Up</button>
                         </NavLink>
                     </div>
@@ -27,8 +27,10 @@ const Landingpage = () => {
                 </nav>
             </div>
 
-            <h2>Landingpage</h2>
-            <p>THIS THE Landingpage</p>
+            <div className="main-container">
+                <h2>Landingpage</h2>
+                <p>THIS THE Landingpage</p>
+            </div>
 
             {/* footer */}
                 <footer className='footer'>
