@@ -6,7 +6,7 @@ const Login = () => {
         <div class="wholesite">
 
              {/* Navbar */}
-             <div>
+            <div>
                 <nav class="navbar">
 
                     {/* Logo */}
@@ -48,6 +48,11 @@ const Login = () => {
                         </div>
                         <div className="contact-us">
                             <p className='contact-us'>Contact Us</p>
+                            <div className="footer-img-container">
+                                <img src="/img/fb.png" alt="Facebook" className="footer-image-fb" />
+                                <img src="/img/IG.png" alt="Instagram" className="footer-image-ig" />
+                                <img src="/img/message.png" alt="Message" className="footer-image-m" />
+                            </div>
                         </div>
                     </div>
                 </footer>

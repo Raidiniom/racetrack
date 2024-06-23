@@ -72,12 +72,12 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #5d39ff;
+    background-color: #cea681;
     padding: 10px 20px;
 }
   
 .navbar-logo p {
-    color: #fff;
+    color: #000000;
     font-size: 24px;
     font-weight: bold;
 }
@@ -92,8 +92,8 @@ body, html {
 }
   
 .nav-button {
-    background-color: #fff;
-    color: #5d39ff;
+    background-color: #ffdca7;
+    color: #000000;
     border: none;
     padding: 6px 10px;
     font-size: 16px;
@@ -103,13 +103,13 @@ body, html {
 }
   
 .nav-button:hover {
-    background-color: #ddd;
-    color: #5d39ff;
+    background-color: #000000;
+    color: #ffdca7;
 }
 
 /* footer */
 .footer {
-    background-color: #333;
+    background-color: #e6ae79;
     padding: 10px 20px;
 }
 
@@ -120,13 +120,13 @@ body, html {
 }
   
 .footer-link {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     font-size: 16px;
 }
   
 .footer-link:hover {
-    color: #ddd;
+    color: #575655;
 }
 
 .group_ab_tos_eula, .contact-us {
@@ -136,7 +136,19 @@ body, html {
 }
 
 .contact-us {
-    color: #fff;
+    color: #000000;
     margin-right: 20%;
     width: 80px;
+    margin-bottom: 5px;
+}
+
+.footer-img-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-image-fb, .footer-image-ig, .footer-image-m {
+    width: 40%;
+    margin-right: 8px;
 }
