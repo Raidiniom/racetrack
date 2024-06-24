@@ -59,6 +59,9 @@ body, html {
 
 .main-container {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wholesite {
@@ -158,7 +161,6 @@ body, html {
 }
 
 .register-form-position {
-    margin-top: 12%;
     display: flex;
     justify-content: center;
     align-items: center;
