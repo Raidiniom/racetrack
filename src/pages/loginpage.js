@@ -137,6 +137,7 @@ const Login = () => {
                         </div>
                     </div>
                 </footer>
+            </div>
         </div>
     )
 }
