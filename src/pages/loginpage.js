@@ -3,8 +3,6 @@ import '../styles/loginpage.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
-// Mo gana nani ang login qweqweqweqweqwe
-
 const Login = () => {
     const [logUsername, setlogUsername] = useState('')
     const [logPassword, setlogPassword] = useState('')
@@ -25,13 +23,13 @@ const Login = () => {
           .select('Username, Password')
           .eq('Username', logUsername)
         
-          if (error) {
+        if (error) {
             setformError('Error fetching user data');
             return;
         }
 
         if (users.length === 0) {
-            setformError('Incorrect Username or Password!');
+            setformError('Username not Found');
             return;
         }
 
@@ -39,12 +37,10 @@ const Login = () => {
 
         if (user.Password !== logPassword) {
             setformError('Incorrect Username or Password!');
-            return;
+            return
         }
 
-        // Successful login
         setformError('You Successfuly Logged In!');
-
         redirect('/')
     }
 

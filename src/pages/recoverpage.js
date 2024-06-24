@@ -1,7 +1,27 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/recoverstyle.css'
+import { useState } from 'react'
+import supabase from "../config/supabaseclient"
 
 const Recover = () => {
+    const [forUsername, setForUsername] = useState('')
+    const [forPassword, setForPassword] = useState('')
+    const [upPassword, setUpPassword] = useState('')
+
+    const [formError, setformError] = useState(null)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!forUsername || !forPassword || !upPassword) {
+            setformError('Please Fill Out all the fields!')
+            return
+        }
+
+        const {data: users, error} = await supabase
+          .from('users')
+    }
+
     return (
         <div className="wholesite">
 

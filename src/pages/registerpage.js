@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/registerpage.css'
 import '../styles/sitestyle.css'
 import { useState } from 'react'
@@ -12,6 +12,7 @@ const Register = () => {
     const [regBDay, setRegBDay] = useState('')
     const [regGender, setRegGender] = useState('')
     const [regContactNo, setRegContactNo] = useState('')
+    const redirect = useNavigate()
 
     const [formError, setformError] = useState(null)
 
@@ -39,6 +40,9 @@ const Register = () => {
             Contact_no: regContactNo
           })
           .select('*')
+
+          setformError('You Successfuly Registered')
+          redirect('/login')
     }
 
     return (
