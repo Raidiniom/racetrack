@@ -71,7 +71,7 @@ const Register = () => {
                         <form className="registration-form" onSubmit={handleSubmit}>
 
                             {/* input username */}
-                            <label htmlFor="username">Username</label>
+                            <label htmlFor="username" className="usernamef">Username</label>
                             <input 
                                 type='text'
                                 id='inuser'
@@ -164,7 +164,7 @@ const Register = () => {
 
                                     {/* eula checkbox */}
                                     <input type="checkbox" name="eula" required />
-                                    I agree to the EULA
+                                    I agree to the End-User License Agreement (EULA)
                                 </label>
                             </div>
 
