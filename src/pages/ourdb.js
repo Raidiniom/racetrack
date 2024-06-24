@@ -115,7 +115,7 @@ const Db = () => {
                             onChange={(e) => setRacedate(e.target.value)}
                         />
 
-                        <label htmlFor="venue">Venue</label>
+                        <label htmlFor="venue">Venue Location:</label>
                         <input
                             type="text"
                             id="venue"
