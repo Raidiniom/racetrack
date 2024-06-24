@@ -52,7 +52,7 @@
 }
 
 /* Body */
-.whole-2 {
+.whole-login {
     display: flex;
     flex-direction: column;
     justify-content: center;

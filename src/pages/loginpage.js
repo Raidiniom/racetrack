@@ -50,7 +50,7 @@ const Login = () => {
 
     return (
         <div className="wholesite">
-            <div className="whole-2">
+            <div className="whole-login">
 
             {/* Logo */}
                 <div className="login-logo">
