@@ -3,11 +3,11 @@ import '../styles/sitestyle.css'
 
 const Landingpage = () => {
     return (
-        <div class="wholesite">
+        <div className="wholesite">
 
             {/* Navbar */}
             <div>
-                <nav class="navbar">
+                <nav className="navbar">
 
                     {/* Logo */}
                     <div className="navbar-logo">
