@@ -72,6 +72,13 @@ const Db = () => {
                 <div class="crr">
                     <h2>Create Race</h2>
                     {/*  */}
+                    
+                    <form id="createRace">
+                        <input type="text" id="raceName" placeholder="Race Name" required/>
+                        <input type="text" id="raceDate" placeholder="Race Date" required/>
+                        <input type="text" id="venue" placeholder="Venues" required/>
+
+                    </form>
                 </div>
             </div>
         </div>
