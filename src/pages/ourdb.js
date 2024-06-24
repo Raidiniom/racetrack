@@ -28,16 +28,16 @@ const Db = () => {
    }
 
     return (
-        <div className="testsite">
-            <div className="input">
-                <div className="log">
+        <div class="testsite">
+            <div class="input">
+                <div class="log">
                     <h2>Login</h2>
                     {/* Testing for logging in */}
 
                     
                 </div>
 
-                <div className="reg">
+                <div class="reg">
                     <h2>Register</h2>  
                     {/* This is the register form */}
 
@@ -64,14 +64,21 @@ const Db = () => {
                     </form>
                 </div>
 
-                <div className="rec">
+                <div class="rec">
                     <h2>Recover</h2>
                     {/*This is the Recovery Page for user accounts*/}
                 </div>
 
-                <div className="crr">
+                <div class="crr">
                     <h2>Create Race</h2>
                     {/*  */}
+                    
+                    <form id="createRace">
+                        <input type="text" id="raceName" placeholder="Race Name" required/>
+                        <input type="text" id="raceDate" placeholder="Race Date" required/>
+                        <input type="text" id="venue" placeholder="Venue" required/>
+
+                    </form>
                 </div>
             </div>
         </div>
