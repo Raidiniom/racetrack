@@ -27,10 +27,12 @@ const Landingpage = () => {
                 </nav>
             </div>
 
-            <div className="main-container">
-                <h2>Landingpage</h2>
-                <p>THIS THE Landingpage</p>
-            </div>
+           <div className="landing-body">
+                <div>
+                
+                
+                </div>
+            </div> 
 
             {/* footer */}
                 <footer className='footer'>
