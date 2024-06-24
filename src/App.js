@@ -9,6 +9,8 @@ import Login from "./pages/loginpage";
 import Recover from "./pages/recoverpage";
 import Register from "./pages/registerpage";
 import Db from "./pages/ourdb";
+import Tos from "./pages/tospage";
+import Eula from "./pages/eulapage";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Link to='/register'>| Register Page |</Link>
         <Link to='/recover'>| Recover Page |</Link>
         <Link to='/database'>| Access to Database Page |</Link>
+        <Link to='/eula'>| TOS Page |</Link>
+        <Link to='/tos'>| EULA Page |</Link>
       </nav>
 
       <Routes>
@@ -34,6 +38,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/recover" element={<Recover />} />
         <Route path="/database" element={<Db />} />
+        <Route path="/eula" element={<Tos />} />
+        <Route path="/tos" element={<Eula />} />
       </Routes>
     </BrowserRouter>
   );

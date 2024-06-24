@@ -59,6 +59,9 @@ body, html {
 
 .main-container {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wholesite {
@@ -126,7 +129,7 @@ body, html {
 .footer-link {
     color: #000000;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
 }
   
 .footer-link:hover {
@@ -159,10 +162,10 @@ body, html {
 
 /* login form */
 .login-form-position {
-    margin-top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .login-form-container {
@@ -175,6 +178,7 @@ body, html {
 
 .l-h2 {
     text-align: center;
+    font-size: 40px;
 }
 
 .login-form {
@@ -185,6 +189,7 @@ body, html {
 .login-form label {
     margin-top: 10px;
     color: #000000; 
+    font-size: large;
 }
 
 .login-form input {
@@ -197,7 +202,7 @@ body, html {
 .forgot-password-link {
     margin-top: 10px;
     color: #000000; 
-    font-size: 14px;
+    font-size: large;
     text-decoration: none;
 }
 
@@ -213,6 +218,7 @@ body, html {
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
+    font-size: large;
 }
 
 .login-button:hover {
