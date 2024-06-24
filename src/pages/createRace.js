@@ -12,16 +12,23 @@ const Creater = () => {
                         {/* login form */}
                         <form className="create-form">
 
-                            {/* input email */}
-                            <label htmlFor="email">Email:</label>
-                            <input type="email" id="email" name="email" required />
-                            
-                            {/* input password */}
-                            <label htmlFor="password">Password:</label>
-                            <input type="password" id="password" name="password" required />
+                            {/* input race description */}
+                            <label for="raceDescription">Enter race description</label>
+                            <textarea id="raceDescription" name="raceDescription" rows="4" cols="50" placeholder='Input additional details about the race here...'></textarea>
+                            <br></br>
+                            {/* event race banner */}
 
-                            {/* forgot password? */}
-                            <NavLink to="/recover" className="forgot-password-link">Forgot Password?</NavLink>
+                            {/* payment method */}
+                                    {/* <select name="payment_method" id="payment_method">
+                                        <option value="GCash">Default Gender</option>
+                                        <option value="Paypal">Male</option>
+                                        <option value="Credit/Debit Card">Female</option>
+                                        <option value="other">Other</option> */}
+                            {/* genre */}
+                            
+                            {/* age restriction */}
+
+                            {/* distance */}
                             
                             {/* submit */}
                             <button type="submit" className="create-button">Create</button>
