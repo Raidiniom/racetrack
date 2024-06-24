@@ -25,8 +25,15 @@ const Creater = () => {
                             <input type="date" id="registrationDate" name="registrationDate" required />
 
                             {/* input capacity */}
-                            <label htmlFor="capacity">Capacity:</label>
+                            <label htmlFor="capacity">Capacity (Number of Participant):</label>
                             <input type="number" id="capacity" name="capacity" required />
+
+                            {/* input age limit */}
+                            <label htmlFor="maxAge">Maximum Age:</label>
+                            <input type="number" id="maxAge" name="maxAge" required />
+
+                            <label htmlFor="minAge">Minimum Age:</label>
+                            <input type="number" id="minAge" name="minAge" required />
                             
                             {/* submit */}
                             <button type="submit" className="create-button">Create</button>
