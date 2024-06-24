@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/registerpage.css'
+import '../styles/sitestyle.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
@@ -74,7 +75,7 @@ const Register = () => {
                         <form className="registration-form" onSubmit={handleSubmit}>
 
                             {/* input username */}
-                            <label htmlFor="username" className="usernamef">Username</label>
+                            <label htmlFor="username">Username</label>
                             <input 
                                 type='text'
                                 id='inuser'
@@ -143,6 +144,7 @@ const Register = () => {
                                         <option value="female">Female</option>
                                         <option value="prefer-not-to-say">Prefer not to say</option>
                                         <option value="other">Other</option>
+                                        
                                     </select>
                                 </div>
                                 <div className="form-group">
@@ -172,15 +174,11 @@ const Register = () => {
 
                                     {/* eula checkbox */}
                                     <input type="checkbox" name="eula" required />
-                                    I agree to the End-User License Agreement (EULA)
+                                    I agree to the EULA
                                 </label>
                             </div>
 
                         <button className="register-button" type='submit'>Submit</button>
-
-                        <label className="have-acc">Already have an account?
-                            <NavLink to="/login" className="login">Login</NavLink>
-                        </label>
 
                         {formError && <p className='error'>{formError}</p>}    
                         </form>
