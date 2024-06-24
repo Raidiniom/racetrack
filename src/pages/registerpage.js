@@ -180,6 +180,10 @@ const Register = () => {
 
                         <button className="register-button" type='submit'>Submit</button>
 
+                        <label className="have-acc">Already have an account?
+                            <NavLink to="/login" className="login">Login</NavLink>
+                        </label>
+
                         {formError && <p className='error'>{formError}</p>}    
                         </form>
                     </div>
