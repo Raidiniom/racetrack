@@ -5,10 +5,10 @@
 .wholesite {
     background-color: bisque;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
 .testsite {

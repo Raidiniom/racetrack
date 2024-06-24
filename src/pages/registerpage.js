@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/registerpage.css'
-import '../styles/sitestyle.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
