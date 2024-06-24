@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/sitestyle.css'
+import '../styles/landingpage.css'
 
 const Landingpage = () => {
     return (
@@ -11,7 +11,7 @@ const Landingpage = () => {
 
                     {/* Logo */}
                     <div className="navbar-logo">
-                        <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
+                        <img src="\img\RaceTrack Logos\2_F.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 
                     {/* navbar login and sign up */}
