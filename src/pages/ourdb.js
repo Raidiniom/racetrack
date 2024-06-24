@@ -6,25 +6,50 @@ const Db = () => {
    const [regusername, setUsername] = useState('')
    const [regpassword, setPassword] = useState('')
 
+   const [racename, setRacename] = useState('')
+   const [racedate, setRacedate] = useState('')
+   const [venue, setVenue] = useState('')
+   
+
    const [formError, setFormError] = useState(null)
 
    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!regusername || !regpassword) {
-            setFormError('Please Fill all Fields!')
-            return
-        }
+        // if (!regusername || !regpassword) {
+        //     setFormError('Please Fill all Fields!')
+        //     return
+        // }
         
-        console.log('akoang gipa gawas',regusername, regpassword)
+        // console.log('akoang gipa gawas',regusername, regpassword)
+
+        // const {data, error} = await supabase
+        //   .from('testing')
+        //   .insert({ 
+        //     username: regusername, 
+        //     password: regpassword })
+        //   .select('*')
+
+        if (!racename || !racedate || !venue) {
+                setFormError('Please Fill all Fields!')
+                return
+            }
+
+        console.log('Race Created', racename, racedate, venue)
 
         const {data, error} = await supabase
-          .from('testing')
-          .insert({ 
-            username: regusername, 
-            password: regpassword })
+          .from('createRace')
+          .insert([{ racename, racedate, venue}])
           .select('*')
 
+        if (error) {
+            console.log(error)
+            setFormError('Please Fill all Fields!')
+        }
+        if (data){
+            console.log(data)
+            setFormError(null)
+        }
    }
 
     return (
@@ -73,10 +98,33 @@ const Db = () => {
                     <h2>Create Race</h2>
                     {/*  */}
                     
-                    <form id="createRace">
-                        <input type="text" id="raceName" placeholder="Race Name" required/>
-                        <input type="text" id="raceDate" placeholder="Race Date" required/>
-                        <input type="text" id="venue" placeholder="Venue" required/>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="raceName">Race Name:</label>
+                        <input
+                            type="text"
+                            id="racename"
+                            value={racename}
+                            onChange={(e) => setRacename(e.target.value)}
+                        />
+                        
+                        <label htmlFor="racedate">Race Date:</label>
+                        <input
+                            type="date"
+                            id="racedate"
+                            value={racedate}
+                            onChange={(e) => setRacedate(e.target.value)}
+                        />
+
+                        <label htmlFor="venue">Venue Location:</label>
+                        <input
+                            type="text"
+                            id="venue"
+                            value={venue}
+                            onChange={(e) => setVenue(e.target.value)}
+                        />
+                    <button>Create Race</button>
+
+                    {formError && <p className="errors">{formError}</p>}
 
                     </form>
                 </div>
