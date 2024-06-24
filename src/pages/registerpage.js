@@ -7,6 +7,7 @@ import supabase from "../config/supabaseclient"
 const Register = () => {
     const [regUsername, setRegUsername] = useState('')
     const [regPassword, setRegPassword] = useState('')
+    const [regConfirmPassword, setRegConfirmPassword] = useState('')
     const [regEmail, setRegEmail] = useState('')
     const [regBDay, setRegBDay] = useState('')
     const [regGender, setRegGender] = useState('')
@@ -17,12 +18,15 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!regUsername || !regPassword || !regEmail || !regBDay || !regGender || !regContactNo) {
+        if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regContactNo) {
             setformError('Please Fill Out all the fields!')
             return
         }
-
-        console.log('Debugging Output: ', regUsername, regPassword, regEmail, regBDay, regGender, regEmail)
+        
+        if (regPassword !== regConfirmPassword) {
+            setformError('Password does not Match Try Again!')
+            return
+        }
 
         const {data, error} = await supabase
           .from('users')
@@ -95,7 +99,12 @@ const Register = () => {
 
                                     {/* input confirm password */}
                                     <label htmlFor="confirm-password">Confirm Password</label>
-                                    <input type="password" id="confirm-password" name="confirm-password" required />
+                                    <input 
+                                        type='password'
+                                        id='inconpass'
+                                        value={regConfirmPassword}
+                                        onChange={(e) => setRegConfirmPassword(e.target.value)}
+                                    />
                                 </div>
                             </div>
 
@@ -130,6 +139,7 @@ const Register = () => {
                                     {/* input gender */}
                                     <label htmlFor="gender">Gender</label>
                                     <select name="gender" id="gender" value={regGender} onChange={(e) => setRegGender(e.target.value)}>
+                                        <option value="not selected">Default Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="prefer-not-to-say">Prefer not to say</option>
