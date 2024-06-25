@@ -90,13 +90,13 @@ body, html {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 500px;
     margin-bottom: 80px;
 }
 
 .l-h2 {
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .login-form {
@@ -107,7 +107,7 @@ body, html {
 .login-form label {
     margin-top: 10px;
     color: #000000; 
-    font-size: large;
+    font-size: 24px;
 }
 
 .login-form input {
@@ -115,12 +115,13 @@ body, html {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 24px;
 }
 
 .forgot-password-link {
     margin-top: 10px;
     color: #000000; 
-    font-size: large;
+    font-size: 24px;
     text-decoration: none;
 }
 
@@ -136,7 +137,7 @@ body, html {
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
-    font-size: large;
+    font-size: 24px;
 }
 
 .login-button:hover {
