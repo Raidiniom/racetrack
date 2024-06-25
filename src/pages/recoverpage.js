@@ -6,20 +6,39 @@ import supabase from "../config/supabaseclient"
 const Recover = () => {
     const [forUsername, setForUsername] = useState('')
     const [forPassword, setForPassword] = useState('')
-    const [upPassword, setUpPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('')
+    const redirect = useNavigate()
 
     const [formError, setformError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!forUsername || !forPassword || !upPassword) {
+        if (!forUsername || !forPassword || !newPassword) {
             setformError('Please Fill Out all the fields!')
             return
         }
 
-        const {data: users, error} = await supabase
+        if (forPassword !== newPassword) {
+            setformError('Both Password are not the same!')
+            return
+        }
+
+        const {data, error} = await supabase
           .from('users')
+          .update({
+            Password: newPassword
+          })
+          .eq('Username', forUsername)
+
+        if (error) {
+            setformError('Failed to Changed Password!')
+        } else {
+            setformError('Successfuly Changed Password!')
+        }
+
+        redirect('/login')
+
     }
 
     return (
@@ -54,14 +73,42 @@ const Recover = () => {
                         <h2 className="l-h2">Recover</h2>
 
                         {/* recover form */}
-                        <form className="recover-form">
+                        <form className="recover-form" onSubmit={handleSubmit}>
 
                             {/* input email */}
-                            <label htmlFor="email">Input your email address</label>
-                            <input type="email" id="email" name="email" required />
+                            <label htmlFor="username">Username:</label>
+                            <input 
+                                type="text" 
+                                id="foruser" 
+                                value={forUsername}
+                                onChange={(e) => setForUsername(e.target.value)}
+                                required 
+                            />
+
+                            {/* input password */}
+                            <label htmlFor="email">Password:</label>
+                            <input 
+                                type="password" 
+                                id="forpass" 
+                                value={forPassword}
+                                onChange={(e) => setForPassword(e.target.value)}
+                                required 
+                            />
+
+                            {/* input new password */}
+                            <label htmlFor="email">New Password:</label>
+                            <input 
+                                type="password" 
+                                id="fornewpass" 
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                required 
+                            />
                             
                             {/* submit */}
                             <button type="submit" className="recover-button">Submit</button>
+
+                            {formError && <p className='error'>{formError}</p>}
                         </form>
                     </div>
                 </div>
