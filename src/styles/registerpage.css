@@ -3,7 +3,7 @@
 }
 
 .wholesite {
-    background-color: bisque;
+    background-color: rgb(255, 255, 255);
     background-size: cover;
 }
 
@@ -100,10 +100,9 @@ body, html {
 }
 
 .register-form-container {
-    background-color: #cea681; 
+    background-color: #ffffff; 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);    font-size: 24px;
     text-align: center;
     font-size: 24px;
     margin-bottom: 80px;
@@ -189,6 +188,6 @@ body, html {
 }
 
 .register-button:hover {
-    background-color: #000000;
-    color: #cea681;
+    background-color: rgb(158, 119, 82);
+    color: #ffffff;
 }

@@ -86,10 +86,9 @@ body, html {
 }
 
 .login-form-container {
-    background-color: #cea681;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 500px;
     margin-bottom: 80px;
 }
@@ -141,6 +140,6 @@ body, html {
 }
 
 .login-button:hover {
-    background-color: #000000;
-    color: #cea681;
+    background-color: rgb(158, 119, 82);
+    color: #ffffff;
 }

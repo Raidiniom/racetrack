@@ -43,101 +43,60 @@ const Recover = () => {
 
     return (
         <div className="wholesite">
-
-             {/* Navbar */}
-            <div>
-                <nav className="navbar">
-
+            <div className="whole-recover">
                     {/* Logo */}
-                    <div className="navbar-logo">
-                        <p>RaceTrack</p>
+                    <div className="logo-recover">
+                        <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
                     </div>
-                
-                    {/* navbar login and sign up */}
-                    <div className="navbar-links">
-                        <NavLink to="/login" className="nav-link">
-                            <button className="nav-button">Login</button>
-                        </NavLink>
-                        <NavLink to="/register" className="nav-link">
-                            <button className="nav-button">Sign Up</button>
-                        </NavLink>
-                    </div>
-                    
-                </nav>
-            </div>
 
-            {/* recover form */}
-            <div className="main-container">
-                <div className="recover-form-position">
-                    <div className="recover-form-container">
-                        <h2 className="l-h2">Recover</h2>
+                {/* recover form */}
+                <div className="recover-main-container">
+                    <div className="recover-form-position">
+                        <div className="recover-form-container">
+                            <h2 className="header-recover">Recover</h2>
 
-                        {/* recover form */}
-                        <form className="recover-form" onSubmit={handleSubmit}>
+                            {/* recover form */}
+                            <form className="recover-form" onSubmit={handleSubmit}>
 
-                            {/* input email */}
-                            <label htmlFor="username">Username:</label>
-                            <input 
-                                type="text" 
-                                id="foruser" 
-                                value={forUsername}
-                                onChange={(e) => setForUsername(e.target.value)}
-                                required 
-                            />
+                                {/* input email */}
+                                <label htmlFor="username">Username:</label>
+                                <input 
+                                    type="text" 
+                                    id="foruser" 
+                                    value={forUsername}
+                                    onChange={(e) => setForUsername(e.target.value)}
+                                    required 
+                                />
 
-                            {/* input password */}
-                            <label htmlFor="email">Password:</label>
-                            <input 
-                                type="password" 
-                                id="forpass" 
-                                value={forPassword}
-                                onChange={(e) => setForPassword(e.target.value)}
-                                required 
-                            />
+                                {/* input password */}
+                                <label htmlFor="email">Password:</label>
+                                <input 
+                                    type="password" 
+                                    id="forpass" 
+                                    value={forPassword}
+                                    onChange={(e) => setForPassword(e.target.value)}
+                                    required 
+                                />
 
-                            {/* input new password */}
-                            <label htmlFor="email">New Password:</label>
-                            <input 
-                                type="password" 
-                                id="fornewpass" 
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                                required 
-                            />
-                            
-                            {/* submit */}
-                            <button type="submit" className="recover-button">Submit</button>
+                                {/* input new password */}
+                                <label htmlFor="email">New Password:</label>
+                                <input 
+                                    type="password" 
+                                    id="fornewpass" 
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    required 
+                                />
+                                
+                                {/* submit */}
+                                <button type="submit" className="recover-button">Submit</button>
 
-                            {formError && <p className='error'>{formError}</p>}
-                        </form>
+                                {formError && <p className='error'>{formError}</p>}
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            {/* footer */}
-            <footer className='footer'>
-                    <div className='footer-container'>
-                        <div className='group_ab_tos_eula'>
-                            <NavLink to="/about" className="footer-link">
-                                <li>About Us</li>
-                            </NavLink>
-                            <NavLink to="/terms" className="footer-link">
-                                <li>Terms of Service</li>
-                            </NavLink>
-                            <NavLink to="/eula" className="footer-link">
-                                <li>End-User License Agreement</li>
-                            </NavLink>
-                        </div>
-                        <div className="contact-us">
-                            <p className='contact-us'>Contact Us</p>
-                            <div className="footer-img-container">
-                                <img src="/img/fb.png" alt="Facebook" className="footer-image-fb" />
-                                <img src="/img/IG.png" alt="Instagram" className="footer-image-ig" />
-                                <img src="/img/message.png" alt="Message" className="footer-image-m" />
-                            </div>
-                        </div>
-                    </div>
-                </footer>
         </div>
     )
 }
