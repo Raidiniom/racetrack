@@ -57,7 +57,7 @@ const Register = () => {
                 <div className="register-main-container">
                     <div className="register-form-position">
                         <div className="register-form-container">
-                            <h2>Register</h2>
+                            <h2 className="header-form">Register</h2>
 
                             {/* register form */}
                             <form className="registration-form" onSubmit={handleSubmit}>
@@ -153,7 +153,7 @@ const Register = () => {
 
                                         {/* tos checkbox */}
                                         <input type="checkbox" name="tos" required />
-                                        I agree to the Terms of Service
+                                        <NavLink to="/tos" className="tos-link">I agree to the Terms of Service</NavLink>
                                     </label>
                                 </div>
 
@@ -162,7 +162,7 @@ const Register = () => {
 
                                         {/* eula checkbox */}
                                         <input type="checkbox" name="eula" required />
-                                        I agree to the End-User Agreement (EULA)
+                                        <NavLink to="/eula" className="eula-link">I agree to the End-User License Agreement (EULA)</NavLink>
                                     </label>
                                 </div>
 

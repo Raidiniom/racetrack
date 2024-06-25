@@ -38,8 +38,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/recover" element={<Recover />} />
         <Route path="/database" element={<Db />} />
-        <Route path="/eula" element={<Tos />} />
-        <Route path="/tos" element={<Eula />} />
+        <Route path="/eula" element={<Eula />} />
+        <Route path="/tos" element={<Tos />} />
       </Routes>
     </BrowserRouter>
   );

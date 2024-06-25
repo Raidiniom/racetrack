@@ -89,7 +89,7 @@ body, html {
 }
 
 .have-acc {
-    font-size: large;
+    font-size: 24px;
     margin-left: 60px;
 }
 
@@ -103,12 +103,15 @@ body, html {
     background-color: #cea681; 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);    font-size: 24px;
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 80px;
+    width: 700px;
+}
+
+.header-form {
+    font-size: 40px;
 }
 
 .registration-form {
@@ -121,6 +124,7 @@ body, html {
     color: #333;
     width: 100%;
     text-align: left;
+    font-size: 24px;
 }
 
 .registration-form input, .registration-form select {
@@ -129,6 +133,7 @@ body, html {
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
+    font-size: 24px;
 }
 
 .form-row {
@@ -158,8 +163,8 @@ body, html {
 .form-group-tos, .form-group-eula {
     display: flex;
     gap: 5px;
-    margin-top: 10px;
-    margin-left: 60px;
+    /* margin-top: 5px; */
+    margin-left: 30px;
     width: 20%;
 }
 
@@ -167,7 +172,7 @@ body, html {
     display: flex;
     gap: 5px; 
     white-space: nowrap;
-    font-size: large;
+    font-size: 24px;
 }
 
 .register-button {
@@ -180,6 +185,7 @@ body, html {
     cursor: pointer;
     font-size: large;
     margin-bottom: 10px;
+    font-size: 24px;
 }
 
 .register-button:hover {
