@@ -25,7 +25,7 @@ const Db = () => {
             return
         }
 
-    console.log('Race Created', racetitle, startdate, regdate, capacity, description, minage, maxage, trackkm)
+    // console.log('Race Created', racetitle, startdate, regdate, capacity, description, minage, maxage, trackkm)
 
         const {data, error} = await supabase
             .from('createRace')
