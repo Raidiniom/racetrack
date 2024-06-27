@@ -124,6 +124,17 @@ body, html {
     text-decoration: none;
 }
 
+.register-link {
+    margin-top: 10px;
+    color: #000000; 
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
 .forgot-password-link:hover {
     text-decoration: underline;
 }

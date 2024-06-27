@@ -82,10 +82,15 @@ const Login = () => {
 
                             {/* forgot password? */}
                             <NavLink to="/recover" className="forgot-password-link">Forgot Password?</NavLink>
+
+                            {/* Don't have an account? */}
+                            <label>Don't have an Account?
+                                <NavLink to="/register" className="register-link"> Sign Up</NavLink>
+                            </label>
                             
                             {/* submit */}
                             <button type="submit" className="login-button">Login</button>
-                        
+
                             {formError && <p className='error'>{formError}</p>}
                         </form>
                     </div>
