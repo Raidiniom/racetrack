@@ -76,7 +76,8 @@ body, html {
     background-color: #ffffff; 
     padding: 20px;
     border-radius: 10px;
-    width: 300px;
+    width: 500px;
+    margin-bottom: 80px;
 }
 
 .logo-recover img {
@@ -109,6 +110,7 @@ body, html {
 
 .header-recover {
     text-align: center;
+    font-size: 50px;
 }
 
 .recover-form {
