@@ -25,8 +25,8 @@ function App() {
         <Link to='/register'>| Register Page |</Link>
         <Link to='/recover'>| Recover Page |</Link>
         <Link to='/database'>| Access to Database Page |</Link>
-        <Link to='/eula'>| TOS Page |</Link>
-        <Link to='/tos'>| EULA Page |</Link>
+        <Link to='/eula'>| EULA Page |</Link>
+        <Link to='/tos'>| TOS Page |</Link>
       </nav>
 
       <Routes>
