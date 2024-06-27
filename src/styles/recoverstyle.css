@@ -57,15 +57,14 @@ body, html {
     padding: 0;
 }
 
-.recover-main-container {
-    flex: 1;
-}
-
-.wholesite {
+.whole-recover {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
 .recover-form-position {
     margin-top: 15%;
     display: flex;
@@ -74,10 +73,9 @@ body, html {
 }
 
 .recover-form-container {
-    background-color: #cea681; 
+    background-color: #ffffff; 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
 
@@ -90,6 +88,23 @@ body, html {
 .logo-recover {
     justify-content: center;
     display: flex;
+}
+
+.recover-form input {
+    padding: 6px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 24px;
+}
+
+.recover-form label {
+    margin-top: 10px;
+    color: #333;
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
 }
 
 .header-recover {
@@ -109,4 +124,10 @@ body, html {
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
+    font-size: 24px;
+}
+
+.recover-button:hover {
+    background-color: rgb(158, 119, 82);
+    color: #ffffff;
 }
