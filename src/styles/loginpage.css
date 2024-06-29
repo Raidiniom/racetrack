@@ -154,3 +154,12 @@ body, html {
     background-color: rgb(158, 119, 82);
     color: #ffffff;
 }
+
+.error {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}

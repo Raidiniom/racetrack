@@ -114,6 +114,10 @@ body, html {
     font-size: 24px;
 }
 
+textarea {
+    font-size: 24px;
+}
+
 .form-row-age {
     display: flex;
     justify-content: space-between;
@@ -142,4 +146,13 @@ body, html {
 .create-button:hover {
     background-color: rgb(158, 119, 82);
     color: #ffffff;
+}
+
+.errors {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
 }

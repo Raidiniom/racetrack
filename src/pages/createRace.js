@@ -124,8 +124,10 @@ const Db = () => {
                                             value={minage}  
                                             onChange={(e) => setMinage(e.target.value)}
                                             />
-
+                                        </div>
+                                        
                                             {/* input age Maximum limit */}
+                                        <div className="form-group-age">
                                             <label htmlFor="maxage">Maximum Age:</label>
                                             <input 
                                             type="int" 
