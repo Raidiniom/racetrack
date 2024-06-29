@@ -1,11 +1,16 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/sitestyle.css'
+// insert css file here
+// Attention: do not forget to add a go back button
 
 const Tos = () => {
 
     return (
         <div className='wholesite'>
-            <h1>THIS PAGE FOR TERMS OF SERVICE</h1>
+            <div className='tos-container'>
+                <div className='tos-content'>
+                    <h1>Terms of Service</h1>
+                </div>
+            </div>
         </div>
     )
 }
