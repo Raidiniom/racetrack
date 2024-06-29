@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wholesite {
+    /* background-color: bisque; */
+    display: flex;
+}
+
+.testsite {
+    background-color: bisque;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.log {
+    background-color: grey;
+    background-size: cover;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+.reg {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+.rec {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+.crr {
+    background-color: grey;
+    background-size: cover;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    color: white;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    height: 100vh;
+}
+
+.dashboard-header {
+    grid-area: header;
+    background-color: #d8d3d3;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.dashboard-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-sidebar ul li {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ddd;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.dashboard-sidebar ul li:hover {
+    background-color: #ccc;
+}
+
+.dashboard-main-content {
+    grid-area: main;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
