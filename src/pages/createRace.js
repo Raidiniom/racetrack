@@ -51,7 +51,7 @@ const Db = () => {
                             <h2 className="create-h2">Create Race</h2>
 
                             {/* create form */}
-                                <form onSubmit={handleSubmit}>
+                                <form className="create-form" onSubmit={handleSubmit}>
 
                                     {/* input title */}
                                     <label htmlFor="racetitle">Title of the Race:</label>
@@ -115,22 +115,26 @@ const Db = () => {
                                     {/* genre */}
                                 
                                     {/* age restriction */}
-                                    <label htmlFor="minage">Minimum Age:</label>
-                                    <input 
-                                    type="int" 
-                                    id="minage" 
-                                    value={minage}  
-                                    onChange={(e) => setMinage(e.target.value)}
-                                    />
+                                    <div className="form-row-age">
+                                        <div className="form-group-age">    
+                                            <label htmlFor="minage">Minimum Age:</label>
+                                            <input 
+                                            type="int" 
+                                            id="minage" 
+                                            value={minage}  
+                                            onChange={(e) => setMinage(e.target.value)}
+                                            />
 
-                                    {/* input age Maximum limit */}
-                                    <label htmlFor="maxage">Maximum Age:</label>
-                                    <input 
-                                    type="int" 
-                                    id="maxage" 
-                                    value={maxage}  
-                                    onChange={(e) => setMaxage(e.target.value)}
-                                    />
+                                            {/* input age Maximum limit */}
+                                            <label htmlFor="maxage">Maximum Age:</label>
+                                            <input 
+                                            type="int" 
+                                            id="maxage" 
+                                            value={maxage}  
+                                            onChange={(e) => setMaxage(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
 
                                     {/* distance */}
                                     <label htmlFor="trackkm">Track Kilometers:</label>
@@ -142,7 +146,7 @@ const Db = () => {
                                     />
                                 
                                     {/* submit */}
-                                    <button>Create Race</button>
+                                    <button className="create-button">Create Race</button>
 
                                     {formError && <p className="errors">{formError}</p>}
 
