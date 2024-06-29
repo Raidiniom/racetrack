@@ -6,8 +6,12 @@ const Dashboard = () => {
         <div className="wholesite">
             <div class="dashboard">
                 <div class="dashboard-header">
-                    <h1>RaceTrack</h1>
+                    <div className="dash-logo">
+                        <img src="\img\RaceTrack Logos\2_F.png" alt="logo" className="RaceTrack-logo" />
+                    </div>
                 </div>
+
+                {/* Sidebar */}
                 <div class="dashboard-sidebar">
                     <ul>
                         <li>Profile</li>
@@ -17,12 +21,18 @@ const Dashboard = () => {
                         <li><NavLink to="/login">Logout</NavLink></li>
                     </ul>
                 </div>
+
+                {/* Main Content */}
                 <div class="dashboard-main-content">
                     <h2>Events</h2>
+
+                    {/* mga events diri display */}
                     <div class="card">Display the events made by others here</div>
                     <div class="card">Display the events made by others here</div>
                     <div class="card">Display the events made by others here</div>
                 </div>
+
+                {/* footer */}
                 <div class="dashboard-footer">
                     <p>???</p>
                 </div>
