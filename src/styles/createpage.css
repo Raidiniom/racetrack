@@ -48,3 +48,111 @@
     height: 200px;
     color: white;
 }
+
+/* body */
+.whole-create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.create-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-form-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-form-container {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 80px;
+    width: 700px;
+}
+
+.create-h2 {
+    text-align: center;
+    font-size: 50px;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-form label {
+    margin-top: 10px;
+    color: #333;
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
+}
+
+.create-form input {
+    padding: 6px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 24px;
+}
+
+textarea {
+    font-size: 24px;
+}
+
+.form-row-age {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: large;
+}
+
+.form-group-age {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    margin-right: 8px; 
+}
+
+.create-button {
+    background-color: #ffdca7; 
+    color: #000000;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.create-button:hover {
+    background-color: rgb(158, 119, 82);
+    color: #ffffff;
+}
+
+.errors {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
