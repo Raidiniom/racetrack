@@ -18,19 +18,15 @@ const Dashboard = () => {
                     </ul>
                 </div>
                 <div class="dashboard-main-content">
-                    <h2>Main Content</h2>
-                    <div class="card">Card 1</div>
-                    <div class="card">Card 2</div>
-                    <div class="card">Card 3</div>
+                    <h2>Events</h2>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
                 </div>
                 <div class="dashboard-footer">
                     <p>???</p>
                 </div>
             </div>
-                <nav>
-                    
-                </nav>
-            
         </div>
     )
 }
