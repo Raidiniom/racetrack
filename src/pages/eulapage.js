@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-// insert css file here
+import "../styles/eula.css"
 // Attention: do not forget to add a go back button
 
 const Eula = () => {
