@@ -1,42 +1,77 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/sitestyle.css'
+import '../styles/updatepage.css'
 
 const Updater = () => {
     return (
         <div className="wholesite">
             <div className='/'>
                 <div className='update-form-container'>
-                    <form>
-                        {/* Change race tile */}
-                        <label>Race Tile:</label>
-                        {/* input */}
+                    <form className="update-form">
 
-                        {/* Change race description */}
-                        <label>Description:</label>
-                        {/* input */}
+                        {/* Update Title */}
+                        <label htmlFor="racetitle">Title of the Race:</label>
+                        <input 
+                        type="title" 
+                        id="racetitle" 
+                        />
 
-                        {/* Change race start date */}
-                        <label>Start Date:</label>
-                        {/* input */}
+                        {/* Update Start Date */}
+                        <label htmlFor="stardate">Start Date:</label>
+                        <input 
+                        type="date" 
+                        id="startdate" 
+                        />
 
-                        {/* Change race registration date */}
-                        <label>Registration Date:</label>
-                        {/* input */}
+                        {/* Update Reg Date */}
+                        <label htmlFor="regdate">Registration Date:</label>
+                        <input 
+                        type="date" 
+                        id="regdate" 
+                        />
 
-                        {/* Change race capacity */}
-                        <label>Race Capacity:</label>
-                        {/* input */}
+                        {/* Update Capacity */}
+                        <label htmlFor="capacity">Capacity (Number of Participant):</label>
+                        <input 
+                        type="int" 
+                        id="capacity" 
+                        />
 
-                        {/* age requirements */}
-                        <label>Minimum Age:</label>
-                        {/* input */}
+                        {/* Update Description */}
+                        <label htmlFor="description">Enter Race Description:</label>
+                        <textarea id="raceDescription" name="raceDescription" rows="4" cols="50" placeholder='Input additional details about the race here...' 
+                        /> 
 
-                        <label>Maximum Age:</label>
-                        {/* input */}
+                        {/* Update Age Restriction */}
+                        <div className="form-row-age">
+                            <div className="form-group-age">    
+                                <label htmlFor="minage">Minimum Age:</label>
+                                <input 
+                                type="int" 
+                                id="minage" 
+                                />
+                            </div>
+                            
+                            <div className="form-group-age">
+                                <label htmlFor="maxage">Maximum Age:</label>
+                                <input 
+                                type="int" 
+                                id="maxage" 
+                                />
+                            </div>
+                        </div>
 
-                        {/* Change race track distance */}
-                        <label>Track distance:</label>
-                        {/* input */}
+                        {/* Update Distance */}
+                        <label htmlFor="trackkm">Track Kilometers:</label>
+                        <input 
+                        type="int" 
+                        id="trackkm" 
+                        />
+
+                        {/* Submit */}
+                        <button className="update-button">Create Race</button>
+
+                        <p className="errors"></p>
+
                     </form>
                 </div>
             </div>
