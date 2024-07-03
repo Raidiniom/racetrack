@@ -2,25 +2,21 @@ import '../styles/sitestyle.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
+
 const Db = () => {
-//    R&D picture upload for our site
+    // R&D for picture file upload
+    const [ file, setFile ] = useState()
 
-   const [formError, setFormError] = useState(null)
-
-   const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        // handle here
-   }
+    const handleSubmit = async (e) => {
+        setFile(e.target.files[0])
+    }
 
     return (
         <div class="testsite">
             <div class="input">
                 
-                    <button>Create Race</button>
-
-                    {formError && <p className="errors">{formError}</p>}
-
+                {/* File Upload Here!!! */}
+                <input type='file' onChange={handleSubmit}></input>
             </div>
         </div>
     )
