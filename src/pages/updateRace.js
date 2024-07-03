@@ -5,6 +5,7 @@ const Updater = () => {
     return (
         <div className="wholesite">
             <div className='/'>
+            <div className="update-form-position">
                 <div className='update-form-container'>
                 <h2 className="update-h2">Update Race</h2>
 
@@ -76,6 +77,7 @@ const Updater = () => {
 
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     )
