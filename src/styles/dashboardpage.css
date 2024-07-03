@@ -51,6 +51,12 @@
     color: white;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -88,6 +94,7 @@ body, html {
     background-color: #ffffff;
     padding: 20px;
     border-right: 1px solid #00000059;
+    overflow-y: auto;
 }
 
 .dashboard-sidebar ul {
@@ -121,11 +128,12 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #ffe6b3; 
+    background-color: #ffe6b3;
+    overflow-y: auto;
 }
 
 .card {
-    background-color: #ffc46a; 
+    background-color: #ffc46a;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;

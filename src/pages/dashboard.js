@@ -30,6 +30,15 @@ const Dashboard = () => {
                     <div class="card">Display the events made by others here</div>
                     <div class="card">Display the events made by others here</div>
                     <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
+                    <div class="card">Display the events made by others here</div>
                 </div>
 
                 {/* footer */}
