@@ -6,15 +6,15 @@ import supabase from "../config/supabaseclient"
 const Db = () => {
 
     const [racetitle, setRacetitle] = useState('')
-   const [startdate, setStartdate] = useState('')
-   const [regdate, setRegdate] = useState('')
-   const [capacity, setCapacity] = useState('')
-   const [description, setDescription] = useState('')
-   const [minage, setMinage] = useState('')
-   const [maxage, setMaxage] = useState('')
-   const [trackkm, setTrackkm] = useState('')
+    const [startdate, setStartdate] = useState('')
+    const [regdate, setRegdate] = useState('')
+    const [capacity, setCapacity] = useState('')
+    const [description, setDescription] = useState('')
+    const [minage, setMinage] = useState('')
+    const [maxage, setMaxage] = useState('')
+    const [trackkm, setTrackkm] = useState('')
 
-   const [formError, setFormError] = useState(null)
+    const [formError, setFormError] = useState(null)
 
    const handleSubmit = async (e) => {
      e.preventDefault()
