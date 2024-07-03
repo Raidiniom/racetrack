@@ -6,6 +6,8 @@ const Updater = () => {
         <div className="wholesite">
             <div className='/'>
                 <div className='update-form-container'>
+                <h2 className="update-h2">Update Race</h2>
+
                     <form className="update-form">
 
                         {/* Update Title */}
