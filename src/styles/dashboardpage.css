@@ -66,12 +66,11 @@ body, html {
 
 .dashboard {
     display: grid;
-    grid-template-rows: 80px 1fr 60px;
+    grid-template-rows: 80px 1fr;
     grid-template-columns: 200px 1fr;
     grid-template-areas: 
         "header header"
-        "sidebar main"
-        "footer footer";
+        "sidebar main";
     height: 100vh;
 }
 
@@ -95,6 +94,7 @@ body, html {
     padding: 20px;
     border-right: 1px solid #ffd382;
     overflow-y: auto;
+    height: 100%;
 }
 
 .dashboard-sidebar ul {
@@ -166,6 +166,7 @@ body, html {
     gap: 20px;
     background-color: #ffffff;
     overflow-y: auto;
+    height: 100%;
 }
 
 .card {
@@ -176,11 +177,29 @@ body, html {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-footer {
+.user-pfp {
+    border-radius: 1000px;
+    width: 60px;
+}
+
+.person-post-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-name {
+    padding: 18px;
+}
+
+.contents-post {
+    padding: 10px;
+}
+
+/* .dashboard-footer {
     grid-area: footer;
     background-color: #333;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */

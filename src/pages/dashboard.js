@@ -27,17 +27,71 @@ const Dashboard = () => {
                     <h2>Events</h2>
 
                     {/* mga events diri display */}
-                    <div class="card">Display the events made by others here</div>
-                    <div class="card">Display the events made by others here</div>
-                    <div class="card">Display the events made by others here</div>
-                    <div class="card">Display the events made by others here</div>
-                    <div class="card">Display the events made by others here</div>
-                    <div class="card">Display the events made by others here</div>
-                </div>
-
-                {/* footer */}
-                <div class="dashboard-footer">
-                    <p>???</p>
+                    <div class="card">
+                        <div className='person-post-container'>
+                            <div className='user-post-pfp'>
+                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
+                            </div>
+                            <div className='user-name'>
+                                <h4>Username</h4>
+                            </div>
+                        </div>
+                        <div className='contents-post'>
+                            Here the contents like the description, pic, etc.
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div className='person-post-container'>
+                            <div className='user-post-pfp'>
+                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
+                            </div>
+                            <div className='user-name'>
+                                <h4>Username</h4>
+                            </div>
+                        </div>
+                        <div className='contents-post'>
+                            Here the contents like the description, pic, etc.
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div className='person-post-container'>
+                            <div className='user-post-pfp'>
+                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
+                            </div>
+                            <div className='user-name'>
+                                <h4>Username</h4>
+                            </div>
+                        </div>
+                        <div className='contents-post'>
+                            Here the contents like the description, pic, etc.
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div className='person-post-container'>
+                            <div className='user-post-pfp'>
+                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
+                            </div>
+                            <div className='user-name'>
+                                <h4>Username</h4>
+                            </div>
+                        </div>
+                        <div className='contents-post'>
+                            Here the contents like the description, pic, etc.
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div className='person-post-container'>
+                            <div className='user-post-pfp'>
+                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
+                            </div>
+                            <div className='user-name'>
+                                <h4>Username</h4>
+                            </div>
+                        </div>
+                        <div className='contents-post'>
+                            Here the contents like the description, pic, etc.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
