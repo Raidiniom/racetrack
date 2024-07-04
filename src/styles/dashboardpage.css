@@ -77,11 +77,11 @@ body, html {
 
 .dashboard-header {
     grid-area: header;
-    background-color: #02282b;
+    background-color: #fff2c6;
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #00000059;
+    border-bottom: 1px solid #fff2c6;
 }
 
 .dash-logo img {
@@ -91,9 +91,9 @@ body, html {
 
 .dashboard-sidebar {
     grid-area: sidebar;
-    background-color: rgb(229, 202, 128);
+    background-color: rgb(255, 255, 255);
     padding: 20px;
-    border-right: 1px solid #00000059;
+    border-right: 1px solid #ffd382;
     overflow-y: auto;
 }
 
@@ -103,12 +103,46 @@ body, html {
 }
 
 .dashboard-sidebar ul li {
-    padding: 10px;
-    margin: 10px 0;
+    margin: 10px;
     background-color: #ffedba; 
     cursor: pointer;
     text-align: center;
     border-radius: 5px;
+    border: none;
+    color: #000000;
+    font-size: 16px;
+    padding: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    width: 150px;
+}
+
+.dashboard-sidebar ul li {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+}
+
+.dashboard-sidebar ul li:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    font-size: 28;
+    margin-right: 19px;
+    margin-top: 9px;
+    right: -20px;
+    transition: 0.3s;
+}
+
+.dashboard-sidebar ul li:hover {
+    padding-right: 25px;
+}
+
+.dashboard-sidebar ul li:hover:after {
+    opacity: 1;
+    right: 0;
 }
 
 .dashboard-sidebar ul li:hover {
@@ -126,6 +160,8 @@ body, html {
     grid-area: main;
     padding: 20px;
     display: flex;
+    margin-left: 50px;
+    margin-right: 200px ;
     flex-direction: column;
     gap: 20px;
     background-color: #ffffff;
@@ -133,7 +169,7 @@ body, html {
 }
 
 .card {
-    background-color: #ffd596;
+    background-color: #ffe59e;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
