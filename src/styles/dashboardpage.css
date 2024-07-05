@@ -167,7 +167,12 @@ body, html {
     background-color: #ffffff;
     overflow-y: auto;
     height: 100%;
+    -ms-overflow-style: none;
 }
+
+.dashboard-main-content::-webkit-scrollbar {
+    display: none;
+  }
 
 .card {
     background-color: #ffe59e;
