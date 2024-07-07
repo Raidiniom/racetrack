@@ -11,6 +11,8 @@ import Register from "./pages/registerpage";
 import Db from "./pages/ourdb";
 import Tos from "./pages/tospage";
 import Eula from "./pages/eulapage";
+import Profile from "./pages/userprofile";
+import MadeEvents from "./pages/createdevents";
 
 function App() {
   return (
@@ -25,8 +27,10 @@ function App() {
         <Link to='/register'>| Register Page |</Link>
         <Link to='/recover'>| Recover Page |</Link>
         <Link to='/database'>| Access to Database Page |</Link>
-        <Link to='/eula'>| TOS Page |</Link>
-        <Link to='/tos'>| EULA Page |</Link>
+        <Link to='/eula'>| EULA Page |</Link>
+        <Link to='/tos'>| TOS Page |</Link>
+        <Link to='/profile'>| User Profile Page |</Link>
+        <Link to='/madeevents'>| MadeEvents |</Link>
       </nav>
 
       <Routes>
@@ -40,6 +44,8 @@ function App() {
         <Route path="/database" element={<Db />} />
         <Route path="/eula" element={<Eula />} />
         <Route path="/tos" element={<Tos />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/madeevents" element={<MadeEvents />} />
       </Routes>
     </BrowserRouter>
   );

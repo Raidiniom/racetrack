@@ -3,7 +3,7 @@
 }
 
 .wholesite {
-    /* background-color: bisque; */
+    background-color: rgb(255, 255, 255);
     background-size: cover;
 }
 
@@ -49,49 +49,20 @@
     color: white;
 }
 
-/* Body */
-
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.whole-recover {
+.update-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.recover-form-position {
-    margin-top: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.update-form label {
+    margin-top: 10px;
+    color: #333;
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
 }
 
-.recover-form-container {
-    background-color: #ffffff; 
-    padding: 20px;
-    border-radius: 10px;
-    width: 500px;
-    margin-bottom: 80px;
-}
-
-.logo-recover img {
-    width: 80%;
-    max-width: 300px;
-    margin-bottom: 50px;
-}
-
-.logo-recover {
-    justify-content: center;
-    display: flex;
-}
-
-.recover-form input {
+.update-form input {
     padding: 6px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -100,25 +71,30 @@ body, html {
     font-size: 24px;
 }
 
-.recover-form label {
-    margin-top: 10px;
-    color: #333;
-    width: 100%;
-    text-align: left;
+.update-form-container {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-bottom: 80px;
+    width: 1000px;
+}
+
+.update-form-position {
+    display: flex;
+    justify-content: center;
+}
+
+textarea {
     font-size: 24px;
 }
 
-.header-recover {
+.update-h2 {
     text-align: center;
     font-size: 50px;
 }
 
-.recover-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.recover-button {
+.update-button {
     background-color: #ffdca7; 
     color: #000000;
     border: none;
@@ -129,16 +105,7 @@ body, html {
     font-size: 24px;
 }
 
-.recover-button:hover {
+.update-button:hover {
     background-color: rgb(158, 119, 82);
     color: #ffffff;
-}
-
-.error {
-    font-size: 24px;
-    color: #000000;
-    background-color: #ff8080;
-    border-radius: 5px;
-    margin-top: 10px;
-    text-align: center;
 }

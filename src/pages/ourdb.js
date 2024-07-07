@@ -2,6 +2,7 @@ import '../styles/sitestyle.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
+
 const Db = () => {
    const [regusername, setUsername] = useState('')
    const [regpassword, setPassword] = useState('')
