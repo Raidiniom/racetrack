@@ -6,13 +6,12 @@ const Db = () => {
    const [regusername, setUsername] = useState('')
    const [regpassword, setPassword] = useState('')
 
+   const [formError, setFormError] = useState(null)
+
    const [racename, setRacename] = useState('')
    const [racedate, setRacedate] = useState('')
    const [venue, setVenue] = useState('')
    
-
-   const [formError, setFormError] = useState(null)
-
    const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -25,31 +24,29 @@ const Db = () => {
 
         // const {data, error} = await supabase
         //   .from('testing')
-        //   .insert({ 
-        //     username: regusername, 
-        //     password: regpassword })
+        //   .insert({ username: regusername, password: regpassword })
         //   .select('*')
-
         if (!racename || !racedate || !venue) {
-                setFormError('Please Fill all Fields!')
-                return
-            }
+            setFormError('Please Fill all Fields!')
+            return
+        }
 
         console.log('Race Created', racename, racedate, venue)
 
-        const {data, error} = await supabase
-          .from('createRace')
-          .insert([{ racename, racedate, venue}])
-          .select('*')
+            const {data, error} = await supabase
+            .from('createRace')
+            .insert([{ racename, racedate, venue}])
+            .select('*')
 
-        if (error) {
-            console.log(error)
-            setFormError('Please Fill all Fields!')
-        }
-        if (data){
+            if (error) {
+             console.log(error)
+             setFormError('Please Fill all Fields!')
+            }
+            if (data){
             console.log(data)
             setFormError(null)
         }
+
    }
 
     return (
@@ -57,7 +54,7 @@ const Db = () => {
             <div class="input">
                 <div class="log">
                     <h2>Login</h2>
-                    {/* Testing for logging in */}
+                    {/* Testing for asdadalogging in */}
 
                     
                 </div>
@@ -67,7 +64,7 @@ const Db = () => {
                     {/* This is the register form */}
 
                     <form onSubmit={handleSubmit}>
-                    <label htmlFor='username'>Username: </label>
+                        <label htmlFor='username'>Username: </label>
                         <input
                             type='text'
                             id='inputuser'
@@ -77,7 +74,7 @@ const Db = () => {
 
                     <label htmlFor='password'>Password: </label>
                         <input
-                            type='password'
+                            type='text'
                             id='inputpass'
                             value={regpassword}
                             onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +82,7 @@ const Db = () => {
 
                     <button>Submit</button>
 
-                    {formError && <p className="errors">{formError}</p>}
+                    {formError && <p class="errors">{formError}</p>}
                     </form>
                 </div>
 
@@ -97,7 +94,7 @@ const Db = () => {
                 <div class="crr">
                     <h2>Create Race</h2>
                     {/*  */}
-                    
+
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="raceName">Race Name:</label>
                         <input
@@ -122,9 +119,9 @@ const Db = () => {
                             value={venue}
                             onChange={(e) => setVenue(e.target.value)}
                         />
-                    <button>Create Race</button>
+                        <button>Create Race</button>
 
-                    {formError && <p className="errors">{formError}</p>}
+                        {formError && <p className="errors">{formError}</p>}
 
                     </form>
                 </div>
