@@ -14,11 +14,11 @@ const Dashboard = () => {
                 {/* Sidebar */}
                 <div class="dashboard-sidebar">
                     <ul>
-                        <li>Profile </li>
-                        <li><NavLink to="/create">Create Race </NavLink></li>
-                        <li><NavLink to="/update">Update Race </NavLink></li>
-                        <li>Settings </li>
-                        <li><NavLink to="/login">Logout </NavLink></li>
+                        <li><NavLink to="/profile">Your Profile</NavLink></li>
+                        <li><NavLink to="/create">Create Race</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Race</NavLink></li>
+                        <li>Settings</li>
+                        <li><NavLink to="/login">Logout</NavLink></li>
                     </ul>
                 </div>
 

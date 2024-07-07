@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wholesite {
+    display: flex;
+}
+
+.profile-container {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    width: 1200px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    background-color: #ffe281;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    text-align: center;
+}
+
+.bkuf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.profile-content {
+    display: flex;
+    padding: 20px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    border: #333 solid 1px;
+}
+
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-info .info {
+    margin-bottom: 20px;
+}
+
+.profile-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f9f4ec;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.edit-button {
+    background-color: #bbbbbb;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    height: 36px;
+    line-height: 27px;
+    min-width: 54px;
+    padding: 0 16px;
+    text-align: center;
+    touch-action: manipulation;
+    white-space: pre;
+}
+
+.edit-button:hover {
+    border-color: #dadce0;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+    color: #202124;
+}
+
+.edit-button:focus {
+    border-color: #ffcb3d;
+    background-color: #ffd382;
+    outline: none;
+}
