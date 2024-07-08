@@ -20,16 +20,6 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
-            setformError('Please Fill Out all the fields!')
-            return
-        }
-        
-        if (regPassword !== regConfirmPassword) {
-            setformError('Password does not Match Try Again!')
-            return
-        }
-
         const {data, error} = await supabase
           .from('app_users')
           .insert({
@@ -41,6 +31,16 @@ const Register = () => {
             gender: regGender
           })
           .select('*')
+
+          if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
+            setformError('Please Fill Out all the fields!')
+            return
+        }
+        
+        if (regPassword !== regConfirmPassword) {
+            setformError('Password does not Match Try Again!')
+            return
+        }
 
           setformError('You Successfuly Registered')
           redirect('/login')
