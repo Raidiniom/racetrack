@@ -23,54 +23,102 @@ const MadeEvents = () => {
                 </div>
 
                 {/* Main Content */}
-                <div class="dashboard-main-content">
-                    <h2>Your Created Events</h2>
+                <div class="yourEvents-main-content">
+                    <h2 className="ye">Your Created Events</h2>
+                        <div className="container-post">
 
-                    {/* mga events diri display */}
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-name'>
-                                <h4>Event Name</h4><br></br>
-                                <p>By user</p>
+                            {/* mga events diri display */}
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
+                            </div>
+                            <div class="card-ye">
+                                <div className='person-post-container-ye'>
+                                    <div className='user-name-ye'>
+                                        <h4>Event Name<br></br>By User</h4>
+                                    </div>
+                                </div>
+                                <div className='contents-post-ye'>
+                                    Here the contents like the description, pic, etc.
+                                </div>
                             </div>
                         </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-name'>
-                                <h4>Event Name</h4><br></br>
-                                <p>By user</p>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-name'>
-                                <h4>Event Name</h4><br></br>
-                                <p>By user</p>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-name'>
-                                <h4>Event Name</h4><br></br>
-                                <p>By user</p>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

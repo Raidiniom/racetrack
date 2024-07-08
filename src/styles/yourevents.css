@@ -155,3 +155,49 @@ body, html {
     color: inherit;
     display: block;
 }
+
+.yourEvents-main-content {
+    grid-area: main;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 200px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    height: 100%;
+    -ms-overflow-style: none;
+}
+
+.yourEvents-main-content::-webkit-scrollbar {
+    display: none;
+}
+
+.container-post {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.ye {
+    margin-bottom: 5px;
+}
+
+.card-ye {
+    background-color: #ffe59e;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.person-post-container-ye {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-name-ye {
+    padding: 18px;
+}
+
+.contents-post-ye {
+    padding: 10px;
+}
