@@ -11,7 +11,8 @@ const Register = () => {
     const [regEmail, setRegEmail] = useState('')
     const [regBDay, setRegBDay] = useState('')
     const [regGender, setRegGender] = useState('')
-    const [regContactNo, setRegContactNo] = useState('')
+    const [regNickname, setRegNickname] = useState('')
+
     const redirect = useNavigate()
 
     const [formError, setformError] = useState(null)
@@ -19,7 +20,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regContactNo) {
+        if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
             setformError('Please Fill Out all the fields!')
             return
         }
@@ -30,14 +31,14 @@ const Register = () => {
         }
 
         const {data, error} = await supabase
-          .from('users')
+          .from('app_users')
           .insert({
-            Username: regUsername,
-            Password: regPassword,
-            Email: regEmail,
-            Birth_day: regBDay,
-            Gender: regGender,
-            Contact_no: regContactNo
+            display_name: regNickname,
+            username: regUsername,
+            password: regPassword,
+            email: regEmail,
+            birth_day: regBDay,
+            gender: regGender
           })
           .select('*')
 
@@ -111,12 +112,12 @@ const Register = () => {
                                     <div className="form-group">
 
                                         {/* input phone number */}
-                                        <label htmlFor="phone">Phone No.#</label>
+                                        <label htmlFor="phone">Set Nickname</label>
                                         <input 
                                             type='text'
-                                            id='incontactno'
-                                            value={regContactNo}
-                                            onChange={(e) => setRegContactNo(e.target.value)}
+                                            id='innickname'
+                                            value={regNickname}
+                                            onChange={(e) => setRegNickname(e.target.value)}
                                         />
                                     </div>
                                 </div>
