@@ -56,6 +56,8 @@ const Dashboard = () => {
                     {fetchError && (<p className='error'>{fetchError}</p>)}
 
                     {getraces && (
+                        // @CallenCaracy @MarQtie
+                        /* Diri lang mo edit sa CSS sa katung content sa dashboard */
                         <div>
                             {getraces.map(output => (
                                 <div className='card'>
@@ -66,80 +68,20 @@ const Dashboard = () => {
                                     <div className='contents-post'>
                                         {output.description}
                                     </div>
+
+                                    <div className='race-details'>
+                                        <p>Start Date: {output.startdate} Registration Date: {output.regdate}</p>
+                                        <p>Race Capacity: {output.capacity} Race Distance: {output.trackkm} KM</p>
+                                        <p>Age Requirement: {output.maxage} - {output.minage}</p>
+                                    </div>
+
+                                    <div className=''>
+                                        {/*  */}
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     )}
-
-
-
-
-
-                    {/* <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-post-pfp'>
-                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
-                            </div>
-                            <div className='user-name'>
-                                <h4>Username</h4>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-post-pfp'>
-                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
-                            </div>
-                            <div className='user-name'>
-                                <h4>Username</h4>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-post-pfp'>
-                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
-                            </div>
-                            <div className='user-name'>
-                                <h4>Username</h4>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-post-pfp'>
-                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
-                            </div>
-                            <div className='user-name'>
-                                <h4>Username</h4>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div className='person-post-container'>
-                            <div className='user-post-pfp'>
-                                <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
-                            </div>
-                            <div className='user-name'>
-                                <h4>Username</h4>
-                            </div>
-                        </div>
-                        <div className='contents-post'>
-                            Here the contents like the description, pic, etc.
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
