@@ -14,6 +14,7 @@ import Eula from "./pages/eulapage";
 import Profile from "./pages/userprofile";
 import MadeEvents from "./pages/createdevents";
 import Fetch from "./pages/fetchdata";
+import ViewEvent from "./pages/viewEvent";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Link to='/tos'>| TOS Page |</Link>
         <Link to='/profile'>| User Profile Page |</Link>
         <Link to='/madeevents'>| MadeEvents |</Link>
+        <Link to='/viewevent'>| ViewEvent |</Link>
         <Link to='/fetching'>| Fetch Data from the Database |</Link>
       </nav>
 
@@ -49,6 +51,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/madeevents" element={<MadeEvents />} />
         <Route path="/fetching" element={<Fetch />} />
+        <Route path="/viewevent" element={<ViewEvent />} />
       </Routes>
     </BrowserRouter>
   );
