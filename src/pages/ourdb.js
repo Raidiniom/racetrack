@@ -16,17 +16,6 @@ const Db = () => {
    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // if (!regusername || !regpassword) {
-        //     setFormError('Please Fill all Fields!')
-        //     return
-        // }
-        
-        // console.log('akoang gipa gawas',regusername, regpassword)
-
-        // const {data, error} = await supabase
-        //   .from('testing')
-        //   .insert({ username: regusername, password: regpassword })
-        //   .select('*')
         if (!racename || !racedate || !venue) {
             setFormError('Please Fill all Fields!')
             return

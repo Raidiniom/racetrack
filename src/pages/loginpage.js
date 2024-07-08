@@ -19,9 +19,9 @@ const Login = () => {
         }
 
         const {data: users, error} = await supabase
-          .from('users')
-          .select('Username, Password')
-          .eq('Username', logUsername)
+          .from('app_users')
+          .select('username, password')
+          .eq('username', logUsername)
         
         if (error) {
             setformError('Error fetching user data');
@@ -35,7 +35,7 @@ const Login = () => {
 
         const user = users[0];
 
-        if (user.Password !== logPassword) {
+        if (user.password !== logPassword) {
             setformError('Incorrect Username or Password!');
             return
         }
