@@ -61,23 +61,25 @@ const Dashboard = () => {
                         <div>
                             {getraces.map(output => (
                                 <div className='card'>
-                                    <div className='user-name'>
-                                        {output.racetitle}
-                                    </div>
+                                    <NavLink to="/viewevent" className="view-e">
+                                        <div className='user-name'>
+                                            {output.racetitle}
+                                        </div>
 
-                                    <div className='contents-post'>
-                                        {output.description}
-                                    </div>
+                                        <div className='contents-post'>
+                                            {output.description}
+                                        </div>
 
-                                    <div className='race-details'>
-                                        <p>Start Date: {output.startdate} Registration Date: {output.regdate}</p>
-                                        <p>Race Capacity: {output.capacity} Race Distance: {output.trackkm} KM</p>
-                                        <p>Age Requirement: {output.maxage} - {output.minage}</p>
-                                    </div>
+                                        <div className='race-details'>
+                                            <p>Start Date: {output.startdate} Registration Date: {output.regdate}</p>
+                                            <p>Race Capacity: {output.capacity} Race Distance: {output.trackkm} KM</p>
+                                            <p>Age Requirement: {output.maxage} - {output.minage}</p>
+                                        </div>
 
-                                    <div className=''>
-                                        {/*  */}
-                                    </div>
+                                        <div className=''>
+                                            {/*  */}
+                                        </div>
+                                    </NavLink>
                                 </div>
                             ))}
                         </div>
