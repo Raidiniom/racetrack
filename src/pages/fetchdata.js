@@ -29,15 +29,21 @@ const Fetch = () => {
     return (
         <div className="wholesite">
             {/* Here to fetch information from our database */}
-            {fetchError && (<p>{fetchError}</p>)}
-            {users && (
-                <div className='display'>
-                    <h1>My users</h1>
-                    {users.map(output => (
-                        <p>{output.first_name} {output.last_name}</p>
-                    ))}
-                </div>
-            )}
+            <div>
+                {fetchError && (<p>{fetchError}</p>)}
+                {users && (
+                    <div className='display'>
+                        <h1>My users</h1>
+                        {/* ang kaning users.map dapit para ni sa output / display
+                        sa mga data solud gikan sa table na akoang gi kuhaan */}
+                        {users.map(output => (
+                            <div className='details'>
+                                {output.first_name} {output.last_name} {output.test_email}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

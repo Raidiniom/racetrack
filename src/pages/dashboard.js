@@ -1,7 +1,32 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/dashboardpage.css'
+import { useEffect, useState } from 'react'
+import supabase from '../config/supabaseclient'
 
 const Dashboard = () => {
+    const [ fetchError, setFetchError ] = useState(null)
+    const [ getraces, setGetraces ] = useState(null)
+
+    useEffect(() => {
+        const fetchRaces = async () => {
+            const { data, error } = await supabase
+             .from('createRace')
+             .select()
+
+            if (error) {
+                setFetchError('No Races Open!')
+                setGetraces(null)
+            }
+
+            if (data) {
+                setGetraces(data)
+                setFetchError(null)
+            }
+        }
+
+        fetchRaces()
+    }, [])
+
     return (
         <div className="wholesite">
             <div class="dashboard">
@@ -27,7 +52,30 @@ const Dashboard = () => {
                     <h2>Events</h2>
 
                     {/* mga events diri display */}
-                    <div class="card">
+
+                    {fetchError && (<p className='error'>{fetchError}</p>)}
+
+                    {getraces && (
+                        <div>
+                            {getraces.map(output => (
+                                <div className='card'>
+                                    <div className='user-name'>
+                                        {output.racetitle}
+                                    </div>
+
+                                    <div className='contents-post'>
+                                        {output.description}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+
+
+
+
+                    {/* <div class="card">
                         <div className='person-post-container'>
                             <div className='user-post-pfp'>
                                 <img src="\img\Default Img\defaultpfp.jpg" alt="pfp" className="user-pfp" />
@@ -91,7 +139,7 @@ const Dashboard = () => {
                         <div className='contents-post'>
                             Here the contents like the description, pic, etc.
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

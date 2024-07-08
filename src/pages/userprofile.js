@@ -12,7 +12,7 @@ const Profile = () => {
                 </div>
                 <div className="profile-content">
                     <div className="profile-picture">
-                        <img src="\img\Default Img\defaultpfp.jpg" alt="Profile" />
+                        <img src="\img\Default Img\defaultpfp.jpg" alt="Profile Picture" />
                     </div>
                     <div className="profile-info">
                         <div className="info">
@@ -22,6 +22,8 @@ const Profile = () => {
                             <p>Gender: Backend</p>
                             <p>Birthday: Backend</p>
                         </div>
+
+                        {/* kailangan bani or different stuff lang i dunno */}
                         <div className="buttons">
                             <button className="edit-button">Change Username</button>
                             <button className="edit-button">Change Password</button>
