@@ -18,6 +18,7 @@ import Fetch from "./pages/fetchdata";
 function App() {
   return (
     <BrowserRouter>
+      {/* Ang nav kay maoy ei comment out para ma wagtang siya sa top sa site */}
       <nav>
         <p>Access to all Pages</p>
         <Link to="/">| Dashboard |</Link>
