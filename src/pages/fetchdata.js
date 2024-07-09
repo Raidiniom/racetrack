@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import supabase from "../config/supabaseclient"
 
+// I will delete this later i think (?)
+
 const Fetch = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ users, setUsers ] = useState(null)
