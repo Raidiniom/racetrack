@@ -155,3 +155,74 @@ body, html {
     color: inherit;
     display: block;
 }
+
+.viewEvents-main-content {
+    grid-area: main;
+    padding: 20px;
+    display: flex;
+    margin-left: 50px;
+    margin-right: 200px ;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    height: 100%;
+    -ms-overflow-style: none;
+}
+
+.card-view {
+    background-color: #ffeebf;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.join-event {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffedba;
+    font-weight: bolder;
+    border: none;
+}
+
+.join-event:hover {
+    background-color: #000000;
+    color: #ddd;
+    transition: background-color 0.3s;
+}
+
+.pad {
+    padding: 30px;
+    display: flex;
+}
+
+.details-event-part1 {
+    flex-grow: 1;
+}
+
+.details-event-part1 {
+    flex-grow: 1;
+    max-height: 350px; 
+    overflow-y: auto;
+}
+
+.event-picc img {
+    display: flex;
+    border-radius: 20px;
+    max-width: 800px;
+}
+
+.details-event {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-left: 20px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid #000000;
+}
