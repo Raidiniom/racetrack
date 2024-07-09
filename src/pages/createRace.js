@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/createpage.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
@@ -16,6 +16,8 @@ const Db = () => {
 
     const [formError, setFormError] = useState(null)
 
+    const redirect = useNavigate
+
    const handleSubmit = async (e) => {
      e.preventDefault()
 
@@ -30,16 +32,18 @@ const Db = () => {
         const {data, error} = await supabase
             .from('createRace')
             .insert([{ racetitle, startdate, regdate, capacity, description, minage, maxage, trackkm}])
-             .select('*')
+            .select('*')
 
         if (error) {
-             console.log(error)
+            console.log(error)
             setFormError('Please Fill all Fields!')
         }
         if (data){
-        console.log(data)
-        setFormError(null)
+            console.log(data)
+            setFormError(null)
         }
+
+        redirect('/madeevents')
     }
 
         return (

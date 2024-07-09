@@ -2,11 +2,14 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/loginpage.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
+import { UseUser } from './passuser'
 
 const Login = () => {
     const [logUsername, setlogUsername] = useState('')
     const [logPassword, setlogPassword] = useState('')
     const redirect = useNavigate()
+
+    const [ setUsername ] = UseUser()
 
     const [formError, setformError] = useState(null)
 
@@ -40,6 +43,7 @@ const Login = () => {
             return
         }
 
+        setUsername(logUsername);
         setformError('You Successfuly Logged In!');
         redirect('/')
     }
