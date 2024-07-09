@@ -9,7 +9,7 @@ const Login = () => {
     const [logPassword, setlogPassword] = useState('')
     const redirect = useNavigate()
 
-    const [ setUsername ] = UseUser()
+    const [ passUsername, setPasUsername ] = UseUser()
 
     const [formError, setformError] = useState(null)
 
@@ -43,7 +43,7 @@ const Login = () => {
             return
         }
 
-        setUsername(logUsername);
+        setPasUsername(logUsername);
         setformError('You Successfuly Logged In!');
         redirect('/')
     }

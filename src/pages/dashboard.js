@@ -3,6 +3,7 @@ import '../styles/dashboardpage.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 
+
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState(null)
