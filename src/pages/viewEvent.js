@@ -17,7 +17,7 @@ const ViewEvent = () => {
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li>Settings</li>
+                        <li>Joined Events</li>
                         <li><NavLink to="/login">Logout</NavLink></li>
                     </ul>
                 </div>
@@ -29,7 +29,23 @@ const ViewEvent = () => {
 
                             {/* mga events diri display */}
                             <div class="view-content">
-                                <p>Detailed Sht sa event</p>
+                                <div className="card-view">
+                                    <div className="pad">
+                                        <div className="event-picc">
+                                            <img src="https://wallpapercave.com/wp/wp4043831.jpg" alt="Profile Picture" />
+                                        </div>
+                                        <div className="details-event">
+                                            <div className="details-event-part1">
+                                                <h2>Event title</h2>
+                                                <p>Event description</p>
+                                                <p>then the rest info</p>
+                                            </div>
+                                            <div className="details-event-part2">
+                                                <button className="join-event">Join Event</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                 </div>
