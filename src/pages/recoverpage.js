@@ -25,11 +25,11 @@ const Recover = () => {
         }
 
         const {data, error} = await supabase
-          .from('users')
+          .from('app_users')
           .update({
-            Password: newPassword
+            password: newPassword
           })
-          .eq('Username', forUsername)
+          .eq('username', forUsername)
 
         if (error) {
             setformError('Failed to Changed Password!')
