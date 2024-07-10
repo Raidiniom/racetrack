@@ -1,8 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/viewevents.css'
-import supabase from '../config/supabaseclient'
 
-const ViewEvent = () => {
+const UpdateEvent = () => {
     return (
         <div className="wholesite">
             <div class="viewEvents">
@@ -32,18 +31,11 @@ const ViewEvent = () => {
                             <div class="view-content">
                                 <div className="card-view">
                                     <div className="pad">
-                                        <div className="details-event">
                                         <div className="event-picc">
                                             <img src="https://wallpapercave.com/wp/wp4043831.jpg" alt="Profile Picture" />
                                         </div>
-                                        <hr></hr>
+                                        <div className="details-event">
                                             <div className="details-event-part1">
-                                                <h2>Event title</h2>
-                                                <p>then the rest info</p>
-                                                <p>Event description last</p>
-                                                <h2>Event title</h2>
-                                                <p>then the rest info</p>
-                                                <p>Event description last</p>
                                                 <h2>Event title</h2>
                                                 <p>then the rest info</p>
                                                 <p>Event description last</p>
@@ -62,4 +54,4 @@ const ViewEvent = () => {
     )
 }
 
-export default ViewEvent
+export default UpdateEvent
