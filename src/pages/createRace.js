@@ -48,6 +48,25 @@ const Db = () => {
 
         return (
             <div className="wholesite">
+                <div class="makeEvents">
+                    <div class="makeEvents-header">
+                        <div className="makeEvents-logo">
+                            <img src="\img\RaceTrack Logos\2_FF.png" alt="logo" className="RaceTrack-logo" />
+                        </div>
+                    </div>
+
+                {/* Sidebar */}
+                <div class="makeEvents-sidebar">
+                    <ul>
+                        <li><NavLink to="/profile">Your Profile</NavLink></li>
+                        <li><NavLink to="/">Dashboard</NavLink></li>
+                        <li><NavLink to="/create">Create Race</NavLink></li>
+                        <li>Joined Events</li>
+                        <li><NavLink to="/login">Logout</NavLink></li>
+                    </ul>
+                </div>
+
+                {/* Main Content */}
                 <div className='whole-create'>
                     <div className="create-main-container">
                         <div className="create-form-position">
@@ -67,22 +86,28 @@ const Db = () => {
                                     />
                                 
                                     {/* input start date */}
-                                    <label htmlFor="stardate">Start Date:</label>
-                                    <input 
-                                    type="date" 
-                                    id="startdate" 
-                                    value={startdate}  
-                                    onChange={(e) => setStartdate(e.target.value)}
-                                    />
+                                    <div className="form-row-age">
+                                        <div className="form-group-age">
+                                            <label htmlFor="stardate">Start Date:</label>
+                                            <input 
+                                            type="date" 
+                                            id="startdate" 
+                                            value={startdate}  
+                                            onChange={(e) => setStartdate(e.target.value)}
+                                            />
+                                        </div>
 
-                                    {/* input registration date */}
-                                    <label htmlFor="regdate">Registration Date:</label>
-                                    <input 
-                                    type="date" 
-                                    id="regdate" 
-                                    value={regdate}  
-                                    onChange={(e) => setRegdate(e.target.value)}
-                                    />
+                                            {/* input registration date */}
+                                        <div className="form-group-age">
+                                            <label htmlFor="regdate">Registration Date:</label>
+                                            <input 
+                                            type="date" 
+                                            id="regdate" 
+                                            value={regdate}  
+                                            onChange={(e) => setRegdate(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
 
                                     {/* input capacity */}
                                     <label htmlFor="capacity">Capacity (Number of Participant):</label>
@@ -160,6 +185,7 @@ const Db = () => {
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         
