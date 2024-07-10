@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/viewevents.css'
 
-const ViewEvent = () => {
+const UpdateEvent = () => {
     return (
         <div className="wholesite">
             <div class="viewEvents">
@@ -39,12 +39,6 @@ const ViewEvent = () => {
                                                 <h2>Event title</h2>
                                                 <p>then the rest info</p>
                                                 <p>Event description last</p>
-                                                <h2>Event title</h2>
-                                                <p>then the rest info</p>
-                                                <p>Event description last</p>
-                                                <h2>Event title</h2>
-                                                <p>then the rest info</p>
-                                                <p>Event description last</p>
                                             </div>
                                             <div className="details-event-part2">
                                                 <button className="join-event">Join Event</button>
@@ -60,4 +54,4 @@ const ViewEvent = () => {
     )
 }
 
-export default ViewEvent
+export default UpdateEvent

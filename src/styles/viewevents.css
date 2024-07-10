@@ -170,11 +170,15 @@ body, html {
     -ms-overflow-style: none;
 }
 
+.viewEvents-main-content::-webkit-scrollbar {
+    display: none;
+  }
+
 .card-view {
     background-color: #ffeebf;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 20px;
     height: 100%;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -186,6 +190,7 @@ body, html {
     background-color: #ffedba;
     font-weight: bolder;
     border: none;
+    margin-left: 20px;
 }
 
 .join-event:hover {
@@ -195,34 +200,44 @@ body, html {
 }
 
 .pad {
-    padding: 30px;
     display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .details-event-part1 {
     flex-grow: 1;
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 30px;
 }
 
 .details-event-part1 {
     flex-grow: 1;
     max-height: 350px; 
     overflow-y: auto;
+    padding: 30px;
+}
+
+.event-picc {
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box; 
 }
 
 .event-picc img {
-    display: flex;
     border-radius: 20px;
-    max-width: 800px;
+    width: 100%;
 }
 
 .details-event {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #ffffff;
-    margin-left: 20px;
     padding: 15px;
-    width: 100%;
+    width: calc(100% - 30px); 
     border-radius: 20px;
     border: 1px solid #000000;
+    margin: auto;
 }

@@ -16,6 +16,7 @@ import Profile from "./pages/userprofile";
 import MadeEvents from "./pages/createdevents";
 import Fetch from "./pages/fetchdata";
 import ViewEvent from "./pages/viewEvent";
+import UpdateEvent from "./pages/youreventupdate";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Link to='/madeevents'>| MadeEvents |</Link>
           <Link to='/viewevent'>| ViewEvent |</Link>
           <Link to='/fetching'>| Fetch Data from the Database |</Link>
+          <Link to='/updateevent'>| Update your events |</Link>
         </nav>
 
         <Routes>
@@ -55,6 +57,7 @@ function App() {
           <Route path="/madeevents" element={<MadeEvents />} />
           <Route path="/fetching" element={<Fetch />} />
           <Route path="/viewevent" element={<ViewEvent />} />
+          <Route path="/updateevent" element={<UpdateEvent />} />
         </Routes>
       </BrowserRouter>
     </ProvideContext>
