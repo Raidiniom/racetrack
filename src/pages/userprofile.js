@@ -1,27 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/userpfp.css';
-import { UseUser } from './passuser'
 import { useEffect, useState } from 'react'
 import supabase from "../config/supabaseclient"
 
 const Profile = () => {
-    const [ passUsername ] = UseUser()
-
     const [ fetchError, setFetchError ] = useState(null)
     const [ getuser, setGetuser ] = useState(null)
     /* I's using localstorage so when the user refreshes the page the details will still display */
+
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const storeUser = localStorage.getItem('userData')
+                const storeUser = localStorage.getItem('lsusername')
                 if (storeUser) {
-                    setGetuser(JSON.parse(storeUser))
-                } else {
                     const { data, error } = await supabase
                      .from('app_users')
                      .select('*')
-                     .eq('username', passUsername)
+                     .eq('username', storeUser)
 
                      if (error) {
                         throw error
@@ -29,9 +25,8 @@ const Profile = () => {
 
                      if (data) {
                         setGetuser(data)
-                        localStorage.setItem('userData', JSON.stringify(data))
                      }
-                }
+                    }
 
                 setFetchError(null)
             } catch (error) {
@@ -41,7 +36,12 @@ const Profile = () => {
         }
 
         fetchUser()
-    }, [passUsername])
+    }, [])
+
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
+        setGetuser(null)
+    }
 
     return (
         <div className="wholesite">
@@ -85,7 +85,7 @@ const Profile = () => {
                     <nav className="profile-nav">
                         <NavLink to="/" className="nav-link">Dashboard</NavLink>
                         <NavLink to="/madeevents" className="nav-link">Your Events</NavLink>
-                        <NavLink to="/login" className="nav-link">Logout</NavLink>
+                        <NavLink to="/login" className="nav-link" onClick={handleLogout}>Logout</NavLink>
                     </nav>
                 </div>
             </div>

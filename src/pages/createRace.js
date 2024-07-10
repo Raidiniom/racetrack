@@ -16,22 +16,46 @@ const Db = () => {
 
     const [formError, setFormError] = useState(null)
 
-    const redirect = useNavigate
+    const storeduser = localStorage.getItem('lsusername')
+
+    const redirect = useNavigate()
 
    const handleSubmit = async (e) => {
-     e.preventDefault()
+        e.preventDefault()
 
-
-         if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm) {
+        if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm) {
             setFormError('Please Fill all Fields!')
             return
         }
 
     // console.log('Race Created', racetitle, startdate, regdate, capacity, description, minage, maxage, trackkm)
 
+        const {data: userdata, error: nouser} = await supabase
+         .from('app_users')
+         .select('user_id')
+         .eq('username', storeduser)
+        
+        
+        if (nouser || !userdata || userdata.length === 0) {
+            setFormError('User does not exist!')
+        }
+
+        const racemaker = userdata[0].user_id
+
         const {data, error} = await supabase
-            .from('createRace')
-            .insert([{ racetitle, startdate, regdate, capacity, description, minage, maxage, trackkm}])
+            .from('user_created_race')
+            .insert({ 
+                race_title: racetitle,
+                race_description: description,
+                start_date: startdate, 
+                registration_date: regdate, 
+                capacity: capacity, 
+                current_cap: 0,
+                min_age: minage, 
+                max_age: maxage, 
+                race_distance: trackkm,
+                race_creator: racemaker
+            })
             .select('*')
 
         if (error) {

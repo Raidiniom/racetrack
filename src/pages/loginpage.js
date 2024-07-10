@@ -4,6 +4,11 @@ import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 import { UseUser } from './passuser'
 
+/* 
+    Wa ko kibaw unsaon tung user na stayed logged in gyud siya og dili ma wala siya ig refresh niya sa page i mean any page
+    murag ang tawag ana 'User Auth' man siguro
+*/
+
 const Login = () => {
     const [logUsername, setlogUsername] = useState('')
     const [logPassword, setlogPassword] = useState('')
@@ -44,6 +49,7 @@ const Login = () => {
         }
 
         setPasUsername(logUsername);
+        localStorage.setItem('lsusername', logUsername);
         setformError('You Successfuly Logged In!');
         redirect('/')
     }

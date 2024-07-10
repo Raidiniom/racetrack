@@ -28,6 +28,10 @@ const Dashboard = () => {
         fetchRaces()
     }, [])
 
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
+    }
+
     return (
         <div className="wholesite">
             <div class="dashboard">
@@ -44,7 +48,7 @@ const Dashboard = () => {
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
                         <li>Joined Events</li>
-                        <li><NavLink to="/login">Logout</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
 

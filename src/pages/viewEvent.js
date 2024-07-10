@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/viewevents.css'
+import supabase from '../config/supabaseclient'
 
 const ViewEvent = () => {
     return (
