@@ -191,6 +191,7 @@ body, html {
     font-weight: bolder;
     border: none;
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .join-event:hover {
@@ -234,10 +235,9 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: #ffffff;
+    background-color: #ffffff83;
     padding: 15px;
     width: calc(100% - 30px); 
     border-radius: 20px;
-    border: 1px solid #000000;
     margin: auto;
 }

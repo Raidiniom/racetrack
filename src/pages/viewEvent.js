@@ -31,10 +31,11 @@ const ViewEvent = () => {
                             <div class="view-content">
                                 <div className="card-view">
                                     <div className="pad">
+                                        <div className="details-event">
                                         <div className="event-picc">
                                             <img src="https://wallpapercave.com/wp/wp4043831.jpg" alt="Profile Picture" />
                                         </div>
-                                        <div className="details-event">
+                                        <hr></hr>
                                             <div className="details-event-part1">
                                                 <h2>Event title</h2>
                                                 <p>then the rest info</p>
