@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/viewevents.css';
+import supabase from "../config/supabaseclient"
 
 const UpdateEvent = () => {
+
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [racetitle, setRacetitle] = useState('')
+    const [startdate, setStartdate] = useState('')
+    const [regdate, setRegdate] = useState('')
+    const [capacity, setCapacity] = useState('')
+    const [description, setDescription] = useState('')
+    const [minage, setMinage] = useState('')
+    const [maxage, setMaxage] = useState('')
+    const [trackkm, setTrackkm] = useState('')
+    const [formError, setFormError] = useState(null)
+
+    const storeduser = localStorage.getItem('lsusername')
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -15,6 +28,47 @@ const UpdateEvent = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('lsusername')
+    }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm) {
+            setFormError('Please Fill all Fields!')
+            return
+        }
+
+        const {data: userdata, error: nouser} = await supabase
+         .from('app_users')
+         .select('user_id')
+         .eq('username', storeduser)
+
+        const racemaker = userdata[0].user_id
+
+        const {data, error} = await supabase
+            .from('user_created_race')
+            .update({ 
+                race_title: racetitle,
+                race_description: description,
+                start_date: startdate, 
+                registration_date: regdate, 
+                capacity: capacity, 
+                min_age: minage, 
+                max_age: maxage, 
+                race_distance: trackkm,
+                race_creator: racemaker
+            })
+            .select('*')
+
+            if (error) {
+                console.log(error)
+                setFormError('Please Fill all Fields!')
+            }
+            if (data){
+                console.log(data)
+                setFormError(null)
+            }
     }
 
     return (
@@ -80,40 +134,83 @@ const UpdateEvent = () => {
                         <div className="modal-content">
                             <div className="close" onClick={closeModal}>&times;</div>
                             <h2>Update Event</h2>
-                            <form>
-                                <label>
-                                    Event Title:
-                                    <input type="text" name="title" />
-                                </label>
-                                <label>
-                                    Event Description:
-                                    <textarea name="description"></textarea>
-                                </label>
-                                <label>
-                                    Start Date:
-                                    <input type="date" name="start-date" />
-                                </label>
-                                <label>
-                                    Registration Date:
-                                    <input type="date" name="reg-date" />
-                                </label>
-                                <label>
-                                    Minimum Age:
-                                    <input type="number" name="min-age" />
-                                </label>
-                                <label>
-                                    Maximum Age:
-                                    <input type="number" name="max-age" />
-                                </label>
-                                <label>
-                                    Capacity:
-                                    <input type="number" name="capacity" />
-                                </label>
-                                <label>
-                                    Track Kilometers:
-                                    <input type="number" name="track-km" />
-                                </label>
+                            <form onSubmit={handleSubmit}>
+                               {/* update race title */}
+                                <label htmlFor="racetitle">Title of the Race:</label>
+                                <input 
+                                    type="title" 
+                                    id="racetitle" 
+                                    value={racetitle}  
+                                    onChange={(e) => setRacetitle(e.target.value)}
+                                    />
+
+                                {/* update race description */}
+                                <label htmlFor="description">Enter Race Description:</label>
+                                    <textarea id="raceDescription" name="raceDescription" rows="4" cols="50" placeholder='Input additional details about the race here...' 
+                                    value={description}  
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    /> 
+
+                                {/* update startdate */}
+                                <label htmlFor="startdate">Start Date:</label>
+                                    <input 
+                                    type="date" 
+                                    id="startdate" 
+                                    value={startdate}  
+                                    onChange={(e) => setStartdate(e.target.value)}
+                                    />
+
+                                {/*update registration date*/}
+                                <label htmlFor="regdate">Registration Date:</label>
+                                    <input 
+                                    type="date" 
+                                    id="regdate" 
+                                    value={regdate}  
+                                    onChange={(e) => setRegdate(e.target.value)}
+                                    />
+
+                                {/*update minimum age*/}
+                                <label htmlFor="minage">Minimum Age:</label>
+                                    <input 
+                                    type="int" 
+                                    id="minage" 
+                                    value={minage}  
+                                    onChange={(e) => setMinage(e.target.value)}
+                                    />
+
+                                {/*update maximum age*/}
+                                <label htmlFor="maxage">Maximum Age:</label>
+                                    <input 
+                                    type="int" 
+                                    id="maxage" 
+                                    value={maxage}  
+                                    onChange={(e) => setMaxage(e.target.value)}
+                                    />
+
+
+                                {/* update capacity */}
+                                <label htmlFor="capacity">Capacity (Number of Participant):</label>
+                                    <input 
+                                    type="int" 
+                                    id="capacity" 
+                                    value={capacity}  
+                                    onChange={(e) => setCapacity(e.target.value)}
+                                    />
+
+
+                                {/* update distance */}
+                                <label htmlFor="trackkm">Track Kilometers:</label>
+                                    <input 
+                                    type="int" 
+                                    id="trackkm" 
+                                    value={trackkm}  
+                                    onChange={(e) => setTrackkm(e.target.value)}
+                                    />
+
                                 <button type="submit">Update</button>
+
+                                {formError && <p className="errors">{formError}</p>}
+
                             </form>
                         </div>
                     </div>
