@@ -45,6 +45,7 @@ const Dashboard = () => {
                 <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
+                        <li><NavLink to="/">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
                         <li>Joined Events</li>
