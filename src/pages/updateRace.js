@@ -1,7 +1,24 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/updatepage.css'
+import { useState } from 'react'
+import supabase from "../config/supabaseclient"
 
 const Updater = () => {
+
+    const [nrtitle, setNrtitle] = useState('')
+    const [nrdescription, setNrdescription] = useState('')
+    const [nsdate, setNsdate] = useState('')
+    const [nrdate, setNrdate] = useState('')
+    const [ncap, setNcap] = useState('')
+    const [nmin, setNmin] = useState('')
+    const [nmax, setNmax] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    }
+
+
+
     return (
         <div className="wholesite">
             <div className='/'>
