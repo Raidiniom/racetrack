@@ -3,6 +3,14 @@ import '../styles/viewevents.css'
 import supabase from '../config/supabaseclient'
 
 const ViewEvent = () => {
+    // naay ny join feature 
+
+
+    const joinEvent = async (e) => {
+        e.preventDefault()
+    }
+
+
     return (
         <div className="wholesite">
             <div class="viewEvents">
