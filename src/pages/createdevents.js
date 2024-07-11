@@ -16,6 +16,7 @@ const MadeEvents = () => {
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
                         <li>Joined Events</li>
                         <li><NavLink to="/login">Logout</NavLink></li>

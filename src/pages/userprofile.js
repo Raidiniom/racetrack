@@ -73,20 +73,13 @@ const Profile = () => {
 
                             {/* kailangan bani or different stuff lang i dunno */}
                             <div className="buttons">
-                                <button className="edit-button">Change Username</button>
-                                <button className="edit-button">Change Password</button>
-                                <button className="edit-button">Change Email</button>
-                                <button className="edit-button">Change Phone Number</button>
-                                <button className="edit-button">Change Gender</button>
-                                <button className="edit-button">Change Birthday</button>
+                                <NavLink to="/" className="nav-link">Dashboard</NavLink>
+                                <NavLink to="/madeevents" className="nav-link">Your Events</NavLink>
+                                <button>Update Profile</button>
+                                <NavLink to="/login" className="nav-link" onClick={handleLogout}>Logout</NavLink>
                             </div>
                         </div>
                     </div>
-                    <nav className="profile-nav">
-                        <NavLink to="/" className="nav-link">Dashboard</NavLink>
-                        <NavLink to="/madeevents" className="nav-link">Your Events</NavLink>
-                        <NavLink to="/login" className="nav-link" onClick={handleLogout}>Logout</NavLink>
-                    </nav>
                 </div>
             </div>
         </div>
