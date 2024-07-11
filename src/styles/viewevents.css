@@ -247,7 +247,7 @@ body, html {
 
 
 /* this from updating events */
-.update-event, .delete-event {
+.update-event, .delete-event, .list-event {
     padding: 15px;
     border-radius: 10px;
     background-color: #ffedba;
@@ -257,6 +257,10 @@ body, html {
     margin-bottom: 10px;
 }
 
+.list-event:hover {
+    background-color: #000000;
+    color: #ccc;
+}
 .update-event:hover {
     background-color: #19a3ff9c;
     color: #000000;

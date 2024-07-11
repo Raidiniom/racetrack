@@ -13,6 +13,10 @@ const UpdateEvent = () => {
         setIsModalOpen(false);
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
+    }
+
     return (
         <div className="wholesite">
             <div className="viewEvents">
@@ -27,9 +31,10 @@ const UpdateEvent = () => {
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
                         <li>Joined Events</li>
-                        <li><NavLink to="/login">Logout</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
 
@@ -59,6 +64,7 @@ const UpdateEvent = () => {
                                             <p>Event description last</p>
                                         </div>
                                         <div className="details-event-part2">
+                                            <button className="list-event">Participant List</button>
                                             <button className="update-event" onClick={openModal}>Update Event</button>
                                             <button className="delete-event">Delete Event</button>
                                         </div>
