@@ -1,7 +1,38 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/yourevents.css'
+import { useEffect, useState } from 'react'
+import supabase from '../config/supabaseclient'
+//import raceCard from '../components/raceCard'
 
 const MadeEvents = () => {
+    const [fetchError, setFetchError] = useState(null)
+    const [getraces, setGetraces] = useState(null)
+
+    const raceCreator = localStorage.getItem('race_creator')
+
+    useEffect(() => {
+        const fetchRaces = async () => {
+            const { data, error} = await supabase
+            .from('user_created_race')
+            .select('*')
+            .eq('race_creator', raceCreator)
+
+
+            if (error) {
+                setFetchError('Could not fetch races')
+                setGetraces(null)
+            }
+
+            if (data) {
+                setGetraces(data)
+                setFetchError(null)
+            }
+        }
+
+        fetchRaces()
+    }, [raceCreator])
+
+
     return (
         <div className="wholesite">
             <div class="yourEvents">
@@ -26,104 +57,37 @@ const MadeEvents = () => {
                 {/* Main Content */}
                 <div class="yourEvents-main-content">
                     <h2 className="ye">Your Created Events</h2>
-                        <div className="container-post">
 
-                            {/* mga events diri display */}
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
+                    {fetchError && (<p className='error'>{fetchError}</p>)}
+
+                    {getraces &&(
+                        <div>
+                            {getraces.map(output => (
+                                <div className="container-post">
+                                    <div class="card-ye">
+                                        <div className='user-name-ye'>
+                                            {output.race_title}
+                                                <div className='contents-post-ye'>
+                                                    {output.race_description}
+                                                </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
-                            <div class="card-ye">
-                                <div className='person-post-container-ye'>
-                                    <div className='user-name-ye'>
-                                        <h4>Event Name<br></br>By User</h4>
-                                    </div>
-                                </div>
-                                <div className='contents-post-ye'>
-                                    Here the contents like the description, pic, etc.
-                                </div>
-                            </div>
+                            ))}
                         </div>
+                    )}
+
                 </div>
+            
+            
             </div>
+        
+        
         </div>
+    
+
     )
+
 }
 
 export default MadeEvents
