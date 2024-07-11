@@ -72,16 +72,22 @@
     padding: 10px;
 }
 
-.nav-link {
+.nav-link, .edit-button {
     text-decoration: none;
     color: #333;
     padding: 10px 20px;
     border-radius: 4px;
+    text-align: center;
+    border: none;
+    font-size: 18px;
+    margin-top: 15px;
+    background-color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.nav-link:hover {
-    background-color: #000000;
-    color: white;
+.nav-link:hover, .edit-button:hover {
+    background-color: #ffe89d;
+    color: rgb(0, 0, 0);
 }
 
 .buttons {
@@ -90,33 +96,4 @@
     gap: 10px;
     padding: 10px;
     margin-left: 20px;
-}
-
-.edit-button {
-    background-color: #bbbbbb;
-    border: 1px solid #f8f9fa;
-    border-radius: 4px;
-    color: #3c4043;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    height: 36px;
-    line-height: 27px;
-    min-width: 54px;
-    padding: 0 16px;
-    text-align: center;
-    touch-action: manipulation;
-    white-space: pre;
-}
-
-.edit-button:hover {
-    border-color: #dadce0;
-    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
-    color: #202124;
-}
-
-.edit-button:focus {
-    border-color: #ffcb3d;
-    background-color: #ffd382;
-    outline: none;
 }

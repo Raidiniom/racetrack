@@ -4,7 +4,6 @@ import { ProvideContext, UseUser } from "./pages/passuser";
 // The Pages
 import Creater from "./pages/createRace";
 import Dashboard from "./pages/dashboard";
-import Updater from "./pages/updateRace";
 import Landingpage from "./pages/landingpage";
 import Login from "./pages/loginpage";
 import Recover from "./pages/recoverpage";
@@ -26,7 +25,6 @@ function App() {
           <p>Access to all Pages</p>
           <Link to="/">| Dashboard |</Link>
           <Link to="/create">| Create Page |</Link>
-          <Link to="/update">| Update Page |</Link>
           <Link to='/landingpage'>| Landing Page |</Link>
           <Link to='/login'>| Login Page |</Link>
           <Link to='/register'>| Register Page |</Link>
@@ -43,7 +41,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/create" element={<Creater />} />
-          <Route path="/:id" element={<Updater />} />
           <Route path="/landingpage" element={<Landingpage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

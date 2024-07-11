@@ -43,6 +43,16 @@ const Profile = () => {
         setGetuser(null)
     }
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div className="wholesite">
             <div className="bkuf">
@@ -75,13 +85,53 @@ const Profile = () => {
                             <div className="buttons">
                                 <NavLink to="/" className="nav-link">Dashboard</NavLink>
                                 <NavLink to="/madeevents" className="nav-link">Your Events</NavLink>
-                                <button>Update Profile</button>
+                                <button className="edit-button" onClick={openModal}>Update Profile</button>
                                 <NavLink to="/login" className="nav-link" onClick={handleLogout}>Logout</NavLink>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <div className="close" onClick={closeModal}>&times;</div>
+                        <h2>Update Profile</h2>
+                        <form>
+                            <label>
+                                Username:
+                                <input type="text" name="username" />
+                            </label>
+                            <label>
+                                Enter current password:
+                                <input type="password" name="oldpass" />
+                            </label>
+                            <label>
+                                Enter new password:
+                                <input type="password" name="newpass" />
+                            </label>
+                            <label>
+                                Confirm new password:
+                                <input type="password" name="connewpass" />
+                            </label>
+                            <label>
+                                Email:
+                                <input type="email" name="email" />
+                            </label>
+                            <label>
+                                Birthday:
+                                <input type="date" name="bday" />
+                            </label>
+                            <label>
+                                Gender:
+                                <input type="text" name="gender" />
+                            </label>
+                            <button type="submit" className="edit-button">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
