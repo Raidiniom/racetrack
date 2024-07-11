@@ -28,8 +28,6 @@ const Db = () => {
             return
         }
 
-    // console.log('Race Created', racetitle, startdate, regdate, capacity, description, minage, maxage, trackkm)
-
         const {data: userdata, error: nouser} = await supabase
          .from('app_users')
          .select('user_id')
@@ -57,6 +55,8 @@ const Db = () => {
                 race_creator: racemaker
             })
             .select('*')
+
+        /* Missing part diri na mo insert og Race ID og User ID didto sa race_created_by table */
 
         if (error) {
             console.log(error)

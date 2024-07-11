@@ -11,8 +11,8 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchRaces = async () => {
             const { data, error } = await supabase
-             .from('createRace')
-             .select()
+             .from('user_created_race')
+             .select('*')
 
             if (error) {
                 setFetchError('No Races Open!')
@@ -68,17 +68,17 @@ const Dashboard = () => {
                                 <div className='card'>
                                     <NavLink to="/viewevent" className="view-e">
                                         <div className='user-name'>
-                                            {output.racetitle}
+                                            {output.race_title}
                                         </div>
 
                                         <div className='contents-post'>
-                                            {output.description}
+                                            {output.race_description}
                                         </div>
 
                                         <div className='race-details'>
-                                            <p>Start Date: {output.startdate} Registration Date: {output.regdate}</p>
-                                            <p>Race Capacity: {output.capacity} Race Distance: {output.trackkm} KM</p>
-                                            <p>Age Requirement: {output.maxage} - {output.minage}</p>
+                                            <p>Start Date: {output.start_date} | Registration Date: {output.registration_date}</p>
+                                            <p>Race Capacity: {output.capacity} | Participants: {output.curren_cap}</p>
+                                            <p>Race Distance: {output.race_distance} KM | Age Requirement: {output.min_age} - {output.max_age}</p>
                                         </div>
 
                                         <div className=''>
