@@ -2,13 +2,7 @@ import { NavLink } from 'react-router-dom'
 import '../styles/viewevents.css'
 import supabase from '../config/supabaseclient'
 
-const ViewEvent = () => {
-    // naay ny join feature 
-
-
-    const joinEvent = async (e) => {
-        e.preventDefault()
-    }
+const JoinedEvent = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('lsusername')
@@ -37,11 +31,11 @@ const ViewEvent = () => {
 
                 {/* Main Content */}
                 <div class="viewEvents-main-content">
-                    <h2 className="ve">Info Event</h2>
+                    <h2 className="ve">Joined Events</h2>
                         <div className="view-container-post">
 
                             {/* mga events diri display */}
-                            <div class="view-content">
+                            {/* <div class="view-content">
                                 <div className="card-view">
                                     <div className="pad">
                                         <div className="details-event">
@@ -66,7 +60,7 @@ const ViewEvent = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                 </div>
             </div>
@@ -74,4 +68,4 @@ const ViewEvent = () => {
     )
 }
 
-export default ViewEvent
+export default JoinedEvent

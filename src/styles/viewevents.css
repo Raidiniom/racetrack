@@ -348,3 +348,12 @@ body, html {
     background-color: #19a3ff9c;
     color: #000000;
 }
+
+.errors {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
