@@ -48,7 +48,7 @@ const Dashboard = () => {
                         <li><NavLink to="/">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li>Joined Events</li>
+                        <li><NavLink to="/joinedevents">Joined Events</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
