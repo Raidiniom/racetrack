@@ -8,7 +8,6 @@ import Landingpage from "./pages/landingpage";
 import Login from "./pages/loginpage";
 import Recover from "./pages/recoverpage";
 import Register from "./pages/registerpage";
-import Db from "./pages/ourdb";
 import Tos from "./pages/tospage";
 import Eula from "./pages/eulapage";
 import Profile from "./pages/userprofile";
@@ -29,7 +28,6 @@ function App() {
           <Link to='/login'>| Login Page |</Link>
           <Link to='/register'>| Register Page |</Link>
           <Link to='/recover'>| Recover Page |</Link>
-          <Link to='/database'>| Access to Database Page |</Link>
           <Link to='/eula'>| EULA Page |</Link>
           <Link to='/tos'>| TOS Page |</Link>
           <Link to='/profile'>| User Profile Page |</Link>
@@ -45,7 +43,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recover" element={<Recover />} />
-          <Route path="/database" element={<Db />} />
           <Route path="/eula" element={<Eula />} />
           <Route path="/tos" element={<Tos />} />
           <Route path="/profile" element={<Profile />} />
