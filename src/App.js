@@ -1,5 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { ProvideContext, UseUser } from "./pages/passuser";
+import { ProvideContext } from "./pages/passuser";
 
 // The Pages
 import Creater from "./pages/createRace";
