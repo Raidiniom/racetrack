@@ -95,18 +95,10 @@ const MadeEvents = () => {
                             ))}
                         </div>
                     )}
-
                 </div>
-            
-            
             </div>
-        
-        
         </div>
-    
-
     )
-
 }
 
 export default MadeEvents
