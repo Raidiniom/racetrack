@@ -19,7 +19,7 @@ const Landingpage = () => {
                         <div className='trial'>              
                             <p className='navbar-buttons'><NavLink to="/tos">Terms of Service</NavLink></p>
                             <p className='navbar-buttons'><NavLink to="/eula">End-User License Agreement</NavLink></p> 
-                            <p className='navbar-buttons'><NavLink to="/about">About Us</NavLink></p> 
+                            <p className='navbar-buttons'><NavLink to="/aboutus">About Us</NavLink></p> 
                         </div>
                         </div>    
                     </div>
