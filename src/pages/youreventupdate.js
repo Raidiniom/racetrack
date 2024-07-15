@@ -105,7 +105,7 @@ const UpdateEvent = () => {
                                         <div className="event-picc">
                                             <img src="https://wallpapercave.com/wp/wp4043831.jpg" alt="Profile Picture" />
                                         </div>
-                                        <hr />
+                                        
                                         <div className="details-event-part1">
                                             <h2>Event title</h2>
                                             <p>then the rest info</p>
@@ -117,8 +117,31 @@ const UpdateEvent = () => {
                                             <p>then the rest info</p>
                                             <p>Event description last</p>
                                         </div>
+                                        <h2 className="listttt">Participant List</h2>
+                                        <div className="participant-list">
+                                            <div className="columns">
+                                                <div className="two-column">
+                                                    <p>Participant 1</p>
+                                                    <p>Participant 2</p>
+                                                    <p>Participant 3</p>
+                                                    <p>Participant 4</p>
+                                                    <p>Participant 5</p>
+                                                    <p>Participant 6</p>
+                                                    <p>Participant 2</p>
+                                                    <p>Participant 3</p>
+                                                    <p>Participant 4</p>
+                                                    <p>Participant 5</p>
+                                                    <p>Participant 6</p>
+                                                    <p>Participant 2</p>
+                                                    <p>Participant 3</p>
+                                                    <p>Participant 4</p>
+                                                    <p>Participant 5</p>
+                                                    <p>Participant 6</p>
+                                                    <p>Participant 6</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div className="details-event-part2">
-                                            <button className="list-event">Participant List</button>
                                             <button className="update-event" onClick={openModal}>Update Event</button>
                                             <button className="delete-event">Delete Event</button>
                                         </div>
