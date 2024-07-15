@@ -15,6 +15,7 @@ import MadeEvents from "./pages/createdevents";
 import ViewEvent from "./pages/viewEvent";
 import UpdateEvent from "./pages/youreventupdate";
 import JoinedEvent from "./pages/joinedEvents";
+import Aboutus from "./pages/aboutus";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="/viewevent" element={<ViewEvent />} />
           <Route path="/updateevent" element={<UpdateEvent />} />
           <Route path="/joinedevents" element={<JoinedEvent />} />
+          <Route path="/aboutus" element={<Aboutus />} />
         </Routes>
       </BrowserRouter>
     </ProvideContext>
