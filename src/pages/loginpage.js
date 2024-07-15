@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/loginpage.css'
+import '../styles/sitestyle.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 import { UseUser } from './passuser'
@@ -56,56 +57,55 @@ const Login = () => {
 
     return (
         <div className="wholesite">
-            <div className="whole-login">
-
-            {/* Logo */}
-                <div className="login-logo">
-                    <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
-                </div>
-
-            {/* login form */}
-            <div className="login-main-container">
-                <div className="login-form-position">
-                    <div className="login-form-container">
-                        <h2 className="l-h2">Login</h2>
-
-                        {/* login form */}
-                        <form className="login-form" onSubmit={handleSubmit}>
-
-                            {/* input email */}
-                            <label htmlFor="username">Username:</label>
-                            <input 
+            <div className="log-body">
+                {/* Register Container */}
+                <div className="log-container">
+                    {/* Logo */}
+                    <div className="log-logo">
+                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/2_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    </div>
+                    {/* Login Form */}
+                    <form onSubmit={handleSubmit}>
+                        {/* Title */}
+                        <h1 className='title'>Log In</h1>
+                        <div className='user-details'>
+                            {/* Username */}
+                            <div className='input-box'>
+                                <label className='details'>Username</label>
+                                <input
+                                placeholder='Enter your username'
                                 type='text'
                                 id='inuser'
                                 value={logUsername}
-                                onChange={(e) => setlogUsername(e.target.value)}
-                            />
-                            
-                            {/* input password */}
-                            <label htmlFor="password">Password:</label>
-                            <input 
+                                onChange={(e) => setlogUsername(e.target.value)}/>
+                            </div>
+                            {/* Password */}
+                            <div className='input-box'>
+                                <label className='details'>Password</label>
+                                <input
+                                placeholder='Enter your password'
                                 type='password'
                                 id='inpass'
                                 value={logPassword}
-                                onChange={(e) => setlogPassword(e.target.value)}
-                            />
-
-                            {/* forgot password? */}
-                            <NavLink to="/recover" className="forgot-password-link">Forgot Password?</NavLink>
-
-                            {/* Don't have an account? */}
-                            <label>Don't have an Account?
-                                <NavLink to="/register" className="register-link"> Sign Up</NavLink>
-                            </label>
-                            
-                            {/* submit */}
-                            <button type="submit" className="login-button">Login</button>
-
+                                onChange={(e) => setlogPassword(e.target.value)}/>
+                            </div>
+                            {/* Login Buttton */}
+                            <button className="logButton" type='submit'>Log In</button>
                             {formError && <p className='error'>{formError}</p>}
-                        </form>
-                    </div>
+                            {/* Misc. */}
+                            <div className='misc'>
+                                <div className="no-acc">
+                                    <label className>Already have an account?
+                                        <NavLink to="/login" className="log-nav-link">Login</NavLink>
+                                    </label> 
+                                </div> 
+                                <div className="rec-acc">
+                                    <NavLink to="/recover" className="log-nav-link">Forgot Password?</NavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
             </div>
         </div>
     )
