@@ -79,20 +79,18 @@ const MadeEvents = () => {
 
                     {fetchError && (<p className='error'>{fetchError}</p>)}
 
-                    {getraces &&(
-                        <div>
+                    {getraces && (
+                        <div className="container-post">
                             {getraces.map(output => (
-                                <div className="container-post">
-                                    <div className="card-ye">
+                                <div key={output.id} className="card-ye">
                                     <NavLink to="/updateevent" className="adto">
                                         <div className='user-name-ye'>
                                             {output.race_title}
-                                                <div className='contents-post-ye'>
-                                                    {output.race_description}
-                                                </div>
+                                            <div className='contents-post-ye'>
+                                                {output.race_description}
+                                            </div>
                                         </div>
-                                        </NavLink>
-                                    </div>
+                                    </NavLink>
                                 </div>
                             ))}
                         </div>
