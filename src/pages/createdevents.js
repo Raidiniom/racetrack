@@ -2,30 +2,49 @@ import { NavLink } from 'react-router-dom'
 import '../styles/yourevents.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
-//import raceCard from '../components/raceCard'
 
 const MadeEvents = () => {
     const [fetchError, setFetchError] = useState(null)
     const [getraces, setGetraces] = useState(null)
 
-    const raceCreator = localStorage.getItem('race_creator')
+    const raceCreator = localStorage.getItem('lsusername')
 
     useEffect(() => {
         const fetchRaces = async () => {
-            const { data, error} = await supabase
-            .from('user_created_race')
-            .select('*')
-            .eq('race_creator', raceCreator)
-
-
-            if (error) {
-                setFetchError('Could not fetch races')
+            try {
+                const { data, error} = await supabase
+                 .from('app_users')
+                 .select('user_id')
+                 .eq('username', raceCreator)
+   
+               if (error) {
+                   throw error
+               }
+   
+               if (!data || data.length === 0) {
+                   throw new Error('Uh oh!!')
+               }
+   
+               const u_id = data[0].user_id
+   
+               const { data: races, error: no_races } = await supabase
+                .from('user_created_race')
+                .select('*')
+                .eq('race_creator', u_id)
+   
+               if (no_races) {
+                   throw no_races
+               }
+   
+               if (!races || races.length === 0) {
+                   throw new Error('No Races!!')
+               }
+   
+               setGetraces(races)
+               setFetchError(null)
+            } catch (error) {
+                setFetchError(error.message || JSON.stringify(error))
                 setGetraces(null)
-            }
-
-            if (data) {
-                setGetraces(data)
-                setFetchError(null)
             }
         }
 
@@ -35,15 +54,15 @@ const MadeEvents = () => {
 
     return (
         <div className="wholesite">
-            <div class="yourEvents">
-                <div class="yourEvents-header">
+            <div className="yourEvents">
+                <div className="yourEvents-header">
                     <div className="yourEvents-logo">
                         <img src="\img\RaceTrack Logos\2_FF.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 
                 {/* Sidebar */}
-                <div class="yourEvents-sidebar">
+                <div className="yourEvents-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
@@ -55,7 +74,7 @@ const MadeEvents = () => {
                 </div>
 
                 {/* Main Content */}
-                <div class="yourEvents-main-content">
+                <div className="yourEvents-main-content">
                     <h2 className="ye">Your Created Events</h2>
 
                     {fetchError && (<p className='error'>{fetchError}</p>)}
@@ -64,7 +83,7 @@ const MadeEvents = () => {
                         <div>
                             {getraces.map(output => (
                                 <div className="container-post">
-                                    <div class="card-ye">
+                                    <div className="card-ye">
                                         <div className='user-name-ye'>
                                             {output.race_title}
                                                 <div className='contents-post-ye'>
