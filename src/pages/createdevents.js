@@ -84,12 +84,14 @@ const MadeEvents = () => {
                             {getraces.map(output => (
                                 <div className="container-post">
                                     <div className="card-ye">
+                                    <NavLink to="/updateevent" className="adto">
                                         <div className='user-name-ye'>
                                             {output.race_title}
                                                 <div className='contents-post-ye'>
                                                     {output.race_description}
                                                 </div>
                                         </div>
+                                        </NavLink>
                                     </div>
                                 </div>
                             ))}

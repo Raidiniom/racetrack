@@ -389,3 +389,15 @@ body, html {
 .participant-list::-webkit-scrollbar {
     display: none;
   }
+
+  .adto {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.card-ye:hover {
+    background-color: #ffcc66;
+}
