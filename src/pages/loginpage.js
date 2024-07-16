@@ -95,8 +95,8 @@ const Login = () => {
                             {/* Misc. */}
                             <div className='misc'>
                                 <div className="no-acc">
-                                    <label className>Already have an account?
-                                        <NavLink to="/login" className="log-nav-link">Login</NavLink>
+                                    <label className>Don't have an account?
+                                        <NavLink to="/register" className="log-nav-link">Sign Up</NavLink>
                                     </label> 
                                 </div> 
                                 <div className="rec-acc">
