@@ -72,6 +72,7 @@ const JoinedEvent = () => {
         localStorage.removeItem('lsusername');
     };
 
+
     return (
         <div className="wholesite">
             <div className="joinEvents">

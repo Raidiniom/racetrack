@@ -26,7 +26,7 @@ const Login = () => {
         }
 
         const { data: users, error } = await supabase
-            .from('app_user')
+            .from('app_users')
             .select('user_id, username, password')
             .eq('username', logUsername)
 
