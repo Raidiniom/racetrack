@@ -6,6 +6,7 @@ const Tos = () => {
 
     return (
         <div className='wholesite'>
+            <div className="tos-content-body">
             <div className='tos-container'>
                 <div className='tos-content'>
                     <h1>Terms of Service</h1>
@@ -29,9 +30,9 @@ const Tos = () => {
                         <p>You are responsible for all activities that occur under your account. You agree to use our Service only for lawful purposes and in compliance with all applicable laws and regulations. You must not:</p>
                         <br></br>
                         <ul>
-                            <li>- Use our Service in any way that could harm or impair the functionality of the Service.</li>
-                            <li>- Engage in any activity that is fraudulent, abusive, or harmful.</li>
-                            <li>- Violate the rights of others, including their privacy and intellectual property rights.</li>
+                            <li> Use our Service in any way that could harm or impair the functionality of the Service.</li>
+                            <li> Engage in any activity that is fraudulent, abusive, or harmful.</li>
+                            <li> Violate the rights of others, including their privacy and intellectual property rights.</li>
                         </ul>
 
                     </div>
@@ -73,9 +74,15 @@ const Tos = () => {
                     <div className='part8'>
                         <h2>Changes of Terms</h2>
 
-                        <p>We may update these Terms from time to time. If we make changes, we will notify you by revising the date at the top of these Terms and, in some cases, we may provide you with additional notice. Your continued use of our Service after any changes means that you agree to the new Terms.</p>
+                        <p>We may update these Terms from time to time. If we make changes, we will notify you by revising the date at the top of these Terms and, in some cases, we may provide you with additional notice. Your continued use of our Service after any changes means that you agree to the new Terms.</p> 
+                    </div>
+                    <div className="part9">
+                        <button className="tos-back-button">
+                            <NavLink to="/register">Confirm</NavLink>
+                        </button>  
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     )
