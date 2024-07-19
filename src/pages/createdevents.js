@@ -42,7 +42,7 @@ const MadeEvents = () => {
                }
    
                if (!races || races.length === 0) {
-                   throw new Error('No Races!!')
+                   throw new Error('No created Races yet.')
                }
    
                setGetraces(races)

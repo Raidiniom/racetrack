@@ -142,7 +142,7 @@ const handleLogout = () => {
                                 placeholder='Enter registration date'
                                 type="date" 
                                 id="startdate" 
-                                value={startdate}  
+                                value={regdate}  
                                 onChange={(e) => setRegdate(e.target.value)}
                                 required/>
                         </div>
@@ -194,7 +194,7 @@ const handleLogout = () => {
                                 placeholder='Enter max. age requirement'
                                 type="int" 
                                 id="minage" 
-                                value={minage}  
+                                value={maxage}  
                                 onChange={(e) => setMaxage(e.target.value)}
                                 required/>
                         </div>
