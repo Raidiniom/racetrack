@@ -66,12 +66,8 @@ body, html {
     bottom: 0;
     position: absolute;
     height: 3px;
-    width: 100px;
-    background: linear-gradient(#CB8925, #fc9700);
-}
-
-.title::before {
-    margin-left: 725px;
+    width: 50px;
+    background: linear-gradient(#CB8925, #fc9700)
 }
 
 .crt-container form {
@@ -103,8 +99,20 @@ form .user-details .input-box {
     font-size: 16px;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    resize: none;
 }
 
+.user-details textarea {
+    height: 100px;  
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    resize: none;
+}
 .user-details {
     grid-column: span 2; /* Makes sure this section spans both columns */
     display: grid;
@@ -125,11 +133,11 @@ form .user-details .input-box {
 }
 
 .input-box input, select, textarea {
-    width: 100%; /* Make inputs take full width of their container */
+    width: 100%;
 }
 
 .crtButton {
-    grid-column: span 2; /* Button spans across both columns */
+    grid-column: span 2;
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     font-size: 15px; 
