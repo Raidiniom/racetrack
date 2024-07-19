@@ -34,8 +34,71 @@ const ViewEvent = () => {
     }, [id])
 
     const joinEvent = async (e) => {
-        e.preventDefault()
-    }
+        e.preventDefault();
+
+        const username = localStorage.getItem('lsusername');
+        if (!username) {
+            setFetchError('Please log in to join the event.');
+            return;
+        }
+
+        try {
+            const { data: user, error: userError } = await supabase
+                .from('app_users')
+                .select('user_id')
+                .eq('username', username)
+                .single();
+
+            if (userError) {
+                console.error('Error fetching user:', userError);
+                setFetchError('User not found!');
+                return;
+            }
+
+            const user_participant = user.user_id;
+
+            const parsedRaceId = parseInt(id, 10);
+            if (isNaN(parsedRaceId)) {
+                setFetchError('Invalid race ID!');
+                return;
+            }
+
+            if (getraces.current_participant >= getraces.capacity) {
+                setFetchError('The event is full!');
+                return;
+            }
+
+            const payload = { user_participant: user_participant, from_race: parsedRaceId };
+
+            const { error } = await supabase
+                .from('participant_list')
+                .insert([payload]);
+
+            if (error) {
+                console.error('Error joining the event:', error);
+                setFetchError('Error joining the event!');
+            } else {
+                const { data: updatedRace, error: updateError } = await supabase
+                    .from('user_created_race')
+                    .update({ current_participant: getraces.current_participant + 1 })
+                    .eq('race_id', parsedRaceId)
+                    .single();
+
+                if (updateError) {
+                    console.error('Error updating participant count:', updateError);
+                    setFetchError('Error updating participant count!');
+                } else {
+                    setGetraces(updatedRace);
+                    setFetchError(null);
+                    alert('Successfully joined the event!');
+                }
+            }
+        } catch (error) {
+            console.error('Unexpected error:', error);
+            setFetchError('Unexpected error occurred!');
+        }
+    };
+
 
     const handleLogout = () => {
         localStorage.removeItem('lsusername')
@@ -91,7 +154,7 @@ const ViewEvent = () => {
                                         )}
                                             
                                             <div className="details-event-part2">
-                                                <button className="join-event">Join Event</button>
+                                                <button className="join-event" onClick={joinEvent}>Join Event</button>
                                             </div>
                                         </div>
                                     </div>
