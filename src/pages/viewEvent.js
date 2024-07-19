@@ -176,6 +176,7 @@ const ViewEvent = () => {
                                                 <div class ="race-details"><label class="race-label">Race Distance:</label> {getraces.race_distance} KM</div>
                                                 <img src="/img/capacity-icon.png" class="icon"/>
                                                 <div class ="race-details"><label class="race-label">Maximum Racers:</label> {getraces.capacity}</div>
+                                                <div class ="race-details"><label class="race-label">Location:</label> {getraces.location}</div>
                                                 <img src="/img/participant-icon.png" class="icon"/>
                                                 <div class ="race-details"><label class="race-label">Currently Joined:</label> {getraces.curren_cap}</div>
                                             </div>

@@ -14,6 +14,7 @@ const Db = () => {
     const [minage, setMinage] = useState('')
     const [maxage, setMaxage] = useState('')
     const [trackkm, setTrackkm] = useState('')
+    const [location, setLocation] = useState('')
 
     const [formError, setFormError] = useState(null)
 
@@ -24,10 +25,20 @@ const Db = () => {
    const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm) {
-        setFormError('Please Fill all Fields!');
-        return;
-    }
+        // console.log("Submitting form with values:");
+        // console.log("Race Title:", racetitle);
+        // console.log("Start Date:", startdate);
+        // console.log("Registration Date:", regdate);
+        // console.log("Capacity:", capacity);
+        // console.log("Description:", description);
+        // console.log("Min Age:", minage);
+        // console.log("Max Age:", maxage);
+        // console.log("Track KM:", trackkm);
+
+        if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm || !location) {
+            setFormError('Please Fill all Fields!');
+            return;
+        }
 
     const { data: userdata, error: nouser } = await supabase
         .from('app_users')
@@ -56,11 +67,11 @@ const Db = () => {
             start_date: startdate,
             registration_date: regdate,
             capacity: capacity,
-            current_cap: 0,
             min_age: minage,
             max_age: maxage,
             race_distance: trackkm,
-            race_creator: racemaker
+            race_creator: racemaker,
+            location: location
         })
         .select('race_id');
 
@@ -142,7 +153,7 @@ const handleLogout = () => {
                                 placeholder='Enter registration date'
                                 type="date" 
                                 id="startdate" 
-                                value={startdate}  
+                                value={regdate}  
                                 onChange={(e) => setRegdate(e.target.value)}
                                 required/>
                         </div>
@@ -194,7 +205,7 @@ const handleLogout = () => {
                                 placeholder='Enter max. age requirement'
                                 type="int" 
                                 id="minage" 
-                                value={minage}  
+                                value={maxage}  
                                 onChange={(e) => setMaxage(e.target.value)}
                                 required/>
                         </div>
@@ -208,6 +219,17 @@ const handleLogout = () => {
                                 value={trackkm}  
                                 onChange={(e) => setTrackkm(e.target.value)}
                                 required/>
+                        </div>
+                        {/* Location */}
+                        <div className='input-box'>
+                            <label className='details'>Location:</label>
+                            <input
+                                placeholder='Enter race location'
+                                type="text"
+                                id="location"
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
+                                required />
                         </div>
                          {/* Create Race Button */}
                          <button className="crtButton">Create Race</button>
