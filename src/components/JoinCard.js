@@ -85,20 +85,37 @@ const JoinCard = ({ output, onLeave }) => {
     };
 
     return (
-        <div className="card">
+        <div className="join-card">
             <div className="race-title">
                 {output.race_title}
             </div>
                 <div className='content-wrap'>
                     <div className="race-container">
-                        <div className="join-card-buttons">
-                            <NavLink to={`/viewevent/${output.race_id}`}>
-                                <button className="view-event">View Event</button>
-                            </NavLink>
-                            <button className="cancel-participation" onClick={handleLeave}>Cancel Participation</button>
-                     </div>
-                </div>
-            </div>
+                        <img src="img/agereq-icon.png" alt="icon" class="icon"/>
+                        <div class ="race-details"><label class="race-label">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
+                        <img src="img/distance-icon.png" alt="icon" class="icon"/>
+                        <div class ="race-details"><label class="race-label">Race Distance:</label> {output.race_distance} KM</div>
+                        <img src="img/capacity-icon.png" alt="icon" class="icon"/>
+                        <div class ="race-details"><label class="race-label">Maximum Racers:</label> {output.capacity}</div>
+                        <img src="img/participant-icon.png" alt="icon" class="icon"/>
+                        <div class ="race-details"><label class="race-label">Currently Joined:</label> {output.current_participant}</div>
+                    </div>
+                    <div class="date-container">
+                        <img src="img/calendar-icon.png" alt="icon" class="icon"/>
+                        <div class ="date-details"><label class="date-label">Start Date:</label> {output.start_date}</div>
+                        <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
+                        <img src="img/loc-icon.png" alt="icon" class="icon"/>
+                        <div class ="date-details"><label class="date-label">Location:</label> {output.location}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <NavLink to={`/viewevent/${output.race_id}`}>
+                            <button className="joinButton">View Event</button>
+                        </NavLink>
+                    </div>
+                    <div>
+                        <button className="joinButton" onClick={handleLeave}>Cancel Participation</button>
+                    </div>
             {fetchError && <p className='error'>{fetchError}</p>}
         </div>
     );

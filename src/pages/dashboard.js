@@ -62,18 +62,17 @@ const Dashboard = () => {
                     <h2>Events</h2>   
                      {/* Search Bar */}
                     <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
-
+                    {/* Events Display */}
                     <div className="main-container-dashboard">
-                    {/* Events Display   */}
-                    {fetchError && (<p className='error'>{fetchError}</p>)}
-                    {getraces && (
-                        <div>
-                            {getraces.map(output => (
-                                <DashCard key={output.race_id} output={output}/>
-                            ))}
-                        </div>
-                    )}
-                </div>
+                        {fetchError && (<p className='error'>{fetchError}</p>)}
+                        {getraces && (
+                            <div>
+                                {getraces.map(output => (
+                                    <DashCard key={output.race_id} output={output}/>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

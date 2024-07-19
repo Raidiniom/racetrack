@@ -119,6 +119,7 @@ body, html {
 
 .details {
     font-weight: bold;
+    font-size: 14px;
 }
 
 .date-container, .race-container {
@@ -129,6 +130,7 @@ body, html {
 
 .date-label, .race-label{
     font-weight: bold;
+    font-size: 14px;
 }
 .icon {
     margin-right: -5px;
@@ -174,8 +176,3 @@ body, html {
     width: 100%;
 }
 
-/* User Profile */
-.user-pfp {
-    border-radius: 1000px;
-    width: 60px;
-}

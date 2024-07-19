@@ -77,12 +77,19 @@ body, html {
 .joinEvents-main-content {
     grid-area: main;
     padding: 20px;
-    margin-left: 50px;
-    margin-right: 200px;
-    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #00000000;
     overflow-y: auto;
     height: 100%;
     -ms-overflow-style: none;
+}
+
+.joinEvents-main-content h2 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .joinEvents-main-content::-webkit-scrollbar {
@@ -123,4 +130,71 @@ body, html {
     margin-top: 10px;
     text-align: center;
     font: bold;
+}
+
+/* Post Card */
+.join-card {
+    max-width: 1500px;
+    background-color: #cecece;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.join-card a {
+    text-decoration: none;
+    color: #000;
+}
+
+.join-card:hover {
+    background-color: #979797;
+    color: #cecece;
+}
+
+.details {
+    font-weight: bold;
+}
+
+.date-container, .race-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-label, .race-label{
+    font-weight: bold;
+}
+.icon {
+    margin-right: -5px;
+    width: 30px;
+    height: auto;
+}
+
+.joinButton {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 10px 5px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    transition: 0.3s;
+    float: right;
+}
+
+.joinButton:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
 }

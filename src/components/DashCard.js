@@ -22,6 +22,8 @@ const DashCard =({output}) => {
                         <img src="img/calendar-icon.png" alt="icon" class="icon"/>
                         <div class ="date-details"><label class="date-label">Start Date:</label> {output.start_date}</div>
                         <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
+                        <img src="img/loc-icon.png" alt="icon" class="icon"/>
+                        <div class ="date-details"><label class="date-label">Location:</label> {output.location}</div>
                     </div>
                 </div>
             </NavLink>
