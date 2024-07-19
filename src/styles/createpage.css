@@ -52,8 +52,10 @@ body, html {
 }
 
 .crt-container .title {
+    text-align: center;
     font-size: 25px;
     font-weight: 500px;
+    width: 100%;
     grid-column: span 2; /* Title spans across both columns */
     position: relative;
 }
@@ -66,6 +68,10 @@ body, html {
     height: 3px;
     width: 100px;
     background: linear-gradient(#CB8925, #fc9700);
+}
+
+.title::before {
+    margin-left: 725px;
 }
 
 .crt-container form {
@@ -81,14 +87,15 @@ body, html {
 }
 
 form .user-details .input-box {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     width: calc(50% - 20px); 
-    margin-right: 10px; 
+    margin-right: auto;
+    margin-left: auto; 
 }
 
 .user-details .input-box input, select, textarea {
     height: 40px;  
-    width: 80%;
+    width: 800px;
     outline: none;
     border-radius: 5px;
     border: 1px solid #ccc;
