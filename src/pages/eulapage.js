@@ -6,6 +6,7 @@ const Eula = () => {
 
     return (
         <div className='wholesite'>
+            <div className="eula-content-body">
             <div className='eula-container'>
                 <div className='eula-contents'>
                     <h1>End Users Lisence Agreement</h1>
@@ -63,11 +64,17 @@ const Eula = () => {
                         <h2>VIII. Entire Agreement</h2>
                         <p>These Terms constitute the entire agreement between you and Racetrack with respect to your use of the Service and supersede all prior or contemporaneous communications and proposals, whether oral or written.</p>
                     </div>
-                    <div className='part9'>
+                    <div className='part9-2'>
                         <h2>VIV. Amendments</h2>
                         <p>We may amend these Terms at any time by posting the amended terms on the Service. Your continued use of the Service after the amended terms are posted constitutes your agreement to the amended terms.</p>
                     </div>
+                    <div className="part10">
+                        <button className="tos-back-button">
+                            <NavLink to="/register">Confirm</NavLink>
+                        </button>  
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/dashboardpage.css'
+import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 
@@ -37,18 +38,17 @@ const Dashboard = () => {
             <div class="dashboard">
                 <div class="dashboard-header">
                     <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\2_FF.png" alt="logo" className="RaceTrack-logo" />
+                    <NavLink to='/'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
-
                 {/* Sidebar */}
                 <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
-                        <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Events</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
+                        <li><NavLink to="/create">Create a Race</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
@@ -56,8 +56,9 @@ const Dashboard = () => {
                 {/* Main Content */}
                 <div class="dashboard-main-content">
                     <h2>Events</h2>
-
-                    {/* mga events diri display */}
+                    <div className="main-container-dashoard">
+                    
+                    {/* Events Display   */}
 
                     {fetchError && (<p className='error'>{fetchError}</p>)}
 
@@ -68,29 +69,36 @@ const Dashboard = () => {
                             {getraces.map(output => (
                                 <div className='card'>
                                     <NavLink to="/viewevent" className="view-e">
-                                        <div className='user-name'>
+                                        <div className='race-title'>
                                             {output.race_title}
                                         </div>
 
                                         <div className='contents-post'>
                                             {output.race_description}
                                         </div>
-
-                                        <div className='race-details'>
-                                            <p>Start Date: {output.start_date} | Registration Date: {output.registration_date}</p>
-                                            <p>Race Capacity: {output.capacity} | Participants: {output.curren_cap}</p>
-                                            <p>Race Distance: {output.race_distance} KM | Age Requirement: {output.min_age} - {output.max_age}</p>
-                                        </div>
-
-                                        <div className=''>
-                                            {/*  */}
+                                        <div className='content-wrap'>
+                                            <div class="race-container">
+                                                <img src="img/agereq-icon.png" alt="icon" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
+                                                <img src="img/distance-icon.png" alt="icon" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Race Distance:</label> {output.race_distance} KM</div>
+                                                <img src="img/capacity-icon.png" alt="icon" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Maximum Racers:</label> {output.capacity}</div>
+                                                <img src="img/participant-icon.png" alt="icon" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Currently Joined:</label> {output.curren_cap}</div>
+                                            </div>
+                                            <div class="date-container">
+                                                <img src="img/calendar-icon.png" alt="icon" class="icon"/>
+                                                <div class ="date-details"><label class="date-label">Start Date:</label> {output.start_date}</div>
+                                                <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
+                                            </div>
                                         </div>
                                     </NavLink>
                                 </div>
-                                
                             ))}
                         </div>
                     )}
+                </div>
                 </div>
             </div>
         </div>

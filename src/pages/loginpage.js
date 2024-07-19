@@ -62,7 +62,7 @@ const Login = () => {
                 <div className="log-container">
                     {/* Logo */}
                     <div className="log-logo">
-                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/2_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/l_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                     {/* Login Form */}
                     <form onSubmit={handleSubmit}>
@@ -95,8 +95,8 @@ const Login = () => {
                             {/* Misc. */}
                             <div className='misc'>
                                 <div className="no-acc">
-                                    <label className>Already have an account?
-                                        <NavLink to="/login" className="log-nav-link">Login</NavLink>
+                                    <label className>Don't have an account?
+                                        <NavLink to="/register" className="log-nav-link">Sign Up</NavLink>
                                     </label> 
                                 </div> 
                                 <div className="rec-acc">

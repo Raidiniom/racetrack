@@ -64,7 +64,7 @@ body, html {
     height: 100%;
 }
 
-.yourEvents {
+.joinEvents {
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-columns: 210px 1fr;
@@ -74,7 +74,7 @@ body, html {
     height: 100vh;
 }
 
-.yourEvents-main-content {
+.joinEvents-main-content {
     grid-area: main;
     padding: 20px;
     margin-left: 50px;
@@ -85,45 +85,42 @@ body, html {
     -ms-overflow-style: none;
 }
 
-.yourEvents-main-content h2 {
-    margin-bottom: 20px;
-}
-
-.yourEvents-main-content::-webkit-scrollbar {
+.joinEvents-main-content::-webkit-scrollbar {
     display: none;
 }
 
-.container-post {
+.join-container-post {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-.ye {
+.join-ve {
     margin-bottom: 5px;
 }
 
-.card-ye {
-    background-color: #fff0d5;
+.join-card-ye {
+    background-color: #ffe59e;
     padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card-ye a {
-    text-decoration: none;
-    color: #000;
+.join-user-name-ye {
+    padding: 18px;
 }
 
-.card-ye:hover {
-    background-color: #C5AEA0;
-}
-
-.user-name-ye {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.contents-post-ye {
+.join-contents-post-ye {
     padding: 10px;
+}
+
+.errors {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    font: bold;
 }
