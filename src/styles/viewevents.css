@@ -74,12 +74,16 @@ body, html {
     height: 100vh;
 }
 
+.desc {
+margin-bottom: 50px;
+}
+
 .viewEvents-main-content {
     grid-area: main;
     padding: 20px;
     display: flex;
     margin-left: 50px;
-    margin-right: 200px ;
+    margin-right: 90px;
     flex-direction: column;
     gap: 20px;
     overflow-y: auto;
@@ -96,7 +100,7 @@ body, html {
   }
 
 .card-view {
-    background-color: #ffeebf;
+    background-color: #d9d9d9;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 20px;
@@ -106,19 +110,27 @@ body, html {
 }
 
 .join-event {
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #ffedba;
+    font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
-    border: none;
-    margin-left: 20px;
-    margin-bottom: 10px;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 12px;
+    text-align: center;
+    margin: 20px 20px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    transition: 0.3s;
 }
 
 .join-event:hover {
-    background-color: #000000;
-    color: #ddd;
-    transition: background-color 0.3s;
+    background-color: #CB8925;
+    color: #d9d9d9;
 }
 
 .pad {
@@ -156,7 +168,21 @@ body, html {
     margin: auto;
 }
 
+.date-container, .race-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
+.date-label, .race-label{
+    font-weight: bold;
+}
+
+.icon {
+    margin-right: -5px;
+    width: 30px;
+    height: auto;
+}
 
 
 
