@@ -103,10 +103,7 @@ const Profile = () => {
 
                             {/* kailangan bani or different stuff lang i dunno */}
                             <div className="buttons">
-                                <NavLink to="/" className="nav-link">Dashboard</NavLink>
-                                <NavLink to="/madeevents" className="nav-link">Your Events</NavLink>
                                 <button className="edit-button" onClick={openModal}>Update Profile</button>
-                                <NavLink to="/login" className="nav-link" onClick={handleLogout}>Logout</NavLink>
                             </div>
                         </div>
                     </div>
