@@ -92,6 +92,18 @@ const Recover = () => {
                             {/* Recover Button */}
                             <button type="submit" className="recButton">Recover</button>
                             {formError && <p className='error'>{formError}</p>}
+                            <div className='misc'>
+                                <div className="no-acc">
+                                    <label className>Don't have an account?
+                                        <NavLink to="/register" className="rec-nav-link">Sign Up</NavLink>
+                                    </label> 
+                                </div> 
+                                <div className="rec-acc">
+                                    <label className>Remembered Your Password?
+                                        <NavLink to="/login" className="rec-nav-link">Log In</NavLink>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

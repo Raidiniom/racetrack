@@ -190,6 +190,12 @@ input[type="checkbox"] {
     color: #d9d9d9;
 }
 
+.misc {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 
