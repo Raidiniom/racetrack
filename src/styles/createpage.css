@@ -47,44 +47,41 @@ body, html {
 .crt-container {
     background: #d9d9d9;
     padding: 15px 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .crt-container .title {
+    text-align: center;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 500px;
+    width: 100%;
+    grid-column: span 2; /* Title spans across both columns */
     position: relative;
 }
 
-.crt-container .title::before {
-    content: '';
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    height: 3px;
-    width: 100px;
-    background: linear-gradient(#CB8925, #fc9700);
-}
-
-.crt-container form .user-details {
+.crt-container form {
     display: flex;
     flex-wrap: wrap;
 }
 
-form .user-details .input-box {
-    margin-bottom: 15px;
-    width: calc(50% - 20px); 
-    margin-right: 10px; 
+.user-details {
+    grid-column: span 2; /* Makes sure this section spans both columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-.user-details .input-box .details {
-    display: block;
-    font-weight: 500;
+form .user-details .input-box {
     margin-bottom: 5px;
+    width: calc(50% - 20px); 
+    margin-right: auto;
+    margin-left: auto; 
 }
 
 .user-details .input-box input, select, textarea {
     height: 40px;  
-    width: 80%;
+    width: 800px;
     outline: none;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -92,6 +89,25 @@ form .user-details .input-box {
     font-size: 16px;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    resize: none;
+}
+
+.user-details textarea {
+    height: 100px;  
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    resize: none;
+}
+.user-details {
+    grid-column: span 2; /* Makes sure this section spans both columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .user-details .input-box input:hover, select:hover, textarea:hover {
@@ -102,7 +118,16 @@ form .user-details .input-box {
     border-color: #fc9700;
 }
 
+.input-box {
+    margin-bottom: 15px;
+}
+
+.input-box input, select, textarea {
+    width: 100%;
+}
+
 .crtButton {
+    grid-column: span 2;
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     font-size: 15px; 
@@ -110,7 +135,7 @@ form .user-details .input-box {
     width: 200px;
     padding: 12px 0;
     text-align: center;
-    margin: 20px 309px;
+    margin: 20px auto;
     border-radius: 25px;
     border: 2px solid #CB8925;
     background: transparent;
@@ -119,10 +144,15 @@ form .user-details .input-box {
     position: static;
     overflow: hidden;
     transition: 0.3s;
-    float: right;
 }
 
 .crtButton:hover {
     background-color: #CB8925;
     color: #d9d9d9;
+}
+
+.errors {
+    grid-column: span 2; /* Error message spans across both columns */
+    color: red;
+    text-align: center;
 }

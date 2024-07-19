@@ -180,7 +180,7 @@ const handleLogout = () => {
                         <div className='input-box'>
                             <label className='details'>Minimum Age Requirement:</label>
                             <input
-                                placeholder='Enter minimum age requirement'
+                                placeholder='Enter min. age requirement'
                                 type="int" 
                                 id="minage" 
                                 value={minage}  
@@ -191,7 +191,7 @@ const handleLogout = () => {
                         <div className='input-box'>
                             <label className='details'>Maximum Age Requirement:</label>
                             <input
-                                placeholder='Enter maximum age requirement'
+                                placeholder='Enter max. age requirement'
                                 type="int" 
                                 id="minage" 
                                 value={minage}  

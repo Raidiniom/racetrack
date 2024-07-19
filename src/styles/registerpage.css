@@ -105,18 +105,18 @@ body, html {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px 0 12px 0;
+    margin: 15px 0 10px 0;
 }
 
 form .user-details .input-box {
-    margin-bottom: 15px;
-    width: calc(100% / 2 - 20px);
+    margin-bottom: 5px;
+    width: calc(100% / 2 - 40px);
 }
 
 .user-details .input-box .details {
     display: block;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .user-details .input-box input, select {
@@ -170,9 +170,9 @@ input[type="checkbox"] {
     font-size: 15px; 
     text-transform: uppercase;
     width: 200px;
-    padding: 12px 0;
+    padding: 10px 0;
     text-align: center;
-    margin: 20px 309px;
+    margin: 10px 309px;
     border-radius: 25px;
     border: 2px solid #CB8925;
     background: transparent;

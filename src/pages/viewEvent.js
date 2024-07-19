@@ -118,16 +118,16 @@ const ViewEvent = () => {
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
-                        <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
+                        <li><NavLink to="/create">Create a Race</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
 
                 {/* Main Content */}
                 <div class="viewEvents-main-content">
-                    <h2 className="ve">Info Event</h2>
+                    <h2 className="ve">Information</h2>
                         <div className="view-container-post">
 
                             {/* mga events diri display */}
@@ -142,14 +142,23 @@ const ViewEvent = () => {
                                         {fetchError && (<p className='error'>{fetchError}</p>)}
                                         {getraces && (
                                             <div className="details-event-part1">
-                                            <h2>{getraces.race_title}</h2>
-                                            <p>Event description: {getraces.race_description}</p>
-                                            <p>Age Requirement: {getraces.min_age} - {getraces.max_age} years old</p>
-                                            <p>Race Distance: {getraces.race_distance} KM</p>
-                                            <p>Maximum Racers: {getraces.capacity}</p>
-                                            <p>Currently Joined: {getraces.curren_cap}</p>
-                                            <p>Start Date: {getraces.start_date}</p>
-                                            <p>Registration Date: {getraces.registration_date}</p>
+                                            <h2 class='race-title'>{getraces.race_title}</h2>
+                                            <p class='desc'>{getraces.race_description}</p>
+                                            <div class="race-container">
+                                                <img src="/img/agereq-icon.png" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Age Requirement:</label> {getraces.min_age} - {getraces.max_age} years old</div>
+                                                <img src="/img/distance-icon.png" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Race Distance:</label> {getraces.race_distance} KM</div>
+                                                <img src="/img/capacity-icon.png" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Maximum Racers:</label> {getraces.capacity}</div>
+                                                <img src="/img/participant-icon.png" class="icon"/>
+                                                <div class ="race-details"><label class="race-label">Currently Joined:</label> {getraces.curren_cap}</div>
+                                            </div>
+                                            <div class="date-container">
+                                                <img src="/img/calendar-icon.png" class="icon"/>
+                                                <div class ="date-details"><label class="date-label">Start Date:</label> {getraces.start_date}</div>
+                                                <div class ="date-details"><label class="date-label">Registration Date:</label> {getraces.registration_date}</div>
+                                           </div>
                                         </div>
                                         )}
                                             

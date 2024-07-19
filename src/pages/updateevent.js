@@ -149,32 +149,44 @@ const UpdateEvent = () => {
                     </ul>
                 </div>
 
-                {/* //Main Content
+                {/* //Main Content */}
                 <div className="viewEvents-main-content">
                         <h2 className="ve">Info Event</h2>
                     <div className="view-container-post">
 
-                         //mga events diri display
+                         {/* //mga events diri display */}
                         <div className="view-content">
                             <div className="card-view">
                                 <div className="pad">
                                     <div className="details-event">
                                         <div className="event-picc">
-                                            <img src="https://wallpapercave.com/wp/wp4043831.jpg" alt="Profile Picture" />
-                                        </div>
-                                        
-                                        <div className="details-event-part1">
-                                            <h2>Event title</h2>
-                                            <p>then the rest info</p>
-                                            <p>Event description last</p>
-                                            <h2>Event title</h2>
-                                            <p>then the rest info</p>
-                                            <p>Event description last</p>
-                                            <h2>Event title</h2>
-                                            <p>then the rest info</p>
-                                            <p>Event description last</p>
-                                        </div>
-                                        <h2 className="listttt">Participant List</h2>
+                                                <img src="/img/RaceTrack Logos/RT-logo.png" alt="RaceTrack Logo" />
+                                            </div>
+                                            <hr></hr>
+                                            {fetchError && (<p className='error'>{fetchError}</p>)}
+                                            {getraces && (
+                                                <div className="details-event-part1">
+                                                <h2 class='race-title'>{getraces.race_title}</h2>
+                                                <p class='desc'>{getraces.race_description}</p>
+                                                <div class="race-container">
+                                                    <img src="/img/agereq-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Age Requirement:</label> {getraces.min_age} - {getraces.max_age} years old</div>
+                                                    <img src="/img/distance-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Race Distance:</label> {getraces.race_distance} KM</div>
+                                                    <img src="/img/capacity-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Maximum Racers:</label> {getraces.capacity}</div>
+                                                    <img src="/img/participant-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Currently Joined:</label> {getraces.curren_cap}</div>
+                                                </div>
+                                                <div class="date-container">
+                                                    <img src="/img/calendar-icon.png" class="icon"/>
+                                                    <div class ="date-details"><label class="date-label">Start Date:</label> {getraces.start_date}</div>
+                                                    <div class ="date-details"><label class="date-label">Registration Date:</label> {getraces.registration_date}</div>
+                                            </div>
+                                            </div>
+                                            )}
+
+                                        {/* <h2 className="listttt">Participant List</h2>
                                         <div className="participant-list">
                                             <div className="columns">
                                                 <div className="two-column">
@@ -197,18 +209,16 @@ const UpdateEvent = () => {
                                                     <p>Participant 6</p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className="details-event-part2">
                                             <button className="update-event" onClick={openModal}>Update Event</button>
-                                            <button className="delete-event">Delete Event</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> */}
-                <button className="update-event" onClick={openModal}>Update Event</button>
+                </div>
                 {isModalOpen && (
                     <div className="modal">
                         <div className="modal-content">
