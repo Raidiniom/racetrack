@@ -142,7 +142,7 @@ textarea {
 }
 
 .create-button {
-    background-color: #ffdca7; 
+    background-color: #fff2c6; 
     color: #000000;
     border: none;
     padding: 10px;
@@ -154,8 +154,8 @@ textarea {
 }
 
 .create-button:hover {
-    background-color: rgb(158, 119, 82);
-    color: #ffffff;
+    background-color: #C5AEA0;
+    color: #000000;
 }
 
 .errors {

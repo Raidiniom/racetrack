@@ -19,7 +19,7 @@
 }
 
 .profile-header {
-    background-color: #ffe281;
+    background-color: #fff2c6;
     color: rgb(0, 0, 0);
     padding: 10px;
     border-top-left-radius: 8px;
@@ -81,12 +81,12 @@
     border: none;
     font-size: 18px;
     margin-top: 15px;
-    background-color: #ffffff;
+    background-color: #ffedba; 
     transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-link:hover, .edit-button:hover {
-    background-color: #ffe89d;
+    background-color: #C5AEA0;
     color: rgb(0, 0, 0);
 }
 
