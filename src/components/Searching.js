@@ -1,0 +1,45 @@
+import { useState } from "react"
+import supabase from "../config/supabaseclient"
+import '../styles/dashboardpage.css'
+
+
+export const SearchR = ({setGetraces, setFetchError}) => {
+    const [input, setInput] = useState("")
+
+    const fetchData = async (value) => {
+        const { data: findData, error: noData } = await supabase
+        .from('user_created_race')
+        .select('*')
+        .ilike('race_title', `%${value}%`)
+
+        if (noData) {
+            setFetchError('No Races Found...')
+            setGetraces([])
+        } else {
+            setFetchError(null)
+            setGetraces(findData)
+        }
+    }
+
+    const handleInput = (e) => {
+        const value = e.target.value
+        setInput(value)
+
+        if (value.length > 0) {
+            fetchData(value)
+        } else {
+            fetchData("")
+        }
+    }
+
+    return (
+        <div className="input-container">
+            <input 
+                className="input-search"
+                placeholder="Type Race Name to search..." 
+                value={input} 
+                onChange={handleInput}
+            />
+        </div>
+    )
+}

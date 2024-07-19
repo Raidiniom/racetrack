@@ -67,7 +67,7 @@ body, html {
     height: 100%;
 }
 
-.main-container-dashoard {
+.main-container-dashboard {
     margin-left: 50px;
     margin-right: 150px;
 }
@@ -178,4 +178,18 @@ body, html {
 .user-pfp {
     border-radius: 1000px;
     width: 60px;
+}
+
+
+/* Search Bar */
+
+/* Palihug ko og center */
+.input-containter {
+    /* input here */
+}
+
+.input-search {
+    width: 250px;
+    height: 25px;
+    border: 2px solid #CB8925;
 }
