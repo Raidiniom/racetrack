@@ -67,93 +67,11 @@ body, html {
 .yourEvents {
     display: grid;
     grid-template-rows: 80px 1fr;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 210px 1fr;
     grid-template-areas: 
         "header header"
         "sidebar main";
     height: 100vh;
-}
-
-.yourEvents-header {
-    grid-area: header;
-    background-color: #fff2c6;
-    color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fff2c6;
-}
-
-.yourEvents-logo img {
-    width: 170px;
-    padding: 20px;
-}
-
-.yourEvents-sidebar {
-    grid-area: sidebar;
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    border-right: 1px solid #ffd382;
-    overflow-y: auto;
-    height: 100%;
-}
-
-.yourEvents-sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.yourEvents-sidebar ul li {
-    margin: 10px;
-    background-color: #ffedba; 
-    cursor: pointer;
-    text-align: center;
-    border-radius: 5px;
-    border: none;
-    color: #000000;
-    font-size: 16px;
-    padding: 10px;
-    transition: all 0.3s;
-    cursor: pointer;
-    width: 150px;
-}
-
-.yourEvents-sidebar ul li {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.3s;
-}
-
-.yourEvents-sidebar ul li:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    font-size: 28;
-    margin-right: 19px;
-    margin-top: 9px;
-    right: -20px;
-    transition: 0.3s;
-}
-
-.yourEvents-sidebar ul li:hover {
-    padding-right: 25px;
-}
-
-.yourEvents-sidebar ul li:hover:after {
-    opacity: 1;
-    right: 0;
-}
-
-.yourEvents-sidebar ul li:hover {
-    background-color: rgb(0, 0, 0);
-    color: #ffffff;
-}
-
-.yourEvents-sidebar ul li a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
 }
 
 .yourEvents-main-content {
@@ -165,6 +83,10 @@ body, html {
     overflow-y: auto;
     height: 100%;
     -ms-overflow-style: none;
+}
+
+.yourEvents-main-content h2 {
+    margin-bottom: 20px;
 }
 
 .yourEvents-main-content::-webkit-scrollbar {
@@ -182,15 +104,24 @@ body, html {
 }
 
 .card-ye {
-    background-color: #ffe59e;
+    background-color: #fff0d5;
     padding: 20px;
-    border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card-ye a {
+    text-decoration: none;
+    color: #000;
+}
+
+.card-ye:hover {
+    background-color: #C5AEA0;
+}
+
 .user-name-ye {
-    padding: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .contents-post-ye {

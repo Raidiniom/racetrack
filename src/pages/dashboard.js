@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/dashboardpage.css'
+import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 
@@ -48,13 +49,14 @@ const Dashboard = () => {
                         <li><NavLink to="/">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Events</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
 
                 {/* Main Content */}
                 <div class="dashboard-main-content">
+                    <div className="main-container-dashoard">
                     <h2>Events</h2>
 
                     {/* mga events diri display */}
@@ -91,6 +93,7 @@ const Dashboard = () => {
                             ))}
                         </div>
                     )}
+                </div>
                 </div>
             </div>
         </div>

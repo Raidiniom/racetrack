@@ -74,88 +74,6 @@ body, html {
     height: 100vh;
 }
 
-.viewEvents-header {
-    grid-area: header;
-    background-color: #fff2c6;
-    color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fff2c6;
-}
-
-.viewEvents-logo img {
-    width: 170px;
-    padding: 20px;
-}
-
-.viewEvents-sidebar {
-    grid-area: sidebar;
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    border-right: 1px solid #ffd382;
-    overflow-y: auto;
-    height: 100%;
-}
-
-.viewEvents-sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.viewEvents-sidebar ul li {
-    margin: 10px;
-    background-color: #ffedba; 
-    cursor: pointer;
-    text-align: center;
-    border-radius: 5px;
-    border: none;
-    color: #000000;
-    font-size: 16px;
-    padding: 10px;
-    transition: all 0.3s;
-    cursor: pointer;
-    width: 150px;
-}
-
-.viewEvents-sidebar ul li {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.3s;
-}
-
-.viewEvents-sidebar ul li:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    font-size: 28;
-    margin-right: 19px;
-    margin-top: 9px;
-    right: -20px;
-    transition: 0.3s;
-}
-
-.viewEvents-sidebar ul li:hover {
-    padding-right: 25px;
-}
-
-.viewEvents-sidebar ul li:hover:after {
-    opacity: 1;
-    right: 0;
-}
-
-.viewEvents-sidebar ul li:hover {
-    background-color: rgb(0, 0, 0);
-    color: #ffffff;
-}
-
-.viewEvents-sidebar ul li a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
 .viewEvents-main-content {
     grid-area: main;
     padding: 20px;
@@ -399,5 +317,5 @@ body, html {
 }
 
 .card-ye:hover {
-    background-color: #ffcc66;
+    background-color: #C5AEA0;
 }

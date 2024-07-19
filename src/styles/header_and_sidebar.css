@@ -1,0 +1,96 @@
+.dashboard, .yourEvents, .viewEvents, .joinEvents, .makeEvents {
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: 210px 1fr;
+    grid-template-areas: 
+        "header header"
+        "sidebar main";
+    height: 100vh;
+}
+
+.dashboard-header {
+    grid-area: header;
+    background-color: #fff2c6;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff2c6;
+}
+
+.dash-logo img {
+    width: 170px;
+    padding: 20px;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: #C5AEA0;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.dashboard-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-sidebar ul li {
+    margin: 10px;
+    background-color: #ffedba; 
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    color: #000000;
+    font-size: 16px;
+    padding: 0;
+    transition: all 0.3s;
+    cursor: pointer;
+    width: 150px;
+    font-weight: bold;
+    position: relative;
+}
+
+.dashboard-sidebar ul li {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.2s;
+}
+
+.dashboard-sidebar ul li:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    font-size: 28;
+    margin-right: 19px;
+    margin-top: 9px;
+    right: -20px;
+    transition: 0.2s;
+}
+
+.dashboard-sidebar ul li:hover {
+    padding-right: 25px;
+}
+
+.dashboard-sidebar ul li:hover:after {
+    opacity: 1;
+    right: 0;
+}
+
+.dashboard-sidebar ul li:hover {
+    background-color: #c5aba0b9;
+    color: #000000;
+}
+
+.dashboard-sidebar ul li a {
+    text-decoration: none;
+    width: 100%; 
+    height: 100%; 
+    padding: 10px; 
+    color: inherit;
+    display: block;
+    border-radius: 5px;
+}

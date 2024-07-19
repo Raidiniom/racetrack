@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/yourevents.css'
+import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 
@@ -51,25 +52,28 @@ const MadeEvents = () => {
         fetchRaces()
     }, [raceCreator])
 
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
+    }
 
     return (
         <div className="wholesite">
             <div className="yourEvents">
-                <div className="yourEvents-header">
-                    <div className="yourEvents-logo">
+                <div class="dashboard-header">
+                    <div className="dash-logo">
                         <img src="\img\RaceTrack Logos\2_FF.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 
                 {/* Sidebar */}
-                <div className="yourEvents-sidebar">
+                <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Events</NavLink></li>
-                        <li><NavLink to="/login">Logout</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
 

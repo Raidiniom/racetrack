@@ -64,104 +64,16 @@ body, html {
     height: 100%;
 }
 
-.dashboard {
-    display: grid;
-    grid-template-rows: 80px 1fr;
-    grid-template-columns: 200px 1fr;
-    grid-template-areas: 
-        "header header"
-        "sidebar main";
-    height: 100vh;
-}
-
-.dashboard-header {
-    grid-area: header;
-    background-color: #fff2c6;
-    color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fff2c6;
-}
-
-.dash-logo img {
-    width: 170px;
-    padding: 20px;
-}
-
-.dashboard-sidebar {
-    grid-area: sidebar;
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    border-right: 1px solid #ffd382;
-    overflow-y: auto;
-    height: 100%;
-}
-
-.dashboard-sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.dashboard-sidebar ul li {
-    margin: 10px;
-    background-color: #ffedba; 
-    cursor: pointer;
-    text-align: center;
-    border-radius: 5px;
-    border: none;
-    color: #000000;
-    font-size: 16px;
-    padding: 10px;
-    transition: all 0.3s;
-    cursor: pointer;
-    width: 150px;
-}
-
-.dashboard-sidebar ul li {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.3s;
-}
-
-.dashboard-sidebar ul li:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    font-size: 28;
-    margin-right: 19px;
-    margin-top: 9px;
-    right: -20px;
-    transition: 0.3s;
-}
-
-.dashboard-sidebar ul li:hover {
-    padding-right: 25px;
-}
-
-.dashboard-sidebar ul li:hover:after {
-    opacity: 1;
-    right: 0;
-}
-
-.dashboard-sidebar ul li:hover {
-    background-color: rgb(0, 0, 0);
-    color: #ffffff;
-}
-
-.dashboard-sidebar ul li a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+.main-container-dashoard {
+    /* background-color: #ffe7b9; */
+    margin-left: 50px;
+    margin-right: 200px;
 }
 
 .dashboard-main-content {
     grid-area: main;
     padding: 20px;
     display: flex;
-    margin-left: 50px;
-    margin-right: 200px ;
     flex-direction: column;
     gap: 20px;
     background-color: #ffffff;
@@ -170,30 +82,30 @@ body, html {
     -ms-overflow-style: none;
 }
 
+.dashboard-main-content h2 {
+    margin-bottom: 20px;
+}
+
 .dashboard-main-content::-webkit-scrollbar {
     display: none;
   }
 
 .card {
-    background-color: #ffe59e;
+    background-color: #fff0d5;
     padding: 20px;
-    border: 1px solid #ddd;
-    margin: 25px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
+    margin-bottom: 20px;
 }
 
 .card a {
     text-decoration: none;
-    color: #000000;
-    display: block;
-    height: 100%;
-    width: 100%;
+    color: #000;
 }
 
 .card:hover {
-    background-color: #ffcc66;
+    background-color: #C5AEA0;
 }
 
 .user-pfp {
@@ -207,11 +119,12 @@ body, html {
 }
 
 .user-name {
-    padding: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .contents-post {
-    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .view-e {
