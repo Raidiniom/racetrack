@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/dashboardpage.css'
 import '../styles/header_and_sidebar.css'
+import '../styles/searchbar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 
@@ -58,17 +59,13 @@ const Dashboard = () => {
 
                 {/* Main Content */}
                 <div class="dashboard-main-content">
-                    <h2>Events</h2>
-                    <div className='search-bar'>
-                        <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
-                    </div>
+                    <h2>Events</h2>   
+                     {/* Search Bar */}
+                    <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
 
-                    <div className="main-container-dashoard">
-                    
+                    <div className="main-container-dashboard">
                     {/* Events Display   */}
-
                     {fetchError && (<p className='error'>{fetchError}</p>)}
-
                     {getraces && (
                         // @CallenCaracy @MarQtie
                         /* Diri lang mo edit sa CSS sa katung content sa dashboard */
@@ -77,6 +74,8 @@ const Dashboard = () => {
                                 <DashCard key={output.race_id} output={output}/>
                             ))}
                         </div>
+                        
+
                     )}
                 </div>
                 </div>

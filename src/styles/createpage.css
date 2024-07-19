@@ -60,16 +60,6 @@ body, html {
     position: relative;
 }
 
-.crt-container .title::before {
-    content: '';
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    height: 3px;
-    width: 50px;
-    background: linear-gradient(#CB8925, #fc9700)
-}
-
 .crt-container form {
     display: flex;
     flex-wrap: wrap;
