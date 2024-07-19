@@ -47,11 +47,14 @@ body, html {
 .crt-container {
     background: #d9d9d9;
     padding: 15px 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .crt-container .title {
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 500px;
+    grid-column: span 2; /* Title spans across both columns */
     position: relative;
 }
 
@@ -65,21 +68,22 @@ body, html {
     background: linear-gradient(#CB8925, #fc9700);
 }
 
-.crt-container form .user-details {
+.crt-container form {
     display: flex;
     flex-wrap: wrap;
+}
+
+.user-details {
+    grid-column: span 2; /* Makes sure this section spans both columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 form .user-details .input-box {
     margin-bottom: 15px;
     width: calc(50% - 20px); 
     margin-right: 10px; 
-}
-
-.user-details .input-box .details {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
 }
 
 .user-details .input-box input, select, textarea {
@@ -94,6 +98,13 @@ form .user-details .input-box {
     transition: all 0.3s ease;
 }
 
+.user-details {
+    grid-column: span 2; /* Makes sure this section spans both columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
 .user-details .input-box input:hover, select:hover, textarea:hover {
     border-color: #ffdfae;
 }
@@ -102,7 +113,16 @@ form .user-details .input-box {
     border-color: #fc9700;
 }
 
+.input-box {
+    margin-bottom: 15px;
+}
+
+.input-box input, select, textarea {
+    width: 100%; /* Make inputs take full width of their container */
+}
+
 .crtButton {
+    grid-column: span 2; /* Button spans across both columns */
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     font-size: 15px; 
@@ -110,7 +130,7 @@ form .user-details .input-box {
     width: 200px;
     padding: 12px 0;
     text-align: center;
-    margin: 20px 309px;
+    margin: 20px auto;
     border-radius: 25px;
     border: 2px solid #CB8925;
     background: transparent;
@@ -119,10 +139,15 @@ form .user-details .input-box {
     position: static;
     overflow: hidden;
     transition: 0.3s;
-    float: right;
 }
 
 .crtButton:hover {
     background-color: #CB8925;
     color: #d9d9d9;
+}
+
+.errors {
+    grid-column: span 2; /* Error message spans across both columns */
+    color: red;
+    text-align: center;
 }
