@@ -10,7 +10,7 @@
 
 .dashboard-header {
     grid-area: header;
-    background-color: #fff2c6;
+    background-color: #333333;
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
@@ -20,45 +20,40 @@
 .dash-logo img {
     width: 170px;
     padding: 20px;
+    cursor: pointer;
 }
 
 .dashboard-sidebar {
     grid-area: sidebar;
-    background-color: #C5AEA0;
-    padding: 20px;
+    background-color:#CB8925;
     overflow-y: auto;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
     height: 100%;
 }
 
 .dashboard-sidebar ul {
     list-style: none;
-    padding: 0;
+    
 }
 
 .dashboard-sidebar ul li {
-    margin: 10px;
-    background-color: #ffedba; 
     cursor: pointer;
     text-align: center;
-    border-radius: 5px;
-    border: none;
-    color: #000000;
+    color: #1C1C1C;
     font-size: 16px;
-    padding: 0;
+    padding: 10px;
     transition: all 0.3s;
     cursor: pointer;
-    width: 150px;
+    width: 100%;
     font-weight: bold;
-    position: relative;
+    border-bottom: 1px solid #00000000;
+    border-top: 1px solid #00000000;
 }
 
 .dashboard-sidebar ul li {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    transition: 0.2s;
+    transition: 0.5s;
 }
 
 .dashboard-sidebar ul li:after {
@@ -70,7 +65,7 @@
     margin-right: 19px;
     margin-top: 9px;
     right: -20px;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .dashboard-sidebar ul li:hover {
@@ -83,8 +78,10 @@
 }
 
 .dashboard-sidebar ul li:hover {
-    background-color: #c5aba0b9;
-    color: #000000;
+    background-color: #b76416;
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+    color: #d0d0d0;
 }
 
 .dashboard-sidebar ul li a {
@@ -94,5 +91,4 @@
     padding: 10px; 
     color: inherit;
     display: block;
-    border-radius: 5px;
 }

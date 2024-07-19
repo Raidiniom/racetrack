@@ -2,11 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 .wholesite {
-    /* background-color: bisque; */
     display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .testsite {
@@ -65,7 +68,6 @@ body, html {
 }
 
 .main-container-dashoard {
-    /* background-color: #ffe7b9; */
     margin-left: 50px;
     margin-right: 200px;
 }
@@ -76,27 +78,32 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #ffffff;
+    background-color: #00000000;
     overflow-y: auto;
     height: 100%;
     -ms-overflow-style: none;
 }
 
 .dashboard-main-content h2 {
+    color: rgb(255, 255, 255);
     margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .dashboard-main-content::-webkit-scrollbar {
     display: none;
   }
 
+/* Post Card */
 .card {
-    background-color: #fff0d5;
+    background-color: #cecece;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
     margin-bottom: 20px;
+    transition: 0.3s;
+    overflow: hidden;
 }
 
 .card a {
@@ -105,12 +112,27 @@ body, html {
 }
 
 .card:hover {
-    background-color: #C5AEA0;
+    background-color: #979797;
+    color: #cecece;
 }
 
-.user-pfp {
-    border-radius: 1000px;
-    width: 60px;
+.details {
+    font-weight: bold;
+}
+
+.date-container, .race-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-label, .race-label{
+    font-weight: bold;
+}
+.icon {
+    margin-right: -5px;
+    width: 30px;
+    height: auto;
 }
 
 .person-post-container {
@@ -118,9 +140,25 @@ body, html {
     flex-direction: row;
 }
 
-.user-name {
+.race-title {
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+    color: #1C1C1C;
+    transition: 0.3s;
+}
+
+.card .race-title::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    width: 220%;
+    background: #1C1C1C;
 }
 
 .contents-post {
@@ -135,11 +173,8 @@ body, html {
     width: 100%;
 }
 
-/* .dashboard-footer {
-    grid-area: footer;
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+/* User Profile */
+.user-pfp {
+    border-radius: 1000px;
+    width: 60px;
+}
