@@ -103,16 +103,19 @@ const JoinedEvent = () => {
                 </div>
 
                 {/* Main Content */}
-                <div class="dashboard-main-content">
-                    <h2 className="join-ve">Joined Events</h2>
-                    {fetchError && (<p className='error'>{fetchError}</p>)}
-                    {joinedRaces && (
-                        <div className="container-post">
-                            {joinedRaces.map(race => (
-                                <JoinCard key={race.race_id} output={race} onLeave={handleCancel} />
-                            ))}
-                        </div>
-                    )}
+                <div class="joinEvents-main-content">
+                    <h2>Joined Events</h2>
+                    {/* Events Display */}
+                    <div className="main-container-dashboard">
+                        {fetchError && (<p className='error'>{fetchError}</p>)}
+                        {joinedRaces && (
+                            <div className="container-post">
+                                {joinedRaces.map(race => (
+                                    <JoinCard key={race.race_id} output={race} onLeave={handleCancel} />
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
