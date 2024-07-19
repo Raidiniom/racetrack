@@ -9,6 +9,7 @@ import JoinCard from '../components/JoinCard';
 const JoinedEvent = () => {
     const [fetchError, setFetchError] = useState(null);
     const [joinedRaces, setJoinedRaces] = useState(null);
+    const [refresh, setRefresh] = useState(false); // State to trigger re-fetch
 
     const username = localStorage.getItem('lsusername');
 
@@ -67,10 +68,16 @@ const JoinedEvent = () => {
         };
 
         fetchJoinedRaces();
-    }, [username]);
+    }, [username, refresh]);
 
     const handleLogout = () => {
         localStorage.removeItem('lsusername');
+    };
+
+    const handleCancel = () => {
+        // Trigger re-fetch by updating `refresh` state
+        console.log('Cancelling participation...');
+        setRefresh(prev => !prev);
     };
 
 
@@ -102,7 +109,7 @@ const JoinedEvent = () => {
                     {joinedRaces && (
                         <div className="container-post">
                             {joinedRaces.map(race => (
-                                <JoinCard key={race.race_id} output={race} />
+                                <JoinCard key={race.race_id} output={race} onLeave={handleCancel} />
                             ))}
                         </div>
                     )}

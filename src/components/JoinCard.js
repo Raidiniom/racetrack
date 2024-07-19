@@ -78,6 +78,8 @@ const JoinCard = ({ output, onLeave }) => {
 
             setFetchError(null);
             alert('Successfully canceled participation!');
+
+            if (onLeave) onLeave(); 
         } catch (error) {
             console.error('Unexpected error:', error);
             setFetchError('Unexpected error occurred!');
