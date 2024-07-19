@@ -4,10 +4,12 @@ import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 
+//components
+import DashCard from '../components/DashCard'
 
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
-    const [ getraces, setGetraces ] = useState(null)
+    const [ getraces, setGetraces ] = useState([])
 
     useEffect(() => {
         const fetchRaces = async () => {
@@ -17,7 +19,7 @@ const Dashboard = () => {
 
             if (error) {
                 setFetchError('No Races Open!')
-                setGetraces(null)
+                setGetraces()
             }
 
             if (data) {
@@ -67,34 +69,35 @@ const Dashboard = () => {
                         /* Diri lang mo edit sa CSS sa katung content sa dashboard */
                         <div>
                             {getraces.map(output => (
-                                <div className='card'>
-                                    <NavLink to="/viewevent" className="view-e">
-                                        <div className='race-title'>
-                                            {output.race_title}
-                                        </div>
+                                // <div className='card'>
+                                //     <NavLink to="/viewevent" className="view-e">
+                                //         <div className='race-title'>
+                                //             {output.race_title}
+                                //         </div>
 
-                                        <div className='contents-post'>
-                                            {output.race_description}
-                                        </div>
-                                        <div className='content-wrap'>
-                                            <div class="race-container">
-                                                <img src="img/agereq-icon.png" alt="icon" class="icon"/>
-                                                <div class ="race-details"><label class="race-label">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
-                                                <img src="img/distance-icon.png" alt="icon" class="icon"/>
-                                                <div class ="race-details"><label class="race-label">Race Distance:</label> {output.race_distance} KM</div>
-                                                <img src="img/capacity-icon.png" alt="icon" class="icon"/>
-                                                <div class ="race-details"><label class="race-label">Maximum Racers:</label> {output.capacity}</div>
-                                                <img src="img/participant-icon.png" alt="icon" class="icon"/>
-                                                <div class ="race-details"><label class="race-label">Currently Joined:</label> {output.curren_cap}</div>
-                                            </div>
-                                            <div class="date-container">
-                                                <img src="img/calendar-icon.png" alt="icon" class="icon"/>
-                                                <div class ="date-details"><label class="date-label">Start Date:</label> {output.start_date}</div>
-                                                <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
-                                            </div>
-                                        </div>
-                                    </NavLink>
-                                </div>
+                                //         <div className='contents-post'>
+                                //             {output.race_description}
+                                //         </div>
+                                //         <div className='content-wrap'>
+                                //             <div class="race-container">
+                                //                 <img src="img/agereq-icon.png" alt="icon" class="icon"/>
+                                //                 <div class ="race-details"><label class="race-label">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
+                                //                 <img src="img/distance-icon.png" alt="icon" class="icon"/>
+                                //                 <div class ="race-details"><label class="race-label">Race Distance:</label> {output.race_distance} KM</div>
+                                //                 <img src="img/capacity-icon.png" alt="icon" class="icon"/>
+                                //                 <div class ="race-details"><label class="race-label">Maximum Racers:</label> {output.capacity}</div>
+                                //                 <img src="img/participant-icon.png" alt="icon" class="icon"/>
+                                //                 <div class ="race-details"><label class="race-label">Currently Joined:</label> {output.curren_cap}</div>
+                                //             </div>
+                                //             <div class="date-container">
+                                //                 <img src="img/calendar-icon.png" alt="icon" class="icon"/>
+                                //                 <div class ="date-details"><label class="date-label">Start Date:</label> {output.start_date}</div>
+                                //                 <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
+                                //             </div>
+                                //         </div>
+                                //     </NavLink>
+                                // </div>
+                                <DashCard key={output.race_id} output={output}/>
                             ))}
                         </div>
                     )}
