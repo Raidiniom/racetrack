@@ -123,10 +123,16 @@ const Profile = () => {
                                 Birthday:
                                 <input type="date" name="bday" />
                             </label>
-                            <label>
-                                Gender:
-                                <input type="text" name="gender" />
-                            </label>
+                            <div className='input-box'>
+                                <label className='gender-title-pfp'>Gender</label>
+                                <select name="gender" id="gender">
+                                    <option value="not selected">Default Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
                             <button type="submit" className="edit-button">Save Changes</button>
                         </form>
                     </div>
