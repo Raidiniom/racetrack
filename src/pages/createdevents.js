@@ -2,6 +2,10 @@ import { NavLink } from 'react-router-dom'
 import '../styles/yourevents.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
+import { useParams } from 'react-router-dom'
+
+//components
+import RaceCard from '../components/RaceCard'
 
 const MadeEvents = () => {
     const [fetchError, setFetchError] = useState(null)
@@ -79,22 +83,28 @@ const MadeEvents = () => {
 
                     {fetchError && (<p className='error'>{fetchError}</p>)}
 
+                    {/* editing here */}
+
                     {getraces && (
                         <div className="container-post">
-                            {getraces.map(output => (
-                                <div key={output.id} className="card-ye">
-                                    <NavLink to="/updateevent" className="adto">
-                                        <div className='user-name-ye'>
-                                            {output.race_title}
-                                            <div className='contents-post-ye'>
-                                                {output.race_description}
-                                            </div>
-                                        </div>
-                                    </NavLink>
-                                </div>
-                            ))}
+                                {getraces.map(output => (
+                                    // <div className="card-ye">
+                                    //         <NavLink to="/updateevent" className="adto">
+                                    //             <div className='user-name-ye'>
+                                    //                 <h3>{output.race_title}</h3>
+                                    //                 <div className='contents-post-ye'>
+                                    //                  <p>{output.race_description}</p>
+                                    //                 </div>
+                                    //             </div>
+                                    //         </NavLink>
+                                    //     </div>
+                                    <RaceCard key={output.race_id} output={output}/>
+                                ))}
                         </div>
                     )}
+
+                    {/* end edit */}
+
                 </div>
             </div>
         </div>

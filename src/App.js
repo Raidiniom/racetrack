@@ -13,9 +13,11 @@ import Eula from "./pages/eulapage";
 import Profile from "./pages/userprofile";
 import MadeEvents from "./pages/createdevents";
 import ViewEvent from "./pages/viewEvent";
-import UpdateEvent from "./pages/youreventupdate";
+import UpdateEvent from "./pages/updateevent";
 import JoinedEvent from "./pages/joinedEvents";
 import Aboutus from "./pages/aboutus";
+
+
 
 function App() {
   return (
@@ -51,9 +53,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/madeevents" element={<MadeEvents />} />
           <Route path="/viewevent" element={<ViewEvent />} />
-          <Route path="/updateevent" element={<UpdateEvent />} />
+          {/* <Route path="/updateevent" element={<UpdateEvent />} /> */}
           <Route path="/joinedevents" element={<JoinedEvent />} />
           <Route path="/aboutus" element={<Aboutus />} />
+          <Route path="/:id" element={<UpdateEvent />}/>
         </Routes>
       </BrowserRouter>
     </ProvideContext>
