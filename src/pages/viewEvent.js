@@ -20,7 +20,7 @@ const ViewEvent = () => {
             <div class="viewEvents">
                 <div class="dashboard-header">
                     <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\RT-logo" alt="logo" className="RaceTrack-logo" />
+                        <NavLink to='/'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
 

@@ -82,10 +82,13 @@ body, html {
     margin-right: 200px ;
     flex-direction: column;
     gap: 20px;
-    background-color: #ffffff;
     overflow-y: auto;
     height: 100%;
     -ms-overflow-style: none;
+}
+
+.ve {
+    color: #ffffff;
 }
 
 .viewEvents-main-content::-webkit-scrollbar {
