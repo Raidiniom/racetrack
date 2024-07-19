@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/viewevents.css';
+import '../styles/header_and_sidebar.css'
 import supabase from "../config/supabaseclient"
 
 const UpdateEvent = () => {
@@ -74,20 +75,20 @@ const UpdateEvent = () => {
     return (
         <div className="wholesite">
             <div className="viewEvents">
-                <div className="viewEvents-header">
-                    <div className="viewEvents-logo">
-                        <img src="/img/RaceTrack Logos/2_FF.png" alt="logo" className="RaceTrack-logo" />
+            <div class="dashboard-header">
+                    <div className="dash-logo">
+                        <img src="\img\RaceTrack Logos\l_FF.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 
                 {/* Sidebar */}
-                <div className="viewEvents-sidebar">
+                <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Events</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
