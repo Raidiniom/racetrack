@@ -10,7 +10,7 @@
 
 .profile-container {
     font-family: Arial, sans-serif;
-    background-color: #fff;
+    background-color: #d9d9d9;
     flex: 1; 
     margin-right: 120px;
     margin-top: 70px;
@@ -23,8 +23,8 @@
 }
 
 .profile-header {
-    background-color: #fff2c6;
-    color: rgb(0, 0, 0);
+    background-color: #333;
+    color: #d9d9d9;
     padding: 10px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -61,21 +61,28 @@
 }
 
 .edit-button {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 20px;
-    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 12px 0;
     text-align: center;
-    border: none;
-    margin-left: 10px;
-    font-size: 18px;
-    background-color: #ffedba; 
-    transition: background-color 0.3s, color 0.3s;
+    margin: 20px 210px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    transition: 0.3s;
+    float: right;
 }
 
-.nav-link:hover, .edit-button:hover {
-    background-color: #C5AEA0;
-    color: rgb(0, 0, 0);
+.edit-button:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
 }
 
 .modal {

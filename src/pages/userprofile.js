@@ -68,9 +68,9 @@ const Profile = () => {
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
-                        <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
+                        <li><NavLink to="/create">Create A Race</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
