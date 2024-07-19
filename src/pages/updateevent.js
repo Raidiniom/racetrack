@@ -133,7 +133,7 @@ const UpdateEvent = () => {
             <div className="viewEvents">
             <div class="dashboard-header">
                     <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\l_FF.png" alt="logo" className="RaceTrack-logo" />
+                        <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 

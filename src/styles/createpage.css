@@ -14,15 +14,7 @@
     justify-content: center;
 }
 
-.log {
-    background-color: grey;
-    background-size: cover;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.reg {
+.log, .reg, .rec, .crr {
     background-color: grey;
     background-size: cover;
     margin-top: 20px;
@@ -31,25 +23,6 @@
     color: white;
 }
 
-.rec {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.crr {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-/* body */
 .makeEvents {
     display: grid;
     grid-template-rows: 80px 1fr;
@@ -63,9 +36,6 @@
 .whole-create {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* height: 100vh; */
 }
 
 body, html {
@@ -74,95 +44,85 @@ body, html {
     padding: 0;
 }
 
-.create-main-container {
+.crt-container {
+    background: #d9d9d9;
+    padding: 15px 30px;
+}
+
+.crt-container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.crt-container .title::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    width: 100px;
+    background: linear-gradient(#CB8925, #fc9700);
+}
+
+.crt-container form .user-details {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
-.create-form-position {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(50% - 20px); 
+    margin-right: 10px; 
 }
 
-.create-form-container {
-    background-color: #ffffff; 
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 24px;
-    /* margin-bottom: 80px; */
-    width: 700px;
+.user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
-.create-h2 {
-    font-size: 30px;
-}
-
-.create-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.create-form label {
-    margin-top: 10px;
-    color: #333;
-    width: 100%;
-    text-align: left;
-    font-size: 24px;
-}
-
-.create-form input {
-    padding: 6px;
-    margin-top: 5px;
+.user-details .input-box input, select, textarea {
+    height: 40px;  
+    width: 80%;
+    outline: none;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 24px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
 }
 
-textarea {
-    font-size: 24px;
+.user-details .input-box input:hover, select:hover, textarea:hover {
+    border-color: #ffdfae;
 }
 
-.form-row-age {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: large;
+.user-details .input-box input:focus, input:valid, select:focus, textarea:focus {
+    border-color: #fc9700;
 }
 
-.form-group-age {
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-    margin-right: 8px; 
-}
-
-.create-button {
-    background-color: #fff2c6; 
-    color: #000000;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.create-button:hover {
-    background-color: #C5AEA0;
-    color: #000000;
-}
-
-.errors {
-    font-size: 24px;
-    color: #000000;
-    background-color: #ff8080;
-    border-radius: 5px;
-    margin-top: 10px;
+.crtButton {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 12px 0;
     text-align: center;
+    margin: 20px 309px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    transition: 0.3s;
+    float: right;
+}
+
+.crtButton:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
 }

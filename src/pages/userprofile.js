@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/userpfp.css';
+import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from "../config/supabaseclient"
 
@@ -55,6 +56,25 @@ const Profile = () => {
 
     return (
         <div className="wholesite">
+            <div className="dashboard">
+            <div class="dashboard-header">
+                    <div className="dash-logo">
+                        <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
+                    </div>
+                </div>
+
+                {/* Sidebar */}
+                <div class="dashboard-sidebar">
+                    <ul>
+                        <li><NavLink to="/profile">Your Profile</NavLink></li>
+                        <li><NavLink to="/">Dashboard</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
+                        <li><NavLink to="/create">Create Race</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
+                    </ul>
+                </div>
+
             <div className="bkuf">
                 <div className="profile-container">
                     <div className="profile-header">
@@ -83,10 +103,7 @@ const Profile = () => {
 
                             {/* kailangan bani or different stuff lang i dunno */}
                             <div className="buttons">
-                                <NavLink to="/" className="nav-link">Dashboard</NavLink>
-                                <NavLink to="/madeevents" className="nav-link">Your Events</NavLink>
                                 <button className="edit-button" onClick={openModal}>Update Profile</button>
-                                <NavLink to="/login" className="nav-link" onClick={handleLogout}>Logout</NavLink>
                             </div>
                         </div>
                     </div>
@@ -138,6 +155,7 @@ const Profile = () => {
                     </div>
                 </div>
             )}
+            </div>
         </div>
     );
 }

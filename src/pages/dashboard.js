@@ -51,7 +51,7 @@ const Dashboard = () => {
                         <li><NavLink to="/madeevents">Your Races</NavLink></li>
                         <li><NavLink to="/create">Create a Race</NavLink></li>
                         <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
 

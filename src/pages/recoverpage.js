@@ -49,7 +49,7 @@ const Recover = () => {
                 <div className="rec-container">
                     {/* Logo */}
                     <div className="log-logo">
-                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/l_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                     {/* Recover Form */}
                     <form className="rec-form" onSubmit={handleSubmit}>

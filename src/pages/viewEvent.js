@@ -46,7 +46,7 @@ const ViewEvent = () => {
             <div class="viewEvents">
                 <div class="dashboard-header">
                     <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\l_FF.png" alt="logo" className="RaceTrack-logo" />
+                        <NavLink to='/'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@ const ViewEvent = () => {
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
                         <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
 

@@ -14,7 +14,7 @@ const Landingpage = () => {
                         {/* Logo */}
                         <div className='dasokan'>
                         <div className="navbar-logo">
-                            <img src="\img\RaceTrack Logos\l_FFFF.png" alt="logo" className="RaceTrack-logo" />
+                            <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
                         </div>
                         <div className='trial'>              
                             <p className='navbar-buttons'><NavLink to="/tos">Terms of Service</NavLink></p>

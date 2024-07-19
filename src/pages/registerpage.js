@@ -56,7 +56,7 @@ const Register = () => {
                 <div className="reg-container">
                     {/* Logo */}
                     <div className="register-logo">
-                    <   NavLink to='/landingpage'><img src="/img/RaceTrack Logos/l_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    <   NavLink to='/landingpage'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                     {/* Register Form */}
                     <form onSubmit={handleSubmit}>
@@ -78,55 +78,55 @@ const Register = () => {
                             <div className='input-box'>
                                 <label className='details'>Username</label>
                                 <input
-                                placeholder='Enter your preferred username'
-                                type='text'
-                                id='inuser'
-                                value={regUsername}
-                                onChange={(e) => setRegUsername(e.target.value)}
-                                required/>
+                                    placeholder='Enter your preferred username'
+                                    type='text'
+                                    id='inuser'
+                                    value={regUsername}
+                                    onChange={(e) => setRegUsername(e.target.value)}
+                                    required/>
                             </div>
                             {/* Nickname */}
                             <div className='input-box'>
                                 <label className='details'>Nickname</label>
                                 <input
-                                placeholder='Enter your nickname'
-                                type='text'
-                                id='innickname'
-                                value={regNickname}
-                                onChange={(e) => setRegNickname(e.target.value)}
-                                required/>
+                                    placeholder='Enter your nickname'
+                                    type='text'
+                                    id='innickname'
+                                    value={regNickname}
+                                    onChange={(e) => setRegNickname(e.target.value)}
+                                    required/>
                             </div>
                             {/* Password */}
                             <div className='input-box'>
                                 <label className='details'>Password</label>
                                 <input
-                                placeholder='Enter your password'
-                                type='password'
-                                id='inpass'
-                                value={regPassword}
-                                onChange={(e) => setRegPassword(e.target.value)}
-                                required/>
+                                    placeholder='Enter your password'
+                                    type='password'
+                                    id='inpass'
+                                    value={regPassword}
+                                    onChange={(e) => setRegPassword(e.target.value)}
+                                    required/>
                             </div>
                             {/* Conf. Password */}
                             <div className='input-box'>
                                 <label className='details'>Confirm Password</label>
                                 <input
-                                placeholder='Confirm your password'
-                                type='password'
-                                id='inconpass'
-                                value={regConfirmPassword}
-                                onChange={(e) => setRegConfirmPassword(e.target.value)}
-                                required/>
+                                    placeholder='Confirm your password'
+                                    type='password'
+                                    id='inconpass'
+                                    value={regConfirmPassword}
+                                    onChange={(e) => setRegConfirmPassword(e.target.value)}
+                                    required/>
                             </div>
                             {/* Birthday */}
                             <div className='input-box'>
                                 <label className='details'>Birthday</label>
                                 <input 
-                                type='date'
-                                id='indate'
-                                value={regBDay}
-                                onChange={(e) => setRegBDay(e.target.value)}
-                                required/>
+                                    type='date'
+                                    id='indate'
+                                    value={regBDay}
+                                    onChange={(e) => setRegBDay(e.target.value)}
+                                    required/>
                             </div>
                             {/* Gender */}
                             <div className='input-box'>
