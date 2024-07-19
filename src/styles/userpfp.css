@@ -111,3 +111,18 @@
     color: #000;
     text-align: right;
 }
+
+.user-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-label{
+    font-weight: bold;
+}
+.icon {
+    margin-right: -5px;
+    width: 30px;
+    height: auto;
+}

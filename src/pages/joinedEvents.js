@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import '../styles/joinedevents.css';
 import '../styles/header_and_sidebar.css';
+import '../styles/dashboardpage.css';
 import { useEffect, useState } from 'react';
 import supabase from '../config/supabaseclient';
 import JoinCard from '../components/JoinCard';
@@ -95,7 +96,7 @@ const JoinedEvent = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="joinEvents-main-content">
+                <div class="dashboard-main-content">
                     <h2 className="join-ve">Joined Events</h2>
                     {fetchError && (<p className='error'>{fetchError}</p>)}
                     {joinedRaces && (

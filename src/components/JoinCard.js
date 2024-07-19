@@ -85,16 +85,19 @@ const JoinCard = ({ output, onLeave }) => {
     };
 
     return (
-        <div className="join-card">
-            <div className="join-card-details">
-                <h3>{output.race_title}</h3>
-                <p>{output.race_description}</p>
+        <div className="card">
+            <div className="race-title">
+                {output.race_title}
             </div>
-            <div className="join-card-buttons">
-                <NavLink to={`/viewevent/${output.race_id}`}>
-                    <button className="view-event">View Event</button>
-                </NavLink>
-                <button className="cancel-participation" onClick={handleLeave}>Cancel Participation</button>
+                <div className='content-wrap'>
+                    <div className="race-container">
+                        <div className="join-card-buttons">
+                            <NavLink to={`/viewevent/${output.race_id}`}>
+                                <button className="view-event">View Event</button>
+                            </NavLink>
+                            <button className="cancel-participation" onClick={handleLeave}>Cancel Participation</button>
+                     </div>
+                </div>
             </div>
             {fetchError && <p className='error'>{fetchError}</p>}
         </div>

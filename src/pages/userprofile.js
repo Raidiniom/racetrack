@@ -90,7 +90,7 @@ const Profile = () => {
                                 {getuser && (
                                     <div>
                                         {getuser.map(output => (
-                                            <div>
+                                            <div className='user-container'>
                                                 <h2>{output.username}</h2>
                                                 <p>Email: {output.email}</p>
                                                 <p>Birthday: {output.birth_day}</p>
@@ -101,7 +101,6 @@ const Profile = () => {
                                 )}
                             </div>
 
-                            {/* kailangan bani or different stuff lang i dunno */}
                             <div className="buttons">
                                 <button className="edit-button" onClick={openModal}>Update Profile</button>
                             </div>

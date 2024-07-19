@@ -67,15 +67,11 @@ const Dashboard = () => {
                     {/* Events Display   */}
                     {fetchError && (<p className='error'>{fetchError}</p>)}
                     {getraces && (
-                        // @CallenCaracy @MarQtie
-                        /* Diri lang mo edit sa CSS sa katung content sa dashboard */
                         <div>
                             {getraces.map(output => (
                                 <DashCard key={output.race_id} output={output}/>
                             ))}
                         </div>
-                        
-
                     )}
                 </div>
                 </div>
