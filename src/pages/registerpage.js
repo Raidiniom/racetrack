@@ -56,7 +56,7 @@ const Register = () => {
                 <div className="reg-container">
                     {/* Logo */}
                     <div className="register-logo">
-                    <   NavLink to='/landingpage'><img src="/img/RaceTrack Logos/2_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    <   NavLink to='/landingpage'><img src="/img/RaceTrack Logos/l_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                     {/* Register Form */}
                     <form onSubmit={handleSubmit}>

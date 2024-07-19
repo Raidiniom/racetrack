@@ -62,7 +62,7 @@ const Login = () => {
                 <div className="log-container">
                     {/* Logo */}
                     <div className="log-logo">
-                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/2_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/l_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                     {/* Login Form */}
                     <form onSubmit={handleSubmit}>
