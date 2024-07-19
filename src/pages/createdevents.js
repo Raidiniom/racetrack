@@ -74,16 +74,16 @@ const MadeEvents = () => {
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
-                        <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
+                        <li><NavLink to="/create">Create a Race</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
                         <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
 
                 {/* Main Content */}
                 <div className="yourEvents-main-content">
-                    <h2 className="ye">Your Created Events</h2>
+                    <h2 className="ye">Created Races</h2>
 
                     {fetchError && (<p className='error'>{fetchError}</p>)}
 
