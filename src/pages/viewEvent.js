@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/viewevents.css'
 import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
@@ -10,6 +10,8 @@ const ViewEvent = () => {
     const { id } = useParams();
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState(null)
+    const [hasJoined, setHasJoined] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchRaces = async () => {
@@ -27,8 +29,30 @@ const ViewEvent = () => {
             if (data) {
                 setGetraces(data)
                 setFetchError(null)
+
+                const username = localStorage.getItem('lsusername');
+                if (username) {
+                    const { data: user, error: userError } = await supabase
+                        .from('app_users')
+                        .select('user_id')
+                        .eq('username', username)
+                        .single();
+
+                    if (!userError) {
+                        const { data: participant, error: participantError } = await supabase
+                            .from('participant_list')
+                            .select('*')
+                            .eq('from_race', id)
+                            .eq('user_participant', user.user_id)
+                            .single();
+
+                        if (!participantError && participant) {
+                            setHasJoined(true);
+                        }
+                    }
+                }
             }
-        }
+        };
 
         fetchRaces()
     }, [id])
@@ -91,6 +115,7 @@ const ViewEvent = () => {
                     setGetraces(updatedRace);
                     setFetchError(null);
                     alert('Successfully joined the event!');
+                    navigate('/joinedevents');
                 }
             }
         } catch (error) {

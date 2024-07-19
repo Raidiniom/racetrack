@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import supabase from "../config/supabaseclient";
 import { useState } from "react";
 
-const JoinCard = ({ output }) => {
+const JoinCard = ({ output, onLeave }) => {
     const [fetchError, setFetchError] = useState(null);
 
     const handleLeave = async (e) => {
@@ -75,9 +75,6 @@ const JoinCard = ({ output }) => {
                 setFetchError('Error updating participant count!');
                 return;
             }
-
-            // Optionally, refresh the list of joined events or update the UI
-            // You may need to lift the state up to handle this in the parent component
 
             setFetchError(null);
             alert('Successfully canceled participation!');
