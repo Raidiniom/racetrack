@@ -1,6 +1,6 @@
 import { useState } from "react"
 import supabase from "../config/supabaseclient"
-import '../styles/dashboardpage.css'
+import '../styles/searchbar.css'
 
 
 export const SearchR = ({setGetraces, setFetchError}) => {
@@ -33,10 +33,10 @@ export const SearchR = ({setGetraces, setFetchError}) => {
     }
 
     return (
-        <div className="input-container">
+        <div>
             <input 
-                className="input-search"
-                placeholder="Type Race Name to search..." 
+                className="search-input"
+                placeholder="Search for a race..." 
                 value={input} 
                 onChange={handleInput}
             />
