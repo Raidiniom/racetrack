@@ -57,6 +57,7 @@ function App() {
           <Route path="/joinedevents" element={<JoinedEvent />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/:id" element={<UpdateEvent />}/>
+          <Route path="/viewevent/:id" element={<ViewEvent />} />
         </Routes>
       </BrowserRouter>
     </ProvideContext>
