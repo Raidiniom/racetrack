@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/recoverstyle.css'
+import '../styles/recoverpage.css'
+import '../styles/sitestyle.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
@@ -20,7 +21,7 @@ const Recover = () => {
         }
 
         if (forPassword !== newPassword) {
-            setformError('Both Password are not the same!')
+            setformError('Passwords do not match!')
             return
         }
 
@@ -43,58 +44,56 @@ const Recover = () => {
 
     return (
         <div className="wholesite">
-            <div className="whole-recover">
+            <div className="rec-body">
+                {/* Recover Container */}
+                <div className="rec-container">
                     {/* Logo */}
-                    <div className="logo-recover">
-                        <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
+                    <div className="log-logo">
+                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/2_FFFF.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-
-                {/* recover form */}
-                <div className="recover-main-container">
-                    <div className="recover-form-position">
-                        <div className="recover-form-container">
-                            <h2 className="header-recover">Recover</h2>
-
-                            {/* recover form */}
-                            <form className="recover-form" onSubmit={handleSubmit}>
-
-                                {/* input email */}
-                                <label htmlFor="username">Username:</label>
-                                <input 
-                                    type="text" 
-                                    id="foruser" 
-                                    value={forUsername}
-                                    onChange={(e) => setForUsername(e.target.value)}
-                                    required 
-                                />
-
-                                {/* input password */}
-                                <label htmlFor="email">Password:</label>
-                                <input 
-                                    type="password" 
-                                    id="forpass" 
-                                    value={forPassword}
-                                    onChange={(e) => setForPassword(e.target.value)}
-                                    required 
-                                />
-
-                                {/* input new password */}
-                                <label htmlFor="email">New Password:</label>
-                                <input 
-                                    type="password" 
-                                    id="fornewpass" 
-                                    value={newPassword}
-                                    onChange={(e) => setNewPassword(e.target.value)}
-                                    required 
-                                />
-                                
-                                {/* submit */}
-                                <button type="submit" className="recover-button">Submit</button>
-
-                                {formError && <p className='error'>{formError}</p>}
-                            </form>
+                    {/* Recover Form */}
+                    <form className="rec-form" onSubmit={handleSubmit}>
+                        {/* Title */}
+                        <h1 className='title'>Recover Your Account</h1>
+                        <div className='user-details'>
+                            {/* Email */}
+                            <div className='input-box'>
+                                <label className='details'>Username</label>
+                                <input
+                                placeholder='Enter a registered username'
+                                type="text" 
+                                id="foruser" 
+                                value={forUsername}
+                                onChange={(e) => setForUsername(e.target.value)}
+                                required/>  
+                            </div>
+                            {/* Password */}
+                            <div className='input-box'>
+                                <label className='details'>Set New Password</label>
+                                <input
+                                placeholder='Enter new password*'
+                                type="password" 
+                                id="forpass" 
+                                value={forPassword}
+                                onChange={(e) => setForPassword(e.target.value)}
+                                required/>  
+                            </div>
+                            {/* New Password */}
+                            <div className='input-box'>
+                                <label className='details'>Confirm New Password</label>
+                                <input
+                                placeholder='Confirm new password*'
+                                type="password" 
+                                id="fornewpass" 
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                required/>  
+                            </div>
+                            {/* Recover Button */}
+                            <button type="submit" className="recButton">Recover</button>
+                            {formError && <p className='error'>{formError}</p>}
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
