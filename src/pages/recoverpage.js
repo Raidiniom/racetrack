@@ -46,7 +46,7 @@ const Recover = () => {
             <div className="whole-recover">
                     {/* Logo */}
                     <div className="logo-recover">
-                        <img src="\img\RaceTrack Logos\2.png" alt="logo" className="RaceTrack-logo" />
+                        <img src="\img\RaceTrack Logos\l.png" alt="logo" className="RaceTrack-logo" />
                     </div>
 
                 {/* recover form */}

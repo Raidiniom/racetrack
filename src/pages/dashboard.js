@@ -38,7 +38,7 @@ const Dashboard = () => {
             <div class="dashboard">
                 <div class="dashboard-header">
                     <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\2_FF.png" alt="logo" className="RaceTrack-logo" />
+                        <img src="\img\RaceTrack Logos\l_FF.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 
