@@ -150,11 +150,6 @@ body, html {
     color: #000;
 }
 
-.join-card:hover {
-    background-color: #979797;
-    color: #cecece;
-}
-
 .details {
     font-weight: bold;
 }
@@ -198,3 +193,4 @@ body, html {
     background-color: #CB8925;
     color: #d9d9d9;
 }
+

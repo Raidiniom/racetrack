@@ -90,12 +90,16 @@ const Profile = () => {
                                 {getuser && (
                                     <div>
                                         {getuser.map(output => (
-                                            <div className='user-container'>
-                                                <h2>{output.username}</h2>
-                                                <p>Email: {output.email}</p>
-                                                <p>Birthday: {output.birth_day}</p>
-                                                <p>Gender: {output.gender}</p>
+                                            <div className='content-wrap'>
+                                                <div class='user-name'><h2>{output.username}</h2></div>
+                                                <div class='user-container'>
+                                                <img src="img/email-icon.png" alt="icon" class="icon"/>
+                                                <div><label class='user-label'>Email:</label> {output.email}</div>
+                                                <img src="img/bday-icon.png" alt="icon" class="icon"/>          
+                                                <div><label class='user-label'>Birthday:</label> {output.birth_day}</div>
+                                                <div><label class='user-label'>Gender:</label> {output.gender}</div>
                                             </div>
+                                        </div>
                                         ))}
                                     </div>
                                 )}

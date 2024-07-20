@@ -108,8 +108,8 @@ const JoinCard = ({ output, onLeave }) => {
                         <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
                         <img src="img/loc-icon.png" alt="icon" class="icon"/>
                         <div class ="date-details"><label class="date-label">Location:</label> {output.location}</div>
-                        </div>
                     </div>
+                </div>
                     <div>
                         <NavLink to={`/viewevent/${output.race_id}`}>
                             <button className="joinButton">View Event</button>
@@ -117,7 +117,7 @@ const JoinCard = ({ output, onLeave }) => {
                     </div>
                     <div>
                         <button className="joinButton" onClick={handleLeave}>Cancel Participation</button>
-                    </div>
+                </div>
             {fetchError && <p className='error'>{fetchError}</p>}
         </div>
     );
