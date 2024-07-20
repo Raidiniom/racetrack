@@ -24,7 +24,7 @@ function App() {
     <ProvideContext>
       <BrowserRouter>
       {/* Ang nav kay maoy ei comment out para ma wagtang siya sa top sa site */}
-        <nav>
+        {/* <nav>
           <p>Access to all Pages</p>
           <Link to="/">| Dashboard |</Link>
           <Link to="/create">| Create Page |</Link>
@@ -39,7 +39,7 @@ function App() {
           <Link to='/viewevent'>| ViewEvent |</Link>
           <Link to='/updateevent'>| Update your events |</Link>
           <Link to='/joinedevents'>| Joined Events |</Link>
-        </nav>
+        </nav> */}
 
         <Routes>
           <Route path="/" element={<Dashboard />} />

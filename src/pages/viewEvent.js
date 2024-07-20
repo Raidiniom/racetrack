@@ -178,7 +178,7 @@ const ViewEvent = () => {
                                                 <div class ="race-details"><label class="race-label">Maximum Racers:</label> {getraces.capacity}</div>
                                                 <div class ="race-details"><label class="race-label">Location:</label> {getraces.location}</div>
                                                 <img src="/img/participant-icon.png" class="icon"/>
-                                                <div class ="race-details"><label class="race-label">Currently Joined:</label> {getraces.curren_cap}</div>
+                                                <div class ="race-details"><label class="race-label">Currently Joined:</label> {getraces.current_participant}</div>
                                             </div>
                                             <div class="date-container">
                                                 <img src="/img/calendar-icon.png" class="icon"/>
