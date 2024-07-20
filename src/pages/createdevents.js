@@ -93,29 +93,13 @@ const MadeEvents = () => {
                     <h2 className="ye">Created Races</h2>
 
                     {fetchError && (<p className='error'>{fetchError}</p>)}
-
-                    {/* editing here */}
-
                     {getraces && (
                         <div className="container-post">
                                 {getraces.map(output => (
-                                    // <div className="card-ye">
-                                    //         <NavLink to="/updateevent" className="adto">
-                                    //             <div className='user-name-ye'>
-                                    //                 <h3>{output.race_title}</h3>
-                                    //                 <div className='contents-post-ye'>
-                                    //                  <p>{output.race_description}</p>
-                                    //                 </div>
-                                    //             </div>
-                                    //         </NavLink>
-                                    //     </div>
                                     <RaceCard key={output.race_id} output={output} onDelete={handleDelete}/>
                                 ))}
                         </div>
                     )}
-
-                    {/* end edit */}
-
                 </div>
             </div>
         </div>

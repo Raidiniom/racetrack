@@ -19,7 +19,6 @@ const Landingpage = () => {
                         <div className='trial'>              
                             <p className='navbar-buttons'><NavLink to="/tos">Terms of Service</NavLink></p>
                             <p className='navbar-buttons'><NavLink to="/eula">End-User License Agreement</NavLink></p> 
-                            <p className='navbar-buttons'><NavLink to="/aboutus">About Us</NavLink></p> 
                         </div>
                         </div>    
                     </div>
@@ -42,31 +41,6 @@ const Landingpage = () => {
                     </div>
                 </div>
             </div> 
-
-            {/* footer */}
-                {/* <footer className='footer'>
-                    <div className='footer-container'>
-                        <div className='group_ab_tos_eula'>
-                            <NavLink to="/about" className="footer-link">
-                                <li>About Us</li>
-                            </NavLink>
-                            <NavLink to="/terms" className="footer-link">
-                                <li>Terms of Service</li>
-                            </NavLink>
-                            <NavLink to="/eula" className="footer-link">
-                                <li>End-User License Agreement</li>
-                            </NavLink>
-                        </div>
-                        <div className="contact-us">
-                            <p className='contact-us'>Contact Us</p>
-                            <div className="footer-img-container">
-                                <img src="/img/fb.png" alt="Facebook" className="footer-image-fb" />
-                                <img src="/img/IG.png" alt="Instagram" className="footer-image-ig" />
-                                <img src="/img/message.png" alt="Message" className="footer-image-m" />
-                            </div>
-                        </div>
-                    </div>
-                </footer> */}
         </div>
     )
 }
