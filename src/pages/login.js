@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/loginpage.css'
+import '../styles/login-page.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 import { UseUser } from './passuser'
@@ -16,7 +16,7 @@ const Login = () => {
         e.preventDefault()
 
         if (!logUsername || !logPassword) {
-            setformError('Please Fill Out all the fields!')
+            setformError('Please fill in all required fields to proceed.')
             return
         }
 
@@ -26,19 +26,24 @@ const Login = () => {
             .eq('username', logUsername)
 
         if (error) {
-            setformError('Error fetching user data');
+            setformError('Error fetching user data.');
             return;
         }
 
         if (users.length === 0) {
-            setformError('Username not Found');
+            setformError('Username not found.');
             return;
         }
 
         const user = users[0];
 
         if (user.password !== logPassword) {
-            setformError('Incorrect Username or Password!');
+            setformError('Incorrect Password.');
+            return
+        }
+
+        if (user.password !== logPassword) {
+            setformError('Incorrect Password.');
             return
         }
 
@@ -50,50 +55,59 @@ const Login = () => {
     }
 
     return (
-        <div className="wholesite">
             <div className="log-body">
                 <div className="log-container">
-                    <div className="log-logo">
-                        <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    {/* Logo */}
+                    <div>
+                        <NavLink to='/landing'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="log-logo"/></NavLink>
                     </div>
+                    {/* Login Form */}
                     <form onSubmit={handleSubmit}>
-                        <h1 className='title'>Log In</h1>
-                        <div className='user-details'>
-                            <div className='input-box'>
-                                <label className='details'>Username</label>
+                        {/* Title */}
+                        <h1 className='log-title'>Log In</h1>
+                        <div className='log-user-details'>
+                            {/* Username */}
+                            <div className='log-input-box'>
+                                <label className='log-details'>Username:</label>
                                 <input
-                                    placeholder='Enter your username'
+                                    placeholder='Enter your username*'
                                     type='text'
                                     id='inuser'
                                     value={logUsername}
                                     onChange={(e) => setlogUsername(e.target.value)} />
                             </div>
-                            <div className='input-box'>
-                                <label className='details'>Password</label>
+                            {/* Password */}
+                            <div className='log-input-box'>
+                                <label className='log-details'>Password:</label>
                                 <input
-                                    placeholder='Enter your password'
+                                    placeholder='Enter your password*'
                                     type='password'
                                     id='inpass'
                                     value={logPassword}
                                     onChange={(e) => setlogPassword(e.target.value)} />
                             </div>
-                            <button className="logButton" type='submit'>Log In</button>
-                            {formError && <p className='error'>{formError}</p>}
-                            <div className='misc'>
-                                <div className="no-acc">
-                                    <label>Don't have an account?
-                                        <NavLink to="/register" className="log-nav-link">Sign Up</NavLink>
-                                    </label>
+                            <div className='log-misc'>
+                                {/* Login Button */}
+                                <div class='log-button-container'>
+                                    <button class="log-button" type='submit'>Log In</button>
                                 </div>
-                                <div className="rec-acc">
-                                    <NavLink to="/recover" className="log-nav-link">Forgot Password?</NavLink>
+                                <div class='log-nav-wrapper'>
+                                    {/* Navigation Links */}
+                                    <div>
+                                        Don't have an account?<NavLink to="/signup" className="log-nav-link">Sign Up</NavLink>
+                                    </div>
+                                    <div>
+                                        <NavLink to="/recover" className="log-nav-link">Forgot Password?</NavLink>
+                                    </div>
                                 </div>
+                            </div>
+                            <div>
+                                {formError && <p className='error'>{formError}</p>}
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
     )
 }
 

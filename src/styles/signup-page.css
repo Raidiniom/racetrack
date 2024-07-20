@@ -4,68 +4,7 @@
     font-family: 'Poppins';
 }
 
-.wholesite {
-    background-color: rgb(255, 255, 255);
-    background-size: cover;
-}
-
-.testsite {
-    background-color: bisque;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-}
-
-.log {
-    background-color: grey;
-    background-size: cover;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.reg {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.rec {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.crr {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
 /* Body */
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.content-body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-}
-
-/* Register Form */
 .reg-body {
     display: flex;
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
@@ -77,49 +16,56 @@ body, html {
     height: 100vh;
 }
 
+/* Register Form */
+.reg-logo {
+    width: 30%;
+}
+
 .reg-container {
     max-width: 900px;
+    max-height: 700px;
     width: 100%;
-    background: #fff;
-    padding: 25px 30px;
+    background: linear-gradient(#fff, #d9d9d9);
+    padding: 40px 45px;
     border-radius: 5px;
 }
 
-.reg-container .title {
+.reg-container .reg-title {
     font-size: 25px;
     font-weight: 500;
     position: relative;
 }
 
-.reg-container .title::before {
+.reg-container .reg-title::before {
     content: '';
     left: 0;
     bottom: 0;
     position: absolute;
-    height: 3px;
-    width: 50px;
-    background: linear-gradient(#CB8925, #fc9700)
+    height: 4px;
+    width: 100%;
+    background: #434343;
 }
 
-.reg-container form .user-details {
+.reg-container form .reg-user-details {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 15px 0 10px 0;
 }
 
-form .user-details .input-box {
+form .reg-user-details .reg-input-box {
     margin-bottom: 5px;
     width: calc(100% / 2 - 40px);
 }
 
-.user-details .input-box .details {
+.reg-user-details .reg-input-box .reg-details {
     display: block;
+     font-weight: bold;
     font-weight: 500;
     margin-bottom: 0px;
 }
 
-.user-details .input-box input, select {
+.reg-user-details .reg-input-box input, select {
     height: 45px;  
     width: 100%;
     outline: none;
@@ -131,19 +77,18 @@ form .user-details .input-box {
     transition: all 0.3s ease;
 }
 
-.user-details .input-box input:hover, select:hover{
+.reg-user-details .reg-input-box input:hover, select:hover{
     border-color: #ffdfae;
 }
 
-.user-details .input-box input:focus, input:valid, select:focus {
+.reg-user-details .reg-input-box input:focus, input:valid, select:focus {
     border-color: #fc9700;
 }
 
-form .agreements-details .agreements-title {
+form .reg-agreements-details .reg-agreements-title {
     display: flex;
     flex-wrap: wrap;
-    justify-content:last baseline;
-    margin: 20px 0 12px 0;
+    margin: 10px 0 12px 0;
 }
 
 input[type="checkbox"] {
@@ -157,14 +102,15 @@ input[type="checkbox"] {
     margin-left: 5px;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: bold;
+    color: #2c2c2c;
 }
 
 .reg-nav-link:hover {
-    color: #fc9700; 
-    text-decoration: underline;
+    color: #fc9700;
 }
 
-.regButton {
+.reg-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     font-size: 15px; 
@@ -184,12 +130,19 @@ input[type="checkbox"] {
     float: right;
 }
 
-.regButton:hover {
+.reg-button:hover {
     background-color: #CB8925;
     color: #d9d9d9;
 }
 
-.have-acc {
-    margin-left: 279px;
+.reg-misc {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
-

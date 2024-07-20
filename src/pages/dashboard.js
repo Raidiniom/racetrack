@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/dashboardpage.css'
+import '../styles/dashboard-page.css'
 import '../styles/header_and_sidebar.css'
 import '../styles/searchbar.css'
 import { useEffect, useState } from 'react'

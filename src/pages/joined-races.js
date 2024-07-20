@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import '../styles/joinedevents.css';
 import '../styles/header_and_sidebar.css';
-import '../styles/dashboardpage.css';
 import { useEffect, useState } from 'react';
 import supabase from '../config/supabaseclient';
 import JoinCard from '../components/JoinCard';

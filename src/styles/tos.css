@@ -42,6 +42,7 @@ body {
     color: #d2691e;
     margin-bottom: 20px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .tos-content h2 {
@@ -49,6 +50,7 @@ body {
     color: #8b4513;
     margin-top: 20px;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .tos-content h3 {
@@ -56,6 +58,11 @@ body {
     color: #a0522d;
     margin-top: 15px;
     margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.tos-content p {
+    text-align: justify;
 }
 
 .tos-content p {
@@ -64,12 +71,13 @@ body {
 }
 
 .tos-content ul {
-    margin: 10px 0 20px 20px;
+    margin: 10px 0 20px 40px;
     color: #555;
 }
 
 .tos-content ul li {
     margin-bottom: 5px;
+    
 }
 
 .part9 {
@@ -79,19 +87,26 @@ body {
 }
 
 .tos-back-button {
-    padding: 10px 15px;
-    color: #000000;
-    border: none;
-    margin-bottom: 20px;
-    background-color: #ffaf75;
-    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 215px;
+    padding: 12px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
     cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
 }
 
-.tos-back-button a {
-    text-decoration: none;
-    color: #000000;
-    font-weight: bold;
+.tos-back-button:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
 }
 
 .tos-container::-webkit-scrollbar {

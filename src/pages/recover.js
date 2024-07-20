@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/recoverpage.css'
-import '../styles/sitestyle.css'
+import '../styles/recover-page.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
@@ -43,22 +42,20 @@ const Recover = () => {
     }
 
     return (
-        <div className="wholesite">
             <div className="rec-body">
-                {/* Recover Container */}
                 <div className="rec-container">
                     {/* Logo */}
-                    <div className="log-logo">
-                    <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    <div>
+                        <NavLink to='/landingpage'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="rec-logo"/></NavLink>
                     </div>
                     {/* Recover Form */}
-                    <form className="rec-form" onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         {/* Title */}
-                        <h1 className='title'>Recover Your Account</h1>
-                        <div className='user-details'>
+                        <h1 className='rec-title'>Recover Your Account</h1>
+                        <div className='rec-user-details'>
                             {/* Email */}
-                            <div className='input-box'>
-                                <label className='details'>Username</label>
+                            <div className='rec-input-box'>
+                                <label className='rec-details'>Username:</label>
                                 <input
                                 placeholder='Enter a registered username'
                                 type="text" 
@@ -68,8 +65,8 @@ const Recover = () => {
                                 required/>  
                             </div>
                             {/* Password */}
-                            <div className='input-box'>
-                                <label className='details'>Set New Password</label>
+                            <div className='rec-input-box'>
+                                <label className='rec-details'>Set New Password:</label>
                                 <input
                                 placeholder='Enter new password*'
                                 type="password" 
@@ -79,8 +76,8 @@ const Recover = () => {
                                 required/>  
                             </div>
                             {/* New Password */}
-                            <div className='input-box'>
-                                <label className='details'>Confirm New Password</label>
+                            <div className='rec-input-box'>
+                                <label className='rec-details'>Confirm New Password:</label>
                                 <input
                                 placeholder='Confirm new password*'
                                 type="password" 
@@ -90,25 +87,24 @@ const Recover = () => {
                                 required/>  
                             </div>
                             {/* Recover Button */}
-                            <button type="submit" className="recButton">Recover</button>
-                            {formError && <p className='error'>{formError}</p>}
-                            <div className='misc'>
-                                <div className="no-acc">
-                                    <label className>Don't have an account?
-                                        <NavLink to="/register" className="rec-nav-link">Sign Up</NavLink>
-                                    </label> 
+                            <div class='rec-button-container'>
+                                <button type="submit" className="rec-button">Recover</button>
+                            </div>
+                            <div className='rec-misc'>
+                                <div>
+                                    Don't have an account?<NavLink to="/signup" className="rec-nav-link">Sign Up</NavLink>
                                 </div> 
-                                <div className="rec-acc">
-                                    <label className>Remembered Your Password?
-                                        <NavLink to="/login" className="rec-nav-link">Log In</NavLink>
-                                    </label>
+                                <div>
+                                    Already have an account?<NavLink to="/login" className="rec-nav-link">Log In</NavLink>       
                                 </div>
+                            </div>
+                            <div>
+                                {formError && <p className='error'>{formError}</p>}
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
     )
 }
 

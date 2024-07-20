@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    font-family: 'Poppins';
+}
+/* Body */
+.rec-body {
+    display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 100vh;
+}
+/* Recover Form */
+.rec-logo {
+    width: 50%;
+}
+
+.rec-container {
+    max-width: 650px;
+    max-height: 600px;
+    width: 100%;
+    background: linear-gradient(#fff, #d9d9d9);
+    padding: 40px 45px;
+    border-radius: 5px;
+}
+
+.rec-container .rec-title {
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.rec-container .rec-title::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #434343;
+}
+
+.rec-container form .rec-user-details {
+    display: block;
+    margin: 20px 0 12px 0;
+}
+
+form .rec-user-details .rec-input-box {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.rec-user-details .rec-input-box .rec-details {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.rec-user-details .rec-input-box input {
+    height: 45px;  
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.rec-user-details .rec-input-box input:hover, select:hover{
+    border-color: #ffdfae;
+}
+
+.rec-user-details .rec-input-box input:focus, input:valid, select:focus {
+    border-color: #fc9700;
+}
+
+.rec-nav-link {
+    margin-left: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+.rec-nav-link:hover {
+    color: #fc9700; 
+}
+
+.rec-button {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    float: right;
+    transition: 0.3s;
+}
+
+.rec-button:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
+}
+
+.rec-misc {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rec-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%
+}
+
+.rec-nav-wrapper {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 50%;
+    width: 100%
+}
+
+
+
