@@ -24,6 +24,7 @@ const UpdateEvent = () => {
     const [minage, setMinage] = useState('')
     const [maxage, setMaxage] = useState('')
     const [trackkm, setTrackkm] = useState('')
+    const [location, setLocation] = useState('')
 
     useEffect(() => {
         console.log('Fetching race with id:', id);
@@ -105,7 +106,8 @@ const UpdateEvent = () => {
                 min_age: minage, 
                 max_age: maxage, 
                 race_distance: trackkm,
-                race_creator: racemaker
+                race_creator: racemaker,
+                location: location
             })
             // .select('*')
             .eq('race_id',id);
@@ -119,13 +121,6 @@ const UpdateEvent = () => {
                 setFormError(null)
                 closeModal();
             }
-            // if (data){
-            //     console.log(data)
-            //     setFormError(null)
-            //     //new
-            //     navigate('/madeevents');
-                
-            // }
     }
 
     return (
@@ -187,30 +182,6 @@ const UpdateEvent = () => {
                                             </div>
                                             )}
 
-                                        {/* <h2 className="listttt">Participant List</h2>
-                                        <div className="participant-list">
-                                            <div className="columns">
-                                                <div className="two-column">
-                                                    <p>Participant 1</p>
-                                                    <p>Participant 2</p>
-                                                    <p>Participant 3</p>
-                                                    <p>Participant 4</p>
-                                                    <p>Participant 5</p>
-                                                    <p>Participant 6</p>
-                                                    <p>Participant 2</p>
-                                                    <p>Participant 3</p>
-                                                    <p>Participant 4</p>
-                                                    <p>Participant 5</p>
-                                                    <p>Participant 6</p>
-                                                    <p>Participant 2</p>
-                                                    <p>Participant 3</p>
-                                                    <p>Participant 4</p>
-                                                    <p>Participant 5</p>
-                                                    <p>Participant 6</p>
-                                                    <p>Participant 6</p>
-                                                </div>
-                                            </div>
-                                        </div> */}
                                         <div className="details-event-part2">
                                             <button className="update-event" onClick={openModal}>Update Event</button>
                                         </div>
@@ -296,6 +267,15 @@ const UpdateEvent = () => {
                                     id="trackkm" 
                                     value={trackkm}  
                                     onChange={(e) => setTrackkm(e.target.value)}
+                                    />
+
+                                <label className='details'>Location:</label>
+                                <input
+                                    placeholder='Enter race location'
+                                    type="text"
+                                    id="location"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
                                     />
 
                                 <button type="submit">Update</button>

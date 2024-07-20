@@ -8,7 +8,6 @@ import supabase from "../config/supabaseclient"
 const Profile = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getuser, setGetuser ] = useState(null)
-    /* I's using localstorage so when the user refreshes the page the details will still display */
 
     useEffect(() => {
         const fetchUser = async () => {
