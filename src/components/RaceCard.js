@@ -1,33 +1,40 @@
 import { NavLink } from "react-router-dom"
 import supabase from "../config/supabaseclient"
 
-const RaceCard = ({output}) => {
-
+const RaceCard = ({ output, onDelete }) => {
     const handleDelete = async () => {
+        try {
+            // Delete related data first
+            const { error: relatedError } = await supabase
+                .from('race_create_by')
+                .delete()
+                .eq('what_race', output.race_id);
 
-        const { data: relatedData, error: relatedError } = await supabase
-        .from('race_create_by')
-        .delete()
-        .eq('what_race', output.race_id);
+            if (relatedError) {
+                console.log(relatedError);
+                return;
+            }
 
-    if (relatedError) {
-        console.log(relatedError);
-        return;
-    }
+            // Delete the race
+            const { data, error } = await supabase
+                .from('user_created_race')
+                .delete()
+                .eq('race_id', output.race_id);
 
-        const { data, error } = await supabase
-        .from('user_created_race')
-        .delete()
-        .eq('race_id', output.race_id)
+            if (error) {
+                console.log(error);
+                return;
+            }
 
-        if(error) {
-            console.log(error)
+            console.log(data);
+
+            // Call the onDelete callback to refresh the parent component
+            if (onDelete) onDelete();
+
+        } catch (error) {
+            console.error('Error deleting race:', error);
         }
-
-        if(data) {
-            console.log(data)
-        }
-    }
+    };
 
     return (
         <div className="ye-card">

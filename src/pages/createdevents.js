@@ -11,6 +11,7 @@ import RaceCard from '../components/RaceCard'
 const MadeEvents = () => {
     const [fetchError, setFetchError] = useState(null)
     const [getraces, setGetraces] = useState(null)
+    const [refresh, setRefresh] = useState(false);
 
     const raceCreator = localStorage.getItem('lsusername')
 
@@ -54,11 +55,17 @@ const MadeEvents = () => {
         }
 
         fetchRaces()
-    }, [raceCreator])
+    }, [raceCreator, refresh])
 
     const handleLogout = () => {
         localStorage.removeItem('lsusername')
     }
+
+    const handleDelete = () => {
+        // Trigger re-fetch by updating `refresh` state
+        setRefresh(prev => !prev);
+    };
+
 
     return (
         <div className="wholesite">
@@ -102,7 +109,7 @@ const MadeEvents = () => {
                                     //             </div>
                                     //         </NavLink>
                                     //     </div>
-                                    <RaceCard key={output.race_id} output={output}/>
+                                    <RaceCard key={output.race_id} output={output} onDelete={handleDelete}/>
                                 ))}
                         </div>
                     )}
