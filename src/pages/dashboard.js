@@ -8,7 +8,7 @@ import supabase from '../config/supabaseclient'
 import DashCard from '../components/DashCard'
 import { SearchR } from '../components/Searching'
 
-const Dashboard = () => {
+const Dashboard = ({token}) => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState([])
 
@@ -32,31 +32,38 @@ const Dashboard = () => {
         fetchRaces()
     }, [])
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        sessionStorage.removeItem('token')
+
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/'
+        }
     }
 
     return (
-            <div class="dashb-body">
+            <div className="dashb-body">
                 {/* Headerbar */}
-                <div class="dashb-headerbar">
+                <div className="dashb-headerbar">
                     <div className="dashb-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                     </div>
                 {/* Sidebar */}
-                <div class="dashb-sidebar">
+                <div className="dashb-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
                         <li><NavLink to="/create-race">Create a Race</NavLink></li>
                         <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
+                        <li><NavLink to="/" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
                 {/* Main Content */}
                 <div className="dashb-main-content">
-                    <div class='dashb-main-content-header'>
+                    <div className='dashb-main-content-header'>
                         <h2>Available Races</h2>
                         {/* Search Bar */}
                         <div>

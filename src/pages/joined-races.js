@@ -69,9 +69,16 @@ const JoinedEvent = () => {
         fetchJoinedRaces();
     }, [username, refresh]);
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername');
-    };
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        sessionStorage.removeItem('token')
+
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/'
+        }
+    }
 
     const handleCancel = () => {
         // Trigger re-fetch by updating `refresh` state
@@ -102,7 +109,7 @@ const JoinedEvent = () => {
                 </div>
 
                 {/* Main Content */}
-                <div class="joinEvents-main-content">
+                <div className="joinEvents-main-content">
                     <h2>Joined Events</h2>
                     {/* Events Display */}
                     <div className="main-container-dashboard">

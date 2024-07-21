@@ -22,27 +22,48 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const {data, error} = await supabase
+        if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
+            setformError('Please Fill Out all the fields!')
+            return
+        }
+
+        if (regPassword !== regConfirmPassword) {
+            setformError('Password does not Match Try Again!')
+            return
+        }
+
+        try {
+            const { data: auth, error: noauth } = await supabase.auth.signUp({
+                email: regEmail,
+                password: regPassword,
+                options: {
+                    data: {
+                        full_name: regUsername
+                    }
+                }
+            });
+        
+            if (noauth) throw noauth;
+            
+            console.log(auth)
+            alert('Check Your Email Inbox for Account Verification!!!');
+
+            redirect('/login')
+        } catch (noauth) {
+            alert(noauth);
+        }
+        
+
+        const {data: udetails, error: nodetails} = await supabase
           .from('app_users')
           .insert({
             display_name: regNickname,
             username: regUsername,
-            password: regPassword,
             email: regEmail,
             birth_day: regBDay,
             gender: regGender
           })
           .select('*')
-
-          if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
-            setformError('Please Fill Out all the fields!')
-            return
-        }
-        
-        if (regPassword !== regConfirmPassword) {
-            setformError('Password does not Match Try Again!')
-            return
-        }
 
           setformError('You Successfuly Registered')
           redirect('/login')

@@ -88,7 +88,7 @@ const Recover = () => {
                                 required/>  
                             </div>
                             {/* Recover Button */}
-                            <div class='rec-button-container'>
+                            <div className='rec-button-container'>
                                 <button type="submit" className="rec-button">Recover</button>
                             </div>
                             <div className='rec-misc'>

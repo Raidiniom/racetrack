@@ -57,8 +57,15 @@ const MadeEvents = () => {
         fetchRaces()
     }, [raceCreator, refresh])
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        sessionStorage.removeItem('token')
+
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/'
+        }
     }
 
     const handleDelete = () => {
@@ -70,14 +77,14 @@ const MadeEvents = () => {
     return (
         <div className="wholesite">
             <div className="yourEvents">
-                <div class="dashboard-header">
+                <div className="dashboard-header">
                     <div className="dash-logo">
                         <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 
                 {/* Sidebar */}
-                <div class="dashboard-sidebar">
+                <div className="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/dashboard">Dashboard</NavLink></li>

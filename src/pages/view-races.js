@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import supabase from '../config/supabaseclient'
 
-const ViewEvent = () => {
+const ViewEvent = ({token}) => {
     // naay ny join feature 
     const { id } = useParams();
     const [ fetchError, setFetchError ] = useState(null)
@@ -125,8 +125,15 @@ const ViewEvent = () => {
     };
 
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        sessionStorage.removeItem('token')
+
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/'
+        }
     }
 
     return (

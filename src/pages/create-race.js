@@ -81,21 +81,28 @@ const Db = () => {
         redirect('/madeevents');
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        sessionStorage.removeItem('token')
+
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/'
+        }
     }
 
-        return (
+    return (
             <div className="wholesite">
-                <div class="makeEvents">
-                <div class="dashboard-header">
+                <div className="makeEvents">
+                <div className="dashboard-header">
                     <div className="dash-logo">
                         <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
 
                 {/* Sidebar */}
-                <div class="dashboard-sidebar">
+                <div className="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/dashboard">Dashboard</NavLink></li>
@@ -207,14 +214,14 @@ const Db = () => {
                                 required />
                         </div>
                          {/* Create Race Button */}
-                         <button className="crtButton">Create Race</button>
-                        {formError && <p className="errors">{formError}</p>}
-                    </div>
+                            <button className="crtButton">Create Race</button>
+                            {formError && <p className="errors">{formError}</p>}
+                        </div>
                 </form>
             </div>
         </div>
         
-        )
+    )
     
 }
 
