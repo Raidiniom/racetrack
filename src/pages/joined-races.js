@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import '../styles/joinedevents.css';
+import '../styles/joined-races.css';
 import '../styles/header_and_sidebar.css';
 import { useEffect, useState } from 'react';
 import supabase from '../config/supabaseclient';
@@ -79,36 +79,35 @@ const JoinedEvent = () => {
         setRefresh(prev => !prev);
     };
 
-
     return (
-        <div className="wholesite">
-            <div className="joinEvents">
-                <div className="dashboard-header">
-                    <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
+            <div className="joinedraces-body">
+                {/* Headerbar */}
+                <div class="gen-headerbar">
+                    <div className="gen-headerbar-logo">
+                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
-
                 {/* Sidebar */}
-                <div className="dashboard-sidebar">
+                <div class="gen-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
-                        <li><NavLink to="/create">Create a Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
+                        <li><NavLink to="/created-races">Your Races</NavLink></li>
+                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
+                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
-
                 {/* Main Content */}
-                <div class="joinEvents-main-content">
-                    <h2>Joined Events</h2>
-                    {/* Events Display */}
-                    <div className="main-container-dashboard">
+                <div class="joinedraces-main-content">
+                    <div class='dashb-main-content-header'>
+                        <h2>Available Races</h2>
+                    </div> 
+                    {/* Joined Races Display */}
+                    <div className="joinedraces-main-container">
                         {fetchError && (<p className='error'>{fetchError}</p>)}
                         {joinedRaces && (
-                            <div className="container-post">
+                            <div>
                                 {joinedRaces.map(race => (
                                     <JoinCard key={race.race_id} output={race} onLeave={handleCancel} />
                                 ))}
@@ -117,7 +116,6 @@ const JoinedEvent = () => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 

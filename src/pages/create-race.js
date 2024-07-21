@@ -1,9 +1,9 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/createpage.css'
+import '../styles/create-page.css'
 import '../styles/header_and_sidebar.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
-// Old Create Race JS Page
+
 const Db = () => {
 
     const [racetitle, setRacetitle] = useState('')
@@ -111,8 +111,7 @@ const handleLogout = () => {
 }
 
         return (
-            <div className="wholesite">
-                <div class="makeEvents">
+            <div class="createrace-body">
                 <div class="dashboard-header">
                     <div className="dash-logo">
                         <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
@@ -237,7 +236,7 @@ const handleLogout = () => {
                     </div>
                 </form>
             </div>
-        </div>
+
         
         )
     

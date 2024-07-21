@@ -39,18 +39,19 @@ const Dashboard = () => {
     return (
             <div class="dashb-body">
                 {/* Headerbar */}
-                <div class="dashb-headerbar">
-                    <div className="dashb-logo">
+                <div class="gen-headerbar">
+                    <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-                    </div>
+                </div>
                 {/* Sidebar */}
-                <div class="dashb-sidebar">
+                <div class="gen-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
                         <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
+                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
                         <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
@@ -63,7 +64,7 @@ const Dashboard = () => {
                             <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
                         </div> 
                     </div>  
-                    {/* Events Display */}
+                    {/* Available Races Display */}
                     <div className="dashb-main-container">
                         {fetchError && (<p className='error'>{fetchError}</p>)}
                         {getraces && (
