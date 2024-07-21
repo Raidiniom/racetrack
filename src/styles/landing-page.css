@@ -1,61 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.wholesite {
-    /* background-color: bisque; */
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.testsite {
-    background-color: bisque;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-}
-
-.log {
-    background-color: grey;
-    background-size: cover;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.reg {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.rec {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
-.crr {
-    background-color: grey;
-    background-size: cover;
-    margin-top: 20px;
-    width: 600px;
-    height: 200px;
-    color: white;
-}
-
 /* Body */
-
 body, html {
     height: 100%;
     margin: 0;
@@ -69,8 +12,8 @@ body, html {
     height: 100vh;
 } 
 
-/* header bar */
-.nav-bar {
+/* Header Bar */
+.header-bar-container {
     width: 85%;
     margin: auto;
     display: flex;
@@ -79,11 +22,15 @@ body, html {
     padding: 35px 0;
 }
 
-.RaceTrack-logo {
+.header-bar-wrapper {
+    display: flex;
+}
+
+.header-bar-logo {
     width: 50%;
 }
 
-.navbar-buttons {
+.header-buttons {
     list-style-type: none;
     display: inline-block;
     gap: 20px; 
@@ -91,7 +38,7 @@ body, html {
     margin-top: 25px;
 }
 
-.navbar-buttons a {
+.header-buttons a {
     font-weight: bold;
     font-family: 'Segoe UI';
     text-decoration: none;
@@ -100,7 +47,7 @@ body, html {
     position: relative; /* Added to allow pseudo-element positioning */
 }
 
-.navbar-buttons a::after {
+.header-buttons a::after {
     content: '';
     height: 3px;
     width: 0;
@@ -111,27 +58,12 @@ body, html {
     transition: 0.5s;
 }
 
-.navbar-buttons a:hover::after {
+.header-buttons a:hover::after {
     width: 100%;
 }
 
-.button {
-    color: #000000;
-    border: none;
-    padding: 6px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.dasokan {
-    display: flex;
-}
-
-/* content */
-
-.content {
+/* Content */
+.content-container {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -140,12 +72,12 @@ body, html {
     color:  #fff;
 }
 
-.content h1 {
+.content-container h1 {
     font-size: 70px;
     margin-top: 80px;
 }
 
-.content p {
+.content-container p {
     margin: 20px auto; 
     font-size: 17px;
     font-weight: 180;
