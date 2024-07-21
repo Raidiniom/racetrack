@@ -2,6 +2,7 @@
 
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/signup-page.css'
+import '../styles/errors.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
@@ -154,10 +155,10 @@ const Register = () => {
                                 <div>
                                     Already have an account?<NavLink to="/login" className="reg-nav-link">Login</NavLink>
                                 </div> 
+                                <div>
+                                    {formError && <p className='error'>{formError}</p>}
+                                </div> 
                             </div>
-                            <div>
-                                {formError && <p className='error'>{formError}</p>}
-                            </div> 
                         </div> 
                     </form>
                 </div>
