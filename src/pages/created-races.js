@@ -88,7 +88,7 @@ const MadeEvents = () => {
                 </div>
                 {/* Main Content */}
                 <div className="createdr-main-content">
-                    <div class='createdr-main-content-header'>
+                    <div className='createdr-main-content-header'>
                         <h2>Your Races</h2>
                     </div> 
                 {/* Created Races Display */}
