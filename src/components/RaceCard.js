@@ -9,20 +9,42 @@ const RaceCard = ({ output, onDelete }) => {
 
              // Fetch participants of the race
              const { data: participants, error: participantsError } = await supabase
-             .from('participant_list')
-             .select('user_participant')
-             .eq('from_race', output.race_id);
+                .from('participant_list')
+                .select('list_id, user_participant')
+                .eq('from_race', output.race_id);
 
          if (participantsError) {
              console.log(participantsError);
              return;
          }
-         
-            // Delete related data first
-            const { error: relatedError } = await supabase
-                .from('race_create_by')
+
+         console.log('Fetched participants:', participants);
+
+         // Delete participants first
+         if (participants && participants.length > 0) {
+            const participantIds = participants.map(participant => participant.list_id);
+
+            if (participantIds.includes(undefined)) {
+                console.error('Some participant IDs are undefined:', participantIds);
+                return;
+            }
+
+            const { error: deleteParticipantsError } = await supabase
+                .from('participant_list')
                 .delete()
-                .eq('what_race', output.race_id);
+                .in('list_id', participantIds);
+
+            if (deleteParticipantsError) {
+                console.log(deleteParticipantsError);
+                return;
+            }
+        }
+         
+            // Delete related data
+            const { error: relatedError } = await supabase
+                .from('user_created_race')
+                .delete()
+                .eq('race_id', output.race_id);
 
             if (relatedError) {
                 console.log(relatedError);
@@ -50,7 +72,7 @@ const RaceCard = ({ output, onDelete }) => {
                 }));
 
                 const { error: notificationsError } = await supabase
-                    .from('notifications')
+                    .from('notification')
                     .insert(notifications);
 
                 if (notificationsError) {

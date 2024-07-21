@@ -24,7 +24,8 @@
 
 .gen-sidebar {
     background-color:#CB8925;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
     height: 100%;
 }
 
