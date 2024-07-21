@@ -1,4 +1,4 @@
-.dashb-body, .yourEvents, .viewEvents, .joinEvents, .makeEvents {
+.dashb-body, .createdr-body, .viewraces-body, .joinedraces-body, .cr-body, .pf-body, .updatec-body {
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-columns: 210px 1fr;
@@ -8,7 +8,7 @@
     height: 100vh;
 }
 
-.dashb-headerbar {
+.gen-headerbar {
     grid-area: header;
     background-color: #333333;
     color: rgb(0, 0, 0);
@@ -16,71 +16,86 @@
     align-items: center;
 }
 
-.dashb-logo img {
+.gen-headerbar-logo img {
     width: 200px;
     padding: 10px;
     cursor: pointer;
 }
 
-.dashb-sidebar {
+.gen-sidebar {
     background-color:#CB8925;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
     height: 100%;
 }
 
-.dashb-sidebar ul {
+.gen-sidebar ul {
     list-style: none;
+    margin: 0%;
+    padding: 0%;
+    width: inherit;
 }
 
-.dashb-sidebar ul li {
+.gen-sidebar ul li {
     cursor: pointer;
     text-align: center;
     color: #1C1C1C;
     font-size: 16px;
     padding: 10px;
     transition: all 0.3s;
-    width: 100%;
+    width: 90%;
     font-weight: bold;
     border-bottom: 1px solid #00000000;
     border-top: 1px solid #00000000;
+    position: relative;
 }
 
-.dashb-sidebar ul li {
+.gen-sidebar ul li {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-.dashb-sidebar ul li:after {
+.gen-sidebar ul li a {
+    display: block;
+    width: 100%;
+    height: 100%; 
+    padding: 0;
+    box-sizing: border-box; 
+    text-decoration: none;
+    color: inherit;
+}
+
+.gen-sidebar ul li:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
     top: 0;
     font-size: 35px;
     margin-right: 30px;
-    margin-top: 5px;
+    margin-top: 3px;
     right: -20px;
-    transition: 0.3s;
 }
 
-.dashb-sidebar ul li:hover {
+.gen-sidebar ul li:hover {
+    padding-right: 25px;
     padding-right: 25px;
 }
 
-.dashb-sidebar ul li:hover:after {
+.gen-sidebar ul li:hover:after {
     opacity: 1;
     right: 0;
 }
 
-.dashb-sidebar ul li:hover {
+.gen-sidebar ul li:hover {
     background-color: #b76416;
     border-bottom: 1px solid #000000;
     border-top: 1px solid #000000;
     color: #d0d0d0;
 }
 
-.dashb-sidebar ul li a {
+.gen-sidebar ul li a {
     text-decoration: none;
     width: 100%; 
     height: 100%; 

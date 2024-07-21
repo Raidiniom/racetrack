@@ -1,7 +1,8 @@
 //import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom'
-import '../styles/viewevents.css';
+import '../styles/update-race.css'
 import '../styles/header_and_sidebar.css'
+import '../styles/errors.css'
 import supabase from "../config/supabaseclient"
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -133,21 +134,20 @@ const UpdateEvent = () => {
     return (
         <div className="wholesite">
             <div className="viewEvents">
-            <div className="dashboard-header">
+            <div class="dashboard-header">
                     <div className="dash-logo">
                         <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
-
                 {/* Sidebar */}
-                <div className="dashboard-sidebar">
+                <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
-                        <li><NavLink to="/create">Create Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
+                        <li><NavLink to="/created-races">Your Races</NavLink></li>
+                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
+                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
 
@@ -168,23 +168,23 @@ const UpdateEvent = () => {
                                             {fetchError && (<p className='error'>{fetchError}</p>)}
                                             {getraces && (
                                                 <div className="details-event-part1">
-                                                <h2 className='race-title'>{getraces.race_title}</h2>
-                                                <p className='desc'>{getraces.race_description}</p>
-                                                <div className="race-container">
-                                                    <img src="/img/agereq-icon.png" className="icon"/>
-                                                    <div className ="race-details"><label className="race-label">Age Requirement:</label> {getraces.min_age} - {getraces.max_age} years old</div>
-                                                    <img src="/img/distance-icon.png" className="icon"/>
-                                                    <div className ="race-details"><label className="race-label">Race Distance:</label> {getraces.race_distance} KM</div>
-                                                    <img src="/img/capacity-icon.png" className="icon"/>
-                                                    <div className ="race-details"><label className="race-label">Maximum Racers:</label> {getraces.capacity}</div>
-                                                    <div className ="race-details"><label className="race-label">Location:</label> {getraces.location}</div>
-                                                    <img src="/img/participant-icon.png" className="icon"/>
-                                                    <div className ="race-details"><label className="race-label">Currently Joined:</label> {getraces.curren_cap}</div>
+                                                <h2 class='race-title'>{getraces.race_title}</h2>
+                                                <p class='desc'>{getraces.race_description}</p>
+                                                <div class="race-container">
+                                                    <img src="/img/agereq-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Age Requirement:</label> {getraces.min_age} - {getraces.max_age} years old</div>
+                                                    <img src="/img/distance-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Race Distance:</label> {getraces.race_distance} KM</div>
+                                                    <img src="/img/capacity-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Maximum Racers:</label> {getraces.capacity}</div>
+                                                    <div class ="race-details"><label class="race-label">Location:</label> {getraces.location}</div>
+                                                    <img src="/img/participant-icon.png" class="icon"/>
+                                                    <div class ="race-details"><label class="race-label">Currently Joined:</label> {getraces.curren_cap}</div>
                                                 </div>
-                                                <div className="date-container">
-                                                    <img src="/img/calendar-icon.png" className="icon"/>
-                                                    <div className ="date-details"><label className="date-label">Start Date:</label> {getraces.start_date}</div>
-                                                    <div className ="date-details"><label className="date-label">Registration Date:</label> {getraces.registration_date}</div>
+                                                <div class="date-container">
+                                                    <img src="/img/calendar-icon.png" class="icon"/>
+                                                    <div class ="date-details"><label class="date-label">Start Date:</label> {getraces.start_date}</div>
+                                                    <div class ="date-details"><label class="date-label">Registration Date:</label> {getraces.registration_date}</div>
                                             </div>
                                             </div>
                                             )}
@@ -193,11 +193,13 @@ const UpdateEvent = () => {
                                             <button className="update-event" onClick={openModal}>Update Event</button>
                                         </div>
                                     </div>
+                                    <div className="update-button-container">
+                                        <button className="update-event-button" onClick={openModal}>Update Event</button>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
-                </div>
                 {isModalOpen && (
                     <div className="modal">
                         <div className="modal-content">
@@ -293,7 +295,6 @@ const UpdateEvent = () => {
                         </div>
                     </div>
                 )}
-            </div>
         </div>
     );
 };

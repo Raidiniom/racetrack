@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/dashboard-page.css'
 import '../styles/header_and_sidebar.css'
+import '../styles/errors.css'
 import '../styles/searchbar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
@@ -46,19 +47,21 @@ const Dashboard = ({token}) => {
     return (
             <div className="dashb-body">
                 {/* Headerbar */}
-                <div className="dashb-headerbar">
+                <div class="dashb-headerbar">
                     <div className="dashb-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-                    </div>
+                </div>
                 {/* Sidebar */}
-                <div className="dashb-sidebar">
+                <div class="dashb-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
+                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
                         <li><NavLink to="/create-race">Create a Race</NavLink></li>
                         <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/" onClick={handleLogout}>Log Out</NavLink></li>
+                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
                 {/* Main Content */}
@@ -70,9 +73,9 @@ const Dashboard = ({token}) => {
                             <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
                         </div> 
                     </div>  
-                    {/* Events Display */}
+                    {/* Available Races Display */}
                     <div className="dashb-main-container">
-                        {fetchError && (<p className='error'>{fetchError}</p>)}
+                        {fetchError && getraces.length === 0 && (<p className='error'>{fetchError}</p>)}
                         {getraces && (
                             <div>
                                 {getraces.map(output => (

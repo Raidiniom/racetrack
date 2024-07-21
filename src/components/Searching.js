@@ -13,7 +13,7 @@ export const SearchR = ({setGetraces, setFetchError}) => {
         .select('*')
         .ilike('race_title', `%${value}%`)
 
-        if (noData) {
+        if (noData || findData.length === 0) {
             setFetchError('No Races Found...')
             setGetraces([])
         } else {
