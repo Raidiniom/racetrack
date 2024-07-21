@@ -93,7 +93,7 @@ const JoinedEvent = () => {
                 <div className="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/">Dashboard</NavLink></li>
+                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Races</NavLink></li>
                         <li><NavLink to="/create">Create a Race</NavLink></li>
                         <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
