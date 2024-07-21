@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import supabase from '../config/supabaseclient'
 //hello
 const ViewEvent = () => {
+    // naay ny join feature 
     const { id } = useParams();
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState(null)
@@ -137,7 +138,7 @@ const ViewEvent = () => {
                     </div>
                 </div>
                 {/* Sidebar */}
-                <div class="gen-sidebar">
+                <div className="gen-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>

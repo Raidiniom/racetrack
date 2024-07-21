@@ -10,6 +10,8 @@ import supabase from '../config/supabaseclient'
 import DashCard from '../components/DashCard'
 import { SearchR } from '../components/Searching'
 
+// ASDASDASDASDASDASD
+
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState([])
@@ -41,19 +43,20 @@ const Dashboard = () => {
     return (
             <div class="dashb-body">
                 {/* Headerbar */}
-                <div class="gen-headerbar">
-                    <div className="gen-headerbar-logo">
+                <div class="dashb-headerbar">
+                    <div className="dashb-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
                 {/* Sidebar */}
-                <div class="gen-sidebar">
+                <div class="dashb-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
                         <li><NavLink to="/joined-races">Joined Races</NavLink></li>
                         <li><NavLink to="/dashboard">Join a Race</NavLink></li>
                         <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
                         <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>

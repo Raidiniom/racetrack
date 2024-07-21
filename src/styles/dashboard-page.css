@@ -11,7 +11,6 @@
 /* Content */
 .dashb-main-content {
     grid-area: main;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -145,5 +144,4 @@
     background-color: #CB8925;
     color: #d9d9d9;
 }
-
 

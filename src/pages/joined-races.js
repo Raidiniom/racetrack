@@ -88,7 +88,7 @@ const JoinedEvent = () => {
                     </div>
                 </div>
                 {/* Sidebar */}
-                <div class="gen-sidebar">
+                <div className="gen-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
@@ -99,12 +99,10 @@ const JoinedEvent = () => {
                     </ul>
                 </div>
                 {/* Main Content */}
-                <div class="joinedraces-main-content">
-                    <div class='dashb-main-content-header'>
-                        <h2>Available Races</h2>
-                    </div> 
-                    {/* Joined Races Display */}
-                    <div className="joinedraces-main-container">
+                <div class="joinEvents-main-content">
+                    <h2>Joined Events</h2>
+                    {/* Events Display */}
+                    <div className="main-container-dashboard">
                         {fetchError && (<p className='error'>{fetchError}</p>)}
                         {joinedRaces && (
                             <div>
