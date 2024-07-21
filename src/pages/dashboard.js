@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/dashboard-page.css'
 import '../styles/header_and_sidebar.css'
+import '../styles/errors.css'
 import '../styles/searchbar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
@@ -66,7 +67,7 @@ const Dashboard = () => {
                     </div>  
                     {/* Available Races Display */}
                     <div className="dashb-main-container">
-                        {fetchError && (<p className='error'>{fetchError}</p>)}
+                        {fetchError && getraces.length === 0 && (<p className='error'>{fetchError}</p>)}
                         {getraces && (
                             <div>
                                 {getraces.map(output => (

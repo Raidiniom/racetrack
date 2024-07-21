@@ -108,7 +108,7 @@ const UpdateEvent = () => {
                 race_creator: racemaker,
                 location: location
             })
-            // .select('*')
+
             .eq('race_id',id);
 
 
@@ -135,7 +135,7 @@ const UpdateEvent = () => {
                 <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/">Dashboard</NavLink></li>
+                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                         <li><NavLink to="/madeevents">Your Events</NavLink></li>
                         <li><NavLink to="/create">Create Race</NavLink></li>
                         <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
