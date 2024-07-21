@@ -57,60 +57,10 @@ const Profile = () => {
         <div className="pf-body">
             {/* Headerbar */}
             <div class="gen-headerbar">
-                <div className="gen-headerbar-logo">
-                    <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                </div>
-
-                {/* Sidebar */}
-                <div class="dashboard-sidebar">
-                    <ul>
-                        <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
-                        <li><NavLink to="/create">Create A Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
-                    </ul>
-                </div>
-
-            <div className="bkuf">
-                <div className="profile-container">
-                    <div className="profile-header">
-                        <h1>User Profile</h1>
-                    </div>
-                    <div className="profile-content">
-                        <div className="profile-picture">
-                            <img src="\img\Default Img\defaultpfp.jpg" alt="Profile Picture" />
-                        </div>
-                        <div className="profile-info">
-                            <div className="info">
-                                {fetchError && (<p className='error'>{fetchError}</p>)}
-                                {getuser && (
-                                    <div>
-                                        {getuser.map(output => (
-                                            <div className='content-wrap'>
-                                                <div class='user-name'><h2>{output.username}</h2></div>
-                                                <div class='user-container'>
-                                                <img src="img/email-icon.png" alt="icon" class="icon"/>
-                                                <div><label class='user-label'>Email:</label> {output.email}</div>
-                                                <img src="img/bday-icon.png" alt="icon" class="icon"/>          
-                                                <div><label class='user-label'>Birthday:</label> {output.birth_day}</div>
-                                                <div><label class='user-label'>Gender:</label> {output.gender}</div>
-                                            </div>
-                                        </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="buttons">
-                                <button className="edit-button" onClick={openModal}>Update Profile</button>
-                            </div>
-                        </div>
+                    <div className="gen-headerbar-logo">
+                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
-            </div>
-            </div>
             {/* Sidebar */}
             <div class="gen-sidebar">
                 <ul>
