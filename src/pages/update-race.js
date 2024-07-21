@@ -1,8 +1,6 @@
 //import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom'
-import '../styles/update-race.css'
 import '../styles/header_and_sidebar.css'
-import '../styles/errors.css'
 import supabase from "../config/supabaseclient"
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -132,15 +130,16 @@ const UpdateEvent = () => {
                         <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
                     </div>
                 </div>
+
                 {/* Sidebar */}
                 <div class="dashboard-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
+                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                        <li><NavLink to="/madeevents">Your Events</NavLink></li>
+                        <li><NavLink to="/create">Create Race</NavLink></li>
+                        <li><NavLink to="/joinedevents">Joined Event</NavLink></li>
+                        <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
                     </ul>
                 </div>
 
@@ -186,13 +185,11 @@ const UpdateEvent = () => {
                                             <button className="update-event" onClick={openModal}>Update Event</button>
                                         </div>
                                     </div>
-                                    <div className="update-button-container">
-                                        <button className="update-event-button" onClick={openModal}>Update Event</button>
-                                    </div>
                                 </div>
-                            )}
+                            </div>
                         </div>
                     </div>
+                </div>
                 {isModalOpen && (
                     <div className="modal">
                         <div className="modal-content">
@@ -288,6 +285,7 @@ const UpdateEvent = () => {
                         </div>
                     </div>
                 )}
+            </div>
         </div>
     );
 };
