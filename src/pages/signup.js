@@ -106,7 +106,6 @@ const Register = () => {
                                     onChange={(e) => setRegNickname(e.target.value)}
                                     required/>
                             </div>
-                            
                             {/* Conf. Password */}
                             <div className='reg-input-box'>
                                 <label className='reg-details'>Confirm Password</label>

@@ -1,4 +1,4 @@
-.dashb-body, .yourEvents, .viewraces-body, .joinedraces-body, .makeEvents, .pf-body {
+.dashb-body, .yourEvents, .viewraces-body, .joinedraces-body, .cr-body, .pf-body {
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-columns: 210px 1fr;
