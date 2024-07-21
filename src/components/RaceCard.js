@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom"
 import supabase from "../config/supabaseclient"
 
+/* This is for displaying the races created by the user to Update and Delete */
+
 const RaceCard = ({ output, onDelete }) => {
     const handleDelete = async () => {
         try {

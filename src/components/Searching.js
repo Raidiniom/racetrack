@@ -2,6 +2,7 @@ import { useState } from "react"
 import supabase from "../config/supabaseclient"
 import '../styles/searchbar.css'
 
+/* This is the search function for the dashboard */
 
 export const SearchR = ({setGetraces, setFetchError}) => {
     const [input, setInput] = useState("")
