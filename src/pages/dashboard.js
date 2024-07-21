@@ -9,7 +9,7 @@ import supabase from '../config/supabaseclient'
 import DashCard from '../components/DashCard'
 import { SearchR } from '../components/Searching'
 
-// I DID AN OPSSEIIIII
+// ASDASDASDASDASDASD
 
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
