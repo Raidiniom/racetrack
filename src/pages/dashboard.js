@@ -9,7 +9,7 @@ import supabase from '../config/supabaseclient'
 import DashCard from '../components/DashCard'
 import { SearchR } from '../components/Searching'
 
-const Dashboard = ({token}) => {
+const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState([])
 
@@ -33,19 +33,12 @@ const Dashboard = ({token}) => {
         fetchRaces()
     }, [])
 
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        sessionStorage.removeItem('token')
-
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/'
-        }
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
     }
 
     return (
-            <div className="dashb-body">
+            <div class="dashb-body">
                 {/* Headerbar */}
                 <div class="dashb-headerbar">
                     <div className="dashb-logo">
@@ -66,7 +59,7 @@ const Dashboard = ({token}) => {
                 </div>
                 {/* Main Content */}
                 <div className="dashb-main-content">
-                    <div className='dashb-main-content-header'>
+                    <div class='dashb-main-content-header'>
                         <h2>Available Races</h2>
                         {/* Search Bar */}
                         <div>

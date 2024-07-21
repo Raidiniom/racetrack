@@ -81,15 +81,8 @@ const Db = () => {
         redirect('/madeevents');
     };
 
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        sessionStorage.removeItem('token')
-
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/'
-        }
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
     }
 
         return (
@@ -226,7 +219,7 @@ const Db = () => {
             </div>
         </div>
         
-    )
+        )
     
 }
 

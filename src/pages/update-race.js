@@ -69,15 +69,8 @@ const UpdateEvent = () => {
         setIsModalOpen(false);
     };
 
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        sessionStorage.removeItem('token')
-
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/'
-        }
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
     }
 
 

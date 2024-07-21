@@ -4,10 +4,9 @@ import '../styles/errors.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 
-const Login = ({ setToken }) => {
-    const [logEmail, setlogEmail] = useState('')
+const Login = () => {
+    const [logUsername, setlogUsername] = useState('')
     const [logPassword, setlogPassword] = useState('')
-
     const redirect = useNavigate()
 
     const [formError, setformError] = useState(null)
@@ -15,28 +14,42 @@ const Login = ({ setToken }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!logEmail || !logPassword) {
+        if (!logUsername || !logPassword) {
             setformError('Please fill in all required fields to proceed.')
             return
         }
 
-        try {
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: logEmail,
-                password: logPassword,
-            })
+        const { data: users, error } = await supabase
+            .from('app_users')
+            .select('user_id, username, password')
+            .eq('username', logUsername)
 
-            if (error) throw error
-
-            console.log(data)
-            alert('Sucessfuly Logged In~!')
-            setToken(data)
-            redirect('/dashboard')
-
-            console.log('Token Storage: ', window.localStorage)
-        } catch (error) {
-            alert(error)
+        if (error) {
+            setformError('Error fetching user data.');
+            return;
         }
+
+        if (users.length === 0) {
+            setformError('Username not found.');
+            return;
+        }
+
+        const user = users[0];
+
+        if (user.password !== logPassword) {
+            setformError('Incorrect Password.');
+            return
+        }
+
+        if (user.password !== logPassword) {
+            setformError('Incorrect Password.');
+            return
+        }
+
+        localStorage.setItem('lsusername', logUsername);
+        localStorage.setItem('lsuserid', user.user_id);
+        setformError('You Successfully Logged In!');
+        redirect('/dashboard')
     }
 
     return (
@@ -51,15 +64,15 @@ const Login = ({ setToken }) => {
                         {/* Title */}
                         <h1 className='log-title'>Log In</h1>
                         <div className='log-user-details'>
-                            {/* Email */}
+                            {/* Username */}
                             <div className='log-input-box'>
-                                <label className='log-details'>Email:</label>
+                                <label className='log-details'>Username:</label>
                                 <input
-                                    placeholder='Enter your email*'
-                                    type='email'
-                                    id='inemail'
-                                    value={logEmail}
-                                    onChange={(e) => setlogEmail(e.target.value)} />
+                                    placeholder='Enter your username*'
+                                    type='text'
+                                    id='inuser'
+                                    value={logUsername}
+                                    onChange={(e) => setlogUsername(e.target.value)} />
                             </div>
                             {/* Password */}
                             <div className='log-input-box'>
@@ -73,10 +86,10 @@ const Login = ({ setToken }) => {
                             </div>
                             <div className='log-misc'>
                                 {/* Login Button */}
-                                <div className='log-button-container'>
-                                    <button className="log-button" type='submit'>Log In</button>
+                                <div class='log-button-container'>
+                                    <button class="log-button" type='submit'>Log In</button>
                                 </div>
-                                <div className='log-nav-wrapper'>
+                                <div class='log-nav-wrapper'>
                                     {/* Navigation Links */}
                                     <div>
                                         Don't have an account?<NavLink to="/signup" className="log-nav-link">Sign Up</NavLink>

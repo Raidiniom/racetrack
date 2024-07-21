@@ -14,32 +14,19 @@ import CreatedRaces from './pages/created-races';
 import ViewRaces from './pages/view-races';
 import UpdateEvent from './pages/update-race';
 import JoinedRaces from './pages/joined-races';
-import { useEffect, useState } from 'react';
 
 
 function App() {
-  const [ token, setToken ] = useState(false)
-
-  if (token) {
-    sessionStorage.setItem('token', JSON.stringify(token))
-  }
-
-  useEffect(() => {
-    if (sessionStorage.getItem('token')) {
-      let data = JSON.parse(sessionStorage.getItem('token'))
-      setToken(data)
-    }
-  }, [])
 
   return (
       <BrowserRouter>
       {/* Ang nav kay maoy ei comment out para ma wagtang siya sa top sa site */}
          <nav>
           <p>Access to all Pages</p>
-          <Link to='/'>| Landing Page |</Link>
+          <Link to='/landing'>| Landing Page |</Link>
           <Link to='/dashboard'>| Dashboard |</Link>
           <Link to='/login'>| Login Page |</Link>
-          <Link to='/sign-up'>| Sign Up |</Link>
+          <Link to='/signup'>| Sign Up |</Link>
           <Link to='/recover'>| Recover Page |</Link>
           <Link to='/create-race'>| Create Race |</Link>
           <Link to='/update-race'>| Update Race |</Link>
@@ -53,18 +40,20 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/login' element={<Login setToken={setToken}/>} />
-          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/create-race' element={<CreateRace />} />
+          <Route path='/landing' element={<Landing />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
           <Route path='/recover' element={<Recover />} />
-          {token ? <Route path='/dashboard' element={<Dashboard token={token}/>} /> : ""}
-          {token ? <Route path='/create-race' element={<CreateRace />} /> : ""}
-          {token ? <Route path='/profile' element={<Profile />} /> : ""}
-          {token ? <Route path='/created-races' element={<CreatedRaces />} /> : ""}
-          {token ? <Route path='/joined-races' element={<JoinedRaces />} /> : ""}
-          {token ? <Route path='/:id' element={<UpdateEvent />}/> : ""}
-          {token ? <Route path='/view-races/:id' element={<ViewRaces />} /> : ""}
           <Route path='/eula' element={<Eula />} />
           <Route path='/tos' element={<Tos />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/created-races' element={<CreatedRaces />} />
+          <Route path='/view-races' element={<ViewRaces />} />
+          <Route path='/joined-races' element={<JoinedRaces />} />
+          <Route path='/:id' element={<UpdateEvent />}/>
+          <Route path='/view-races/:id' element={<ViewRaces />} />
         </Routes>
       </BrowserRouter>
   );

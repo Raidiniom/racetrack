@@ -38,15 +38,9 @@ const Profile = () => {
         fetchUser()
     }, [])
 
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        sessionStorage.removeItem('token')
-
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/'
-        }
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
+        setGetuser(null)
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
