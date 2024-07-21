@@ -1,46 +1,34 @@
-import { useEffect, useState } from "react";
-import supabase from "../config/supabaseclient";
-import { useHistory } from "react-router-dom";
+// components/NotifCard.js
+import React from 'react';
+import supabase from '../config/supabaseclient';
 
-const NotifCard = () => {
-    const [notifications, setNotifications] = useState([]);
-    const userId = localStorage.getItem('user_id'); // Assuming user ID is stored in local storage
-    const history = useHistory();
+const NotifCard = ({ notification, onRead }) => {
+    const handleReadNotification = async () => {
+        // Update the notification as read in the database
+        const { error } = await supabase
+            .from('notification')
+            .update({ read: true })
+            .eq('notification_id', notification.notification_id);
 
-    useEffect(() => {
-        const fetchNotifications = async () => {
-            const { data, error } = await supabase
-                .from('notifications')
-                .select('*')
-                .eq('user_id', userId)
-                .order('timestamp', { ascending: false });
-
-            if (error) {
-                console.error('Error fetching notifications:', error);
-                return;
-            }
-
-            setNotifications(data);
-        };
-
-        fetchNotifications();
-    }, [userId]);
-
-    const handleViewNotifications = () => {
-        history.push('/notifications');
+        if (error) {
+            console.error('Error updating notification status:', error);
+        } else {
+            // Notify the parent component to refresh notifications
+            onRead();
+        }
     };
 
     return (
-        <div>
-            <button onClick={handleViewNotifications}>
-                View Notifications
-            </button>
-            {/* Optionally, you can display a summary or count of notifications here */}
-            {notifications.length > 0 && (
-                <div className="notification-summary">
-                    You have {notifications.length} new notifications
-                </div>
-            )}
+        <div 
+            className={`notif-card ${notification.read ? 'read' : ''}`}
+            onClick={handleReadNotification}
+        >
+            <div className="notif-card-message">
+                {notification.message}
+            </div>
+            <div className="notif-card-timestamp">
+                {new Date(notification.time_stamp).toLocaleString()}
+            </div>
         </div>
     );
 };

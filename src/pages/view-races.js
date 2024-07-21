@@ -4,7 +4,7 @@ import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import supabase from '../config/supabaseclient'
-
+//hello
 const ViewEvent = () => {
     const { id } = useParams();
     const [ fetchError, setFetchError ] = useState(null)

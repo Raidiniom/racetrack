@@ -4,7 +4,7 @@ import '../styles/header_and_sidebar.css';
 import { useEffect, useState } from 'react';
 import supabase from '../config/supabaseclient';
 import JoinCard from '../components/JoinCard';
-
+//hello
 const JoinedEvent = () => {
     const [fetchError, setFetchError] = useState(null);
     const [joinedRaces, setJoinedRaces] = useState(null);

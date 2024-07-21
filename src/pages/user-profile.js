@@ -106,6 +106,11 @@ const Profile = () => {
                         <div class='upd-button-container'>
                             <button className="upd-button" onClick={openModal}>Update Profile</button>
                         </div>
+                        <NavLink to="/notifications">
+                            <button className="notification-button">
+                                Notifications
+                            </button>
+                        </NavLink>
                     </div>
                 </div>
             </div>

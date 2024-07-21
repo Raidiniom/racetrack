@@ -3,7 +3,7 @@ import supabase from "../config/supabaseclient";
 import { useState } from "react";
 
 /* This is the join function / feature that can desiplay details of the race also. For joined-races use only */
-
+//hello
 const JoinCard = ({ output, onLeave }) => {
     const [fetchError, setFetchError] = useState(null);
 

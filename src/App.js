@@ -14,6 +14,7 @@ import CreatedRaces from './pages/created-races';
 import ViewRaces from './pages/view-races';
 import UpdateEvent from './pages/update-race';
 import JoinedRaces from './pages/joined-races';
+import Notifications from './pages/notifications';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Link to='/view-races'>| View all Races |</Link>
           <Link to='/joined-races'>| Joined Events |</Link>
           <Link to='/profile'>| User Profile Page |</Link>
+          <Link to='Notifications'>| Notification |</Link>
           <Link to='/eula'>| EULA Page |</Link>
           <Link to='/tos'>| TOS Page |</Link>
         </nav>
@@ -54,6 +56,7 @@ function App() {
           <Route path='/joined-races' element={<JoinedRaces />} />
           <Route path='/:id' element={<UpdateEvent />}/>
           <Route path='/view-races/:id' element={<ViewRaces />} />
+          <Route path='/notifications' element={<Notifications />} />
         </Routes>
       </BrowserRouter>
   );

@@ -64,22 +64,27 @@ const RaceCard = ({ output, onDelete }) => {
 
             console.log(data);
 
-            // Create notifications for each participant
-            if (participants) {
+               // Create notifications for each participant
+            if (participants && participants.length > 0) {
                 const notifications = participants.map(participant => ({
                     user_id: participant.user_participant,
                     message: `The event "${output.race_title}" has been deleted.`,
+                    time_stamp: new Date().toISOString(),
                 }));
+
+                console.log('Notifications to be inserted:', notifications);
 
                 const { error: notificationsError } = await supabase
                     .from('notification')
                     .insert(notifications);
 
                 if (notificationsError) {
-                    console.log(notificationsError);
+                    console.log('Error inserting notifications:', notificationsError);
                     return;
                 }
             }
+
+        
 
             // Call the onDelete callback to refresh the parent component
             if (onDelete) onDelete();

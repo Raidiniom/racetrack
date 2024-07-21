@@ -4,7 +4,7 @@ import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
 import { useParams } from 'react-router-dom'
-
+//hello
 //components
 import RaceCard from '../components/RaceCard'
 
