@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/yourevents.css'
+import '../styles/created-races.css'
 import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
@@ -68,40 +68,41 @@ const MadeEvents = () => {
 
 
     return (
-        <div className="wholesite">
-            <div className="yourEvents">
-                <div class="dashboard-header">
-                    <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
+            <div className="createdr-body">
+                {/* Headerbar */}
+                <div class="gen-headerbar">
+                    <div className="gen-headerbar-logo">
+                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
-
                 {/* Sidebar */}
-                <div class="dashboard-sidebar">
+                <div class="gen-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
-                        <li><NavLink to="/create">Create a Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
+                        <li><NavLink to="/created-races">Your Races</NavLink></li>
+                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
+                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
-
                 {/* Main Content */}
-                <div className="yourEvents-main-content">
-                    <h2 className="ye">Created Races</h2>
-
+                <div className="createdr-main-content">
+                    <div class='createdr-main-content-header'>
+                        <h2>Your Races</h2>
+                    </div> 
+                {/* Created Races Display */}
+                <div className="createdr-main-container">
                     {fetchError && (<p className='error'>{fetchError}</p>)}
-                    {getraces && (
-                        <div className="container-post">
-                                {getraces.map(output => (
-                                    <RaceCard key={output.race_id} output={output} onDelete={handleDelete}/>
-                                ))}
+                        {getraces && (
+                        <div>
+                            {getraces.map(output => (
+                                <RaceCard key={output.race_id} output={output} onDelete={handleDelete}/>
+                            ))}
                         </div>
                     )}
                 </div>
-            </div>
+            </div>  
         </div>
     )
 }

@@ -1,4 +1,4 @@
-.dashb-body, .yourEvents, .viewraces-body, .joinedraces-body, .makeEvents, .pf-body {
+.dashb-body, .createdr-body, .viewraces-body, .joinedraces-body, .cr-body, .pf-body {
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-columns: 210px 1fr;
@@ -24,7 +24,7 @@
 
 .gen-sidebar {
     background-color:#CB8925;
-    overflow-y: hidden;
+    overflow-y: auto;
     height: 100%;
 }
 
