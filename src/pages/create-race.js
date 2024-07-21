@@ -22,93 +22,68 @@ const Db = () => {
 
     const redirect = useNavigate()
 
-   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-        // console.log("Submitting form with values:");
-        // console.log("Race Title:", racetitle);
-        // console.log("Start Date:", startdate);
-        // console.log("Registration Date:", regdate);
-        // console.log("Capacity:", capacity);
-        // console.log("Description:", description);
-        // console.log("Min Age:", minage);
-        // console.log("Max Age:", maxage);
-        // console.log("Track KM:", trackkm);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
         if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm || !location) {
             setFormError('Please Fill all Fields!');
             return;
         }
 
-    const { data: userdata, error: nouser } = await supabase
+        const { data: userdata, error: nouser } = await supabase
         .from('app_users')
         .select('user_id')
         .eq('username', storeduser);
 
-    if (nouser) {
-        console.log('Error fetching user data:', nouser);
-        setFormError('Error fetching user data!');
-        return;
+        if (nouser) {
+            console.log('Error fetching user data:', nouser);
+            setFormError('Error fetching user data!');
+            return;
+        }
+
+        if (!userdata || userdata.length === 0) {
+            console.log('User data is empty or undefined');
+            setFormError('User does not exist!');
+            return;
+        }
+
+        const racemaker = userdata[0].user_id;
+
+        const { data: raceData, error: insertError } = await supabase
+            .from('user_created_race')
+            .insert({
+                race_title: racetitle,
+                race_description: description,
+                start_date: startdate,
+                registration_date: regdate,
+                capacity: capacity,
+                min_age: minage,
+                max_age: maxage,
+                race_distance: trackkm,
+                race_creator: racemaker,
+                location: location
+            })
+            .select('race_id');
+
+        if (insertError) {
+            console.log('Error inserting race data:', insertError);
+            setFormError('Error creating race!');
+            return;
+        }
+
+        if (!raceData || raceData.length === 0) {
+            console.log('Race data is empty or undefined');
+            setFormError('Error creating race!');
+            return;
+        }
+
+        setFormError(null);
+        redirect('/madeevents');
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('lsusername')
     }
-
-    if (!userdata || userdata.length === 0) {
-        console.log('User data is empty or undefined');
-        setFormError('User does not exist!');
-        return;
-    }
-
-    const racemaker = userdata[0].user_id;
-
-    const { data: raceData, error: insertError } = await supabase
-        .from('user_created_race')
-        .insert({
-            race_title: racetitle,
-            race_description: description,
-            start_date: startdate,
-            registration_date: regdate,
-            capacity: capacity,
-            min_age: minage,
-            max_age: maxage,
-            race_distance: trackkm,
-            race_creator: racemaker,
-            location: location
-        })
-        .select('race_id');
-
-    if (insertError) {
-        console.log('Error inserting race data:', insertError);
-        setFormError('Error creating race!');
-        return;
-    }
-
-    if (!raceData || raceData.length === 0) {
-        console.log('Race data is empty or undefined');
-        setFormError('Error creating race!');
-        return;
-    }
-
-    const raceID = raceData[0].race_id;
-
-    const { data: record, error: no_record } = await supabase
-        .from('race_create_by')
-        .insert({
-            what_race: raceID,
-            user_creator: racemaker
-        });
-
-    if (no_record) {
-        console.log('Error linking race with creator:', no_record);
-        setFormError('Error linking race with creator!');
-        return;
-    }
-
-    setFormError(null);
-    redirect('/madeevents');
-};
-
-const handleLogout = () => {
-    localStorage.removeItem('lsusername')
-}
 
         return (
             <div className="wholesite">
