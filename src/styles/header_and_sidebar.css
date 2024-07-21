@@ -1,4 +1,4 @@
-.dashboard, .yourEvents, .viewEvents, .joinEvents, .makeEvents {
+.dashb-body, .yourEvents, .viewEvents, .joinEvents, .makeEvents {
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-columns: 210px 1fr;
@@ -8,34 +8,31 @@
     height: 100vh;
 }
 
-.dashboard-header {
+.dashb-headerbar {
     grid-area: header;
     background-color: #333333;
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #fff2c6;
 }
 
-.dash-logo img {
-    width: 170px;
-    padding: 20px;
+.dashb-logo img {
+    width: 200px;
+    padding: 10px;
     cursor: pointer;
 }
 
-.dashboard-sidebar {
-    grid-area: sidebar;
+.dashb-sidebar {
     background-color:#CB8925;
     overflow-y: auto;
     height: 100%;
 }
 
-.dashboard-sidebar ul {
+.dashb-sidebar ul {
     list-style: none;
-    
 }
 
-.dashboard-sidebar ul li {
+.dashb-sidebar ul li {
     cursor: pointer;
     text-align: center;
     color: #1C1C1C;
@@ -48,14 +45,14 @@
     border-top: 1px solid #00000000;
 }
 
-.dashboard-sidebar ul li {
+.dashb-sidebar ul li {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-.dashboard-sidebar ul li:after {
+.dashb-sidebar ul li:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -67,23 +64,23 @@
     transition: 0.3s;
 }
 
-.dashboard-sidebar ul li:hover {
+.dashb-sidebar ul li:hover {
     padding-right: 25px;
 }
 
-.dashboard-sidebar ul li:hover:after {
+.dashb-sidebar ul li:hover:after {
     opacity: 1;
     right: 0;
 }
 
-.dashboard-sidebar ul li:hover {
+.dashb-sidebar ul li:hover {
     background-color: #b76416;
     border-bottom: 1px solid #000000;
     border-top: 1px solid #000000;
     color: #d0d0d0;
 }
 
-.dashboard-sidebar ul li a {
+.dashb-sidebar ul li a {
     text-decoration: none;
     width: 100%; 
     height: 100%; 

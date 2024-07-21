@@ -1,8 +1,14 @@
+.searchbar-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .search-input {
+    display: flex;
     font-size: 16px;
-    flex-grow: 1;
     padding: 10px 15px;
     border-radius: 50px;
-    width: 800px;
+    width: 847.6px;
     transition: 0.5s;
 }

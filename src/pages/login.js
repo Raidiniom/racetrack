@@ -52,7 +52,7 @@ const Login = () => {
         localStorage.setItem('lsusername', logUsername);
         localStorage.setItem('lsuserid', user.user_id);
         setformError('You Successfully Logged In!');
-        redirect('/')
+        redirect('/dashboard')
     }
 
     return (
