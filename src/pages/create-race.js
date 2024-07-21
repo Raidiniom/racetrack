@@ -90,15 +90,14 @@ const Db = () => {
     };
 
     return (
-        <div className="wholesite">
-            <div className="makeEvents">
-                <div className="dashboard-header">
-                    <div className="dash-logo">
-                        <img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" />
+        <div className="createdr-body">
+            <div class="gen-headerbar">
+                    <div className="gen-headerbar-logo">
+                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
                 </div>
                 {/* Sidebar */}
-                <div className="dashboard-sidebar">
+                <div className="gen-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
@@ -215,13 +214,12 @@ const Db = () => {
                                 </div>
                                 {/* Create Race Button */}
                                 <button className="crtButton">Create Race</button>
-                                {formError && <p className="errors">{formError}</p>}
+                                {formError && <p className="error">{formError}</p>}
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 
