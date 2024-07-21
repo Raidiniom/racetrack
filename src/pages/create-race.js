@@ -219,7 +219,7 @@ const Db = () => {
                             <div class='cr-button-container'>
                                 <button className="cr-button">Create Race</button>
                             </div>
-                            {formError && <p className="errors">{formError}</p>}
+                            {formError && <p className="error">{formError}</p>}
                         </div>
                     </form>
                 </div>
