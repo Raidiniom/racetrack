@@ -6,6 +6,18 @@ import supabase from "../config/supabaseclient"
 const RaceCard = ({ output, onDelete }) => {
     const handleDelete = async () => {
         try {
+
+             // Fetch participants of the race
+             const { data: participants, error: participantsError } = await supabase
+             .from('participant_list')
+             .select('user_participant')
+             .eq('from_race', output.race_id);
+
+         if (participantsError) {
+             console.log(participantsError);
+             return;
+         }
+         
             // Delete related data first
             const { error: relatedError } = await supabase
                 .from('race_create_by')
@@ -29,6 +41,23 @@ const RaceCard = ({ output, onDelete }) => {
             }
 
             console.log(data);
+
+            // Create notifications for each participant
+            if (participants) {
+                const notifications = participants.map(participant => ({
+                    user_id: participant.user_participant,
+                    message: `The event "${output.race_title}" has been deleted.`,
+                }));
+
+                const { error: notificationsError } = await supabase
+                    .from('notifications')
+                    .insert(notifications);
+
+                if (notificationsError) {
+                    console.log(notificationsError);
+                    return;
+                }
+            }
 
             // Call the onDelete callback to refresh the parent component
             if (onDelete) onDelete();
