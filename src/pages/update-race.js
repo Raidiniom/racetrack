@@ -1,6 +1,5 @@
 //import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom'
-import '../styles/viewevents.css';
 import '../styles/header_and_sidebar.css'
 import supabase from "../config/supabaseclient"
 import { useNavigate } from 'react-router-dom'

@@ -54,12 +54,11 @@ const Profile = () => {
     };
 
     return (
-        <div className="wholesite">
-            <div className="dashboard">
-            <div class="dashboard-header">
-                    <div className="dash-logo">
-                        <img src="\img\RaceTrack Logos\RT-logo.png" alt="logo" className="RaceTrack-logo" />
-                    </div>
+        <div className="pf-body">
+            {/* Headerbar */}
+            <div class="gen-headerbar">
+                <div className="gen-headerbar-logo">
+                    <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                 </div>
 
                 {/* Sidebar */}
@@ -111,6 +110,56 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            </div>
+            {/* Sidebar */}
+            <div class="gen-sidebar">
+                <ul>
+                    <li><NavLink to="/profile">Your Profile</NavLink></li>
+                    <li><NavLink to="/created-races">Your Races</NavLink></li>
+                    <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                    <li><NavLink to="/dashboard">Join a Race</NavLink></li>
+                    <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                    <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
+                </ul>
+            </div>
+            {/* Main Content */}
+            <div className="pf-main-content">
+                <div class='pf-main-content-header'>
+                    <h2>Your Profile</h2>
+                </div> 
+            {/* Profile */}
+            <div className="pf-container">
+                <div className="pf-content">
+                    <div className="profile-picture">
+                        <img src="\img\Default Img\defaultpfp.jpg" alt="Profile Picture" />
+                    </div>
+                    <div className="profile-info">
+                        <div className="info">
+                            {fetchError && (<p className='error'>{fetchError}</p>)}
+                            {getuser && (
+                                <div>
+                                    {getuser.map(output => (
+                                        <div className='content-wrap'>
+                                            <div class='user-name'><h2>{output.username}</h2></div>
+                                            <div class='user-container'>
+                                            <img src="img/email-icon.png" alt="icon" class="icon"/>
+                                            <div><label class='user-label'>Email:</label> {output.email}</div>
+                                            <img src="img/bday-icon.png" alt="icon" class="icon"/>          
+                                            <div><label class='user-label'>Birthday:</label> {output.birth_day}</div>
+                                            <div><label class='user-label'>Gender:</label> {output.gender}</div>
+                                        </div>
+                                    </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        <div class='upd-button-container'>
+                            <button className="upd-button" onClick={openModal}>Update Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             {isModalOpen && (
                 <div className="modal">
@@ -157,7 +206,6 @@ const Profile = () => {
                     </div>
                 </div>
             )}
-            </div>
         </div>
     );
 }
