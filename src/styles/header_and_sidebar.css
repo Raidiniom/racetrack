@@ -1,4 +1,4 @@
-.dashb-body, .createdr-body, .viewraces-body, .joinedraces-body, .cr-body, .pf-body {
+.dashb-body, .createdr-body, .viewraces-body, .joinedraces-body, .cr-body, .pf-body, .updatec-body {
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-columns: 210px 1fr;

@@ -1,0 +1,336 @@
+.updatec-body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.update-desc {
+    margin-bottom: 50px;
+}
+
+.update-viewraces-main-content {
+    grid-area: main;
+    /* padding: 20px; */
+    display: flex;
+    margin-left: 50px;
+    margin-right: 90px;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    height: 100%;
+    -ms-overflow-style: none;
+}
+
+.update-viewraces-main-content-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.update-viewraces-main-content-header h2 {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+.update-viewraces-main-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+/* View Card */
+.update-viewraces-card {
+    background-color: #cecece;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.viewraces-main-content::-webkit-scrollbar {
+    display: none;
+  }
+
+.viewraces-card a {
+    text-decoration: none;
+    color: #000;
+}
+
+.update-viewraces-card-racetitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+    color: #1C1C1C;
+    transition: 0.3s;
+    background-color: transparent;
+}
+
+.update-viewraces-card .update-viewraces-card-racetitle::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    width: 220%;
+    background: #1C1C1C;
+}
+
+.update-viewraces-card-banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+}
+
+.update-viewraces-card-details-container{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.update-viewraces-card-details-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.viewraces-card-details {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.viewraces-icon {
+    margin-right: -5px;
+    width: 30px;
+    height: auto;
+}
+
+/* button */
+.update-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%
+}
+
+.update-event-button {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    float: right;
+    transition: 0.3s;
+}
+
+.update-event-button:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
+}
+
+
+/* old css */
+.update-event, .delete-event, .list-event {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 12px;
+    text-align: center;
+    margin: 20px 20px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.update-event:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
+}
+
+
+.list-event:hover {
+    background-color: #000000;
+    color: #ccc;
+}
+
+.delete-event:hover {
+    background-color: #ff3b199c;
+    color: #000000;
+    transition: background-color 0.3s;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-content form input,
+.modal-content form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: larger;
+}
+
+.modal-content form button {
+    padding: 10px 20px;
+    background-color: #ffedba;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content form button:hover {
+    background-color: #19a3ff9c;
+    color: #000000;
+}
+
+.adto {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.card-ye:hover {
+    background-color: #C5AEA0;
+}
+
+/* .errors {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    font: bold;
+}
+
+.error {
+    font-size: 24px;
+    color: #000000;
+    background-color: #ff8080;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font: bold;
+} */
+
+/* .participant-list {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 300px;
+    background-color: #ffe1ad;
+    border-radius: 10px;
+}
+
+.listttt {
+    margin-bottom: 10px;
+    margin-left: 20px;
+} 
+
+.participant-list .two-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.participant-list .columns .two-column {
+    flex: 1 1 45%; /* Two columns with a gap 
+    margin-bottom: 10px;
+}
+
+.participant-list .columns .two-column p {
+    margin-bottom: 5px;
+    word-wrap: break-word;
+    list-style-type: disc;
+    display: list-item;
+    margin-left: 20px;
+}
+
+.participant-list::-webkit-scrollbar {
+    display: none;
+  } */
