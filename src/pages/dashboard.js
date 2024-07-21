@@ -4,8 +4,7 @@ import '../styles/header_and_sidebar.css'
 import '../styles/searchbar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
-
-//components
+//Components
 import DashCard from '../components/DashCard'
 import { SearchR } from '../components/Searching'
 
@@ -38,32 +37,34 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="wholesite">
-            <div class="dashboard">
-                <div class="dashboard-header">
-                    <div className="dash-logo">
-                    <NavLink to='/'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+            <div class="dashb-body">
+                {/* Headerbar */}
+                <div class="dashb-headerbar">
+                    <div className="dashb-logo">
+                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-                </div>
+                    </div>
                 {/* Sidebar */}
-                <div class="dashboard-sidebar">
+                <div class="dashb-sidebar">
                     <ul>
                         <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/">Dashboard</NavLink></li>
-                        <li><NavLink to="/madeevents">Your Races</NavLink></li>
-                        <li><NavLink to="/create">Create a Race</NavLink></li>
-                        <li><NavLink to="/joinedevents">Joined Races</NavLink></li>
-                        <li><NavLink to="/login" onClick={handleLogout}>Log Out</NavLink></li>
+                        <li><NavLink to="/created-races">Your Races</NavLink></li>
+                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
-
                 {/* Main Content */}
-                <div class="dashboard-main-content">
-                    <h2>Events</h2>   
-                     {/* Search Bar */}
-                    <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
+                <div className="dashb-main-content">
+                    <div class='dashb-main-content-header'>
+                        <h2>Available Races</h2>
+                        {/* Search Bar */}
+                        <div>
+                            <SearchR setGetraces={setGetraces} setFetchError={setFetchError}/>
+                        </div> 
+                    </div>  
                     {/* Events Display */}
-                    <div className="main-container-dashboard">
+                    <div className="dashb-main-container">
                         {fetchError && (<p className='error'>{fetchError}</p>)}
                         {getraces && (
                             <div>
@@ -75,7 +76,6 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
