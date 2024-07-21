@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/recover-page.css'
+import '../styles/errors.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 

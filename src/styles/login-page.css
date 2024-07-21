@@ -95,6 +95,14 @@ form .log-user-details .log-input-box {
     color: #fc9700; 
 }
 
+.log-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%
+}
+
 .log-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
@@ -129,14 +137,6 @@ form .log-user-details .log-input-box {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-.log-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
-    width: 100%
 }
 
 .log-nav-wrapper {
