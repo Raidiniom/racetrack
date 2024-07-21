@@ -106,6 +106,7 @@ const Profile = () => {
                             <div className="buttons">
                                 <button className="edit-button" onClick={openModal}>Update Profile</button>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
