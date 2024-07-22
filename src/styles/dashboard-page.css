@@ -10,20 +10,20 @@
 /*hello*/
 /* Content */
 .dashb-main-content {
-    grid-area: main;
     display: flex;
+    grid-area: main;
     flex-direction: column;
-    gap: 20px;
     background-color: #00000000;
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 100%;
-    -ms-overflow-style: none;
+    margin: 10px;
 }
 
 .dashb-main-content-header {
     display: flex;
+    align-items: center;
+    margin: 15px;
     justify-content: space-between;
-    margin-bottom: 15px;
 }
 
 .dashb-main-content-header h2 {

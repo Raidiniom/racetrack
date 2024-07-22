@@ -87,10 +87,10 @@ const Profile = () => {
             {/* Profile */}
             <div className="pf-container">
                 <div className="pf-content">
-                    <div className="profile-picture">
+                    <div className="pf-pic">
                         <img src="\img\Default Img\defaultpfp.jpg" alt="Profile Picture" />
                     </div>
-                    <div className="profile-info">
+                    <div className="pf-info">
                         <div className="info">
                             {fetchError && (<p className='error'>{fetchError}</p>)}
                             {getuser && (
@@ -110,8 +110,8 @@ const Profile = () => {
                                 </div>
                             )}
                         </div>
-                        <div class='upd-button-container'>
-                            <button className="upd-button" onClick={openModal}>Update Profile</button>
+                        <div class='pf-button-container'>
+                            <button className="pf-button" onClick={openModal}>Update Profile</button>
                         </div>
                     </div>
                 </div>
@@ -119,46 +119,52 @@ const Profile = () => {
         </div>
 
             {isModalOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <div className="close" onClick={closeModal}>&times;</div>
-                        <h2>Update Profile</h2>
+                <div className="prof-modal">
+                    <div className="prof-modal-container">
+                        <div className="prof-close" onClick={closeModal}>&times;</div>
                         <form>
-                            <label>
-                                Username:
-                                <input type="text" name="username" />
-                            </label>
-                            <label>
-                                Enter current password:
-                                <input type="password" name="oldpass" />
-                            </label>
-                            <label>
-                                Enter new password:
-                                <input type="password" name="newpass" />
-                            </label>
-                            <label>
-                                Confirm new password:
-                                <input type="password" name="connewpass" />
-                            </label>
-                            <label>
-                                Email:
-                                <input type="email" name="email" />
-                            </label>
-                            <label>
-                                Birthday:
-                                <input type="date" name="bday" />
-                            </label>
-                            <div className='input-box'>
-                                <label className='gender-title-pfp'>Gender</label>
-                                <select name="gender" id="gender">
-                                    <option value="not selected">Default Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="prefer-not-to-say">Prefer not to say</option>
-                                    <option value="other">Other</option>
-                                </select>
+                            <h1 class='prof-title'>Update Profile</h1>
+                            <div className='prof-user-details'>
+                                <div className='prof-input-box'>
+                                <label className='prof-details'>
+                                    Change Username:
+                                    <input 
+                                        placeholder='Enter your preferred username'
+                                        type="text" 
+                                        name="username" 
+                                    />
+                                </label>
                             </div>
-                            <button type="submit" className="edit-button">Save Changes</button>
+                            <div className='prof-input-box'>
+                                <label className='prof-details'>
+                                    Email:
+                                    <input 
+                                        placeholder='Enter new email address'
+                                        type="email" 
+                                        name="email" 
+                                    />
+                                </label>
+                            </div>
+                            <div className='prof-input-box'>
+                                <label className='prof-details'>
+                                    Birthday:
+                                    <input 
+                                    type="date" 
+                                    name="bday" />
+                                </label>
+                            </div>
+                            <div className='prof-input-box'>
+                                <label className='prof-gender-title'>Gender</label>
+                                    <select name="gender" id="gender">
+                                        <option value="not selected">Default Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                            </div>
+                            <button type="submit" className="prof-button">Save Changes</button>
+                            </div>
                         </form>
                     </div>
                 </div>

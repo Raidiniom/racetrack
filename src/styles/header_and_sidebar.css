@@ -1,11 +1,11 @@
 .dashb-body, .createdr-body, .viewraces-body, .joinedraces-body, .cr-body, .pf-body, .updatec-body {
     display: grid;
     grid-template-rows: 80px 1fr;
-    grid-template-columns: 210px 1fr;
+    grid-template-columns: 200px 1fr;
     grid-template-areas: 
         "header header"
         "sidebar main";
-    height: 100vh;
+    height: 90vh;
 }
 /*hello*/
 .gen-headerbar {
@@ -14,6 +14,7 @@
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
+    overflow: auto;
 }
 
 .gen-headerbar-logo img {
@@ -24,7 +25,7 @@
 
 .gen-sidebar {
     background-color:#CB8925;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
 }

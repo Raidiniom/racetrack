@@ -1,16 +1,12 @@
 import { NavLink } from "react-router-dom"
 
 /* This is the dashboard Race details display, For dashboard use only */
-// hello
+
 const DashCard =({output}) => {
     return  (
             <div className="dashb-card">
                 <div className="dashb-card-racetitle">
                     {output.race_title}
-                </div>
-                {/* Insert Picture/Banner here */}
-                <div class="dashb-card-banner-container">
-                    <img src="insert-path-here" alt="banner" class="dashb-card-banner"/>
                 </div>
                 <div className="dashb-card-details-container">
                     <div class="dashb-card-details-wrapper">
