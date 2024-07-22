@@ -15,8 +15,10 @@ import { SearchR } from '../components/Searching'
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState([])
+    const [displayName, setDisplayName] = useState('')
 
     useEffect(() => {
+    
         const fetchRaces = async () => {
             const { data, error } = await supabase
              .from('user_created_race')
@@ -36,6 +38,7 @@ const Dashboard = () => {
         fetchRaces()
     }, [])
 
+
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut()
         
@@ -52,6 +55,9 @@ const Dashboard = () => {
                 <div class="gen-headerbar">
                     <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    </div>
+                    <div className="headerbar-greeting">
+                    <p>Welcome, {displayName}</p>
                     </div>
                     <div className="notifications-container">
                         <NavLink to="/notifications">
