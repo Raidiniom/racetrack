@@ -13,7 +13,7 @@ const UpdateEvent = () => {
     const navigate = useNavigate()
     const [ getraces, setGetraces ] = useState(null)
     const [ fetchError, setFetchError ] = useState(null)
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
     const [formError, setFormError] = useState(null)
 
     //race table
@@ -44,16 +44,17 @@ const UpdateEvent = () => {
             }
             if(data){
                 console.log('Fetched race data:', data);
-                setRacetitle(data.racetitle)
-                setDescription(data.description)
-                setStartdate(data.startdate)
-                setRegdate(data.regdate)
-                setCapacity(data.capacity)
-                setMinage(data.minage)
-                setMaxage(data.maxage)
-                setTrackkm(data.trackkm)
-                setGetraces(data)
-                setFetchError(null)
+            setRacetitle(data.race_title || '');
+            setDescription(data.race_description || '');
+            setStartdate(data.start_date || '');
+            setRegdate(data.registration_date || '');
+            setCapacity(data.capacity || '');
+            setMinage(data.min_age || '');
+            setMaxage(data.max_age || '');
+            setTrackkm(data.race_distance || '');
+            setLocation(data.location || '');
+            setGetraces(data);
+            setFetchError(null);
             }
         }
         fetchRaces()
@@ -107,7 +108,6 @@ const UpdateEvent = () => {
                 min_age: minage, 
                 max_age: maxage, 
                 race_distance: trackkm,
-                race_creator: racemaker,
                 location: location
             })
 
@@ -205,17 +205,17 @@ const UpdateEvent = () => {
                         </div>
                     </div>
                 {isModalOpen && (
-                    <div className="modal">
+                    <div className="modals">
                         <div className="modal-content">
                             <div className="close" onClick={closeModal}>&times;</div>
                             <h2>Update Event</h2>
                             <form onSubmit={handleSubmit}>
                                  {/* //update race title */}
-                                <label htmlFor="racetitle">Title of the Race:</label>
+                                 <label htmlFor="racetitle">Title of the Race:</label>
                                 <input 
-                                    type="title" 
+                                    type="text" 
                                     id="racetitle" 
-                                    value={racetitle}  
+                                    value={racetitle || ''}  
                                     onChange={(e) => setRacetitle(e.target.value)}
                                     />
 
