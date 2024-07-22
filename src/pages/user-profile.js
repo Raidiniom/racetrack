@@ -76,12 +76,21 @@ const Profile = () => {
                     <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-                    <div className="notifications-container">
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                <img src="img/noti-icon.png" alt="icon" class="noti-icon"/> Notifications
-                            </button>
-                        </NavLink>
+                    <div className="header-right">
+                        <div className="pfp">
+                            <NavLink to="/profile">
+                                <button className="notification-button">
+                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
+                                </button>
+                            </NavLink>
+                        </div>
+                        <div className="notifications-container">
+                            <NavLink to="/notifications">
+                                <button className="notification-button">
+                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
+                                </button>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             {/* Sidebar */}
@@ -102,32 +111,36 @@ const Profile = () => {
                 </div> 
             {/* Profile */}
             <div className="pf-container">
-                <div className="pf-content">
-                    <div className="pf-pic">
-                        <img src="\img\Default Img\defaultpfp.jpg" alt="Profile Picture" />
-                    </div>
-                    <div className="pf-info">
-                        <div className="info">
+                <div className="pf-content-wrap">
                             {fetchError && (<p className='error'>{fetchError}</p>)}
                             {getuser && (
                                 <div>
                                     {getuser.map(output => (
-                                        <div className='content-wrap'>
-                                            <div class='user-name'><h2>{output.username}</h2></div>
-                                            <img src="img/email-icon.png" alt="icon" class="icon"/>
-                                            <div><label class='user-label'>Email:</label> {output.email}</div>
-                                            <img src="img/bday-icon.png" alt="icon" class="icon"/>          
-                                            <div><label class='user-label'>Birthday:</label> {output.birth_day}</div>
-                                            <div><label class='user-label'>Gender:</label> {output.gender}</div>
+                                        <div className='pf-details-container'>
+                                            <div class='pf-username'>
+                                                {output.username}
+                                            </div>
+                                            <div class="pf-details-wrapper">
+                                                <img src="img/email-icon.png" alt="icon" class="icon"/>
+                                                <div><label class='pf-details'>Email:</label> {output.email}</div>
+                                            </div>
+                                            <div class="pf-details-wrapper">
+                                                <img src="img/bday-icon.png" alt="icon" class="icon"/>          
+                                                <div><label class='pf-details'>Birthday:</label> {output.birth_day}</div>
+                                            </div>
+                                            <div class="pf-details-wrapper">
+                                                <img src="img/gender-icon.png" alt="icon" class="icon"/>
+                                                <div className='gender'><label class='pf-details'>Gender:</label> {output.gender}</div>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
                             )}
-                        </div>
+                        
                         <div class='pf-button-container'>
                             <button className="pf-button" onClick={openModal}>Update Profile</button>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -151,7 +164,7 @@ const Profile = () => {
                             </div>
                             <div className='prof-input-box'>
                                 <label className='prof-details'>
-                                    Email:
+                                    Change Email:
                                     <input 
                                         placeholder='Enter new email address'
                                         type="email" 
@@ -161,7 +174,7 @@ const Profile = () => {
                             </div>
                             <div className='prof-input-box'>
                                 <label className='prof-details'>
-                                    Birthday:
+                                    Change Birthday:
                                     <input 
                                     type="date" 
                                     name="bday" />

@@ -10,6 +10,7 @@ import NotifCard from "../components/NotifCard";
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
     const [fetchError, setFetchError] = useState(null);
+    const [unreadCount, setUnreadCount] = useState(0);
 
     const userId = localStorage.getItem('lsuserid'); // Retrieve user ID from local storage
 
@@ -33,6 +34,8 @@ const Notifications = () => {
         }
 
         setNotifications(data);
+        const unread = data.filter(notification => !notification.read).length;
+        setUnreadCount(unread);
     }, [userId]);
 
     useEffect(() => {
@@ -46,6 +49,22 @@ const Notifications = () => {
                 <div className="gen-headerbar-logo">
                     <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                 </div>
+                <div className="header-right">
+                        <div className="pfp">
+                            <NavLink to="/profile">
+                                <button className="notification-button">
+                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
+                                </button>
+                            </NavLink>
+                        </div>
+                        <div className="notifications-container">
+                            <NavLink to="/notifications">
+                                <button className="notification-button">
+                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
+                                </button>
+                            </NavLink>
+                        </div>
+                    </div>
             </div>
             {/* Sidebar */}
             <div className="gen-sidebar">

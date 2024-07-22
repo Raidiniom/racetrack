@@ -7,15 +7,15 @@
         "sidebar main";
     height: 90vh;
 }
-/*hello*/
+
 .gen-headerbar {
     grid-area: header;
-    justify-content: space-between;
-    background-color: #333333;
-    color: rgb(0, 0, 0);
     display: flex;
-    align-items: center;
-    overflow: auto;
+    justify-content: space-between; /* Distributes space between items */
+    align-items: center; /* Aligns items vertically */
+    background-color: #333333;
+    padding: 0 20px; /* Adds some padding for spacing */
+    overflow: hidden; /* Prevents overflow */
 }
 
 .gen-headerbar-logo img {
@@ -95,7 +95,7 @@
     display: block;
 }
 
-.noti-icon {
+.noti-icon, .pfp-icon {
     width: 25px;
     height: 25px;
 }
@@ -116,16 +116,27 @@
     cursor: pointer;
     position: static;
     overflow: hidden;
-    float: right;
     transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     margin-right: 10px;
+    text-decoration: none;
 }
 
 .notification-button:hover {
     background-color: #CB8925;
     color: #d9d9d9;
+}
+
+.header-right {
+    display: flex; /* Aligns child elements horizontally */
+    align-items: center; /* Centers items vertically */
+    gap: 10px; /* Space between profile and notifications */
+}
+
+.pfp, .notifications-container {
+    margin: 0; /* Remove default margins */
+    text-decoration: none;
 }

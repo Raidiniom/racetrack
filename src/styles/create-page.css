@@ -93,11 +93,11 @@ form .cr-user-details .cr-input-box {
     transition: all 0.3s ease;
 }
 
-.cr-user-details .cr-input-box input:hover, select:hover{
+.cr-user-details .cr-input-box input:hover, select:hover, textarea:hover{
     border-color: #ffdfae;
 }
 
-.cr-user-details .cr-input-box input:focus, input:valid, select:focus {
+.cr-user-details .cr-input-box input:focus, input:valid, select:focus, textarea:focus {
     border-color: #fc9700;
 }
 

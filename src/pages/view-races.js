@@ -57,6 +57,17 @@ const ViewEvent = () => {
         fetchRaces()
     }, [id])
 
+    const calculateAge = (birthDay) => {
+        const today = new Date();
+        const birthDate = new Date(birthDay);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    };
+
     const joinEvent = async (e) => {
         e.preventDefault();
 
@@ -69,7 +80,7 @@ const ViewEvent = () => {
         try {
             const { data: user, error: userError } = await supabase
                 .from('app_users')
-                .select('user_id')
+                .select('user_id, birth_day')
                 .eq('username', username)
                 .single();
 
@@ -80,6 +91,7 @@ const ViewEvent = () => {
             }
 
             const user_participant = user.user_id;
+            const user_age = calculateAge(user.birth_day);
 
             const parsedRaceId = parseInt(id, 10);
             if (isNaN(parsedRaceId)) {
@@ -89,6 +101,11 @@ const ViewEvent = () => {
 
             if (getraces.current_participant >= getraces.capacity) {
                 setFetchError('The event is full!');
+                return;
+            }
+
+            if (user_age < getraces.min_age || user_age > getraces.max_age) {
+                setFetchError('You do not meet the age requirements for this event!');
                 return;
             }
 
@@ -136,12 +153,21 @@ const ViewEvent = () => {
                     <div className="gen-headerbar-logo">
                         <NavLink to='/'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-                    <div className="notifications-container">
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                <img src="img/noti-icon.png" alt="icon" class="noti-icon"/> Notifications
-                            </button>
-                        </NavLink>
+                    <div className="header-right">
+                        <div className="pfp">
+                            <NavLink to="/profile">
+                                <button className="notification-button">
+                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
+                                </button>
+                            </NavLink>
+                        </div>
+                        <div className="notifications-container">
+                            <NavLink to="/notifications">
+                                <button className="notification-button">
+                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
+                                </button>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
                 {/* Sidebar */}
@@ -168,11 +194,8 @@ const ViewEvent = () => {
                                     <div class='viewraces-card-racetitle'>
                                         {getraces.race_title}
                                     </div>
+                                    <h3>Description</h3>
                                     <p class='desc'>{getraces.race_description}</p>
-                                    {/* Insert Picture/Banner here */}
-                                    <div class="viewraces-card-banner-container">
-                                    <img src="insert-path-here" alt="banner" class="dashb-card-banner"/>
-                                    </div>
                                     <div class="viewraces-card-details-container">
                                         <div class='viewraces-card-details-wrapper'>
                                             <img src="/img/agereq-icon.png" class="icon"/>
