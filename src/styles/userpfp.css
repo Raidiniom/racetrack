@@ -54,30 +54,58 @@
     max-height: 400px;
 }
 
-.pf-content {
-    display: flex;
+.pf-content-wrap {
+    display: block;
     padding: 20px;
     flex: 1;
 }
 
-.pf-pic img {
-    border-radius: 50%;
-    width: 200px;
-    margin-top: 10px;
-    height: 200px;
-    margin-right: 20px;
-    margin-left: 10px;
-    border: #333 solid 1px;
+.pf-username {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+    color: #2c2c2c;
+    transition: 0.3s;
+    background-color: transparent;
+}
+
+.pf-username::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    width: 220%;
+    background: #1C1C1C;
+}
+
+.pf-details-container{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.pf-details-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.pf-details{
+    font-weight: bold;
+}
+
+.gender{
+    text-transform: capitalize;
 }
 
 .pf-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-}
-
-.pf-info .info {
     margin-bottom: 20px;
     margin-left: 14px;
     font-size: 22px;
@@ -110,7 +138,7 @@
     transition: 0.3s;
 }
 
-.upd-button:hover {
+.pf-button:hover {
     background-color: #CB8925;
     color: #d9d9d9;
 }
@@ -152,7 +180,7 @@
     left: 5%; 
     right: 5%; 
     bottom: 5%; 
-    background-color: white;
+    background: linear-gradient(#fff, #d9d9d9);
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border-radius: 10px;
@@ -254,3 +282,4 @@ input[type="checkbox"] {
     margin-left: auto;
     margin-right: auto;
 }
+

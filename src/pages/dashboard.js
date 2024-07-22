@@ -15,8 +15,10 @@ import { SearchR } from '../components/Searching'
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState([])
+    const [displayName, setDisplayName] = useState('')
 
     useEffect(() => {
+    
         const fetchRaces = async () => {
             const { data, error } = await supabase
              .from('user_created_race')
@@ -35,6 +37,7 @@ const Dashboard = () => {
 
         fetchRaces()
     }, [])
+
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut()

@@ -10,6 +10,7 @@ import NotifCard from "../components/NotifCard";
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
     const [fetchError, setFetchError] = useState(null);
+    const [unreadCount, setUnreadCount] = useState(0);
 
     const userId = localStorage.getItem('lsuserid'); // Retrieve user ID from local storage
 
@@ -33,6 +34,8 @@ const Notifications = () => {
         }
 
         setNotifications(data);
+        const unread = data.filter(notification => !notification.read).length;
+        setUnreadCount(unread);
     }, [userId]);
 
     useEffect(() => {
