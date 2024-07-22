@@ -10,17 +10,19 @@
 /*hello*/
 /* Main Content */
 .cr-main-content {
-    grid-area: main;
     display: flex;
+    grid-area: main;
     flex-direction: column;
     background-color: #00000000;
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 100%;
-    -ms-overflow-style: none;
+    margin: 10px;
 }
 
 .cr-main-content-header {
     display: flex;
+    align-items: center;
+    margin: 10px;
     justify-content: space-between;
 }
 
@@ -36,9 +38,9 @@
   /* Form */
 .cr-container {
     width: 100%;
-    height: 100%;
+    height: 80%;
     background: linear-gradient(#fff, #d9d9d9);
-    padding: 40px 45px;
+    padding:10px 15px;
     border-radius: 5px;
 }
 
@@ -63,6 +65,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 15px 0 10px 0;
+    margin-right: 90px;
 }
 
 form .cr-user-details .cr-input-box {
@@ -78,7 +81,7 @@ form .cr-user-details .cr-input-box {
 }
 
 .cr-user-details .cr-input-box input, select, textarea {
-    height: 45px;  
+    height: 35px;  
     width: 100%;
     outline: none;
     border-radius: 5px;
