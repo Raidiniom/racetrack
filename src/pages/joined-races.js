@@ -10,33 +10,62 @@ const JoinedEvent = () => {
     const [joinedRaces, setJoinedRaces] = useState(null);
     const [refresh, setRefresh] = useState(false); // State to trigger re-fetch
 
-    const username = localStorage.getItem('lsusername');
-
     useEffect(() => {
         const fetchJoinedRaces = async () => {
             try {
-                if (!username) {
-                    throw new Error('User not logged in');
+               const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+                if (nosess) {
+                    console.error('Session Error:', nosess.message);
+                    setFetchError('Failed to fetch session. Please try again.');
+                    return;
                 }
-
-                // Fetch user ID based on username
+        
+                if (!sess || !sess.session) {
+                    setFetchError('No session found. Please log in.');
+                    return;
+                }
+        
+                // Extract user from session
+                const user = sess.session.user;
+        
+                if (!user || !user.email) {
+                    setFetchError('No user found in session. Please log in.');
+                    return;
+                }
+        
+                // Fetch user_id based on email
                 const { data: userData, error: userError } = await supabase
                     .from('app_users')
                     .select('user_id')
-                    .eq('username', username)
-                    .single();
-
+                    .eq('email', user.email)
+                    .single(); // Use .single() to fetch a single row
+        
                 if (userError) {
-                    throw userError;
+                    console.error('User ID Fetch Error:', userError.message);
+                    setFetchError('Failed to retrieve user ID.');
+                    return;
+                }
+        
+                if (!userData || !userData.user_id) {
+                    setFetchError('User ID not found.');
+                    return;
                 }
 
-                const userId = userData.user_id;
+                // Ensure user_id is a number
+                const u_id = parseInt(userData.user_id, 10);
+                if (isNaN(u_id)) {
+                    setFetchError('Invalid user ID.');
+                    return;
+                }
+        
+                console.log('Fetching races for user ID:', u_id);
 
                 // Fetch races that the user has joined
                 const { data: participantData, error: participantError } = await supabase
                     .from('participant_list')
                     .select('from_race')
-                    .eq('user_participant', userId);
+                    .eq('user_participant', u_id);
 
                 if (participantError) {
                     throw participantError;
@@ -67,7 +96,7 @@ const JoinedEvent = () => {
         };
 
         fetchJoinedRaces();
-    }, [username, refresh]);
+    }, [refresh]);
 
     const handleLogout = () => {
         localStorage.removeItem('lsusername');

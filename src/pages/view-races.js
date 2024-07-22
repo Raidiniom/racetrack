@@ -13,6 +13,8 @@ const ViewEvent = () => {
     const [hasJoined, setHasJoined] = useState(false);
     const navigate = useNavigate();
 
+    const [authuser, setAuthuser] = useState({ user: null });
+
     useEffect(() => {
         const fetchRaces = async () => {
             const { data, error } = await supabase
@@ -71,17 +73,23 @@ const ViewEvent = () => {
     const joinEvent = async (e) => {
         e.preventDefault();
 
-        const username = localStorage.getItem('lsusername');
-        if (!username) {
-            setFetchError('Please log in to join the event.');
-            return;
-        }
-
         try {
+            const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+                // Check for errors and log them
+                if (nosess) {
+                    console.error('Session Error:', nosess.message);
+                    return;
+                }
+                
+                console.log('This is Sess: ', sess)
+                const theU = sess?.session.user;
+                setAuthuser({ theU });
+
             const { data: user, error: userError } = await supabase
                 .from('app_users')
                 .select('user_id, birth_day')
-                .eq('username', username)
+                .eq('email', theU.email)
                 .single();
 
             if (userError) {

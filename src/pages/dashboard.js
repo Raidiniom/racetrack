@@ -26,7 +26,7 @@ const Dashboard = () => {
 
             if (error) {
                 setFetchError('No Races Open!')
-                setGetraces()
+                setGetraces(error)
             }
 
             if (data) {

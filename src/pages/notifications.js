@@ -12,19 +12,51 @@ const Notifications = () => {
     const [fetchError, setFetchError] = useState(null);
     const [unreadCount, setUnreadCount] = useState(0);
 
-    const userId = localStorage.getItem('lsuserid'); // Retrieve user ID from local storage
-
+    const [authuser, setAuthuser] = useState({ user: null });
+    
     // Define the fetchNotifications function with useCallback to ensure it doesn't change on every render
     const fetchNotifications = useCallback(async () => {
-        if (!userId) {
+        const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+        // Check for errors and log them
+        if (nosess) {
+            console.error('Session Error:', nosess.message);
+            return;
+        }
+        
+        console.log('This is Sess: ', sess)
+        const theU = sess?.session.user;
+        setAuthuser({ theU });
+
+        const { data: user, error: userError } = await supabase
+                .from('app_users')
+                .select('user_id, birth_day')
+                .eq('email', theU.email)
+                .single();
+
+            if (userError) {
+                console.error('Error fetching user:', userError);
+                setFetchError('User not found!');
+                return;
+            }
+
+            const u_id = parseInt(user.user_id, 10);
+            if (isNaN(u_id)) {
+                setFetchError('Invalid user ID.');
+                return;
+            }
+
+        if (!u_id) {
             setFetchError('User ID is missing');
             return;
         }
+        
 
+        // Will receive user ID
         const { data, error } = await supabase
             .from('notification')
             .select('*')
-            .eq('user_id', parseInt(userId, 10)) // Ensure userId is an integer
+            .eq('user_id', parseInt(u_id, 10)) // Ensure userId is an integer
             .order('time_stamp', { ascending: false });
 
         if (error) {
@@ -36,7 +68,7 @@ const Notifications = () => {
         setNotifications(data);
         const unread = data.filter(notification => !notification.read).length;
         setUnreadCount(unread);
-    }, [userId]);
+    }, []);
 
     useEffect(() => {
         fetchNotifications();

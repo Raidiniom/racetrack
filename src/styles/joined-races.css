@@ -35,6 +35,8 @@
 .joinedraces-main-container {
     margin-left: auto;
     margin-right: auto;
+    padding: 10px;
     width: 100%;
+    background-color: aliceblue;
 }
 

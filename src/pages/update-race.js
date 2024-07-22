@@ -13,8 +13,10 @@ const UpdateEvent = () => {
     const navigate = useNavigate()
     const [ getraces, setGetraces ] = useState(null)
     const [ fetchError, setFetchError ] = useState(null)
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [formError, setFormError] = useState(null)
+
+    const [authuser, setAuthuser] = useState({ user: null });
 
     //race table
     const [racetitle, setRacetitle] = useState('')
@@ -32,7 +34,7 @@ const UpdateEvent = () => {
         const fetchRaces = async () => {
             const { data, error } = await supabase
              .from('user_created_race')
-             .select()
+             .select('*')
              .eq('race_id', id)
              .single();
 
@@ -44,17 +46,17 @@ const UpdateEvent = () => {
             }
             if(data){
                 console.log('Fetched race data:', data);
-            setRacetitle(data.race_title || '');
-            setDescription(data.race_description || '');
-            setStartdate(data.start_date || '');
-            setRegdate(data.registration_date || '');
-            setCapacity(data.capacity || '');
-            setMinage(data.min_age || '');
-            setMaxage(data.max_age || '');
-            setTrackkm(data.race_distance || '');
-            setLocation(data.location || '');
-            setGetraces(data);
-            setFetchError(null);
+                setRacetitle(data.race_title || '');
+                setDescription(data.race_description || '');
+                setStartdate(data.start_date || '');
+                setRegdate(data.registration_date || '');
+                setCapacity(data.capacity || '');
+                setMinage(data.min_age || '');
+                setMaxage(data.max_age || '');
+                setTrackkm(data.race_distance || '');
+                setLocation(data.location || '');
+                setGetraces(data);
+                setFetchError(null);
             }
         }
         fetchRaces()
@@ -83,10 +85,22 @@ const UpdateEvent = () => {
             return
         }
 
+        const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+        // Check for errors and log them
+        if (nosess) {
+            console.error('Session Error:', nosess.message);
+            return;
+        }
+        
+        console.log('This is Sess: ', sess)
+        const theU = sess?.session.user;
+        setAuthuser({ theU });
+
         const {data: userdata, error: nouser} = await supabase
          .from('app_users')
          .select('user_id')
-         .eq('username', storeduser)
+         .eq('email', theU.email)
 
         //  New
          if (nouser || userdata.length === 0) {
