@@ -286,7 +286,7 @@ const UpdateEvent = () => {
 
                                 <button type="submit">Update</button>
 
-                                {formError && <p className="errors">{formError}</p>}
+                                {formError && <p className="error">{formError}</p>}
 
                             </form>
                         </div>

@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import supabase from "../config/supabaseclient";
-import '../styles/dashboard-page.css'; // Import the same styles to match the design
 import '../styles/header_and_sidebar.css'; // Import the same styles to match the design
 import '../styles/errors.css'; // Import the same styles to match the design
 import '../styles/notifications.css';
@@ -41,11 +40,11 @@ const Notifications = () => {
     }, [fetchNotifications]);
 
     return (
-        <div className="dashb-body">
+        <div className="noti-body">
             {/* Headerbar */}
             <div className="gen-headerbar">
                 <div className="gen-headerbar-logo">
-                    <h1>Notifications</h1>
+                    <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                 </div>
             </div>
             {/* Sidebar */}
@@ -60,22 +59,26 @@ const Notifications = () => {
                 </ul>
             </div>
             {/* Main Content */}
-            <div className="notifications-page">
-                <h2>Your Notifications</h2>
-                    {fetchError && <p className="error">{fetchError}</p>}
-                    {notifications.length === 0 && !fetchError ? (
-                    <p>No Notifications</p>
-                    ) : (
-                    <div className="notifications-container">
-                    {notifications.map(notification => (
-                        <NotifCard 
-                            key={notification.notification_id} 
-                            notification={notification} 
-                            onRead={fetchNotifications} // Pass refresh function
-                        />
-                        ))}
+            <div className="noti-main-content">
+                    <div class='noti-main-content-header'>
+                        <h2>Your Notifications</h2>
                     </div>
-                )}
+                        <div className="notifications-page">
+                                {fetchError && <p className="error">{fetchError}</p>}
+                                {notifications.length === 0 && !fetchError ? (
+                                <p>No Notifications</p>
+                                ) : (
+                                <div className="notifications-container">
+                                {notifications.map(notification => (
+                                    <NotifCard 
+                                        key={notification.notification_id} 
+                                        notification={notification} 
+                                        onRead={fetchNotifications} // Pass refresh function
+                                    />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
             </div>
         </div>
     );
