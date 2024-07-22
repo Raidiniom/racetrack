@@ -76,6 +76,13 @@ const Profile = () => {
             <div className="pf-main-content">
                 <div class='pf-main-content-header'>
                     <h2>Your Profile</h2>
+                    <div className="notifications-container">
+                        <NavLink to="/notifications">
+                            <button className="notification-button">
+                                Notifications
+                            </button>
+                        </NavLink>
+                    </div>
                 </div> 
             {/* Profile */}
             <div className="pf-container">
@@ -106,11 +113,6 @@ const Profile = () => {
                         <div class='upd-button-container'>
                             <button className="upd-button" onClick={openModal}>Update Profile</button>
                         </div>
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                Notifications
-                            </button>
-                        </NavLink>
                     </div>
                 </div>
             </div>
