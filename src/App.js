@@ -24,7 +24,7 @@ function App() {
       {/* Ang nav kay maoy ei comment out para ma wagtang siya sa top sa site */}
          <nav>
           <p>Access to all Pages</p>
-          <Link to='/landing'>| Landing Page |</Link>
+          <Link to='/'>| Landing Page |</Link>
           <Link to='/dashboard'>| Dashboard |</Link>
           <Link to='/login'>| Login Page |</Link>
           <Link to='/signup'>| Sign Up |</Link>
@@ -35,7 +35,7 @@ function App() {
           <Link to='/view-races'>| View all Races |</Link>
           <Link to='/joined-races'>| Joined Events |</Link>
           <Link to='/profile'>| User Profile Page |</Link>
-          <Link to='Notifications'>| Notification |</Link>
+          <Link to='/notifications'>| Notification |</Link>
           <Link to='/eula'>| EULA Page |</Link>
           <Link to='/tos'>| TOS Page |</Link>
         </nav>

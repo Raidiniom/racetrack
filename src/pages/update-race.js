@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 //PLEASE AYAW HILABTI ANG CODE KAY HASUL KAAU MAG BACKTRACK!!
-//hello
 const UpdateEvent = () => {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -144,7 +143,6 @@ const UpdateEvent = () => {
                         <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
                     </ul>
                 </div>
-
 
                 {/* //Main Content */}
                 {/* Main Content */}

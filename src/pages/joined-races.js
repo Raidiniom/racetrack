@@ -4,7 +4,7 @@ import '../styles/header_and_sidebar.css';
 import { useEffect, useState } from 'react';
 import supabase from '../config/supabaseclient';
 import JoinCard from '../components/JoinCard';
-//hello
+
 const JoinedEvent = () => {
     const [fetchError, setFetchError] = useState(null);
     const [joinedRaces, setJoinedRaces] = useState(null);
@@ -99,10 +99,12 @@ const JoinedEvent = () => {
                     </ul>
                 </div>
                 {/* Main Content */}
-                <div class="joinEvents-main-content">
-                    <h2>Joined Events</h2>
-                    {/* Events Display */}
-                    <div className="main-container-dashboard">
+                <div class="joinedraces-main-content">
+                    <div class='dashb-main-content-header'>
+                        <h2>Available Races</h2>
+                    </div> 
+                    {/* Joined Races Display */}
+                    <div className="joinedraces-main-container">
                         {fetchError && (<p className='error'>{fetchError}</p>)}
                         {joinedRaces && (
                             <div>
