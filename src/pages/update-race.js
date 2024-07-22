@@ -214,7 +214,7 @@ const UpdateEvent = () => {
                         </div>
                     </div>
                 {isModalOpen && (
-                    <div className="modals">
+                    <div className="modal-up">
                         <div className="modal-content">
                             <div className="close" onClick={closeModal}>&times;</div>
                             <h2>Update Event</h2>

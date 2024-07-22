@@ -15,7 +15,7 @@
     grid-area: main;
     flex-direction: column;
     background-color: #00000000;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     height: 100%;
 }
 
