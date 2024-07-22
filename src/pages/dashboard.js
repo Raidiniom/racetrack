@@ -56,9 +56,6 @@ const Dashboard = () => {
                     <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
-                    <div className="headerbar-greeting">
-                    <p>Welcome, {displayName}</p>
-                    </div>
                     <div className="notifications-container">
                         <NavLink to="/notifications">
                             <button className="notification-button">
