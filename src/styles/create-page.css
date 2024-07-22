@@ -63,6 +63,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 15px 0 10px 0;
+    margin-right: 90px;
 }
 
 form .cr-user-details .cr-input-box {
