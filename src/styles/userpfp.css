@@ -62,11 +62,6 @@
     text-align: center;
 }
 
-.noti-icon {
-    width: 25px;
-    height: 25px;
-}
-
 .pf-content {
     display: flex;
     padding: 20px;
@@ -130,31 +125,7 @@
     transition: 0.3s;
 }
 
-.notification-button {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bolder;
-    font-size: 15px; 
-    text-transform: uppercase;
-    width: 200px;
-    padding: 12px 0;
-    text-align: center;
-    border-radius: 25px;
-    border: 2px solid #CB8925;
-    background: transparent;
-    color: #000000;
-    background-color: #ffffff;
-    cursor: pointer;
-    position: static;
-    overflow: hidden;
-    float: right;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.upd-button:hover, .notification-button:hover {
+.upd-button:hover {
     background-color: #CB8925;
     color: #d9d9d9;
 }
