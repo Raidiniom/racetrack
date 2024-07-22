@@ -168,11 +168,8 @@ const ViewEvent = () => {
                                     <div class='viewraces-card-racetitle'>
                                         {getraces.race_title}
                                     </div>
+                                    <h3>Description</h3>
                                     <p class='desc'>{getraces.race_description}</p>
-                                    {/* Insert Picture/Banner here */}
-                                    <div class="viewraces-card-banner-container">
-                                    <img src="insert-path-here" alt="banner" class="dashb-card-banner"/>
-                                    </div>
                                     <div class="viewraces-card-details-container">
                                         <div class='viewraces-card-details-wrapper'>
                                             <img src="/img/agereq-icon.png" class="icon"/>

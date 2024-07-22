@@ -7,7 +7,7 @@
         "sidebar main";
     height: 90vh;
 }
-/*hello*/
+
 .gen-headerbar {
     grid-area: header;
     justify-content: space-between;
