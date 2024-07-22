@@ -15,10 +15,29 @@ import ViewRaces from './pages/view-races';
 import UpdateEvent from './pages/update-race';
 import JoinedRaces from './pages/joined-races';
 import Notifications from './pages/notifications';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import supabase from './config/supabaseclient';
 
 
 function App() {
+  const [authed, setAuthed] = useState({ user: null})
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const { data: sestok, error: nosestok } = await supabase.auth.getSession()
+
+        if (nosestok) {
+          console.error('Session Error:', nosestok.message);
+          return;
+        }
+
+        const token = sestok?.session.access_token
+      } catch (error) {
+        
+      }
+    }
+  }, [])
 
   return (
       <BrowserRouter>

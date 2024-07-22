@@ -1,117 +1,160 @@
-import { NavLink } from 'react-router-dom'
-import '../styles/created-races.css'
-import '../styles/header_and_sidebar.css'
-import { useEffect, useState } from 'react'
-import supabase from '../config/supabaseclient'
-import { useParams } from 'react-router-dom'
-
-//components
-import RaceCard from '../components/RaceCard'
+import { NavLink } from 'react-router-dom';
+import '../styles/created-races.css';
+import '../styles/header_and_sidebar.css';
+import { useEffect, useState } from 'react';
+import supabase from '../config/supabaseclient';
+import RaceCard from '../components/RaceCard';
 
 const MadeEvents = () => {
-    const [fetchError, setFetchError] = useState(null)
-    const [getraces, setGetraces] = useState(null)
+    const [fetchError, setFetchError] = useState(null);
+    const [getraces, setGetraces] = useState(null);
     const [refresh, setRefresh] = useState(false);
-
-    const raceCreator = localStorage.getItem('lsusername')
 
     useEffect(() => {
         const fetchRaces = async () => {
             try {
-                const { data, error} = await supabase
-                 .from('app_users')
-                 .select('user_id')
-                 .eq('username', raceCreator)
-   
-               if (error) {
-                   throw error
-               }
-   
-               if (!data || data.length === 0) {
-                   throw new Error('Uh oh!!')
-               }
-   
-               const u_id = data[0].user_id
-   
-               const { data: races, error: no_races } = await supabase
-                .from('user_created_race')
-                .select('*')
-                .eq('race_creator', u_id)
-   
-               if (no_races) {
-                   throw no_races
-               }
-   
-               if (!races || races.length === 0) {
-                   throw new Error('No created Races yet.')
-               }
-   
-               setGetraces(races)
-               setFetchError(null)
+                // Fetch session
+                const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+                if (nosess) {
+                    console.error('Session Error:', nosess.message);
+                    setFetchError('Failed to fetch session. Please try again.');
+                    return;
+                }
+        
+                if (!sess || !sess.session) {
+                    setFetchError('No session found. Please log in.');
+                    return;
+                }
+        
+                // Extract user from session
+                const user = sess.session.user;
+        
+                if (!user || !user.email) {
+                    setFetchError('No user found in session. Please log in.');
+                    return;
+                }
+        
+                // Fetch user_id based on email
+                const { data: userData, error: userError } = await supabase
+                    .from('app_users')
+                    .select('user_id')
+                    .eq('email', user.email)
+                    .single(); // Use .single() to fetch a single row
+        
+                if (userError) {
+                    console.error('User ID Fetch Error:', userError.message);
+                    setFetchError('Failed to retrieve user ID.');
+                    return;
+                }
+        
+                if (!userData || !userData.user_id) {
+                    setFetchError('User ID not found.');
+                    return;
+                }
+        
+                // Ensure user_id is a number
+                const u_id = parseInt(userData.user_id, 10);
+                if (isNaN(u_id)) {
+                    setFetchError('Invalid user ID.');
+                    return;
+                }
+        
+                console.log('Fetching races for user ID:', u_id);
+        
+                // Fetch races created by the user
+                const { data: races, error: racesError } = await supabase
+                    .from('user_created_race')
+                    .select('*')
+                    .eq('race_creator', u_id);
+        
+                if (racesError) {
+                    console.error('Races Fetch Error:', racesError.message);
+                    setFetchError('Failed to fetch races.');
+                    return;
+                }
+        
+                if (!races || races.length === 0) {
+                    setFetchError('No created races yet.');
+                    return;
+                }
+        
+                // Update state with fetched races
+                setGetraces(races);
+                setFetchError(null);
             } catch (error) {
-                setFetchError(error.message || JSON.stringify(error))
-                setGetraces(null)
+                console.error('Unexpected Error:', error.message);
+                setFetchError('An unexpected error occurred. Please try again.');
+                setGetraces(null);
             }
+        };        
+
+        fetchRaces();
+    }, [refresh]);
+
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            console.error('Logout Error:', error.message);
+        } else {
+            window.location.href = '/login';
         }
-
-        fetchRaces()
-    }, [raceCreator, refresh])
-
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
-    }
+    };
 
     const handleDelete = () => {
-        // Trigger re-fetch by updating `refresh` state
         setRefresh(prev => !prev);
     };
 
-
     return (
-            <div className="createdr-body">
-                {/* Headerbar */}
-                <div class="gen-headerbar">
-                    <div className="gen-headerbar-logo">
-                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                    </div>
-                    <div className="notifications-container">
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                <img src="img/noti-icon.png" alt="icon" class="noti-icon"/> Notifications
-                            </button>
-                        </NavLink>
-                    </div>
+        <div className="createdr-body">
+            {/* Headerbar */}
+            <div className="gen-headerbar">
+                <div className="gen-headerbar-logo">
+                    <NavLink to='/dashboard'>
+                        <img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" />
+                    </NavLink>
                 </div>
-                {/* Sidebar */}
-                <div className="gen-sidebar">
-                    <ul>
-                        <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                    </ul>
+                <div className="notifications-container">
+                    <NavLink to="/notifications">
+                        <button className="notification-button">
+                            <img src="img/noti-icon.png" alt="icon" className="noti-icon"/> Notifications
+                        </button>
+                    </NavLink>
                 </div>
-                {/* Main Content */}
-                <div className="createdr-main-content">
-                    <div className='createdr-main-content-header'>
-                        <h2>Your Races</h2>
-                    </div> 
+            </div>
+            {/* Sidebar */}
+            <div className="gen-sidebar">
+                <ul>
+                    <li><NavLink to="/profile">Your Profile</NavLink></li>
+                    <li><NavLink to="/created-races">Your Races</NavLink></li>
+                    <li><NavLink to="/joined-races">Joined Races</NavLink></li>
+                    <li><NavLink to="/dashboard">Join a Race</NavLink></li>
+                    <li><NavLink to="/create-race">Create a Race</NavLink></li>
+                    <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
+                </ul>
+            </div>
+            {/* Main Content */}
+            <div className="createdr-main-content">
+                <div className='createdr-main-content-header'>
+                    <h2>Your Races</h2>
+                </div> 
                 {/* Created Races Display */}
                 <div className="createdr-main-container">
-                    {fetchError && (<p className='error'>{fetchError}</p>)}
-                        {getraces && (
+                    {fetchError && <p className='error'>{fetchError}</p>}
+                    {getraces ? (
                         <div>
                             {getraces.map(output => (
-                                <RaceCard key={output.race_id} output={output} onDelete={handleDelete}/>
+                                <RaceCard key={output.race_id} output={output} onDelete={handleDelete} />
                             ))}
                         </div>
+                    ) : (
+                        <p>No races found or loading...</p>
                     )}
                 </div>
             </div>  
         </div>
-    )
-}
+    );
+};
 
-export default MadeEvents
+export default MadeEvents;

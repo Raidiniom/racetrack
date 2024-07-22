@@ -20,7 +20,8 @@ const Profile = () => {
                     console.error('Session Error:', nosess.message);
                     return;
                 }
-
+                
+                console.log('This is Sess: ', sess)
                 const user = sess?.session.user;
                 setAuthuser({ user });
 

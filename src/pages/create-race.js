@@ -18,7 +18,7 @@ const Db = () => {
 
     const [formError, setFormError] = useState(null)
 
-    const storeduser = localStorage.getItem('lsusername')
+    const [authuser, setAuthuser] = useState({ user: null });
 
     const redirect = useNavigate()
 
@@ -30,10 +30,21 @@ const Db = () => {
             return;
         }
 
+        const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+        if (nosess) {
+            console.error('Session Error:', nosess.message);
+            return;
+        }
+                
+        console.log('This is Sess: ', sess)
+        const user = sess?.session.user;
+        setAuthuser({ user });
+
         const { data: userdata, error: nouser } = await supabase
         .from('app_users')
         .select('user_id')
-        .eq('username', storeduser);
+        .eq('email', user.email);
 
         if (nouser) {
             console.log('Error fetching user data:', nouser);
@@ -81,8 +92,14 @@ const Db = () => {
         redirect('/madeevents');
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/login'
+        }
     }
 
         return (
