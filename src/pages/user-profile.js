@@ -6,41 +6,56 @@ import { useEffect, useState } from 'react'
 import supabase from "../config/supabaseclient"
 
 const Profile = () => {
-    const [ fetchError, setFetchError ] = useState(null)
-    const [ getuser, setGetuser ] = useState(null)
+    const [authuser, setAuthuser] = useState({ user: null });
+    const [getuser, setGetuser] = useState(null);
+    const [fetchError, setFetchError] = useState(null);
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const storeUser = localStorage.getItem('lsusername')
-                if (storeUser) {
+                const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+                // Check for errors and log them
+                if (nosess) {
+                    console.error('Session Error:', nosess.message);
+                    return;
+                }
+
+                const user = sess?.session.user;
+                setAuthuser({ user });
+
+                if (user) {
                     const { data, error } = await supabase
-                     .from('app_users')
-                     .select('*')
-                     .eq('username', storeUser)
+                        .from('app_users')
+                        .select('*')
+                        .eq('email', user.email);
 
-                     if (error) {
-                        throw error
-                     }
-
-                     if (data) {
-                        setGetuser(data)
-                     }
+                    if (error) {
+                        throw error;
                     }
 
-                setFetchError(null)
+                    setGetuser(data);
+                }
+
+                setFetchError(null);
             } catch (error) {
-                setFetchError('Failed to Fetch User Data')
-                console.error('Error: ', error.message)
+                setFetchError('Failed to Fetch User Data');
+                console.error('Error: ', error.message);
             }
+        };
+
+        fetchUser();
+    }, []);
+
+
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/login'
         }
-
-        fetchUser()
-    }, [])
-
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
-        setGetuser(null)
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -91,14 +106,12 @@ const Profile = () => {
                                     {getuser.map(output => (
                                         <div className='content-wrap'>
                                             <div class='user-name'><h2>{output.username}</h2></div>
-                                            <div class='user-container'>
                                             <img src="img/email-icon.png" alt="icon" class="icon"/>
                                             <div><label class='user-label'>Email:</label> {output.email}</div>
                                             <img src="img/bday-icon.png" alt="icon" class="icon"/>          
                                             <div><label class='user-label'>Birthday:</label> {output.birth_day}</div>
                                             <div><label class='user-label'>Gender:</label> {output.gender}</div>
                                         </div>
-                                    </div>
                                     ))}
                                 </div>
                             )}

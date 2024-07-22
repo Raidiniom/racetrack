@@ -36,8 +36,14 @@ const Dashboard = () => {
         fetchRaces()
     }, [])
 
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/login'
+        }
     }
 
     return (

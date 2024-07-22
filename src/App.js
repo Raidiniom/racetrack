@@ -15,6 +15,7 @@ import ViewRaces from './pages/view-races';
 import UpdateEvent from './pages/update-race';
 import JoinedRaces from './pages/joined-races';
 import Notifications from './pages/notifications';
+import { useState } from 'react';
 
 
 function App() {
