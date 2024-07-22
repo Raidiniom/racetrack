@@ -57,6 +57,17 @@ const ViewEvent = () => {
         fetchRaces()
     }, [id])
 
+    const calculateAge = (birthDay) => {
+        const today = new Date();
+        const birthDate = new Date(birthDay);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    };
+
     const joinEvent = async (e) => {
         e.preventDefault();
 
@@ -69,7 +80,7 @@ const ViewEvent = () => {
         try {
             const { data: user, error: userError } = await supabase
                 .from('app_users')
-                .select('user_id')
+                .select('user_id, birth_day')
                 .eq('username', username)
                 .single();
 
@@ -80,6 +91,7 @@ const ViewEvent = () => {
             }
 
             const user_participant = user.user_id;
+            const user_age = calculateAge(user.birth_day);
 
             const parsedRaceId = parseInt(id, 10);
             if (isNaN(parsedRaceId)) {
@@ -89,6 +101,11 @@ const ViewEvent = () => {
 
             if (getraces.current_participant >= getraces.capacity) {
                 setFetchError('The event is full!');
+                return;
+            }
+
+            if (user_age < getraces.min_age || user_age > getraces.max_age) {
+                setFetchError('You do not meet the age requirements for this event!');
                 return;
             }
 
