@@ -95,33 +95,41 @@ const RaceCard = ({ output, onDelete }) => {
     };
 
     return (
-        <div className="ye-card">
-            <div className="race-title">
+        <div className="createdr-card">
+            <div className="createdr-title">
                 {output.race_title}
             </div>
-                <div className='content-wrap'>
-                    <div className="race-container">
+                <div className='createdr-card-details-container'>
+                    <div className="createdr-card-details-wrapper">
                         <img src="img/agereq-icon.png" alt="icon" class="icon"/>
-                        <div class ="race-details"><label class="race-label">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
+                        <div><label class="createdr-card-details">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
+                    </div>
+                    <div className="createdr-card-details-wrapper">
                         <img src="img/distance-icon.png" alt="icon" class="icon"/>
-                        <div class ="race-details"><label class="race-label">Race Distance:</label> {output.race_distance} KM</div>
+                        <div><label class="createdr-card-details">Race Distance:</label> {output.race_distance} KM</div>
+                    </div>
+                    <div className="createdr-card-details-wrapper">
                         <img src="img/capacity-icon.png" alt="icon" class="icon"/>
-                        <div class ="race-details"><label class="race-label">Maximum Racers:</label> {output.capacity}</div>
+                        <div><label class="createdr-card-details">Maximum Racers:</label> {output.capacity}</div>
+                    </div>
+                    <div className="createdr-card-details-wrapper">
                         <img src="img/participant-icon.png" alt="icon" class="icon"/>
-                        <div class ="race-details"><label class="race-label">Currently Joined:</label> {output.current_participant}</div>
+                        <div><label class="createdr-card-details">Currently Joined:</label> {output.current_participant}</div>
                     </div>
-                    <div class="date-container">
+                    <div className="createdr-card-details-wrapper">
                         <img src="img/calendar-icon.png" alt="icon" class="icon"/>
-                        <div class ="date-details"><label class="date-label">Start Date:</label> {output.start_date}</div>
-                        <div class ="date-details"><label class="date-label">Registration Date:</label> {output.registration_date}</div>
-                        <img src="img/loc-icon.png" alt="icon" class="icon"/>
-                        <div class ="date-details"><label class="date-label">Location:</label> {output.location}</div>
+                        <div><label class="createdr-card-details">Start Date:</label> {output.start_date}</div>
+                        <div><label class="createdr-card-details">Registration Date:</label> {output.registration_date}</div>
                     </div>
-                    <div>
+                    <div className="createdr-card-details-wrapper">
+                        <img src="img/loc-icon.png" alt="icon" class="icon"/>
+                        <div><label class="createdr-card-details">Location:</label> {output.location}</div>
+                    </div>
+                    <div className="createdr-button-container">
                         <NavLink to={'/' + output.race_id}>
-                        <button className="yeButton">Update Event</button>
+                        <button className="createdr-button">Update Event</button>
                         </NavLink>
-                        <button className="yeButton" onClick={handleDelete}>Delete Event</button>
+                        <button className="createdr-button" onClick={handleDelete}>Delete Event</button>
                     </div>
 
                 </div>

@@ -6,41 +6,56 @@ import { useEffect, useState } from 'react'
 import supabase from "../config/supabaseclient"
 
 const Profile = () => {
-    const [ fetchError, setFetchError ] = useState(null)
-    const [ getuser, setGetuser ] = useState(null)
+    const [authuser, setAuthuser] = useState({ user: null });
+    const [getuser, setGetuser] = useState(null);
+    const [fetchError, setFetchError] = useState(null);
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const storeUser = localStorage.getItem('lsusername')
-                if (storeUser) {
+                const { data: sess, error: nosess } = await supabase.auth.getSession();
+                
+                // Check for errors and log them
+                if (nosess) {
+                    console.error('Session Error:', nosess.message);
+                    return;
+                }
+
+                const user = sess?.session.user;
+                setAuthuser({ user });
+
+                if (user) {
                     const { data, error } = await supabase
-                     .from('app_users')
-                     .select('*')
-                     .eq('username', storeUser)
+                        .from('app_users')
+                        .select('*')
+                        .eq('email', user.email);
 
-                     if (error) {
-                        throw error
-                     }
-
-                     if (data) {
-                        setGetuser(data)
-                     }
+                    if (error) {
+                        throw error;
                     }
 
-                setFetchError(null)
+                    setGetuser(data);
+                }
+
+                setFetchError(null);
             } catch (error) {
-                setFetchError('Failed to Fetch User Data')
-                console.error('Error: ', error.message)
+                setFetchError('Failed to Fetch User Data');
+                console.error('Error: ', error.message);
             }
+        };
+
+        fetchUser();
+    }, []);
+
+
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        
+        if (error) {
+            console.error(error)
+        } else {
+            window.location.href='/login'
         }
-
-        fetchUser()
-    }, [])
-
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
-        setGetuser(null)
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,6 +74,13 @@ const Profile = () => {
             <div class="gen-headerbar">
                     <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
+                    </div>
+                    <div className="notifications-container">
+                        <NavLink to="/notifications">
+                            <button className="notification-button">
+                                <img src="img/noti-icon.png" alt="icon" class="noti-icon"/> Notifications
+                            </button>
+                        </NavLink>
                     </div>
                 </div>
             {/* Sidebar */}
@@ -80,10 +102,10 @@ const Profile = () => {
             {/* Profile */}
             <div className="pf-container">
                 <div className="pf-content">
-                    <div className="profile-picture">
+                    <div className="pf-pic">
                         <img src="\img\Default Img\defaultpfp.jpg" alt="Profile Picture" />
                     </div>
-                    <div className="profile-info">
+                    <div className="pf-info">
                         <div className="info">
                             {fetchError && (<p className='error'>{fetchError}</p>)}
                             {getuser && (
@@ -91,72 +113,71 @@ const Profile = () => {
                                     {getuser.map(output => (
                                         <div className='content-wrap'>
                                             <div class='user-name'><h2>{output.username}</h2></div>
-                                            <div class='user-container'>
                                             <img src="img/email-icon.png" alt="icon" class="icon"/>
                                             <div><label class='user-label'>Email:</label> {output.email}</div>
                                             <img src="img/bday-icon.png" alt="icon" class="icon"/>          
                                             <div><label class='user-label'>Birthday:</label> {output.birth_day}</div>
                                             <div><label class='user-label'>Gender:</label> {output.gender}</div>
                                         </div>
-                                    </div>
                                     ))}
                                 </div>
                             )}
                         </div>
-                        <div class='upd-button-container'>
-                            <button className="upd-button" onClick={openModal}>Update Profile</button>
+                        <div class='pf-button-container'>
+                            <button className="pf-button" onClick={openModal}>Update Profile</button>
                         </div>
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                Notifications
-                            </button>
-                        </NavLink>
                     </div>
                 </div>
             </div>
         </div>
 
             {isModalOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <div className="close" onClick={closeModal}>&times;</div>
-                        <h2>Update Profile</h2>
+                <div className="prof-modal">
+                    <div className="prof-modal-container">
+                        <div className="prof-close" onClick={closeModal}>&times;</div>
                         <form>
-                            <label>
-                                Username:
-                                <input type="text" name="username" />
-                            </label>
-                            <label>
-                                Enter current password:
-                                <input type="password" name="oldpass" />
-                            </label>
-                            <label>
-                                Enter new password:
-                                <input type="password" name="newpass" />
-                            </label>
-                            <label>
-                                Confirm new password:
-                                <input type="password" name="connewpass" />
-                            </label>
-                            <label>
-                                Email:
-                                <input type="email" name="email" />
-                            </label>
-                            <label>
-                                Birthday:
-                                <input type="date" name="bday" />
-                            </label>
-                            <div className='input-box'>
-                                <label className='gender-title-pfp'>Gender</label>
-                                <select name="gender" id="gender">
-                                    <option value="not selected">Default Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="prefer-not-to-say">Prefer not to say</option>
-                                    <option value="other">Other</option>
-                                </select>
+                            <h1 class='prof-title'>Update Profile</h1>
+                            <div className='prof-user-details'>
+                                <div className='prof-input-box'>
+                                <label className='prof-details'>
+                                    Change Username:
+                                    <input 
+                                        placeholder='Enter your preferred username'
+                                        type="text" 
+                                        name="username" 
+                                    />
+                                </label>
                             </div>
-                            <button type="submit" className="edit-button">Save Changes</button>
+                            <div className='prof-input-box'>
+                                <label className='prof-details'>
+                                    Email:
+                                    <input 
+                                        placeholder='Enter new email address'
+                                        type="email" 
+                                        name="email" 
+                                    />
+                                </label>
+                            </div>
+                            <div className='prof-input-box'>
+                                <label className='prof-details'>
+                                    Birthday:
+                                    <input 
+                                    type="date" 
+                                    name="bday" />
+                                </label>
+                            </div>
+                            <div className='prof-input-box'>
+                                <label className='prof-gender-title'>Gender</label>
+                                    <select name="gender" id="gender">
+                                        <option value="not selected">Default Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                            </div>
+                            <button type="submit" className="prof-button">Save Changes</button>
+                            </div>
                         </form>
                     </div>
                 </div>

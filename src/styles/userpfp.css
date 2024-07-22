@@ -7,23 +7,22 @@
     align-items: center;
     height: 100vh;
 }
-/*hello*/
+
 /* Content */
 .pf-main-content {
-    grid-area: main;
     display: flex;
+    grid-area: main;
     flex-direction: column;
-    gap: 20px;
     background-color: #00000000;
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 100%;
-    -ms-overflow-style: none;
 }
 
 .pf-main-content-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
 .pf-main-content-header h2 {
@@ -43,23 +42,15 @@
 
 /* Profile */
 .pf-container {
+    display: flex;
     font-family: Arial, sans-serif;
     background-color: #d9d9d9;
     flex: 1; 
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
     flex-direction: column;
-}
-
-.profile-header {
-    background-color: #333;
-    color: #d9d9d9;
-    padding: 10px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    text-align: center;
+    margin: 20px;
 }
 
 .pf-content {
@@ -68,7 +59,7 @@
     flex: 1;
 }
 
-.profile-picture img {
+.pf-pic img {
     border-radius: 50%;
     width: 200px;
     margin-top: 10px;
@@ -78,20 +69,20 @@
     border: #333 solid 1px;
 }
 
-.profile-info {
+.pf-info {
     flex: 1;
     display: flex;
     flex-direction: column; 
     justify-content: center;
 }
 
-.profile-info .info {
+.pf-info .info {
     margin-bottom: 20px;
     margin-left: 14px;
     font-size: 22px;
 }
 
-.upd-button-container {
+.pf-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +90,7 @@
     width: 100%
 }
 
-.upd-button {
+.pf-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     font-size: 15px; 
@@ -123,32 +114,20 @@
     color: #d9d9d9;
 }
 
-/* Update Modal */
-.modal {
-    display: none; 
+/* Update Prof. Modal */
+.prof-modal {
+    display: flex;
     position: fixed; 
     z-index: 1; 
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    left: 10%;
+    top: 10%;
+    width: 80%; 
+    height: 80%; 
+    overflow: hidden; 
+    border-radius: 5px;
 }
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    overflow: auto; 
-}
-
-.close {
+.prof-close {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -163,4 +142,114 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.prof-modal-container {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    left: 5%; 
+    right: 5%; 
+    bottom: 5%; 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: auto;
+    justify-content: center;
+}
+
+.prof-container .prof-title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.prof-container form .prof-user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 15px 0 10px 0;
+}
+
+form .prof-user-details .prof-input-box {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.prof-user-details .prof-input-box .prof-details {
+    display: block;
+    font-weight: bold;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.prof-user-details .prof-input-box input, select {
+    height: 45px;  
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.prof-user-details .prof-input-box input:hover, select:hover{
+    border-color: #ffdfae;
+}
+
+.prof-user-details .prof-input-box input:focus, input:valid, select:focus {
+    border-color: #fc9700;
+}
+
+form .prof-agreements-details .prof-agreements-title {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0 12px 0;
+}
+
+input[type="checkbox"] {
+        margin-right: 5px;
+        opacity: 1;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+.prof-button {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 15px; 
+    text-transform: uppercase;
+    width: 200px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 10px 309px;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #2c2c2c;
+    cursor: pointer;
+    position: static;
+    overflow: hidden;
+    transition: 0.3s;
+    float: right;
+}
+
+.prof-button:hover {
+    background-color: #CB8925;
+    color: #d9d9d9;
+}
+
+.prof-misc {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }

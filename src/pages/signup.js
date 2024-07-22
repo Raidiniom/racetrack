@@ -22,19 +22,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const {data, error} = await supabase
-          .from('app_users')
-          .insert({
-            display_name: regNickname,
-            username: regUsername,
-            password: regPassword,
-            email: regEmail,
-            birth_day: regBDay,
-            gender: regGender
-          })
-          .select('*')
-
-          if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
+        if (!regUsername || !regPassword || !regConfirmPassword || !regEmail || !regBDay || !regGender || !regNickname) {
             setformError('Please Fill Out all the fields!')
             return
         }
@@ -44,8 +32,37 @@ const Register = () => {
             return
         }
 
-          setformError('You Successfuly Registered')
-          redirect('/login')
+        try {
+            const {data: auth, error: noauth} = await supabase.auth.signUp({
+                email: regEmail,
+                password: regConfirmPassword,
+                options: {
+                    data: {
+                        full_name: regUsername
+                    }
+                }
+            })
+
+            if (noauth) throw noauth
+            
+            const {data: details, error: nodetails} = await supabase
+            .from('app_users')
+            .insert({
+                display_name: regNickname,
+                username: regUsername,
+                email: regEmail,
+                birth_day: regBDay,
+                gender: regGender
+            })
+            .select('*')
+
+            alert('Successfuly Signed Up!')
+            redirect('/login')
+        } catch (noauth) {
+            alert(noauth)
+        }
+
+        redirect('/login')
     }
 
     return (

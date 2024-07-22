@@ -153,6 +153,13 @@ const ViewEvent = () => {
                     <div className="gen-headerbar-logo">
                         <NavLink to='/'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
+                    <div className="notifications-container">
+                        <NavLink to="/notifications">
+                            <button className="notification-button">
+                                <img src="img/noti-icon.png" alt="icon" class="noti-icon"/> Notifications
+                            </button>
+                        </NavLink>
+                    </div>
                 </div>
                 {/* Sidebar */}
                 <div className="gen-sidebar">

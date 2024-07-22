@@ -5,7 +5,7 @@ import { useState } from 'react'
 import supabase from "../config/supabaseclient"
 //hello
 const Login = () => {
-    const [logUsername, setlogUsername] = useState('')
+    const [logEmail, setlogEmail] = useState('')
     const [logPassword, setlogPassword] = useState('')
     const redirect = useNavigate()
 
@@ -14,42 +14,28 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!logUsername || !logPassword) {
+        if (!logEmail || !logPassword) {
             setformError('Please fill in all required fields to proceed.')
             return
         }
 
-        const { data: users, error } = await supabase
-            .from('app_users')
-            .select('user_id, username, password')
-            .eq('username', logUsername)
+        try {
+            const { data: users, error: nousers } = await supabase.auth.signInWithPassword({
+                email: logEmail,
+                password: logPassword
+            })
 
-        if (error) {
-            setformError('Error fetching user data.');
-            return;
+            if (nousers) throw nousers
+
+            
+
+            console.log(users)
+
+            alert('Successfuly Logged In~!')
+            redirect('/dashboard')
+        } catch (nousers) {
+            alert(nousers)
         }
-
-        if (users.length === 0) {
-            setformError('Username not found.');
-            return;
-        }
-
-        const user = users[0];
-
-        if (user.password !== logPassword) {
-            setformError('Incorrect Password.');
-            return
-        }
-
-        if (user.password !== logPassword) {
-            setformError('Incorrect Password.');
-            return
-        }
-
-        localStorage.setItem('lsusername', logUsername);
-        localStorage.setItem('lsuserid', user.user_id);
-        setformError('You Successfully Logged In!');
-        redirect('/dashboard')
     }
 
     return (
@@ -66,13 +52,13 @@ const Login = () => {
                         <div className='log-user-details'>
                             {/* Username */}
                             <div className='log-input-box'>
-                                <label className='log-details'>Username:</label>
+                                <label className='log-details'>Email:</label>
                                 <input
                                     placeholder='Enter your username*'
-                                    type='text'
+                                    type='email'
                                     id='inuser'
-                                    value={logUsername}
-                                    onChange={(e) => setlogUsername(e.target.value)} />
+                                    value={logEmail}
+                                    onChange={(e) => setlogEmail(e.target.value)} />
                             </div>
                             {/* Password */}
                             <div className='log-input-box'>
