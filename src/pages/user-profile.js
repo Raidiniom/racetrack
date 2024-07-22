@@ -60,6 +60,13 @@ const Profile = () => {
                     <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
+                    <div className="notifications-container">
+                        <NavLink to="/notifications">
+                            <button className="notification-button">
+                                <img src="img/noti-icon.png" alt="icon" class="noti-icon"/> Notifications
+                            </button>
+                        </NavLink>
+                    </div>
                 </div>
             {/* Sidebar */}
             <div className="gen-sidebar">
@@ -76,13 +83,6 @@ const Profile = () => {
             <div className="pf-main-content">
                 <div class='pf-main-content-header'>
                     <h2>Your Profile</h2>
-                    <div className="notifications-container">
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                Notifications
-                            </button>
-                        </NavLink>
-                    </div>
                 </div> 
             {/* Profile */}
             <div className="pf-container">
