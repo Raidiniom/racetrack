@@ -95,9 +95,9 @@
     display: block;
 }
 
-.noti-icon, .pfp-icon {
-    width: 25px;
-    height: 25px;
+.pfp-icon, .noti-icon {
+    max-width: 25px;
+    max-height: 25px;
 }
 
 .notification-button {

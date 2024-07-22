@@ -126,7 +126,7 @@ const MadeEvents = () => {
                     <div className="notifications-container">
                         <NavLink to="/notifications">
                             <button className="notification-button">
-                                <img src="img/noti-icon.png" alt="icon" classNameName="noti-icon" /> Notifications
+                                <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
                             </button>
                         </NavLink>
                         </div>
