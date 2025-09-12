@@ -14,4 +14,5 @@ Base the Website Design on this wireframe:
   - @Raidiniom
   - @bellebarmosa
   - @samantiporta
+  - @ndlll5
   - _More to come_
