@@ -54,7 +54,7 @@ const Login = () => {
                             <div className='log-input-box'>
                                 <label className='log-details'>Email:</label>
                                 <input
-                                    placeholder='Enter your username*'
+                                    placeholder='Enter your email address*'
                                     type='email'
                                     id='inuser'
                                     value={logEmail}
