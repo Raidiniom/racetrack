@@ -17,6 +17,7 @@ import JoinedRaces from './pages/joined-races';
 import Notifications from './pages/notifications';
 import { useEffect, useState } from 'react';
 import supabase from './config/supabaseclient';
+import UpdatePassword from './pages/update-password';
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/recover' element={<Recover />} />
+          <Route path='/update-password' element={<UpdatePassword />}/>
           <Route path='/eula' element={<Eula />} />
           <Route path='/tos' element={<Tos />} />
           <Route path='/profile' element={<Profile />} />
