@@ -9,6 +9,14 @@ const Profile = () => {
     const [authuser, setAuthuser] = useState({ user: null });
     const [getuser, setGetuser] = useState(null);
     const [fetchError, setFetchError] = useState(null);
+    const [preview, setPreview] = useState(null);
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if(file){
+            setPreview(URL.createObjectURL(file));
+        }
+    }
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -151,7 +159,40 @@ const Profile = () => {
                         <div className="prof-close" onClick={closeModal}>&times;</div>
                         <form>
                             <h1 class='prof-title'>Update Profile</h1>
+                            
                             <div className='prof-user-details'>
+
+                                <div className='prof-input-box prof-pic-box'>
+                                    <label className='prof-details'>
+                                        Profile Picture:
+                                    </label>
+
+                                    
+                                    <div className='prof-pic-preview'>
+                                        <img
+                                            src={preview || getuser?.[0]?.profile_pic || "img/pfp.png"}
+                                            alt='Profile Preview'/>
+                                    </div>
+
+                                    <input
+                                        id="file-upload"
+                                        type="file"
+                                        accept="image/*"
+                                        style={{ display: 'none'}}
+                                        name="profile_pic"
+                                        onChange={(e) => {
+                                            const file = e.target.files[0];
+                                            if (file) {
+                                                setPreview(URL.createObjectURL(file));
+                                            }
+                                        }}
+                                    />
+
+                                    <label htmlFor='file-upload' className='prof-upload-btn'>
+                                        Choose a picture
+                                    </label>
+                                </div>
+
                                 <div className='prof-input-box'>
                                 <label className='prof-details'>
                                     Change Username:
