@@ -61,8 +61,6 @@ const Register = () => {
         } catch (noauth) {
             alert(noauth)
         }
-
-        redirect('/login')
     }
 
     return (
