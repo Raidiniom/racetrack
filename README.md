@@ -16,3 +16,53 @@ Base the Website Design on this wireframe:
   - @samantiporta
   - @ndlll5
   - _More to come_
+
+# 🔹 Workflow
+### 1. Before starting work
+Always sync your repo first:
+```bash
+git fetch origin
+git switch development
+git pull origin development
+```
+
+### 2. Create a new branch
+Branch naming rules:
+- feat/feature-name → for new features
+- bug/fix-name → for bug fixes
+```bash
+git switch -c feat/your-feature-name
+git push -u origin feat/your-feature-name   # set upstream for future pushes
+```
+
+### 3. Do your work
+Save progress frequently:
+```bash
+git branch -v                  # make sure you’re NOT on main or development
+git add .
+git commit -m "summarize what you did"
+git push
+```
+
+### 4. Create Pull Request
+If you are done with your work, create a Pull Request:
+```rust
+development <- 'branch-where-you-are-working'
+```
+- Go to GitHub → Open a PR from your branch into development
+- Request reviews from teammates
+
+## Summary Workflow
+```bash
+git fetch origin
+git pull origin development
+git switch -c feat/branch-name
+# work on changes
+git add .
+git commit -m "..."
+git push
+# open PR → merge into development
+git switch development
+git pull origin development
+git branch -d feat/branch-name
+```
