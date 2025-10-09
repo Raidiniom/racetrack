@@ -33,7 +33,17 @@ const Register = () => {
         }
 
         try {
-            const {data: auth, error: noauth} = await supabase.auth.signUp({
+            const checkEmail = await supabase
+            .from('app_users')
+            .select('email')
+            .eq('email', regEmail)
+
+            if (checkEmail && checkEmail.length > 0) {
+                setformError('Email is already Registered')
+                return
+            }
+            
+            const auth = await supabase.auth.signUp({
                 email: regEmail,
                 password: regConfirmPassword,
                 options: {
@@ -43,9 +53,9 @@ const Register = () => {
                 }
             })
 
-            if (noauth) throw noauth
+            if (auth.error) throw auth.error
             
-            const {data: details, error: nodetails} = await supabase
+            const insert = await supabase
             .from('app_users')
             .insert({
                 display_name: regNickname,
@@ -56,10 +66,12 @@ const Register = () => {
             })
             .select('*')
 
+            if (insert.error) throw insert.error
+
             alert('Successfuly Signed Up!')
             redirect('/login')
-        } catch (noauth) {
-            alert(noauth)
+        } catch (authError) {
+            alert(authError)
         }
     }
 

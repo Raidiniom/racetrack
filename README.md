@@ -66,3 +66,8 @@ git switch development
 git pull origin development
 git branch -d feat/branch-name
 ```
+
+## Start / Run the Site
+```bash
+npm start
+```
