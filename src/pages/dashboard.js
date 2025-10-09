@@ -15,7 +15,6 @@ import { SearchR } from '../components/Searching'
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState([])
-    const [displayName, setDisplayName] = useState('')
 
     useEffect(() => {
     
