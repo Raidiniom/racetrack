@@ -46,32 +46,34 @@ const Register = () => {
             const auth = await supabase.auth.signUp({
                 email: regEmail,
                 password: regConfirmPassword,
-                options: {
-                    data: {
-                        full_name: regUsername
-                    }
-                }
             })
 
             if (auth.error) throw auth.error
             
+            const userUuid = auth.data?.user?.id
+
+            if (!userUuid) {
+                setformError('Failed to retrieve user UUID')
+                return
+            }
+
             const insert = await supabase
             .from('app_users')
-            .insert({
+            .update({
                 display_name: regNickname,
                 username: regUsername,
                 email: regEmail,
                 birth_day: regBDay,
                 gender: regGender
             })
-            .select('*')
+            .eq('user_id', userUuid)
 
             if (insert.error) throw insert.error
 
             alert('Successfuly Signed Up!')
             redirect('/login')
         } catch (authError) {
-            alert(authError)
+            alert(authError.message || JSON.stringify(authError, null, 2))
         }
     }
 
