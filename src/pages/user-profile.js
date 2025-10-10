@@ -1,4 +1,5 @@
 import React from 'react';
+import { uploadCloudinary } from '../config/cloudinaryclient'
 import { NavLink } from 'react-router-dom';
 import '../styles/userpfp.css';
 import '../styles/header_and_sidebar.css'
@@ -10,11 +11,34 @@ const Profile = () => {
     const [getuser, setGetuser] = useState(null);
     const [fetchError, setFetchError] = useState(null);
     const [preview, setPreview] = useState(null);
+    const [selectFile, setSelectFile] = useState(null);
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if(file){
-            setPreview(URL.createObjectURL(file));
+    const handleProfileUpdate = async (e) => {
+        e.preventDefault();
+
+        try {
+            let uploadURL = getuser?.profile_pic;
+
+            if (selectFile) {
+                uploadURL = await uploadCloudinary(selectFile);
+            }
+
+            const insertUrl = await supabase
+            .from("app_users")
+            .update({
+                pfp_url: uploadURL,
+            })
+            .eq("email", authuser.user.email);
+
+            if (insertUrl.error) throw insertUrl.error
+            
+            alert("Profile Updated!");
+            closeModal();
+
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+            alert("Profile Updated Failed"+ error.message);
         }
     }
 
@@ -104,7 +128,6 @@ const Profile = () => {
             {/* Sidebar */}
             <div className="gen-sidebar">
                 <ul>
-                    <li><NavLink to="/profile">Your Profile</NavLink></li>
                     <li><NavLink to="/created-races">Your Races</NavLink></li>
                     <li><NavLink to="/joined-races">Joined Races</NavLink></li>
                     <li><NavLink to="/dashboard">Join a Race</NavLink></li>
@@ -116,6 +139,18 @@ const Profile = () => {
             <div className="pf-main-content">
                 <div class='pf-main-content-header'>
                     <h2>Your Profile</h2>
+
+                    {getuser && (
+                        <div>
+                            {getuser.map( output => (
+                                <div className='prof-pic-preview'>
+                                    <img
+                                        src={output.pfp_url}
+                                        alt='User Profile Picture'/>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div> 
             {/* Profile */}
             <div className="pf-container">
@@ -157,7 +192,7 @@ const Profile = () => {
                 <div className="prof-modal">
                     <div className="prof-modal-container">
                         <div className="prof-close" onClick={closeModal}>&times;</div>
-                        <form>
+                        <form onSubmit={handleProfileUpdate}>
                             <h1 class='prof-title'>Update Profile</h1>
                             
                             <div className='prof-user-details'>
@@ -183,6 +218,7 @@ const Profile = () => {
                                         onChange={(e) => {
                                             const file = e.target.files[0];
                                             if (file) {
+                                                setSelectFile(file);
                                                 setPreview(URL.createObjectURL(file));
                                             }
                                         }}

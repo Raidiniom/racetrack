@@ -181,7 +181,7 @@ const ViewEvent = () => {
                 {/* Sidebar */}
                 <div className="gen-sidebar">
                     <ul>
-                        <li><NavLink to="/profile">Your Profile</NavLink></li>
+                        
                         <li><NavLink to="/created-races">Your Races</NavLink></li>
                         <li><NavLink to="/joined-races">Joined Races</NavLink></li>
                         <li><NavLink to="/dashboard">Join a Race</NavLink></li>

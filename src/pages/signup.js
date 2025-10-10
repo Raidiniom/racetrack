@@ -33,33 +33,47 @@ const Register = () => {
         }
 
         try {
-            const {data: auth, error: noauth} = await supabase.auth.signUp({
+            const checkEmail = await supabase
+            .from('app_users')
+            .select('email')
+            .eq('email', regEmail)
+
+            if (checkEmail && checkEmail.length > 0) {
+                setformError('Email is already Registered')
+                return
+            }
+            
+            const auth = await supabase.auth.signUp({
                 email: regEmail,
                 password: regConfirmPassword,
-                options: {
-                    data: {
-                        full_name: regUsername
-                    }
-                }
             })
 
-            if (noauth) throw noauth
+            if (auth.error) throw auth.error
             
-            const {data: details, error: nodetails} = await supabase
+            const userUuid = auth.data?.user?.id
+
+            if (!userUuid) {
+                setformError('Failed to retrieve user UUID')
+                return
+            }
+
+            const insert = await supabase
             .from('app_users')
-            .insert({
+            .update({
                 display_name: regNickname,
                 username: regUsername,
                 email: regEmail,
                 birth_day: regBDay,
                 gender: regGender
             })
-            .select('*')
+            .eq('user_id', userUuid)
+
+            if (insert.error) throw insert.error
 
             alert('Successfuly Signed Up!')
             redirect('/login')
-        } catch (noauth) {
-            alert(noauth)
+        } catch (authError) {
+            alert(authError.message || JSON.stringify(authError, null, 2))
         }
     }
 
