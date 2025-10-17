@@ -4,10 +4,18 @@ import { NavLink } from 'react-router-dom'
 import "../styles/eula.css"
 
 const Eula = () => {
+    const navigate = useNavigate();
+    const contentRef = useRef();
 
+
+    const handleOverlayClick = (e) => {
+        if (contentRef.current && !contentRef.current.contains(e.target)) {
+            navigate(-1);
+        }
+    };
     return (
-            <div className="eula-content-body">
-                <div className='eula-container'>
+            <div className="eula-content-body" onClick={handleOverlayClick} style={{ cursor: 'pointer' }}>
+                <div className='eula-container' ref={contentRef} style={{ cursor: 'default' }}>
                     <div className='eula-content'>
                         <h1>End-User License Agreement</h1>
 
