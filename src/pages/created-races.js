@@ -1,9 +1,16 @@
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+// CSS
 import '../styles/created-races.css';
 import '../styles/header_and_sidebar.css';
-import { useEffect, useState } from 'react';
+
+// Config
 import supabase from '../config/supabaseclient';
+
+// Components
 import RaceCard from '../components/RaceCard';
+import Sidebar from '../components/Sidebar'
 
 const MadeEvents = () => {
     const [fetchError, setFetchError] = useState(null);
@@ -129,16 +136,8 @@ const MadeEvents = () => {
                 </div>
             </div>
             {/* Sidebar */}
-            <div className="gen-sidebar">
-                <ul>
-                    
-                    <li><NavLink to="/created-races">Your Races</NavLink></li>
-                    <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                    <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                    <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                    <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                </ul>
-            </div>
+            <Sidebar />
+
             {/* Main Content */}
             <div className="createdr-main-content">
                 <div className='createdr-main-content-header'>

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+// Config
 import supabase from "../config/supabaseclient"
 
 const UpdatePassword = () => {

@@ -1,8 +1,14 @@
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+// CSS
 import '../styles/joined-races.css';
 import '../styles/header_and_sidebar.css';
-import { useEffect, useState } from 'react';
+
+// Config
 import supabase from '../config/supabaseclient';
+
+// Component
 import JoinCard from '../components/JoinCard';
 
 const JoinedEvent = () => {

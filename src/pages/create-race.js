@@ -1,7 +1,11 @@
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+// CSS
 import '../styles/create-page.css'
 import '../styles/header_and_sidebar.css'
-import { useState } from 'react'
+
+// Config
 import supabase from "../config/supabaseclient"
 import { uploadBanner } from '../config/cloudinaryclient'
 
@@ -135,17 +139,7 @@ const Db = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sidebar */}
-                <div className="gen-sidebar">
-                    <ul>
-                        
-                        <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                    </ul>
-                </div>
+
                 <div className="cr-main-content">
                     <div class='cr-main-content-header'>
                         <h2>Create a Race</h2>

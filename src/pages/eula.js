@@ -1,5 +1,6 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import React, { useRef } from 'react';
+import { NavLink } from 'react-router-dom'
+
+// CSS
 import "../styles/eula.css"
 
 const Eula = () => {

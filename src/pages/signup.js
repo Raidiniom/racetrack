@@ -1,11 +1,13 @@
-// Original
-
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+// CSS
 import '../styles/signup-page.css'
 import '../styles/errors.css'
-import { useState } from 'react'
+
+// Config
 import supabase from "../config/supabaseclient"
-//hello
+
 const Register = () => {
     const [regUsername, setRegUsername] = useState('')
     const [regPassword, setRegPassword] = useState('')
