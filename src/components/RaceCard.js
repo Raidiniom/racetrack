@@ -99,6 +99,12 @@ const RaceCard = ({ output, onDelete }) => {
             <div className="createdr-title">
                 {output.race_title}
             </div>
+                <div>
+                    <img 
+                        src={output.race_banner_url}
+                        alt='race banner picture'
+                    />
+                </div>
                 <div className='createdr-card-details-container'>
                     <div className="createdr-card-details-wrapper">
                         <img src="img/agereq-icon.png" alt="icon" class="icon"/>
@@ -131,7 +137,6 @@ const RaceCard = ({ output, onDelete }) => {
                         </NavLink>
                         <button className="createdr-button" onClick={handleDelete}>Delete Event</button>
                     </div>
-
                 </div>
                 
         </div>

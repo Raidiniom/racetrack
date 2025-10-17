@@ -1,10 +1,10 @@
 import React from 'react';
-import { uploadCloudinary } from '../config/cloudinaryclient'
 import { NavLink } from 'react-router-dom';
 import '../styles/userpfp.css';
 import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import supabase from "../config/supabaseclient"
+import { uploadPFP } from '../config/cloudinaryclient'
 
 const Profile = () => {
     const [authuser, setAuthuser] = useState({ user: null });
@@ -20,7 +20,7 @@ const Profile = () => {
             let uploadURL = getuser?.profile_pic;
 
             if (selectFile) {
-                uploadURL = await uploadCloudinary(selectFile);
+                uploadURL = await uploadPFP(selectFile);
             }
 
             const insertUrl = await supabase
@@ -205,9 +205,17 @@ const Profile = () => {
 
                                     
                                     <div className='prof-pic-preview'>
-                                        <img
-                                            src={preview || getuser?.[0]?.profile_pic || "img/pfp.png"}
-                                            alt='Profile Preview'/>
+                                        {getuser && (
+                                            <div>
+                                                {getuser.map( output => (
+                                                    <div className='prof-pic-preview'>
+                                                        <img
+                                                            src={output.pfp_url}
+                                                            alt='User Profile Picture'/>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
 
                                     <input

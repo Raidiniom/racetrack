@@ -54,12 +54,8 @@ const MadeEvents = () => {
                 }
         
                 // Ensure user_id is a number
-                const u_id = parseInt(userData.user_id, 10);
-                if (isNaN(u_id)) {
-                    setFetchError('Invalid user ID.');
-                    return;
-                }
-        
+                const u_id = userData.user_id
+            
                 console.log('Fetching races for user ID:', u_id);
         
                 // Fetch races created by the user
