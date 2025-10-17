@@ -1,13 +1,15 @@
-//import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom'
-import '../styles/update-race.css'
-import '../styles/header_and_sidebar.css'
-import '../styles/errors.css'
-import supabase from "../config/supabaseclient"
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-//PLEASE AYAW HILABTI ANG CODE KAY HASUL KAAU MAG BACKTRACK!!
+// CSS
+import '../styles/update-race.css'
+import '../styles/header_and_sidebar.css'
+import '../styles/errors.css'
+
+// Config
+import supabase from "../config/supabaseclient"
+
 const UpdateEvent = () => {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -40,7 +42,6 @@ const UpdateEvent = () => {
 
             if(error){
                 console.error('Error fetching race:', error);
-                //navigate('/', {replace: true})
                 setFetchError('No Races Open!')
                 setGetraces(null)
             }
@@ -162,19 +163,7 @@ const UpdateEvent = () => {
                         </div>
                     </div>
                 </div>
-                {/* Sidebar */}
-                <div className="gen-sidebar">
-                    <ul>
-                        <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                    </ul>
-                </div>
 
-                {/* //Main Content */}
                 {/* Main Content */}
                 <div class="update-viewraces-main-content">
                     <div class='update-viewraces-main-content-header'>
@@ -227,6 +216,7 @@ const UpdateEvent = () => {
                             )}
                         </div>
                     </div>
+                    
                 {isModalOpen && (
                     <div className="modal-up">
                         <div className="modal-content">

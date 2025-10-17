@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom'
+
+// CSS
 import "../styles/eula.css"
 
 const Eula = () => {

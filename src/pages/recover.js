@@ -1,10 +1,14 @@
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+// CSS
 import '../styles/recover-page.css'
 import '../styles/errors.css'
 import '../styles/success.css'
-import { useState } from 'react'
+
+// Config
 import supabase from "../config/supabaseclient"
-//hello
+
 const Recover = () => {
     const [email, setEmail] = useState('')
     const redirect = useNavigate()

@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom'
+
+// CSS
 import "../styles/tos.css"
 
 const Tos = () => {

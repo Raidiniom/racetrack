@@ -1,13 +1,18 @@
 import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
+// CSS
 import '../styles/dashboard-page.css'
 import '../styles/header_and_sidebar.css'
 import '../styles/errors.css'
 import '../styles/searchbar.css'
-import { useEffect, useState } from 'react'
+
+// Config
 import supabase from '../config/supabaseclient'
 
 //Components
 import DashCard from '../components/DashCard'
+import Sidebar from '../components/Sidebar'
 import { SearchR } from '../components/Searching'
 
 
@@ -71,17 +76,10 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
+                
                 {/* Sidebar */}
-                <div className="gen-sidebar">
-                    <ul>
-                        <li><NavLink to="/profile">Your Profile</NavLink></li>
-                        <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                    </ul>
-                </div>
+                <Sidebar />
+
                 {/* Main Content */}
                 <div className="dashb-main-content">
                     <div class='dashb-main-content-header'>

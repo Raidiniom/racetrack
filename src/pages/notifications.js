@@ -1,10 +1,15 @@
 import { useEffect, useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
-import supabase from "../config/supabaseclient";
-import '../styles/header_and_sidebar.css'; // Import the same styles to match the design
-import '../styles/errors.css'; // Import the same styles to match the design
+
+// CSS
+import '../styles/header_and_sidebar.css';
+import '../styles/errors.css';
 import '../styles/notifications.css';
 
+// Config
+import supabase from "../config/supabaseclient";
+
+// Components
 import NotifCard from "../components/NotifCard";
 
 const Notifications = () => {
