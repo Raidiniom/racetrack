@@ -3,6 +3,7 @@ import '../styles/create-page.css'
 import '../styles/header_and_sidebar.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
+import { uploadBanner } from '../config/cloudinaryclient'
 
 const Db = () => {
 
@@ -15,6 +16,7 @@ const Db = () => {
     const [maxage, setMaxage] = useState('')
     const [trackkm, setTrackkm] = useState('')
     const [location, setLocation] = useState('')
+    const [raceBanner, setRaceBanner] = useState(null)
 
     const [formError, setFormError] = useState(null)
 
@@ -58,6 +60,12 @@ const Db = () => {
             return;
         }
 
+        let uploadURL = ''
+
+        if (raceBanner) {
+            uploadURL = await uploadBanner(raceBanner);
+        }
+
         const racemaker = userdata[0].user_id;
 
         const { data: raceData, error: insertError } = await supabase
@@ -72,7 +80,8 @@ const Db = () => {
                 max_age: maxage,
                 race_distance: trackkm,
                 race_creator: racemaker,
-                location: location
+                location: location,
+                race_banner_url: uploadURL,
             })
             .select('race_id');
 
@@ -248,6 +257,25 @@ const Db = () => {
                                     required 
                                 />
                             </div>
+
+                            {/* Race Banner Picture */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Race Banner</label>
+                                <input
+                                    id='file-upload'
+                                    type='file'
+                                    accept='image/*'
+                                    name='race_banner'
+                                    onChange={(e) => {
+                                        const file = e.target.files[0];
+
+                                        if (file) {
+                                            setRaceBanner(file);
+                                        }
+                                    }}
+                                />
+                            </div>
+
                             {/* Create Race Button */}
                             <div class='cr-button-container'>
                                 <button className="cr-button">Create Race</button>

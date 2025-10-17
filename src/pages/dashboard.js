@@ -5,12 +5,11 @@ import '../styles/errors.css'
 import '../styles/searchbar.css'
 import { useEffect, useState } from 'react'
 import supabase from '../config/supabaseclient'
-//hello
+
 //Components
 import DashCard from '../components/DashCard'
 import { SearchR } from '../components/Searching'
 
-// ASDASDASDASDASDASD
 
 const Dashboard = () => {
     const [ fetchError, setFetchError ] = useState(null)
