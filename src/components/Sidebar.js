@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import supabase from "../config/supabaseclient";
+import { NavLink } from 'react-router-dom';
+import supabase from '../config/supabaseclient';
 import '../styles/header_and_sidebar.css'
 
 const Sidebar = () => {
@@ -14,14 +14,13 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="gen-sidebar">
+        <div className='gen-sidebar'>
             <ul>
-                <li><NavLink to="/profile">Your Profile</NavLink></li>
-                <li><NavLink to="/created-races">Your Races</NavLink></li>
-                <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
+                <li><NavLink to='/created-races'>Your Races</NavLink></li>
+                <li><NavLink to='/joined-races'>Joined Races</NavLink></li>
+                <li><NavLink to='/dashboard'>Join a Race</NavLink></li>
+                <li><NavLink to='/create-race'>Create a Race</NavLink></li>
+                <li><NavLink to='/landing' onClick={handleLogout}>Log Out</NavLink></li>
             </ul>
         </div>
     )
