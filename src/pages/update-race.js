@@ -1,5 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 // CSS
@@ -9,30 +8,21 @@ import '../styles/errors.css'
 
 // Config
 import supabase from "../config/supabaseclient"
+import { uploadBanner } from '../config/cloudinaryclient'
 
 const UpdateEvent = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    const [ getraces, setGetraces ] = useState(null)
-    const [ fetchError, setFetchError ] = useState(null)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [formError, setFormError] = useState(null)
 
-    const [authuser, setAuthuser] = useState(null);
-
-    //race table
-    const [racetitle, setRacetitle] = useState('')
-    const [startdate, setStartdate] = useState('')
-    const [regdate, setRegdate] = useState('')
-    const [capacity, setCapacity] = useState('')
-    const [description, setDescription] = useState('')
-    const [minage, setMinage] = useState('')
-    const [maxage, setMaxage] = useState('')
-    const [trackkm, setTrackkm] = useState('')
-    const [location, setLocation] = useState('')
+    const [ race, setRace ] = useState(null)
+    const [ isModalOpen, setIsModalOpen ] = useState(false)
+    const [ formError, setFormError ] = useState(null)
+    const [ raceBanner, setRaceBanner ] = useState(null)
+    const [ previewBanner, setPreviewBanner ] = useState(null)
 
     useEffect(() => {
-        console.log('Fetching race with id:', id);
+        console.log('[CONSOLE LOG] Fetching race with id:', id);
+
         const fetchRaces = async () => {
             const { data, error } = await supabase
              .from('user_created_race')
@@ -41,92 +31,66 @@ const UpdateEvent = () => {
              .single();
 
             if(error){
-                console.error('Error fetching race:', error);
-                setFetchError('No Races Open!')
-                setGetraces(null)
-            }
-            if(data){
-                console.log('Fetched race data:', data);
-                setRacetitle(data.race_title || '');
-                setDescription(data.race_description || '');
-                setStartdate(data.start_date || '');
-                setRegdate(data.registration_date || '');
-                setCapacity(data.capacity || '');
-                setMinage(data.min_age || '');
-                setMaxage(data.max_age || '');
-                setTrackkm(data.race_distance || '');
-                setLocation(data.location || '');
-                setGetraces(data);
-                setFetchError(null);
+                console.error('[CONSOLE LOG] Error fetching race:', error);
+                setFormError('No Races Open!')
+            } else {
+                console.log('[CONSOLE LOG] Fetched race data:', data);
+                setRace(data);
+                setFormError(null);
             }
         }
         fetchRaces()
-    }, [id, navigate])
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
+    }, [id])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setFormError(null)
 
-        if (!racetitle || !startdate || !regdate || !capacity || !description || !minage || !maxage || !trackkm) {
-            setFormError('Please Fill all Fields!')
-            return
-        }
-
-        const { data: session, error: noSession } = await supabase.auth.getSession();
-                
-        // Check for errors and log them
-        if (noSession) {
-            console.error('Session Error:', noSession.message);
+        if ( !race.race_title || !race.race_description || !race.start_date || !race.registration_date ||
+            !race.capacity || !race.min_age || !race.max_age || !race.race_distance ) {
+            setFormError("Please fill all required fields!");
             return;
         }
 
-        const user = session.session.user
-        setAuthuser(user);
 
-        const {data: userdata, error: nouser} = await supabase
-         .from('app_users')
-         .select('user_id')
-         .eq('email', user.email)
+        let bannerUrl = race.race_banner_url
 
-
-        if (nouser || userdata.length === 0) {
-            setFormError('User not found!');
-            return;
+        if (raceBanner) {
+            try {
+                bannerUrl = await uploadBanner(raceBanner)
+            } catch (error) {
+                console.error("Banner Upload Failed: ", error)
+                setFormError("Upload Failed")
+                return
+            }
         }
 
-        const {data, error} = await supabase
+        const { error } = await supabase
             .from('user_created_race')
             .update({ 
-                race_title: racetitle,
-                race_description: description,
-                start_date: startdate, 
-                registration_date: regdate, 
-                capacity: capacity, 
-                min_age: minage, 
-                max_age: maxage, 
-                race_distance: trackkm,
-                location: location
+                race_title: race.race_title,
+                race_description: race.race_description,
+                start_date: race.start_date, 
+                registration_date: race.registration_date, 
+                capacity: race.capacity, 
+                min_age: race.min_age, 
+                max_age: race.max_age, 
+                race_distance: race.race_distance,
+                location: race.location,
+                race_banner_url: bannerUrl,
             })
-
-            .eq('race_id',id);
+            .eq('race_id', id);
 
 
             if (error) {
                 console.log(error)
-                setFormError('Please Fill all Fields!')
+                setFormError('Error updating race!')
             } else {
-                console.log(data)
-                setFormError(null)
-                closeModal();
+                navigate("/created-races")
             }
     }
+
+    if (!race) return <p className='loading-text'>Loading race data...</p>
 
     return (
         <div className="updatec-body">
@@ -135,6 +99,7 @@ const UpdateEvent = () => {
                     <div className="gen-headerbar-logo">
                         <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
                     </div>
+                    
                     <div className="header-right">
                         <div className="pfp">
                             <NavLink to="/profile">
@@ -160,140 +125,137 @@ const UpdateEvent = () => {
                     </div>  
                         {/* Race Display */}
                         <div class="viewraces-main-container">
-                        {fetchError && (<p className='error'>{fetchError}</p>)}
-                            {getraces && (
-                                <div className="update-viewraces-card">
-                                    <div class='update-viewraces-card-racetitle'>
-                                        {getraces.race_title}
-                                    </div>
-                                    <p class='update-desc'>{getraces.race_description}</p>
-                                    {/* Insert Picture/Banner here */}
-                                    <div class="update-viewraces-card-banner-container">
-                                    <img src="insert-path-here" alt="banner" class="dashb-card-banner"/>
-                                    </div>
-                                    <div class="update-viewraces-card-details-container">
-                                        <div class='update-viewraces-card-details-wrapper'>
-                                            <img src="/img/agereq-icon.png" class="icon"/>
-                                            <div><label class="update-viewraces-card-details">Age Requirement:</label> {getraces.min_age} - {getraces.max_age} years old</div>
-                                        </div>
-                                        <div class='update-viewraces-card-details-wrapper'>
-                                            <img src="/img/distance-icon.png" class="icon"/>
-                                            <div><label class="update-viewraces-card-details">Race Distance:</label> {getraces.race_distance} KM</div>
-                                        </div>
-                                        <div class='update-viewraces-card-details-wrapper'>
-                                            <img src="/img/capacity-icon.png" class="icon"/>
-                                            <div><label class="update-viewraces-card-details">Maximum Racers:</label> {getraces.capacity}</div>
-                                        </div>
-                                        <div class='update-viewraces-card-details-wrapper'>
-                                            <img src="/img/loc-icon.png" class="icon"/>
-                                            <div><label class="update-viewraces-card-details">Location:</label> {getraces.location}</div>
-                                        </div>
-                                        <div class='update-viewraces-card-details-wrapper'>
-                                            <img src="/img/participant-icon.png" class="icon"/>
-                                            <div><label class="update-viewraces-card-details">Currently Joined:</label> {getraces.current_participant}</div>
-                                        </div>
-                                        <div class='update-viewraces-card-details-wrapper'>
-                                            <img src="/img/calendar-icon.png" class="icon"/>
-                                            <div><label class="update-viewraces-card-details">Start Date:</label> {getraces.start_date}</div>
-                                            <div><label class="update-viewraces-card-details">Registration Date:</label> {getraces.registration_date}</div>
-                                        </div>
-                                    </div>
-                                    <div className="update-button-container">
-                                        <button className="update-event-button" onClick={openModal}>Update Event</button>
-                                    </div>
+
+                        {race && (
+                            <div className="update-viewraces-card">
+                                
+                                <div class='update-viewraces-card-racetitle'>
+                                    {race.race_title}
                                 </div>
-                            )}
+
+                                <p class='update-desc'>{race.race_description}</p>
+                                
+                                {/* Insert Picture/Banner here */}
+                                <div class="update-viewraces-card-banner-container">
+                                    {race.race_banner_url && (
+                                        <img src={race.race_banner_url}
+                                        alt='Race Banner'
+                                        className='dashb-card-banner' />
+                                    )}
+                                </div>
+
+                                <div class="update-viewraces-card-details-container">
+                                    <div class='update-viewraces-card-details-wrapper'>
+                                        <img src="/img/agereq-icon.png" class="icon"/>
+                                        <div><label class="update-viewraces-card-details">Age Requirement:</label> {race.min_age} - {race.max_age} years old</div>
+                                    </div>
+
+                                    <div class='update-viewraces-card-details-wrapper'>
+                                        <img src="/img/distance-icon.png" class="icon"/>
+                                        <div><label class="update-viewraces-card-details">Race Distance:</label> {race.race_distance} KM</div>
+                                    </div>
+
+                                    <div class='update-viewraces-card-details-wrapper'>
+                                        <img src="/img/capacity-icon.png" class="icon"/>
+                                        <div><label class="update-viewraces-card-details">Maximum Racers:</label> {race.capacity}</div>
+                                    </div>
+
+                                    <div class='update-viewraces-card-details-wrapper'>
+                                        <img src="/img/loc-icon.png" class="icon"/>
+                                        <div><label class="update-viewraces-card-details">Location:</label> {race.location}</div>
+                                    </div>
+
+                                    <div class='update-viewraces-card-details-wrapper'>
+                                        <img src="/img/participant-icon.png" class="icon"/>
+                                        <div><label class="update-viewraces-card-details">Currently Joined:</label> {race.current_participant}</div>
+                                    </div>
+
+                                    <div class='update-viewraces-card-details-wrapper'>
+                                        <img src="/img/calendar-icon.png" class="icon"/>
+                                        <div><label class="update-viewraces-card-details">Start Date:</label> {race.start_date}</div>
+                                        <div><label class="update-viewraces-card-details">Registration Date:</label> {race.registration_date}</div>
+                                    </div>
+
+                                </div>
+
+                                <div className="update-button-container">
+                                    <button className="update-event-button" onClick={() => setIsModalOpen(true)}>Update Event</button>
+                                </div>
+                            </div>
+                        )}
+
                         </div>
                     </div>
                     
                 {isModalOpen && (
                     <div className="modal-up">
                         <div className="modal-content">
-                            <div className="close" onClick={closeModal}>&times;</div>
+                            <button className='close' onClick={() => setIsModalOpen(false)}>&times;</button>
+                            
                             <h2>Update Event</h2>
+
                             <form onSubmit={handleSubmit}>
-                                 {/* //update race title */}
-                                 <label htmlFor="racetitle">Title of the Race:</label>
+                                 {[
+                                    ["Title of the Race", "race_title"],
+                                    ["Description", "race_description", "textarea"],
+                                    ["Start Date", "start_date", "date"],
+                                    ["Registration Date", "registration_date", "date"],
+                                    ["Minimum Age", "min_age", "number"],
+                                    ["Maximum Age", "max_age", "number"],
+                                    ["Capacity", "capacity", "number"],
+                                    ["Distance (KM)", "race_distance", "number"],
+                                    ["Location", "location"],
+                                ].map(([label, key, type = "text"]) => (
+                                    <div key={key}>
+                                    <label>{label}:</label>
+                                    {type === "textarea" ? (
+                                        <textarea
+                                        value={race[key] || ""}
+                                        onChange={(e) => setRace({ ...race, [key]: e.target.value })}
+                                        />
+                                    ) : (
+                                        <input
+                                        type={type}
+                                        value={race[key] || ""}
+                                        onChange={(e) => setRace({ ...race, [key]: e.target.value })}
+                                        />
+                                    )}
+                                    </div>
+                                ))}
+
+                                <label>Race Banner</label>
                                 <input 
-                                    type="text" 
-                                    id="racetitle" 
-                                    value={racetitle || ''}  
-                                    onChange={(e) => setRacetitle(e.target.value)}
-                                    />
+                                    type='file'
+                                    accept='image/*'
+                                    onChange={(e) => {
+                                        const file = e.target.files[0]
 
-                                {/* // update race description */}
-                                <label htmlFor="description">Enter Race Description:</label>
-                                    <textarea id="raceDescription" name="raceDescription" rows="4" cols="50" placeholder='Input additional details about the race here...' 
-                                    value={description}  
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    /> 
+                                        setRaceBanner(file)
 
-                                {/* // update startdate */}
-                                <label htmlFor="startdate">Start Date:</label>
-                                    <input 
-                                    type="date" 
-                                    id="startdate" 
-                                    value={startdate}  
-                                    onChange={(e) => setStartdate(e.target.value)}
-                                    />
+                                        if (file) {
+                                            const reader = new FileReader();
 
-                                {/* // update registration date */}
-                                <label htmlFor="regdate">Registration Date:</label>
-                                    <input 
-                                    type="date" 
-                                    id="regdate" 
-                                    value={regdate}  
-                                    onChange={(e) => setRegdate(e.target.value)}
-                                    />
+                                            reader.onloadend = () => setPreviewBanner(reader.result)
+                                            reader.readAsDataURL(file)
+                                        } else {
+                                            setPreviewBanner(null)
+                                        }
+                                    }}
+                                />
 
-                                {/* // update minimum age */}
-                                <label htmlFor="minage">Minimum Age:</label>
-                                    <input 
-                                    type="int" 
-                                    id="minage" 
-                                    value={minage}  
-                                    onChange={(e) => setMinage(e.target.value)}
-                                    />
+                                {previewBanner && (
+                                    <div className="banner-preview-container">
+                                        <p>Banner Preview:</p>
+                                        <img
+                                        src={previewBanner}
+                                        alt="Preview"
+                                        className="dashb-card-banner"
+                                        style={{ maxWidth: "100%", borderRadius: "12px", marginTop: "8px" }}
+                                        />
+                                    </div>
+                                )}
 
-                                {/* // update maximum age */}
-                                <label htmlFor="maxage">Maximum Age:</label>
-                                    <input 
-                                    type="int" 
-                                    id="maxage" 
-                                    value={maxage}  
-                                    onChange={(e) => setMaxage(e.target.value)}
-                                    />
-
-
-                                {/* // update capacity */}
-                                <label htmlFor="capacity">Capacity (Number of Participant):</label>
-                                    <input 
-                                    type="int" 
-                                    id="capacity" 
-                                    value={capacity}  
-                                    onChange={(e) => setCapacity(e.target.value)}
-                                    />
-
-
-                                {/* // update distance */}
-                                <label htmlFor="trackkm">Track Kilometers:</label>
-                                    <input 
-                                    type="int" 
-                                    id="trackkm" 
-                                    value={trackkm}  
-                                    onChange={(e) => setTrackkm(e.target.value)}
-                                    />
-
-                                <label className='details'>Location:</label>
-                                <input
-                                    placeholder='Enter race location'
-                                    type="text"
-                                    id="location"
-                                    value={location}
-                                    onChange={(e) => setLocation(e.target.value)}
-                                    />
-
-                                <button type="submit">Update</button>
+                                <button type="submit">Save Changes</button>
 
                                 {formError && <p className="error">{formError}</p>}
 
