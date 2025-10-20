@@ -102,18 +102,9 @@ const Db = () => {
         }
 
         setFormError(null);
-        redirect('/madeevents');
+        redirect('/create-race');
     };
 
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/login'
-        }
-    }
 
         return (
             <div class="cr-body">

@@ -1,10 +1,16 @@
-// components/NotifCard.js
-import React from 'react';
+import React, { useState } from 'react';
 import supabase from '../config/supabaseclient';
 
 const NotifCard = ({ notification, onRead }) => {
+    const [isUpdating, setIsUpdating] = useState(false)
+
     const handleReadNotification = async () => {
-        // Update the notification as read in the database
+        if (isUpdating || notification.read) {
+            return
+        }
+
+        setIsUpdating(true)
+
         const { error } = await supabase
             .from('notification')
             .update({ read: true })
@@ -13,21 +19,30 @@ const NotifCard = ({ notification, onRead }) => {
         if (error) {
             console.error('Error updating notification status:', error);
         } else {
-            // Notify the parent component to refresh notifications
             onRead();
         }
     };
 
+    const formattedTime = new Date(notification.time_stamp).toLocaleString([], {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    })
+
     return (
         <div 
-            className={`notif-card ${notification.read ? 'read' : ''}`}
+            className={`notif-card ${notification.read ? 'read' : 'unread'}`}
             onClick={handleReadNotification}
+            title={notification.read ? 'click for details' : 'Mark as read'}
         >
             <div className="notif-card-message">
                 {notification.message}
             </div>
+
             <div className="notif-card-timestamp">
-                {new Date(notification.time_stamp).toLocaleString()}
+                {formattedTime}
             </div>
         </div>
     );
