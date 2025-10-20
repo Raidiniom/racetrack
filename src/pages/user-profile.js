@@ -87,17 +87,6 @@ const Profile = () => {
         fetchUser();
     }, []);
 
-
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/login'
-        }
-    }
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {

@@ -99,6 +99,7 @@ const RaceCard = ({ output, onDelete }) => {
             <div className="createdr-title">
                 {output.race_title}
             </div>
+                {output.race_description}
                 <div>
                     <img 
                         src={output.race_banner_url}
@@ -109,6 +110,10 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-card-details-wrapper">
                         <img src="img/agereq-icon.png" alt="icon" class="icon"/>
                         <div><label class="createdr-card-details">Age Requirement:</label> {output.min_age} - {output.max_age} years old</div>
+                    </div>
+                    <div className="createdr-card-details-wrapper">
+                        <img src="img/agereq-icon.png" alt="icon" class="icon"/>
+                        <div><label class="createdr-card-details">Capacity:</label>{output.capacity}</div>
                     </div>
                     <div className="createdr-card-details-wrapper">
                         <img src="img/distance-icon.png" alt="icon" class="icon"/>
