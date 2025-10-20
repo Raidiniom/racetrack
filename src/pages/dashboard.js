@@ -41,17 +41,6 @@ const Dashboard = () => {
         fetchRaces()
     }, [])
 
-
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/login'
-        }
-    }
-
     return (
             <div class="dashb-body">
                 {/* Headerbar */}

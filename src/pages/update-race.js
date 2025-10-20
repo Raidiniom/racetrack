@@ -18,7 +18,7 @@ const UpdateEvent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [formError, setFormError] = useState(null)
 
-    const [authuser, setAuthuser] = useState({ user: null });
+    const [authuser, setAuthuser] = useState(null);
 
     //race table
     const [racetitle, setRacetitle] = useState('')
@@ -63,8 +63,6 @@ const UpdateEvent = () => {
         fetchRaces()
     }, [id, navigate])
 
-    const storeduser = localStorage.getItem('lsusername')
-
     const openModal = () => {
         setIsModalOpen(true);
     };
@@ -72,11 +70,6 @@ const UpdateEvent = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername')
-    }
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -86,31 +79,27 @@ const UpdateEvent = () => {
             return
         }
 
-        const { data: sess, error: nosess } = await supabase.auth.getSession();
+        const { data: session, error: noSession } = await supabase.auth.getSession();
                 
         // Check for errors and log them
-        if (nosess) {
-            console.error('Session Error:', nosess.message);
+        if (noSession) {
+            console.error('Session Error:', noSession.message);
             return;
         }
-        
-        console.log('This is Sess: ', sess)
-        const theU = sess?.session.user;
-        setAuthuser({ theU });
+
+        const user = session.session.user
+        setAuthuser(user);
 
         const {data: userdata, error: nouser} = await supabase
          .from('app_users')
          .select('user_id')
-         .eq('email', theU.email)
+         .eq('email', user.email)
 
-        //  New
-         if (nouser || userdata.length === 0) {
+
+        if (nouser || userdata.length === 0) {
             setFormError('User not found!');
             return;
-          }
-          // End New
-
-        const racemaker = userdata[0].user_id
+        }
 
         const {data, error} = await supabase
             .from('user_created_race')
