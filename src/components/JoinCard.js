@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import supabase from "../config/supabaseclient";
 import { useState } from "react";
 
-/* This is the join function / feature that can desiplay details of the race also. For joined-races use only */
-
 const JoinCard = ({ output, onLeave }) => {
     const [fetchError, setFetchError] = useState(null);
 
@@ -31,7 +29,7 @@ const JoinCard = ({ output, onLeave }) => {
             }
 
             const user_participant = user.user_id;
-            const parsedRaceId = parseInt(output.race_id, 10);
+            const parsedRaceId = output.race_id
 
             if (isNaN(parsedRaceId)) {
                 setFetchError('Invalid race ID!');

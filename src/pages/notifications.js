@@ -41,7 +41,7 @@ const Notifications = () => {
 
             setNotifications(data)
 
-            const unread = data.filter((n) => !n.read).length
+            const unread = data.filter((n) => n.read === false || n.read === null).length
             setUnreadCount(unread)
 
             setFetchError(null)
@@ -112,7 +112,7 @@ const Notifications = () => {
                                     <img src="img/noti-icon.png" alt="icon" className="noti-icon" />{" "}Notifications{" "}
 
                                     {unreadCount > 0 && (
-                                        <span className="notif-count">{unreadCount}</span>
+                                        <p className="notif-count">{unreadCount}</p>
                                     )}
                                 </button>
                             </NavLink>
