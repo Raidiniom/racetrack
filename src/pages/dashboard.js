@@ -14,6 +14,7 @@ import supabase from '../config/supabaseclient'
 import DashCard from '../components/DashCard'
 import Sidebar from '../components/Sidebar'
 import { SearchR } from '../components/Searching'
+import Header from '../components/Header'
 
 
 const Dashboard = () => {
@@ -44,27 +45,7 @@ const Dashboard = () => {
     return (
             <div class="dashb-body">
                 {/* Headerbar */}
-                <div class="gen-headerbar">
-                    <div className="gen-headerbar-logo">
-                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                    </div>
-                    <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
-                        </div>
-                        <div className="notifications-container">
-                            <NavLink to="/notifications">
-                                <button className="notification-button">
-                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
-                                </button>
-                            </NavLink>
-                        </div>
-                    </div>
-                </div>
+                <Header />
                 
                 {/* Sidebar */}
                 <Sidebar />
