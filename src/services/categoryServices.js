@@ -1,4 +1,4 @@
-import supabase from '../config/supabaseclient.js'
+import supabase from '../config/supabaseclient'
 
 export const getCategories = async () => {
   const { data, error } = await supabase
