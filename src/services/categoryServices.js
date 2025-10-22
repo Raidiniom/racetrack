@@ -1,6 +1,5 @@
 import supabase from '../config/supabaseclient'
 
-// 🟢 Get all categories (sorted)
 export const getCategories = async () => {
   const { data, error } = await supabase
     .from('race_categories')
@@ -12,25 +11,23 @@ export const getCategories = async () => {
     throw new Error(`Failed to fetch categories: ${error.message}`)
   }
   
-  return data || [] // Always return array
+  return data || []  
 }
 
-// 🟢 Add a new category
 export const addCategory = async (category) => {
   const { data, error } = await supabase
     .from('race_categories')
     .insert([category])
-    .select() // Returns the inserted record
+    .select() 
 
   if (error) {
     console.error('Error adding category:', error)
     throw new Error(`Failed to add category: ${error.message}`)
   }
   
-  return data?.[0] // Return single category object
+  return data?.[0]  // Return the first inserted category
 }
 
-// 🟢 Find category by distance
 export const findCategoryByDistance = (categories, distance) => {
   if (!categories?.length || distance == null) return null
   
