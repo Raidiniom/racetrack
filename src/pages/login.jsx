@@ -1,9 +1,13 @@
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+// CSS
 import '../styles/login-page.css'
 import '../styles/errors.css'
-import { useState } from 'react'
+
+// Config
 import supabase from "../config/supabaseclient"
-//hello
+
 const Login = () => {
     const [logEmail, setlogEmail] = useState('')
     const [logPassword, setlogPassword] = useState('')

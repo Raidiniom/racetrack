@@ -1,12 +1,15 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/view-races.css'
-import '../styles/header_and_sidebar.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+
+// CSS
+import '../styles/view-races.css'
+import '../styles/header_and_sidebar.css'
+
+// Config
 import supabase from '../config/supabaseclient'
-//hello
+
 const ViewEvent = () => {
-    // naay ny join feature 
     const { id } = useParams();
     const [ fetchError, setFetchError ] = useState(null)
     const [ getraces, setGetraces ] = useState(null)

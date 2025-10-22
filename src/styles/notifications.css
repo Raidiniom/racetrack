@@ -9,8 +9,10 @@
 }
 
 .noti-main-content-header {
-    justify-content: space-between;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .noti-main-content-header h2 {
@@ -24,9 +26,11 @@
 }
 
 .notifications-page {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  max-height: 75vh;
+  overflow-y: auto;
 }
 
 .notifications-container {
@@ -35,35 +39,98 @@
     gap: 10px;
 }
 
+/* Notification Card */
 .notif-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    cursor: pointer; /* Indicate the card is clickable */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px 18px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  animation: fadeIn 0.2s ease-in;
+}
+
+/* Add subtle hover effect */
+.notif-card:hover {
+  transform: scale(1.02);
+  background-color: #ececec;
+}
+
+/* Icon styling (optional if you add icons) */
+.notif-card-icon {
+  font-size: 1.5rem;
+}
+
+/* Content container */
+.notif-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .notif-card-message {
-    font-size: 16px;
-    margin-bottom: 8px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #222;
 }
 
 .notif-card-timestamp {
-    font-size: 12px;
-    color: #666;
+  font-size: 12px;
+  color: #666;
 }
 
+/* === READ / UNREAD STATES === */
+.notif-card.unread {
+  border-left: 6px solid #007bff;
+  background-color: #eaf0ff;
+}
+
+.notif-card.unread .notif-card-message {
+  font-weight: 700;
+  color: #0b2e63;
+}
 
 .notif-card.read {
-    background-color: #a7a4a4; /* Color for read notifications */
+  background-color: #d8d8d8;
+  opacity: 0.85;
 }
 
-.notif-card-message {
-    font-size: 16px;
-    margin-bottom: 8px;
+/* === BADGE + BUTTON === */
+.notif-count {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 8px;
+  font-size: 12px;
+  margin-left: 6px;
 }
 
-.notif-card-timestamp {
-    font-size: 12px;
-    color: #666;
+.mark-read-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mark-read-btn:hover {
+  background-color: #0056b3;
+}
+
+/* === FADE-IN ANIMATION === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
