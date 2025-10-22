@@ -9,6 +9,7 @@ import '../styles/errors.css'
 // Config
 import supabase from "../config/supabaseclient"
 import { uploadBanner } from '../config/cloudinaryclient'
+import Header from '../components/Header'
 
 const UpdateEvent = () => {
     const { id } = useParams()
@@ -95,173 +96,152 @@ const UpdateEvent = () => {
     return (
         <div className="updatec-body">
             {/* Headerbar */}
-            <div class="gen-headerbar">
-                    <div className="gen-headerbar-logo">
-                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                    </div>
-                    
-                    <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
+            <Header />
+
+            {/* Main Content */}
+            <div class="update-viewraces-main-content">
+                <div class='update-viewraces-main-content-header'>
+                    <h2>Race Details</h2>
+                </div>  
+                    {/* Race Display */}
+                    <div class="viewraces-main-container">
+
+                    {race && (
+                        <div className="update-viewraces-card">
+                            
+                            <div class='update-viewraces-card-racetitle'>
+                                {race.race_title}
+                            </div>
+
+                            <p class='update-desc'>{race.race_description}</p>
+                            
+                            {/* Insert Picture/Banner here */}
+                            <div class="update-viewraces-card-banner-container">
+                                {race.race_banner_url && (
+                                    <img src={race.race_banner_url}
+                                    alt='Race Banner'
+                                    className='dashb-card-banner' />
+                                )}
+                            </div>
+
+                            <div class="update-viewraces-card-details-container">
+                                <div class='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/agereq-icon.png" class="icon"/>
+                                    <div><label class="update-viewraces-card-details">Age Requirement:</label> {race.min_age} - {race.max_age} years old</div>
+                                </div>
+
+                                <div class='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/distance-icon.png" class="icon"/>
+                                    <div><label class="update-viewraces-card-details">Race Distance:</label> {race.race_distance} KM</div>
+                                </div>
+
+                                <div class='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/capacity-icon.png" class="icon"/>
+                                    <div><label class="update-viewraces-card-details">Maximum Racers:</label> {race.capacity}</div>
+                                </div>
+
+                                <div class='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/loc-icon.png" class="icon"/>
+                                    <div><label class="update-viewraces-card-details">Location:</label> {race.location}</div>
+                                </div>
+
+                                <div class='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/participant-icon.png" class="icon"/>
+                                    <div><label class="update-viewraces-card-details">Currently Joined:</label> {race.current_participant}</div>
+                                </div>
+
+                                <div class='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/calendar-icon.png" class="icon"/>
+                                    <div><label class="update-viewraces-card-details">Start Date:</label> {race.start_date}</div>
+                                    <div><label class="update-viewraces-card-details">Registration Date:</label> {race.registration_date}</div>
+                                </div>
+
+                            </div>
+
+                            <div className="update-button-container">
+                                <button className="update-event-button" onClick={() => setIsModalOpen(true)}>Update Event</button>
+                            </div>
                         </div>
-                        <div className="notifications-container">
-                            <NavLink to="/notifications">
-                                <button className="notification-button">
-                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
-                                </button>
-                            </NavLink>
-                        </div>
+                    )}
+
                     </div>
                 </div>
+                
+            {isModalOpen && (
+                <div className="modal-up">
+                    <div className="modal-content">
+                        <button className='close' onClick={() => setIsModalOpen(false)}>&times;</button>
+                        
+                        <h2>Update Event</h2>
 
-                {/* Main Content */}
-                <div class="update-viewraces-main-content">
-                    <div class='update-viewraces-main-content-header'>
-                        <h2>Race Details</h2>
-                    </div>  
-                        {/* Race Display */}
-                        <div class="viewraces-main-container">
-
-                        {race && (
-                            <div className="update-viewraces-card">
-                                
-                                <div class='update-viewraces-card-racetitle'>
-                                    {race.race_title}
-                                </div>
-
-                                <p class='update-desc'>{race.race_description}</p>
-                                
-                                {/* Insert Picture/Banner here */}
-                                <div class="update-viewraces-card-banner-container">
-                                    {race.race_banner_url && (
-                                        <img src={race.race_banner_url}
-                                        alt='Race Banner'
-                                        className='dashb-card-banner' />
-                                    )}
-                                </div>
-
-                                <div class="update-viewraces-card-details-container">
-                                    <div class='update-viewraces-card-details-wrapper'>
-                                        <img src="/img/agereq-icon.png" class="icon"/>
-                                        <div><label class="update-viewraces-card-details">Age Requirement:</label> {race.min_age} - {race.max_age} years old</div>
-                                    </div>
-
-                                    <div class='update-viewraces-card-details-wrapper'>
-                                        <img src="/img/distance-icon.png" class="icon"/>
-                                        <div><label class="update-viewraces-card-details">Race Distance:</label> {race.race_distance} KM</div>
-                                    </div>
-
-                                    <div class='update-viewraces-card-details-wrapper'>
-                                        <img src="/img/capacity-icon.png" class="icon"/>
-                                        <div><label class="update-viewraces-card-details">Maximum Racers:</label> {race.capacity}</div>
-                                    </div>
-
-                                    <div class='update-viewraces-card-details-wrapper'>
-                                        <img src="/img/loc-icon.png" class="icon"/>
-                                        <div><label class="update-viewraces-card-details">Location:</label> {race.location}</div>
-                                    </div>
-
-                                    <div class='update-viewraces-card-details-wrapper'>
-                                        <img src="/img/participant-icon.png" class="icon"/>
-                                        <div><label class="update-viewraces-card-details">Currently Joined:</label> {race.current_participant}</div>
-                                    </div>
-
-                                    <div class='update-viewraces-card-details-wrapper'>
-                                        <img src="/img/calendar-icon.png" class="icon"/>
-                                        <div><label class="update-viewraces-card-details">Start Date:</label> {race.start_date}</div>
-                                        <div><label class="update-viewraces-card-details">Registration Date:</label> {race.registration_date}</div>
-                                    </div>
-
-                                </div>
-
-                                <div className="update-button-container">
-                                    <button className="update-event-button" onClick={() => setIsModalOpen(true)}>Update Event</button>
-                                </div>
-                            </div>
-                        )}
-
-                        </div>
-                    </div>
-                    
-                {isModalOpen && (
-                    <div className="modal-up">
-                        <div className="modal-content">
-                            <button className='close' onClick={() => setIsModalOpen(false)}>&times;</button>
-                            
-                            <h2>Update Event</h2>
-
-                            <form onSubmit={handleSubmit}>
-                                 {[
-                                    ["Title of the Race", "race_title"],
-                                    ["Description", "race_description", "textarea"],
-                                    ["Start Date", "start_date", "date"],
-                                    ["Registration Date", "registration_date", "date"],
-                                    ["Minimum Age", "min_age", "number"],
-                                    ["Maximum Age", "max_age", "number"],
-                                    ["Capacity", "capacity", "number"],
-                                    ["Distance (KM)", "race_distance", "number"],
-                                    ["Location", "location"],
-                                ].map(([label, key, type = "text"]) => (
-                                    <div key={key}>
-                                    <label>{label}:</label>
-                                    {type === "textarea" ? (
-                                        <textarea
-                                        value={race[key] || ""}
-                                        onChange={(e) => setRace({ ...race, [key]: e.target.value })}
-                                        />
-                                    ) : (
-                                        <input
-                                        type={type}
-                                        value={race[key] || ""}
-                                        onChange={(e) => setRace({ ...race, [key]: e.target.value })}
-                                        />
-                                    )}
-                                    </div>
-                                ))}
-
-                                <label>Race Banner</label>
-                                <input 
-                                    type='file'
-                                    accept='image/*'
-                                    onChange={(e) => {
-                                        const file = e.target.files[0]
-
-                                        setRaceBanner(file)
-
-                                        if (file) {
-                                            const reader = new FileReader();
-
-                                            reader.onloadend = () => setPreviewBanner(reader.result)
-                                            reader.readAsDataURL(file)
-                                        } else {
-                                            setPreviewBanner(null)
-                                        }
-                                    }}
-                                />
-
-                                {previewBanner && (
-                                    <div className="banner-preview-container">
-                                        <p>Banner Preview:</p>
-                                        <img
-                                        src={previewBanner}
-                                        alt="Preview"
-                                        className="dashb-card-banner"
-                                        style={{ maxWidth: "100%", borderRadius: "12px", marginTop: "8px" }}
-                                        />
-                                    </div>
+                        <form onSubmit={handleSubmit}>
+                                {[
+                                ["Title of the Race", "race_title"],
+                                ["Description", "race_description", "textarea"],
+                                ["Start Date", "start_date", "date"],
+                                ["Registration Date", "registration_date", "date"],
+                                ["Minimum Age", "min_age", "number"],
+                                ["Maximum Age", "max_age", "number"],
+                                ["Capacity", "capacity", "number"],
+                                ["Distance (KM)", "race_distance", "number"],
+                                ["Location", "location"],
+                            ].map(([label, key, type = "text"]) => (
+                                <div key={key}>
+                                <label>{label}:</label>
+                                {type === "textarea" ? (
+                                    <textarea
+                                    value={race[key] || ""}
+                                    onChange={(e) => setRace({ ...race, [key]: e.target.value })}
+                                    />
+                                ) : (
+                                    <input
+                                    type={type}
+                                    value={race[key] || ""}
+                                    onChange={(e) => setRace({ ...race, [key]: e.target.value })}
+                                    />
                                 )}
+                                </div>
+                            ))}
 
-                                <button type="submit">Save Changes</button>
+                            <label>Race Banner</label>
+                            <input 
+                                type='file'
+                                accept='image/*'
+                                onChange={(e) => {
+                                    const file = e.target.files[0]
 
-                                {formError && <p className="error">{formError}</p>}
+                                    setRaceBanner(file)
 
-                            </form>
-                        </div>
+                                    if (file) {
+                                        const reader = new FileReader();
+
+                                        reader.onloadend = () => setPreviewBanner(reader.result)
+                                        reader.readAsDataURL(file)
+                                    } else {
+                                        setPreviewBanner(null)
+                                    }
+                                }}
+                            />
+
+                            {previewBanner && (
+                                <div className="banner-preview-container">
+                                    <p>Banner Preview:</p>
+                                    <img
+                                    src={previewBanner}
+                                    alt="Preview"
+                                    className="dashb-card-banner"
+                                    style={{ maxWidth: "100%", borderRadius: "12px", marginTop: "8px" }}
+                                    />
+                                </div>
+                            )}
+
+                            <button type="submit">Save Changes</button>
+
+                            {formError && <p className="error">{formError}</p>}
+
+                        </form>
                     </div>
+                </div>
                 )}
         </div>
     );

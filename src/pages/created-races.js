@@ -11,6 +11,7 @@ import supabase from '../config/supabaseclient';
 // Components
 import RaceCard from '../components/RaceCard';
 import Sidebar from '../components/Sidebar'
+import Header from '../components/Header';
 
 const MadeEvents = () => {
     const [fetchError, setFetchError] = useState(null);
@@ -112,29 +113,8 @@ const MadeEvents = () => {
     return (
         <div className="createdr-body">
             {/* Headerbar */}
-            <div className="gen-headerbar">
-                <div className="gen-headerbar-logo">
-                    <NavLink to='/dashboard'>
-                        <img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" />
-                    </NavLink>
-                </div>
-                    <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
-                        </div>
-                    <div className="notifications-container">
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
-                            </button>
-                        </NavLink>
-                        </div>
-                </div>
-            </div>
+            <Header />
+            
             {/* Sidebar */}
             <Sidebar />
 

@@ -10,6 +10,8 @@ import supabase from '../config/supabaseclient';
 
 // Component
 import JoinCard from '../components/JoinCard';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
 
 const JoinedEvent = () => {
     const [fetchError, setFetchError] = useState(null);
@@ -117,37 +119,11 @@ const JoinedEvent = () => {
     return (
             <div className="joinedraces-body">
                 {/* Headerbar */}
-                <div class="gen-headerbar">
-                    <div className="gen-headerbar-logo">
-                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                    </div>
-                    <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
-                        </div>
-                        <div className="notifications-container">
-                            <NavLink to="/notifications">
-                                <button className="notification-button">
-                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
-                                </button>
-                            </NavLink>
-                        </div>
-                    </div>
-                </div>
+                <Header />
+
                 {/* Sidebar */}
-                <div className="gen-sidebar">
-                    <ul>
-                        <li><NavLink to="/created-races">Your Races</NavLink></li>
-                        <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                        <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                        <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                        <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                    </ul>
-                </div>
+                <Sidebar />
+
                 {/* Main Content */}
                 <div class="joinedraces-main-content">
                     <div class='dashb-main-content-header'>

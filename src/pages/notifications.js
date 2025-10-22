@@ -12,11 +12,11 @@ import supabase from "../config/supabaseclient";
 // Components
 import NotifCard from "../components/NotifCard";
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
     const [fetchError, setFetchError] = useState(null);
-    const [unreadCount, setUnreadCount] = useState(0);
     const [authUser, setAuthuser] = useState(null);
     
     const fetchNotifications = useCallback(async () => {
@@ -40,9 +40,6 @@ const Notifications = () => {
             if (error) throw error
 
             setNotifications(data)
-
-            const unread = data.filter((n) => n.read === false || n.read === null).length
-            setUnreadCount(unread)
 
             setFetchError(null)
 
@@ -84,6 +81,8 @@ const Notifications = () => {
 
         if (!error) {
             fetchNotifications()
+
+            window.dispatchEvent(new Event("mark-as-all-read"))
         } else {
             console.error("Error making as read: ", error)
         }
@@ -92,33 +91,7 @@ const Notifications = () => {
     return (
         <div className="noti-body">
             {/* Headerbar */}
-            <div className="gen-headerbar">
-                <div className="gen-headerbar-logo">
-                    <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                </div>
-
-                <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
-                        </div>
-
-                        <div className="notifications-container">
-                            <NavLink to="/notifications">
-                                <button className="notification-button">
-                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" />{" "}Notifications{" "}
-
-                                    {unreadCount > 0 && (
-                                        <p className="notif-count">{unreadCount}</p>
-                                    )}
-                                </button>
-                            </NavLink>
-                        </div>
-                    </div>
-            </div>
+            <Header />
 
             {/* Sidebar */}
             <Sidebar />
@@ -127,10 +100,8 @@ const Notifications = () => {
             <div className="noti-main-content">
                 <div class='noti-main-content-header'>
                     <h2>Your Notifications</h2>
-                    
-                    {unreadCount > 0 && (
-                        <button className="mark-read-btn" onClick={markAllAsRead}>Mark All as Read</button>
-                    )}
+
+                    <button className="mark-read-btn" onClick={markAllAsRead}>Mark All as Read</button>
                 </div>
                 
                 <div className="notifications-page">
