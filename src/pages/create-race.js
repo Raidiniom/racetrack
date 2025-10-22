@@ -3,7 +3,7 @@ import '../styles/create-page.css'
 import '../styles/header_and_sidebar.css'
 import { useState } from 'react'
 import supabase from "../config/supabaseclient"
-import { getCategories, findCategoryByDistance } from '../services/categoryServices'
+import { getCategories, findCategoryByDistance } from '../services/categoryServices.js'
 
 const Db = () => {
 
