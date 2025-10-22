@@ -10,27 +10,27 @@ export const getCategories = async () => {
     console.error('Error fetching categories:', error)
     throw new Error(`Failed to fetch categories: ${error.message}`)
   }
-  
-  return data || []  
+
+  return data || []
 }
 
 export const addCategory = async (category) => {
   const { data, error } = await supabase
     .from('race_categories')
     .insert([category])
-    .select() 
+    .select()
 
   if (error) {
     console.error('Error adding category:', error)
     throw new Error(`Failed to add category: ${error.message}`)
   }
-  
-  return data?.[0]  // Return the first inserted category
+
+  return data?.[0]
 }
 
 export const findCategoryByDistance = (categories, distance) => {
   if (!categories?.length || distance == null) return null
-  
+
   return categories.find(
     cat =>
       distance >= cat.min_distance &&
