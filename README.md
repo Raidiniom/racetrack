@@ -17,6 +17,9 @@ Base the Website Design on this wireframe:
   - @ndlll5
   - _More to come_
 
+# Environment Variables
+Please Check the Projects Tab
+
 # 🔹 Workflow
 ### 1. Before starting work
 Always sync your repo first:
