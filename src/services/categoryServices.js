@@ -1,5 +1,7 @@
 import supabase from '../config/supabaseclient.js'
 
+// function returns a number accepting distance parameter
+
 export const getCategories = async () => {
   const { data, error } = await supabase
     .from('race_categories')
