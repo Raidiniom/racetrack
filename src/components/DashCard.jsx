@@ -8,6 +8,12 @@ const DashCard =({output}) => {
                 <div className="dashb-card-racetitle">
                     {output.race_title}
                 </div>
+                <div>
+                    <img 
+                        src={output.race_banner_url}
+                        alt='race banner picture'
+                    />
+                </div>
                 <div className="dashb-card-details-container">
                     <div class="dashb-card-details-wrapper">
                         <img src="img/distance-icon.png" alt="distance" class="icon"/>

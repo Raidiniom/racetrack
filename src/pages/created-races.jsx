@@ -1,9 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+// CSS
 import '../styles/created-races.css';
 import '../styles/header_and_sidebar.css';
-import { useEffect, useState } from 'react';
+
+// Config
 import supabase from '../config/supabaseclient';
+
+// Components
 import RaceCard from '../components/RaceCard';
+import Sidebar from '../components/Sidebar'
+import Header from '../components/Header';
 
 const MadeEvents = () => {
     const [fetchError, setFetchError] = useState(null);
@@ -54,12 +62,8 @@ const MadeEvents = () => {
                 }
         
                 // Ensure user_id is a number
-                const u_id = parseInt(userData.user_id, 10);
-                if (isNaN(u_id)) {
-                    setFetchError('Invalid user ID.');
-                    return;
-                }
-        
+                const u_id = userData.user_id
+            
                 console.log('Fetching races for user ID:', u_id);
         
                 // Fetch races created by the user
@@ -109,40 +113,11 @@ const MadeEvents = () => {
     return (
         <div className="createdr-body">
             {/* Headerbar */}
-            <div className="gen-headerbar">
-                <div className="gen-headerbar-logo">
-                    <NavLink to='/dashboard'>
-                        <img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" />
-                    </NavLink>
-                </div>
-                    <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
-                        </div>
-                    <div className="notifications-container">
-                        <NavLink to="/notifications">
-                            <button className="notification-button">
-                                <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
-                            </button>
-                        </NavLink>
-                        </div>
-                </div>
-            </div>
+            <Header />
+            
             {/* Sidebar */}
-            <div className="gen-sidebar">
-                <ul>
-                    
-                    <li><NavLink to="/created-races">Your Races</NavLink></li>
-                    <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                    <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                    <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                    <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                </ul>
-            </div>
+            <Sidebar />
+
             {/* Main Content */}
             <div className="createdr-main-content">
                 <div className='createdr-main-content-header'>

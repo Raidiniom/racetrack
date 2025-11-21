@@ -1,28 +1,25 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import React, { useRef } from 'react';
-import "../styles/tos.css"
+import { useNavigate } from 'react-router-dom'
+
+// CSS
+import '../styles/tos.css'
 
 const Tos = () => {
-
     const navigate = useNavigate();
-    const contentRef = useRef();
 
+    const goBack = () => {
+        navigate(-1)
+    }
 
-    const handleOverlayClick = (e) => {
-        if (contentRef.current && !contentRef.current.contains(e.target)) {
-            navigate(-1);
-        }
-    };
     return (
-        <div className="tos-content-body" onClick={handleOverlayClick} style={{ cursor: 'pointer' }}>
-            <div className='tos-container' ref={contentRef} style={{ cursor: 'default' }}>
+        <div className='tos-content-body'>
+            <div className='tos-container'>
                 <div className='tos-content'>
                     <h1>Terms of Service</h1>
 
                     <div class='part1'>
                         <h2>Introduction</h2>
 
-                        <p>Welcome to Racetrack! These Terms of Service ("Terms") govern your access to and use of our event management system ("Service"). By using our Service, you agree to be bound by these Terms.</p>
+                        <p>Welcome to Racetrack! These Terms of Service ('Terms') govern your access to and use of our event management system ('Service'). By using our Service, you agree to be bound by these Terms.</p>
                     </div>
 
                     <div class='part2'>
@@ -48,7 +45,7 @@ const Tos = () => {
                         <h2>Content</h2>
 
                         <h3>Your Content</h3>
-                        <p>You retain ownership of any content you submit, post, or display on or through our Service ("Your Content"). By submitting Your Content, you grant us a worldwide, non-exclusive, royalty-free license to use, copy, modify, distribute, and display Your Content in connection with the operation of our Service.</p>
+                        <p>You retain ownership of any content you submit, post, or display on or through our Service ('Your Content'). By submitting Your Content, you grant us a worldwide, non-exclusive, royalty-free license to use, copy, modify, distribute, and display Your Content in connection with the operation of our Service.</p>
 
                         <h3>Our Content</h3>
                         <p>All content and materials available on our Service, including but not limited to text, graphics, logos, and software, are the property of Racetrack or its licensors and are protected by copyright and other intellectual property laws. You may not use our content without our prior written consent.</p>
@@ -69,7 +66,7 @@ const Tos = () => {
                     <div class='part6'>
                         <h2>Disclaimers</h2>
 
-                        <p>Our Service is provided "as is" and "as available" without any warranties of any kind, either express or implied. We do not warrant that our Service will be uninterrupted or error-free, or that any defects will be corrected.</p>
+                        <p>Our Service is provided 'as is' and 'as available' without any warranties of any kind, either express or implied. We do not warrant that our Service will be uninterrupted or error-free, or that any defects will be corrected.</p>
                     </div>
 
                     <div class='part7'>
@@ -83,10 +80,8 @@ const Tos = () => {
 
                         <p>We may update these Terms from time to time. If we make changes, we will notify you by revising the date at the top of these Terms and, in some cases, we may provide you with additional notice. Your continued use of our Service after any changes means that you agree to the new Terms.</p>
                     </div>
-                    <div class="part9">
-                        <NavLink to="/landing">
-                            <button className="tos-back-button">Confirm and Go Back</button>
-                        </NavLink>
+                    <div class='part9'>
+                            <button className='tos-back-button' onClick={goBack}>Confirm and Go Back</button>
                     </div>
                 </div>
             </div>

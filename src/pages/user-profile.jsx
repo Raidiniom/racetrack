@@ -1,10 +1,18 @@
 import React from 'react';
-import { uploadCloudinary } from '../config/cloudinaryclient'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
+// CSS
 import '../styles/userpfp.css';
 import '../styles/header_and_sidebar.css'
-import { useEffect, useState } from 'react'
+
+// Config
 import supabase from "../config/supabaseclient"
+import { uploadPFP } from '../config/cloudinaryclient'
+
+// Components
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
 
 const Profile = () => {
     const [authuser, setAuthuser] = useState({ user: null });
@@ -20,7 +28,7 @@ const Profile = () => {
             let uploadURL = getuser?.profile_pic;
 
             if (selectFile) {
-                uploadURL = await uploadCloudinary(selectFile);
+                uploadURL = await uploadPFP(selectFile);
             }
 
             const insertUrl = await supabase
@@ -80,17 +88,6 @@ const Profile = () => {
         fetchUser();
     }, []);
 
-
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut()
-        
-        if (error) {
-            console.error(error)
-        } else {
-            window.location.href='/login'
-        }
-    }
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -104,37 +101,11 @@ const Profile = () => {
     return (
         <div className="pf-body">
             {/* Headerbar */}
-            <div class="gen-headerbar">
-                    <div className="gen-headerbar-logo">
-                        <NavLink to='/dashboard'><img src="/img/RaceTrack Logos/RT-logo.png" alt="logo" className="RaceTrack-logo" /></NavLink>
-                    </div>
-                    <div className="header-right">
-                        <div className="pfp">
-                            <NavLink to="/profile">
-                                <button className="notification-button">
-                                    <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
-                                </button>
-                            </NavLink>
-                        </div>
-                        <div className="notifications-container">
-                            <NavLink to="/notifications">
-                                <button className="notification-button">
-                                    <img src="img/noti-icon.png" alt="icon" className="noti-icon" /> Notifications
-                                </button>
-                            </NavLink>
-                        </div>
-                    </div>
-                </div>
+            <Header />
+
             {/* Sidebar */}
-            <div className="gen-sidebar">
-                <ul>
-                    <li><NavLink to="/created-races">Your Races</NavLink></li>
-                    <li><NavLink to="/joined-races">Joined Races</NavLink></li>
-                    <li><NavLink to="/dashboard">Join a Race</NavLink></li>
-                    <li><NavLink to="/create-race">Create a Race</NavLink></li>
-                    <li><NavLink to="/landing" onClick={handleLogout}>Log Out</NavLink></li>
-                </ul>
-            </div>
+            <Sidebar />
+
             {/* Main Content */}
             <div className="pf-main-content">
                 <div class='pf-main-content-header'>
@@ -204,9 +175,17 @@ const Profile = () => {
 
                                     
                                     <div className='prof-pic-preview'>
-                                        <img
-                                            src={preview || getuser?.[0]?.profile_pic || "img/pfp.png"}
-                                            alt='Profile Preview'/>
+                                        {getuser && (
+                                            <div>
+                                                {getuser.map( output => (
+                                                    <div className='prof-pic-preview'>
+                                                        <img
+                                                            src={output.pfp_url}
+                                                            alt='User Profile Picture'/>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
 
                                     <input

@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom'
+
+// CSS
 import '../styles/landing-page.css'
-//hello
+
 const Landingpage = () => {
     return (
            <div className="landing-body">
