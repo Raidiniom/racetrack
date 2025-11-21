@@ -83,9 +83,6 @@ const RaceCard = ({ output, onDelete }) => {
                     return;
                 }
             }
-
-        
-
             // Call the onDelete callback to refresh the parent component
             if (onDelete) onDelete();
 
