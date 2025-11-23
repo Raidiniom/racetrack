@@ -69,8 +69,7 @@ const RaceCard = ({ output, onDelete }) => {
                     return;
                 }
             }
-
-            // Notify parent to refresh list
+            // Call the onDelete callback to refresh the parent component
             if (onDelete) onDelete();
         } catch (error) {
             console.error("Error deleting race:", error);
