@@ -8,12 +8,15 @@ const DashCard = ({ output }) => {
             <div className="dashb-card-racetitle">
                 {output.race_title}
             </div>
-            <div>
+            <div className="dash-banner-picture">
                 <img 
                     src={output.race_banner_url}
                     alt="race banner picture"
+                    className="dash-banner-img"
                 />
             </div>
+
+
             <div className="dashb-card-details-container">
                 <div className="dashb-card-details-wrapper">
                     <img src="img/distance-icon.png" alt="distance" className="icon" />
@@ -36,6 +39,8 @@ const DashCard = ({ output }) => {
                         <label className="dashb-card-details">Registration Date:</label> {output.registration_date}
                     </div>
                 </div>
+
+                
             </div>
             <div className="more-button-container">
                 <NavLink to={`/view-races/${output.race_id}`}>
