@@ -9,6 +9,8 @@ import '../styles/header_and_sidebar.css'
 import supabase from "../config/supabaseclient"
 import { uploadBanner } from '../config/cloudinaryclient'
 import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
+
 
 const Db = () => {
 
@@ -38,20 +40,20 @@ const Db = () => {
         }
 
         const { data: sess, error: nosess } = await supabase.auth.getSession();
-                
+
         if (nosess) {
             console.error('Session Error:', nosess.message);
             return;
         }
-                
+
         console.log('This is Sess: ', sess)
         const user = sess?.session.user;
         setAuthuser({ user });
 
         const { data: userdata, error: nouser } = await supabase
-        .from('app_users')
-        .select('user_id')
-        .eq('email', user.email);
+            .from('app_users')
+            .select('user_id')
+            .eq('email', user.email);
 
         if (nouser) {
             console.log('Error fetching user data:', nouser);
@@ -107,156 +109,175 @@ const Db = () => {
     };
 
 
-        return (
-            <div class="cr-body">
-                {/* Headerbar */}
-                <Header />
+    return (
+        <div className="cr-body">
+            {/* Headerbar */}
+            <Header />
 
-                <div className="cr-main-content">
-                    <div class='cr-main-content-header'>
-                        <h2>Create a Race</h2>
-                    </div>
+            {/* Sidebar */}
+            <Sidebar />
 
-                    {/* Create Form Container */}
-                    <div className="cr-container">
-                        <form onSubmit={handleSubmit}>
-                            <div className='cr-user-details'>
-                                {/* Race Title */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Race Title:</label>
-                                    <input
-                                        placeholder='Enter race title'
-                                        type="title" 
-                                        id="racetitle" 
-                                        value={racetitle}  
-                                        onChange={(e) => setRacetitle(e.target.value)}
-                                        required/>
-                                </div>
-                                {/* Start Date */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Start Date:</label>
-                                    <input
-                                        placeholder='Enter start date'
-                                        type="date" 
-                                        id="startdate" 
-                                        value={startdate}  
-                                        onChange={(e) => setStartdate(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                {/* Description */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Description:</label>
-                                    <textarea id="raceDescription" name="raceDescription" rows="4" cols="20" placeholder='Input additional details about the race here...' 
-                                        value={description}  
-                                        onChange={(e) => setDescription(e.target.value)}
-                                    /> 
-                                </div>
-                                {/* Registration Date */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Registration Date:</label>
-                                    <input
-                                        placeholder='Enter registration date'
-                                        type="date" 
-                                        id="startdate" 
-                                        value={regdate}  
-                                        onChange={(e) => setRegdate(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                {/* Distance */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Track Distance:</label>
-                                    <input
-                                        placeholder='Enter race distance'
-                                        type="int" 
-                                        id="trackkm" 
-                                        value={trackkm}  
-                                        onChange={(e) => setTrackkm(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                {/* Min. Age Requirement */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Minimum Age Requirement:</label>
-                                    <input
-                                        placeholder='Enter min. age requirement'
-                                        type="int" 
-                                        id="minage" 
-                                        value={minage}  
-                                        onChange={(e) => setMinage(e.target.value)}
-                                    required/>
-                                </div>
-                                {/* Capacity */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Max Number of Participants:</label>
-                                    <input
-                                        placeholder='Enter max race capacity'
-                                        type="int" 
-                                        id="capacity" 
-                                        value={capacity}  
-                                        onChange={(e) => setCapacity(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                {/* Max. Age Requirement */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Maximum Age Requirement:</label>
-                                    <input
-                                        placeholder='Enter max. age requirement'
-                                        type="int" 
-                                        id="minage" 
-                                        value={maxage}  
-                                        onChange={(e) => setMaxage(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                
-                                {/* Location */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Location:</label>
-                                    <input
-                                        placeholder='Enter race location'
-                                        type="text"
-                                        id="location"
-                                        value={location}
-                                        onChange={(e) => setLocation(e.target.value)}
-                                        required 
-                                    />
-                                </div>
+            <div className="cr-main-content">
+                <div className='cr-main-content-header'>
+                    <h2>Create a Race</h2>
+                </div>
 
-                                {/* Race Banner Picture */}
-                                <div className='cr-input-box'>
-                                    <label className='cr-details'>Race Banner</label>
-                                    <input
-                                        id='file-upload'
-                                        type='file'
-                                        accept='image/*'
-                                        name='race_banner'
-                                        onChange={(e) => {
-                                            const file = e.target.files[0];
-
-                                            if (file) {
-                                                setRaceBanner(file);
-                                            }
-                                        }}
-                                    />
-                                </div>
-
-                                {/* Create Race Button */}
-                                <div class='cr-button-container'>
-                                    <button className="cr-button">Create Race</button>
-                                </div>
-                                {formError && <p className="error">{formError}</p>}
+                {/* Create Form Container */}
+                <div className="cr-container">
+                    <form onSubmit={handleSubmit}>
+                        <div className='cr-user-details'>
+                            {/* Race Title */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Race Title:</label>
+                                <input
+                                    placeholder='Enter race title'
+                                    type="title"
+                                    id="racetitle"
+                                    value={racetitle}
+                                    onChange={(e) => setRacetitle(e.target.value)}
+                                    required />
                             </div>
-                        </form>
-                    </div>
+                            {/* Start Date */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Start Date:</label>
+                                <input
+                                    placeholder='Enter start date'
+                                    type="date"
+                                    id="startdate"
+                                    value={startdate}
+                                    onChange={(e) => setStartdate(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            {/* Description */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Description:</label>
+                                <textarea id="raceDescription" name="raceDescription" rows="4" cols="20" placeholder='Input additional details about the race here...'
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                />
+                            </div>
+                            {/* Registration Date */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Registration Date:</label>
+                                <input
+                                    placeholder='Enter registration date'
+                                    type="date"
+                                    id="startdate"
+                                    value={regdate}
+                                    onChange={(e) => setRegdate(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            {/* Distance */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Track Distance:</label>
+                                <input
+                                    placeholder='Enter race distance'
+                                    type="int"
+                                    id="trackkm"
+                                    value={trackkm}
+                                    onChange={(e) => setTrackkm(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            {/* Min. Age Requirement */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Minimum Age Requirement:</label>
+                                <input
+                                    placeholder='Enter min. age requirement'
+                                    type="int"
+                                    id="minage"
+                                    value={minage}
+                                    onChange={(e) => setMinage(e.target.value)}
+                                    required />
+                            </div>
+                            {/* Capacity */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Max Number of Participants:</label>
+                                <input
+                                    placeholder='Enter max race capacity'
+                                    type="int"
+                                    id="capacity"
+                                    value={capacity}
+                                    onChange={(e) => setCapacity(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            {/* Max. Age Requirement */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Maximum Age Requirement:</label>
+                                <input
+                                    placeholder='Enter max. age requirement'
+                                    type="int"
+                                    id="minage"
+                                    value={maxage}
+                                    onChange={(e) => setMaxage(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                            {/* Location */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Location:</label>
+                                <input
+                                    placeholder='Enter race location'
+                                    type="text"
+                                    id="location"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                            {/* Race Banner Picture */}
+                            <div className='cr-input-box'>
+                                <label className='cr-details'>Race Banner</label>
+
+
+                                <input
+                                    id='file-upload'
+                                    type='file'
+                                    accept='image/*'
+                                    name='race_banner'
+                                    onChange={(e) => {
+                                        const file = e.target.files[0];
+
+                                        if (file) {
+                                            setRaceBanner(file);
+                                        }
+                                    }}
+                                />
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div className="cr-button-container">
+                            {/* Create Race Button and Back Button */}
+
+                            <button type="button" className="cr-button-back" onClick={() => redirect('/dashboard')}>
+                                Go Back
+                            </button>
+
+                            <button className="cr-button">
+                                Create Race
+                            </button>
+
+
+                            {formError && <p className="error">{formError}</p>}
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
 
-        
-        )
-    
+
+    )
+
 }
 
 export default Db
