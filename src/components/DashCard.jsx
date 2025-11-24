@@ -19,19 +19,19 @@ const DashCard = ({ output }) => {
 
             <div className="dashb-card-details-container">
                 <div className="dashb-card-details-wrapper">
-                    <img src="img/distance-icon.png" alt="distance" className="icon" />
+                    <img src="img/distance-icon.png" alt="distance" className="dashb-icon" />
                     <div>
                         <label className="dashb-card-details">Track Distance:</label> {output.race_distance} KM
                     </div>
                 </div>
                 <div className="dashb-card-details-wrapper">
-                    <img src="img/loc-icon.png" alt="icon" className="icon" />
+                    <img src="img/loc-icon.png" alt="icon" className="dashb-icon" />
                     <div>
                         <label className="dashb-card-details">Location:</label> {output.location}
                     </div>
                 </div>
                 <div className="dashb-card-details-wrapper">
-                    <img src="img/calendar-icon.png" alt="icon" className="icon" />
+                    <img src="img/calendar-icon.png" alt="icon" className="dashb-icon" />
                     <div>
                         <label className="dashb-card-details">Start Date:</label> {output.start_date}
                     </div>

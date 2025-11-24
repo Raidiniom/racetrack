@@ -89,15 +89,15 @@ const JoinCard = ({ output, onLeave }) => {
             </div>
                 <div className='joinedraces-card-details-container'>
                     <div class="joinedraces-card-details-wrapper">
-                        <img src="img/distance-icon.png" alt="distance" class="icon"/>
+                        <img src="img/distance-icon.png" alt="distance" class="joinraces-icon"/>
                         <div><label class="joinedraces-card-details">Track Distance:</label> {output.race_distance} KM</div>
                     </div>
                     <div class="joinedraces-card-details-wrapper">
-                        <img src="img/loc-icon.png" alt="icon" class="icon"/>
+                        <img src="img/loc-icon.png" alt="icon" class="joinraces-icon"/>
                         <div><label class="joinedraces-card-details">Location:</label> {output.location}</div>
                     </div>
                     <div class="joinedraces-card-details-wrapper">
-                        <img src="img/calendar-icon.png" alt="icon" class="icon"/>
+                        <img src="img/calendar-icon.png" alt="icon" class="joinraces-icon"/>
                         <div><label class="joinedraces-card-details">Start Date:</label> {output.start_date}</div>
                         <div><label class="joinedraces-card-details">Registration Date:</label> {output.registration_date}</div>
                     </div>
