@@ -99,17 +99,17 @@ const UpdateEvent = () => {
             <Header />
 
             {/* Main Content */}
-            <div class="update-viewraces-main-content">
-                <div class='update-viewraces-main-content-header'>
+            <div className="update-viewraces-main-content">
+                <div className='update-viewraces-main-content-header'>
                     <h2>Race Details</h2>
                 </div>
                 {/* Race Display */}
-                <div class="viewraces-main-container">
+                <div className="update-viewraces-main-container">
 
                     {race && (
                         <div className="update-viewraces-card">
 
-                            <div class='update-viewraces-card-racetitle'>
+                            <div className='update-viewraces-card-racetitle'>
                                 {race.race_title}
                             </div>
 
@@ -131,37 +131,37 @@ const UpdateEvent = () => {
                             </div>
 
 
-                            <p class='update-desc'>{race.race_description}</p>
-                            <div class="update-viewraces-card-details-container">
-                                <div class='update-viewraces-card-details-wrapper'>
-                                    <img src="/img/agereq-icon.png" class="viewraces-icon" />
-                                    <div><label class="update-viewraces-card-details">Age Requirement:</label> {race.min_age} - {race.max_age} years old</div>
+                            <p className='update-desc'>{race.race_description}</p>
+                            <div className="update-viewraces-card-details-container">
+                                <div className='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/agereq-icon.png" className="update-viewraces-icon" />
+                                    <div><label className="update-viewraces-card-details">Age Requirement:</label> {race.min_age} - {race.max_age} years old</div>
                                 </div>
 
-                                <div class='update-viewraces-card-details-wrapper'>
-                                    <img src="/img/distance-icon.png" class="viewraces-icon" />
-                                    <div><label class="update-viewraces-card-details">Race Distance:</label> {race.race_distance} KM</div>
+                                <div className='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/distance-icon.png" className="update-viewraces-icon" />
+                                    <div><label className="update-viewraces-card-details">Race Distance:</label> {race.race_distance} KM</div>
                                 </div>
 
-                                <div class='update-viewraces-card-details-wrapper'>
-                                    <img src="/img/capacity-icon.png" class="viewraces-icon" />
-                                    <div><label class="update-viewraces-card-details">Maximum Racers:</label> {race.capacity}</div>
+                                <div className='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/capacity-icon.png" className="update-viewraces-icon" />
+                                    <div><label className="update-viewraces-card-details">Maximum Racers:</label> {race.capacity}</div>
                                 </div>
 
-                                <div class='update-viewraces-card-details-wrapper'>
-                                    <img src="/img/loc-icon.png" class="viewraces-icon" />
-                                    <div><label class="update-viewraces-card-details">Location:</label> {race.location}</div>
+                                <div className='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/loc-icon.png" className="update-viewraces-icon" />
+                                    <div><label className="update-viewraces-card-details">Location:</label> {race.location}</div>
                                 </div>
 
-                                <div class='update-viewraces-card-details-wrapper'>
-                                    <img src="/img/participant-icon.png" class="viewraces-icon" />
-                                    <div><label class="update-viewraces-card-details">Currently Joined:</label> {race.current_participant}</div>
+                                <div className='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/participant-icon.png" className="update-viewraces-icon" />
+                                    <div><label className="update-viewraces-card-details">Currently Joined:</label> {race.current_participant}</div>
                                 </div>
 
-                                <div class='update-viewraces-card-details-wrapper'>
-                                    <img src="/img/calendar-icon.png" class="viewraces-icon" />
-                                    <div><label class="update-viewraces-card-details">Start Date:</label> {race.start_date}</div>
-                                    <div><label class="update-viewraces-card-details">Registration Date:</label> {race.registration_date}</div>
+                                <div className='update-viewraces-card-details-wrapper'>
+                                    <img src="/img/calendar-icon.png" className="update-viewraces-icon" />
+                                    <div><label className="update-viewraces-card-details">Start Date:</label> {race.start_date}</div>
+                                    <div><label className="update-viewraces-card-details">Registration Date:</label> {race.registration_date}</div>
                                 </div>
 
                             </div>
@@ -175,6 +175,8 @@ const UpdateEvent = () => {
                 </div>
             </div>
 
+
+            {/* MODAL AREA */}
             {isModalOpen && (
                 <div className="modal-up">
                     <div className="modal-content">
@@ -182,75 +184,141 @@ const UpdateEvent = () => {
 
                         <h2>Update Event</h2>
 
-                        <form onSubmit={handleSubmit}>
-                            {[
-                                ["Title of the Race", "race_title"],
-                                ["Description", "race_description", "textarea"],
-                                ["Start Date", "start_date", "date"],
-                                ["Registration Date", "registration_date", "date"],
-                                ["Minimum Age", "min_age", "number"],
-                                ["Maximum Age", "max_age", "number"],
-                                ["Capacity", "capacity", "number"],
-                                ["Distance (KM)", "race_distance", "number"],
-                                ["Location", "location"],
-                            ].map(([label, key, type = "text"]) => (
-                                <div key={key}>
-                                    <label>{label}:</label>
-                                    {type === "textarea" ? (
-                                        <textarea
-                                            value={race[key] || ""}
-                                            onChange={(e) => setRace({ ...race, [key]: e.target.value })}
-                                        />
-                                    ) : (
-                                        <input
-                                            type={type}
-                                            value={race[key] || ""}
-                                            onChange={(e) => setRace({ ...race, [key]: e.target.value })}
-                                        />
-                                    )}
+                        {isModalOpen && (
+                            <div className="modal-up">
+                                <div className="modal-content">
+
+                                    <button className="close" onClick={() => setIsModalOpen(false)}>
+                                        &times;
+                                    </button>
+
+                                    <h2 className="modal-title">Update Event</h2>
+
+                                    <form onSubmit={handleSubmit}>
+
+                                        <div className="modal-form-columns">
+
+                                            {/* LEFT COLUMN */}
+                                            <div className="modal-left">
+
+                                                <div className="modal-section-label">Banner Preview</div>
+
+                                                {(previewBanner || race.race_banner_url) ? (
+                                                    <div className="banner-preview-container">
+                                                        <img
+                                                            src={previewBanner || race.race_banner_url}
+                                                            alt="Banner Preview"
+                                                        />
+                                                    </div>
+                                                ) : (
+                                                    <div className="banner-preview-container no-banner">
+                                                        No Banner Available
+                                                    </div>
+                                                )}
+
+                                                <div className="modal-section-label top-gap">Upload New Image</div>
+
+
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={(e) => {
+                                                        const file = e.target.files[0];
+                                                        setRaceBanner(file);
+
+                                                        if (file) {
+                                                            const reader = new FileReader();
+                                                            reader.onloadend = () => setPreviewBanner(reader.result);
+                                                            reader.readAsDataURL(file);
+                                                        } else {
+                                                            setPreviewBanner(null);
+                                                        }
+                                                    }}
+                                                />
+
+                                                {/* TEXT FIELDS LEFT */}
+                                                {[
+                                                    ["Title of the Race", "race_title"],
+                                                    ["Description", "race_description", "textarea"]
+                                                ].map(([label, key, type = "text"]) => (
+                                                    <div key={key} className="modal-field">
+                                                        <label>{label}</label>
+
+                                                        {type === "textarea" ? (
+                                                            <textarea
+                                                                value={race[key] || ""}
+                                                                onChange={(e) =>
+                                                                    setRace({ ...race, [key]: e.target.value })
+                                                                }
+                                                            />
+                                                        ) : (
+                                                            <input
+                                                                type={type}
+                                                                value={race[key] || ""}
+                                                                onChange={(e) =>
+                                                                    setRace({ ...race, [key]: e.target.value })
+                                                                }
+                                                            />
+                                                        )}
+                                                    </div>
+                                                ))}
+
+                                            </div>
+
+                                            {/* RIGHT COLUMN */}
+                                            <div className="modal-right">
+                                                {[
+                                                    ["Start Date", "start_date", "date"],
+                                                    ["Registration Date", "registration_date", "date"],
+                                                    ["Minimum Age", "min_age", "number"],
+                                                    ["Maximum Age", "max_age", "number"],
+                                                    ["Capacity", "capacity", "number"],
+                                                    ["Distance (KM)", "race_distance", "number"],
+                                                    ["Location", "location"]
+                                                ].map(([label, key, type = "text"]) => (
+                                                    <div key={key} className="modal-field">
+                                                        <label>{label}</label>
+
+                                                        {type === "textarea" ? (
+                                                            <textarea
+                                                                value={race[key] || ""}
+                                                                onChange={(e) =>
+                                                                    setRace({ ...race, [key]: e.target.value })
+                                                                }
+                                                            />
+                                                        ) : (
+                                                            <input
+                                                                type={type}
+                                                                value={race[key] || ""}
+                                                                onChange={(e) =>
+                                                                    setRace({ ...race, [key]: e.target.value })
+                                                                }
+                                                            />
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                        </div>
+
+                                        <button type="submit" className="modal-submit-btn">
+                                            Save Changes
+                                        </button>
+
+                                        {formError && <p className="error">{formError}</p>}
+                                    </form>
+
                                 </div>
-                            ))}
+                            </div>
+                        )}
 
-                            <label>Race Banner</label>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                onChange={(e) => {
-                                    const file = e.target.files[0]
 
-                                    setRaceBanner(file)
 
-                                    if (file) {
-                                        const reader = new FileReader();
-
-                                        reader.onloadend = () => setPreviewBanner(reader.result)
-                                        reader.readAsDataURL(file)
-                                    } else {
-                                        setPreviewBanner(null)
-                                    }
-                                }}
-                            />
-
-                            {previewBanner && (
-                                <div className="banner-preview-container">
-                                    <p>Banner Preview:</p>
-                                    <img
-                                        src={previewBanner}
-                                        alt="Preview"
-                                        className="dashb-card-banner"
-                                        style={{ maxWidth: "100%", borderRadius: "12px", marginTop: "8px" }}
-                                    />
-                                </div>
-                            )}
-
-                            <button type="submit">Save Changes</button>
-
-                            {formError && <p className="error">{formError}</p>}
-
-                        </form>
                     </div>
                 </div>
             )}
+
+
         </div>
     );
 };
