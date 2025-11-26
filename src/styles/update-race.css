@@ -1,5 +1,5 @@
 .updatec-body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../styles/img/banner_f.png');
     background-size: cover;
     background-position: center;
     justify-content: center;
@@ -55,7 +55,7 @@
 
 .viewraces-main-content::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .viewraces-card a {
     text-decoration: none;
@@ -85,14 +85,41 @@
 }
 
 .update-viewraces-card-banner-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 200px;
+    padding: 10px;
+    /* same spacing as view-races */
+    overflow: hidden;
 }
 
-.update-viewraces-card-details-container{
+.update-viewraces-card-banner {
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+    /* no cropping, same as view-races */
+    border-radius: 10px;
+}
+
+
+
+/* .update-viewraces-card-banner:hover {
+    filter: brightness(1.05);
+    transform: scale(1.02);
+} */
+
+.update-viewraces-banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+
+.update-viewraces-card-details-container {
     display: inline-block;
     justify-content: center;
     align-items: center;
@@ -129,7 +156,7 @@
 .update-event-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
-    font-size: 15px; 
+    font-size: 15px;
     text-transform: uppercase;
     width: 200px;
     padding: 12px 0;
@@ -152,10 +179,12 @@
 
 
 /* old css */
-.update-event, .delete-event, .list-event {
+.update-event,
+.delete-event,
+.list-event {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
-    font-size: 15px; 
+    font-size: 15px;
     text-transform: uppercase;
     width: 200px;
     padding: 12px;
@@ -276,53 +305,54 @@
     background-color: #C5AEA0;
 }
 
-/* Banner Preview */
+
 /* Banner Preview */
 .banner-preview-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f6f6f6;
-  border: 2px dashed #cb8925;
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 770px;
-  align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f6f6f6;
+    border: 2px dashed #cb8925;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 770px;
+    align-self: center;
 }
 
 .banner-preview-container:hover {
-  background-color: #fff7e6;
-  transform: scale(1.02);
+    background-color: #fff7e6;
+    transform: scale(1.02);
 }
 
 .banner-preview-container p {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
-  font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
 }
 
 .banner-preview-image {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.4s ease-in;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.4s ease-in;
 }
 
 /* Smooth fade-in for preview */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 

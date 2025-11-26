@@ -162,15 +162,15 @@ const Profile = () => {
                                                 {output.username}
                                             </div>
                                             <div class="pf-details-wrapper">
-                                                <img src="img/email-icon.png" alt="icon" class="icon"/>
+                                                <img src="img/email-icon.png" alt="icon" class="pf-icon"/>
                                                 <div><label class='pf-details'>Email:</label> {output.email}</div>
                                             </div>
                                             <div class="pf-details-wrapper">
-                                                <img src="img/bday-icon.png" alt="icon" class="icon"/>          
+                                                <img src="img/bday-icon.png" alt="icon" class="pf-icon"/>          
                                                 <div><label class='pf-details'>Birthday:</label> {output.birth_day}</div>
                                             </div>
                                             <div class="pf-details-wrapper">
-                                                <img src="img/gender-icon.png" alt="icon" class="icon"/>
+                                                <img src="img/gender-icon.png" alt="icon" class="pf-icon"/>
                                                 <div className='gender'><label class='pf-details'>Gender:</label> {output.gender}</div>
                                             </div>
                                         </div>
