@@ -104,7 +104,7 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-details-wrapper">
                         <img src="img/agereq-icon.png" alt="icon" className="createdr-icon" />
                         <div>
-                            <label className="createdr-card-details">Age Requirement:</label>
+                            <label className="createdr-details">Age Requirement: </label>
                             {output.min_age} - {output.max_age} yrs old
                         </div>
                     </div>
@@ -114,7 +114,7 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-details-wrapper">
                         <img src="img/distance-icon.png" alt="icon" className="createdr-icon" />
                         <div>
-                            <label className="createdr-card-details">Race Distance:</label>
+                            <label className="createdr-details">Race Distance: </label>
                             {output.race_distance} KM
                         </div>
                     </div>
@@ -122,7 +122,7 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-details-wrapper">
                         <img src="img/capacity-icon.png" alt="icon" className="createdr-icon" />
                         <div>
-                            <label className="createdr-card-details">Maximum Racers:</label>
+                            <label className="createdr-details">Maximum Racers: </label>
                             {output.capacity}
                         </div>
                     </div>
@@ -131,7 +131,7 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-details-wrapper">
                         <img src="img/participant-icon.png" alt="icon" className="createdr-icon" />
                         <div>
-                            <label className="createdr-details">Currently Joined:</label>
+                            <label className="createdr-details">Currently Joined: </label>
                             {output.current_participant}
                         </div>
                     </div>
@@ -139,7 +139,7 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-details-wrapper">
                         <img src="img/calendar-icon.png" alt="icon" className="createdr-icon" />
                         <div>
-                            <label className="createdr-details">Start Date:</label>
+                            <label className="createdr-details">Start Date: </label>
                             {output.start_date}
                         </div>
                     </div>
@@ -147,7 +147,7 @@ const RaceCard = ({ output, onDelete }) => {
                     <div className="createdr-details-wrapper">
                         <img src="img/calendar-icon.png" alt="icon" className="createdr-icon" />
                         <div>
-                            <label className="createdr-card-details">Registration Date:</label>
+                            <label className="createdr-details">Registration Date: </label>
                             {output.registration_date}
                         </div>
                     </div>

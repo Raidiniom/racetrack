@@ -6,12 +6,16 @@
     background-position: center;
     min-height: 100vh;
     display: flex;
+    display: block !important;
+
     overflow: hidden;
 }
 
 /* Main Content */
 .cr-main-content {
-    grid-area: main;
+    width: 80%;
+    margin: 0 auto;         
+    
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -127,13 +131,14 @@
 
 .cr-button-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    gap: 20px;                /* spacing between buttons */
+    gap: 20px;
+    /* spacing between buttons */
     width: 100%;
     margin-top: 25px;
     margin-bottom: 10px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 
@@ -156,7 +161,8 @@
     width: 200px;
     padding: 10px 0;
     border-radius: 25px;
-    border: 2px solid #777;       /* gray tone */
+    border: 2px solid #777;
+    /* gray tone */
     background: transparent;
     color: #333;
     cursor: pointer;
