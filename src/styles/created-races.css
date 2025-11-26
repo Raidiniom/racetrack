@@ -1,29 +1,43 @@
-
 /* Body */
 .createdr-body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../styles/img/banner_f.png');
     background-size: cover;
     background-position: center;
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+    overflow: hidden;
+    /* ✅ ensures only main content scrolls */
 }
 
 /* Content */
 .createdr-main-content {
-    display: flex;
     grid-area: main;
+    display: flex;
     flex-direction: column;
-    background-color: #00000000;
-    /* overflow-y: hidden; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1.5vw;
+    background-color: transparent;
+
     height: 100%;
+    /* ✅ fill the available space */
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+    overscroll-behavior: contain;
 }
 
 .createdr-main-content-header {
     display: flex;
     align-items: center;
+    margin: 10px;
     justify-content: space-between;
-    margin: 15px;
 }
 
 .createdr-main-content-header h2 {
@@ -32,13 +46,26 @@
 }
 
 .createdr-main-content::-webkit-scrollbar {
+    width: 8px;
+    height: 0;
     display: none;
-  }
+}
+
+.createdr-main-container::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.createdr-main-container::-webkit-scrollbar-track {
+    background: transparent;
+}
 
 .createdr-main-container {
-    margin-left: auto;
-    margin-right: auto;
+    flex: 1;
     width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 /* Created Races Card */
@@ -88,18 +115,19 @@
     height: 200px;
 }
 
-.createdr-details-container{
+.createdr-details-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .createdr-details-wrapper {
     display: flex;
     gap: 10px;
+    background: #f5f5f5;
+    padding: 10px 12px;
+    border-radius: 8px;
     align-items: center;
-    margin-bottom: 15px;
 }
 
 .createdr-details {
@@ -117,14 +145,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 100%
+    width: 100%;
+
+    gap: 15px;
+    margin-top: 20px;
+
 }
+
+.createdr-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: #1c1c1c;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-left: 6px solid #CB8925;
+    padding-left: 12px;
+}
+
+
+
 
 .createdr-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
-    font-size: 15px; 
+    font-size: 15px;
     text-transform: uppercase;
     width: 200px;
     padding: 12px 0;
@@ -140,7 +186,79 @@
     transition: 0.3s;
 }
 
-.createdr:hover {
+.createdr-button:hover {
     background-color: #CB8925;
     color: #d9d9d9;
+}
+
+
+
+.race-banner-picture {
+    width: 100%;
+    max-height: 1;
+    background: #e0e0e0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.race-banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+
+
+
+/* GRID */
+.race-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.race-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.race-left {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.createdr-description {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 17px;
+    color: #333;
+    margin:15px;
+}
+
+
+.createdr-header-description {
+     font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    margin: 10px 15px 5px 15px;
+    letter-spacing: 0.5px;
+}
+
+.createdr-location {
+    font-size: 20px;
+    color: #333;
+    margin: 8px;
+}
+.createdr-location strong {
+    font-weight: 600;
+    margin-right: 4px;
 }
