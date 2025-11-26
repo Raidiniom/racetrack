@@ -1,15 +1,17 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import supabase from '../config/supabaseclient';
 import '../styles/header_and_sidebar.css'
 
 const Sidebar = () => {
+    const redirect = useNavigate()
+
     const handleLogout = async () => {
         const {error} = await supabase.auth.signOut()
 
         if (error) {
             console.error(error);
         } else {
-            window.location.href='/login'
+            redirect('/login')
         }
     }
 
