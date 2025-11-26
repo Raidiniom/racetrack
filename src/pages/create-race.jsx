@@ -105,7 +105,7 @@ const Db = () => {
         }
 
         setFormError(null);
-        redirect('/create-races');
+        redirect('/created-races');
     };
 
 

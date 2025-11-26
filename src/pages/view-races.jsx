@@ -13,8 +13,8 @@ import Sidebar from '../components/Sidebar'
 
 const ViewEvent = () => {
     const { id } = useParams();
-    const [ fetchError, setFetchError ] = useState(null)
-    const [ getraces, setGetraces ] = useState(null)
+    const [fetchError, setFetchError] = useState(null)
+    const [getraces, setGetraces] = useState(null)
     const [hasJoined, setHasJoined] = useState(false);
     const navigate = useNavigate();
 
@@ -23,10 +23,11 @@ const ViewEvent = () => {
     useEffect(() => {
         const fetchRaces = async () => {
             const { data, error } = await supabase
-             .from('user_created_race')
-             .select('*')
-             .eq('race_id', id)
-             .single()
+                .from('user_created_race')
+                .select('*')
+                .eq('race_id', id)
+                .single()
+            console.log("VIEW RACES DATA:", data);
 
             if (error) {
                 setFetchError('No Races Open!')
@@ -80,16 +81,16 @@ const ViewEvent = () => {
 
         try {
             const { data: sess, error: nosess } = await supabase.auth.getSession();
-                
-                // Check for errors and log them
-                if (nosess) {
-                    console.error('Session Error:', nosess.message);
-                    return;
-                }
-                
-                console.log('This is Sess: ', sess)
-                const theU = sess?.session.user;
-                setAuthuser({ theU });
+
+            // Check for errors and log them
+            if (nosess) {
+                console.error('Session Error:', nosess.message);
+                return;
+            }
+
+            console.log('This is Sess: ', sess)
+            const theU = sess?.session.user;
+            setAuthuser({ theU });
 
             const { data: user, error: userError } = await supabase
                 .from('app_users')
@@ -155,64 +156,130 @@ const ViewEvent = () => {
     };
 
     return (
-            <div class="viewraces-body">
-                {/* Headerbar */}
-                <Header />
+        <div className="viewraces-body">
+            {/* Headerbar */}
+            <Header />
 
-                {/* Sidebar */}
-                <Sidebar />
-                
-                {/* Main Content */}
-                <div class="viewraces-main-content">
-                    <div class='viewraces-main-content-header'>
-                        <h2>Race Details</h2>
-                    </div>  
-                        {/* Race Display */}
-                        <div class="viewraces-main-container">           
-                            {fetchError && (<p className='error'>{fetchError}</p>)}
-                            {getraces && (
-                                <div className="viewraces-card">
-                                    <div class='viewraces-card-racetitle'>
-                                        {getraces.race_title}
+            {/* Sidebar */}
+            <Sidebar />
+
+            {/* Main Content */}
+            <div className="viewraces-main-content">
+                <div className='viewraces-main-content-header'>
+                    <h2>Race Details</h2>
+                </div>
+                {/* Race Display */}
+                <div className="viewraces-main-container">
+                    {fetchError && (<p className='error'>{fetchError}</p>)}
+                    {getraces && (
+                        <div className="viewraces-card">
+
+                            {/* TITLE */}
+                            <h2 className="viewraces-title">{getraces.race_title}</h2>
+                            <p className="viewraces-location">
+                                <strong>Location:</strong> {getraces.location}
+                            </p>
+
+                            {/* BANNER */}
+
+
+                            {/* GRID */}
+                            <div className="viewraces-grid">
+
+                                {/* LEFT SIDE */}
+                                <div className="viewraces-left">
+                                    <div className="viewraces-banner-picture">
+                                        {getraces.race_banner_url ? (
+                                            <img src={getraces.race_banner_url} className="viewraces-banner-img" />
+                                        ) : (
+                                            <div className="viewraces-banner-placeholder">No Banner Available</div>
+                                        )}
                                     </div>
-                                    <h3>Description</h3>
-                                    <p class='desc'>{getraces.race_description}</p>
-                                    <div class="viewraces-card-details-container">
-                                        <div class='viewraces-card-details-wrapper'>
-                                            <img src="/img/agereq-icon.png" class="icon"/>
-                                            <div><label class="viewraces-card-details">Age Requirement:</label> {getraces.min_age} - {getraces.max_age} years old</div>
-                                        </div>
-                                        <div class='viewraces-card-details-wrapper'>
-                                            <img src="/img/distance-icon.png" class="icon"/>
-                                            <div><label class="viewraces-card-details">Race Distance:</label> {getraces.race_distance} KM</div>
-                                        </div>
-                                        <div class='viewraces-card-details-wrapper'>
-                                            <img src="/img/capacity-icon.png" class="icon"/>
-                                            <div><label class="viewraces-card-details">Maximum Racers:</label> {getraces.capacity}</div>
-                                        </div>
-                                        <div class='viewraces-card-details-wrapper'>
-                                            <img src="/img/loc-icon.png" class="icon"/>
-                                            <div><label class="viewraces-card-details">Location:</label> {getraces.location}</div>
-                                        </div>
-                                        <div class='viewraces-card-details-wrapper'>
-                                            <img src="/img/participant-icon.png" class="icon"/>
-                                            <div><label class="viewraces-card-details">Currently Joined:</label> {getraces.current_participant}</div>
-                                        </div>
-                                        <div class='viewraces-card-details-wrapper'>
-                                            <img src="/img/calendar-icon.png" class="icon"/>
-                                            <div><label class="viewraces-card-details">Start Date:</label> {getraces.start_date}</div>
-                                            <div><label class="viewraces-card-details">Registration Date:</label> {getraces.registration_date}</div>
-                                        </div>
-                                    </div>
-                                    <div className="join-button-container">
-                                        <button className="join-button" onClick={joinEvent}>Join Event</button>
-                                    </div>
+                                    <h3 className="viewraces-header-description">About the Race</h3>
+
+                                    <p className="viewraces-description">
+                                        {getraces.race_description}
+                                    </p>
+
+
+
                                 </div>
-                            )}
-                                    
+
+                                {/* RIGHT SIDE */}
+                                <div className="viewraces-details">
+
+                                    <div className="viewraces-details-wrapper">
+                                        <img src="/img/agereq-icon.png" className="viewraces-icon" />
+                                        <div>
+                                            <label className="viewraces-details-label">Age Requirement:</label>
+                                            {getraces.min_age} - {getraces.max_age} yrs old
+                                        </div>
+                                    </div>
+
+                                    <div className="viewraces-details-wrapper">
+                                        <img src="/img/distance-icon.png" className="viewraces-icon" />
+                                        <div>
+                                            <label className="viewraces-details-label">Race Distance:</label>
+                                            {getraces.race_distance} KM
+                                        </div>
+                                    </div>
+
+                                    <div className="viewraces-details-wrapper">
+                                        <img src="/img/capacity-icon.png" className="viewraces-icon" />
+                                        <div>
+                                            <label className="viewraces-details-label">Maximum Racers:</label>
+                                            {getraces.capacity}
+                                        </div>
+                                    </div>
+
+                                    <div className="viewraces-details-wrapper">
+                                        <img src="/img/participant-icon.png" className="viewraces-icon" />
+                                        <div>
+                                            <label className="viewraces-details-label">Currently Joined:</label>
+                                            {getraces.current_participant}
+                                        </div>
+                                    </div>
+
+                                    <div className="viewraces-details-wrapper">
+                                        <img src="/img/calendar-icon.png" className="viewraces-icon" />
+                                        <div>
+                                            <label className="viewraces-details-label">Start Date:</label>
+                                            {getraces.start_date}
+                                        </div>
+                                    </div>
+
+                                    <div className="viewraces-details-wrapper">
+                                        <img src="/img/calendar-icon.png" className="viewraces-icon" />
+                                        <div>
+                                            <label className="viewraces-details-label">Registration Date:</label>
+                                            {getraces.registration_date}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {/* BUTTON */}
+
+                            <div className="viewraces-button-container">
+                                <button className="viewraces-button-back"onClick={() => navigate('/dashboard')} >
+                                    RETURN
+                                </button>
+                                <button className="viewraces-button" onClick={joinEvent}>
+                                    Join Event
+                                </button>
+                                
+                            </div>
+
+
+
                         </div>
+
+                    )}
+
                 </div>
             </div>
+        </div>
     )
 }
 

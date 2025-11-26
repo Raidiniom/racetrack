@@ -69,7 +69,7 @@ const Header = () => {
         <div className="pfp">
           <NavLink to="/profile">
             <button className="notification-button">
-              <img src="img/pfp.png" alt="icon" className="pfp-icon" /> Profile
+              <img src="/img/pfp.png" alt="icon" className="pfp-icon" /> Profile
             </button>
           </NavLink>
         </div>
@@ -77,7 +77,7 @@ const Header = () => {
         <div className="notifications-container">
           <NavLink to="/notifications">
             <button className="notification-button">
-              <img src="img/noti-icon.png" alt="icon" className="noti-icon" />{" "}
+              <img src="/img/noti-icon.png" alt="icon" className="noti-icon" />{" "}
               Notifications{" "}
               {unreadCount > 0 && (
                 <p className="notif-count">{unreadCount}</p>
