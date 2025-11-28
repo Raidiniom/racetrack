@@ -1,141 +1,170 @@
 /* Body */
-.cr-body { /* cr = create race */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+.cr-body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+        url('../styles/img/banner_f.png');
     background-size: cover;
     background-position: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    display: block !important;
+
+    overflow: hidden;
 }
-/*hello*/
+
 /* Main Content */
 .cr-main-content {
+    width: 80%;
+    margin: 0 auto;         
+    
     display: flex;
-    grid-area: main;
     flex-direction: column;
-    background-color: #00000000;
-    overflow-y: hidden;
-    height: 100%;
-    margin: 10px;
+    padding: 2rem;
+    overflow-y: auto;
+    color: white;
 }
 
 .cr-main-content-header {
     display: flex;
-    align-items: center;
-    margin: 10px;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .cr-main-content-header h2 {
-    color: rgb(255, 255, 255);
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: 700;
 }
 
-.cr-main-content::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Form */
+/* Form Container */
 .cr-container {
-    width: 100%;
-    height: 80%;
-    background: linear-gradient(#fff, #d9d9d9);
-    padding:10px 15px;
-    border-radius: 5px;
+    background-color: #f5f5f5;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-bottom: 25px;
 }
 
-.cr-container .cr-title {
-    font-size: 25px;
-    font-weight: 500;
-    position: relative;
+/* Inputs Layout */
+.cr-user-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-.cr-container .cr-title::before {
-    content: '';
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    background: #434343;
-}
-
-.cr-container form .cr-user-details {
+.cr-input-box {
+    width: 95%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 15px 0 10px 0;
-    margin-right: 90px;
+    flex-direction: column;
 }
 
-form .cr-user-details .cr-input-box {
-    margin-bottom: 5px;
-    width: calc(100% / 2 - 40px);
+.cr-details {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
 }
 
-.cr-user-details .cr-input-box .cr-details {
-    display: block;
-    font-weight: bold;
-    font-weight: 500;
-    margin-bottom: 0px;
-}
-
-.cr-user-details .cr-input-box input, select, textarea {
-    height: 35px;  
+/* Inputs & Textareas */
+.cr-input-box input,
+.cr-input-box select,
+.cr-input-box textarea {
     width: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding-left: 15px;
-    font-size: 16px;
-    border-bottom-width: 2px;
-    resize: none;
-    transition: all 0.3s ease;
+    padding: 10px 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: 0.2s;
 }
 
-.cr-user-details .cr-input-box input:hover, select:hover, textarea:hover{
-    border-color: #ffdfae;
+.cr-input-box textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
-.cr-user-details .cr-input-box input:focus, input:valid, select:focus, textarea:focus {
-    border-color: #fc9700;
+/* Hover & Focus */
+.cr-input-box input:hover,
+.cr-input-box textarea:hover {
+    border-color: #d6a05e;
 }
+
+.cr-input-box input:focus,
+.cr-input-box textarea:focus {
+    border-color: #cb8925;
+    box-shadow: 0 0 0 2px rgba(203, 137, 37, 0.3);
+}
+
+
+
+.cr-button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    width: 220px;
+    padding: 12px 0;
+    border-radius: 25px;
+    border: 2px solid #CB8925;
+    background: transparent;
+    color: #333;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cr-button:hover {
+    background-color: #CB8925;
+    color: white;
+}
+
+/* Error Message */
+.error {
+    width: 100%;
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.cr-input-box input[type="file"] {
+    color: black;
+}
+
 
 .cr-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 100%
+    gap: 20px;
+    /* spacing between buttons */
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
-.cr-button {
+
+/* Back button variant */
+.cr-button-back {
+    border-color: #666;
+    color: #333;
+}
+
+.cr-button-back:hover {
+    background-color: #666;
+    color: white;
+}
+
+.cr-button-back {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
-    font-size: 15px; 
+    font-size: 15px;
     text-transform: uppercase;
-    width: 250px;
+    width: 200px;
     padding: 10px 0;
-    text-align: center;
-    margin: 10px 309px;
     border-radius: 25px;
-    border: 2px solid #CB8925;
+    border: 2px solid #777;
+    /* gray tone */
     background: transparent;
-    color: #2c2c2c;
+    color: #333;
     cursor: pointer;
-    position: static;
-    overflow: hidden;
     transition: 0.3s;
-    float: right;
 }
-
-.cr-button:hover {
-    background-color: #CB8925;
-    color: #d9d9d9;
-}
-
-/* .errors {
-    grid-column: span 2; 
-    color: red;
-    text-align: center;
-} */
