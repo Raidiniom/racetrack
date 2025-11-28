@@ -21,29 +21,47 @@ const Profile = () => {
     const [preview, setPreview] = useState(null);
     const [selectFile, setSelectFile] = useState(null);
 
+    const [updateUsername, setUpdateUsername] = useState('');
+    const [updateEmail, setUpdateEmail] = useState('');
+    const [updateBirthday, setUpdateBirthday] = useState('');
+    const [updateGender, setUpdateGender] = useState('');
+
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
 
         try {
-            let uploadURL = getuser?.profile_pic;
+            const { data: sess, error: nosess } = await supabase.auth.getSession();
+
+            if (nosess) {
+                setFetchError('User not found!');
+                return;
+            }
+
+            const user = sess.session.user;
+
+            let uploadURL = getuser?.[0]?.profile_pic;
 
             if (selectFile) {
                 uploadURL = await uploadPFP(selectFile);
             }
 
-            const insertUrl = await supabase
-            .from("app_users")
-            .update({
-                pfp_url: uploadURL,
-            })
-            .eq("email", authuser.user.email);
+            const { error: updateErr } = await supabase
+                .from('app_users')
+                .update({
+                    pfp_url: uploadURL,
+                    username: updateUsername,
+                    email: updateEmail,
+                    birth_day: updateBirthday,
+                    gender: updateGender,
+                })
+                .eq('email', user.email)
 
-            if (insertUrl.error) throw insertUrl.error
+            if (updateErr) throw updateErr
             
             alert("Profile Updated!");
             closeModal();
-
             window.location.reload();
+            
         } catch (error) {
             console.error(error);
             alert("Profile Updated Failed"+ error.message);
@@ -91,6 +109,15 @@ const Profile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
+        if (getuser && getuser.length > 0) {
+            const user_data = getuser[0]
+
+            setUpdateUsername(user_data.username || '')
+            setUpdateEmail(user_data.email || '')
+            setUpdateBirthday(user_data.birth_day || '')
+            setUpdateGender(user_data.gender || '')
+        }
+
         setIsModalOpen(true);
     };
 
@@ -135,15 +162,15 @@ const Profile = () => {
                                                 {output.username}
                                             </div>
                                             <div class="pf-details-wrapper">
-                                                <img src="img/email-icon.png" alt="icon" class="icon"/>
+                                                <img src="img/email-icon.png" alt="icon" class="pf-icon"/>
                                                 <div><label class='pf-details'>Email:</label> {output.email}</div>
                                             </div>
                                             <div class="pf-details-wrapper">
-                                                <img src="img/bday-icon.png" alt="icon" class="icon"/>          
+                                                <img src="img/bday-icon.png" alt="icon" class="pf-icon"/>          
                                                 <div><label class='pf-details'>Birthday:</label> {output.birth_day}</div>
                                             </div>
                                             <div class="pf-details-wrapper">
-                                                <img src="img/gender-icon.png" alt="icon" class="icon"/>
+                                                <img src="img/gender-icon.png" alt="icon" class="pf-icon"/>
                                                 <div className='gender'><label class='pf-details'>Gender:</label> {output.gender}</div>
                                             </div>
                                         </div>
@@ -215,6 +242,8 @@ const Profile = () => {
                                         placeholder='Enter your preferred username'
                                         type="text" 
                                         name="username" 
+                                        value={updateUsername}
+                                        onChange={(e) => setUpdateUsername(e.target.value)}
                                     />
                                 </label>
                             </div>
@@ -224,7 +253,9 @@ const Profile = () => {
                                     <input 
                                         placeholder='Enter new email address'
                                         type="email" 
-                                        name="email" 
+                                        name="email"
+                                        value={updateEmail}
+                                        onChange={(e) => setUpdateEmail(e.target.value)}
                                     />
                                 </label>
                             </div>
@@ -233,12 +264,15 @@ const Profile = () => {
                                     Change Birthday:
                                     <input 
                                     type="date" 
-                                    name="bday" />
+                                    name="bday" 
+                                    value={updateBirthday}
+                                    onChange={(e) => setUpdateBirthday(e.target.value)}
+                                />
                                 </label>
                             </div>
                             <div className='prof-input-box'>
                                 <label className='prof-gender-title'>Gender</label>
-                                    <select name="gender" id="gender">
+                                    <select name="gender" id="gender" value={updateGender} onChange={(e) => setUpdateGender(e.target.value)}>
                                         <option value="not selected">Default Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>

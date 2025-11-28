@@ -1,385 +1,190 @@
-.updatec-body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ,url('../styles/img/banner_f.png');
+.update-body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../styles/img/banner_f.png');
     background-size: cover;
     background-position: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+
 }
 
-.update-desc {
-    margin-bottom: 50px;
+.update-main {
+    width: 70%;
+    /* tighter */
+    margin: 0 auto;
+    /* centers the entire block */
+    padding: 2rem;
+    color: white;
+    overflow: visible;
 }
 
-.update-viewraces-main-content {
-    grid-area: main;
-    /* padding: 20px; */
-    display: flex;
-    margin-left: 50px;
-    margin-right: 90px;
-    flex-direction: column;
-    gap: 20px;
-    overflow-y: auto;
-    height: 100%;
-    -ms-overflow-style: none;
+.update-main::-webkit-scrollbar {
+    display: none;
 }
 
-.update-viewraces-main-content-header {
+
+.update-title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.update-viewraces-main-content-header h2 {
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-}
-
-.update-viewraces-main-container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-}
-
-/* View Card */
-.update-viewraces-card {
-    background-color: #cecece;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
-    margin-bottom: 20px;
-    transition: 0.3s;
-    overflow: hidden;
-}
-
-.viewraces-main-content::-webkit-scrollbar {
-    display: none;
-  }
-
-.viewraces-card a {
-    text-decoration: none;
-    color: #000;
-}
-
-.update-viewraces-card-racetitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    transition: 0.3s;
-    position: relative;
-    color: #1C1C1C;
-    transition: 0.3s;
-    background-color: transparent;
-}
-
-.update-viewraces-card .update-viewraces-card-racetitle::before {
-    content: '';
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    height: 3px;
-    width: 220%;
-    background: #1C1C1C;
-}
-
-.update-viewraces-card-banner-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-}
-
-.update-viewraces-card-details-container{
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-
-.update-viewraces-card-details-wrapper {
-    display: flex;
-    gap: 10px;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.viewraces-card-details {
-    font-weight: bold;
-    font-size: 14px;
+.update-title h2 {
+    font-size: 32px;
+    font-weight: 700;
 }
 
-.viewraces-icon {
-    margin-right: -5px;
-    width: 30px;
-    height: auto;
+/* FORM CARD */
+.update-form {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+
 }
 
-/* button */
-.update-button-container {
+/* GRID (OPTION A) */
+.update-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* LEFT COLUMN */
+.update-left {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
-    width: 100%
+    flex-direction: column;
+    gap: 18px;
 }
 
-.update-event-button {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bolder;
-    font-size: 15px; 
-    text-transform: uppercase;
-    width: 200px;
-    padding: 12px 0;
-    text-align: center;
-    border-radius: 25px;
-    border: 2px solid #CB8925;
-    background: transparent;
-    color: #2c2c2c;
-    cursor: pointer;
-    position: static;
-    overflow: hidden;
-    float: right;
-    transition: 0.3s;
-}
-
-.update-event-button:hover {
-    background-color: #CB8925;
-    color: #d9d9d9;
-}
-
-
-/* old css */
-.update-event, .delete-event, .list-event {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bolder;
-    font-size: 15px; 
-    text-transform: uppercase;
-    width: 200px;
-    padding: 12px;
-    text-align: center;
-    margin: 20px 20px;
-    border-radius: 25px;
-    border: 2px solid #CB8925;
-    background: transparent;
-    color: #2c2c2c;
-    cursor: pointer;
-    position: static;
-    overflow: hidden;
-    transition: 0.3s;
-}
-
-.update-event:hover {
-    background-color: #CB8925;
-    color: #d9d9d9;
-}
-
-
-.list-event:hover {
-    background-color: #000000;
-    color: #ccc;
-}
-
-.delete-event:hover {
-    background-color: #ff3b199c;
-    color: #000000;
-    transition: background-color 0.3s;
-}
-
-.modal-up {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 100%;
-    max-width: 1500px;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-content form {
+/* RIGHT COLUMN */
+.update-right {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.modal-content form label {
+/* LABEL */
+.update-section-label,
+.update-label {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.update-section-label-header {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+/* BANNER PREVIEW */
+.update-banner-box {
+    background: #f6f6f6;
+    border: 2px dashed #cb8925;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.update-banner-img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.update-no-banner {
+    text-align: center;
+    font-weight: 600;
+    color: #555;
+}
+
+/* INPUT FIELDS */
+.update-field {
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 
-.modal-content form input,
-.modal-content form textarea {
-    /* padding: 10px; */
+.update-input {
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: larger;
-    width: 770px;
-}
-
-.modal-content form button {
-    padding: 10px 20px;
-    background-color: #ffedba;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal-content form button:hover {
-    background-color: #19a3ff9c;
-    color: #000000;
-}
-
-.adto {
-    text-decoration: none;
-    color: #000000;
-    display: block;
-    height: 100%;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 15px;
     width: 100%;
+    box-sizing: border-box;
 }
 
-.card-ye:hover {
-    background-color: #C5AEA0;
-}
+/* Applies ONLY to the Description textarea */
+.update-textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
 
-/* Banner Preview */
-/* Banner Preview */
-.banner-preview-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f6f6f6;
-  border: 2px dashed #cb8925;
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 770px;
-  align-self: center;
-}
-
-.banner-preview-container:hover {
-  background-color: #fff7e6;
-  transform: scale(1.02);
-}
-
-.banner-preview-container p {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-
-.banner-preview-image {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.4s ease-in;
-}
-
-/* Smooth fade-in for preview */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-
-/* .errors {
-    font-size: 24px;
-    color: #000000;
-    background-color: #ff8080;
-    border-radius: 5px;
-    margin-top: 10px;
-    text-align: center;
-    font: bold;
-}
-
-.error {
-    font-size: 24px;
-    color: #000000;
-    background-color: #ff8080;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    font: bold;
-} */
-
-/* .participant-list {
-    margin-top: 5px;
-    margin-bottom: 20px;
-    padding: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.4;
+    box-sizing: border-box;
     overflow-y: auto;
-    max-height: 300px;
-    background-color: #ffe1ad;
-    border-radius: 10px;
 }
 
-.listttt {
-    margin-bottom: 10px;
-    margin-left: 20px;
-} 
 
-.participant-list .two-columns {
+.update-button-container {
     display: flex;
-    justify-content: space-between;
-}
-
-.participant-list .columns .two-column {
-    flex: 1 1 45%; /* Two columns with a gap 
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 25px;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
-.participant-list .columns .two-column p {
-    margin-bottom: 5px;
-    word-wrap: break-word;
-    list-style-type: disc;
-    display: list-item;
-    margin-left: 20px;
+
+/* SUBMIT BUTTON */
+.update-submit-btn {
+    margin-top: 25px;
+    padding: 12px;
+    width: 200px;
+    border-radius: 25px;
+    cursor: pointer;
+
+    background: transparent;
+    border: 2px solid #cb8925;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-.participant-list::-webkit-scrollbar {
-    display: none;
-  } */
+
+.update-back-btn {
+    margin-top: 25px;
+    padding: 12px;
+    width: 200px;
+    border-radius: 25px;
+    cursor: pointer;
+
+    background: transparent;
+    border: 2px solid #666;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.update-submit-btn:hover {
+    background: #cb8925;
+    color: white;
+}
+
+.update-back-btn:hover {
+    background: #666;
+    color: white;
+}
+

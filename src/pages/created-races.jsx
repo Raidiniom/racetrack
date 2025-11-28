@@ -1,144 +1,124 @@
-import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import supabase from '../config/supabaseclient';
 
 // CSS
 import '../styles/created-races.css';
 import '../styles/header_and_sidebar.css';
 
-// Config
-import supabase from '../config/supabaseclient';
-
 // Components
 import RaceCard from '../components/RaceCard';
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 
-const MadeEvents = () => {
+const CreatedRaces = () => {
     const [fetchError, setFetchError] = useState(null);
-    const [getraces, setGetraces] = useState(null);
+    const [races, setRaces] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
+
         const fetchRaces = async () => {
-            try {
-                // Fetch session
-                const { data: sess, error: nosess } = await supabase.auth.getSession();
-                
-                if (nosess) {
-                    console.error('Session Error:', nosess.message);
-                    setFetchError('Failed to fetch session. Please try again.');
-                    return;
-                }
-        
-                if (!sess || !sess.session) {
-                    setFetchError('No session found. Please log in.');
-                    return;
-                }
-        
-                // Extract user from session
-                const user = sess.session.user;
-        
-                if (!user || !user.email) {
-                    setFetchError('No user found in session. Please log in.');
-                    return;
-                }
-        
-                // Fetch user_id based on email
-                const { data: userData, error: userError } = await supabase
-                    .from('app_users')
-                    .select('user_id')
-                    .eq('email', user.email)
-                    .single(); // Use .single() to fetch a single row
-        
-                if (userError) {
-                    console.error('User ID Fetch Error:', userError.message);
-                    setFetchError('Failed to retrieve user ID.');
-                    return;
-                }
-        
-                if (!userData || !userData.user_id) {
-                    setFetchError('User ID not found.');
-                    return;
-                }
-        
-                // Ensure user_id is a number
-                const u_id = userData.user_id
-            
-                console.log('Fetching races for user ID:', u_id);
-        
-                // Fetch races created by the user
-                const { data: races, error: racesError } = await supabase
-                    .from('user_created_race')
-                    .select('*')
-                    .eq('race_creator', u_id);
-        
-                if (racesError) {
-                    console.error('Races Fetch Error:', racesError.message);
-                    setFetchError('Failed to fetch races.');
-                    return;
-                }
-        
-                if (!races || races.length === 0) {
-                    setFetchError('No created races yet.');
-                    return;
-                }
-        
-                // Update state with fetched races
-                setGetraces(races);
-                setFetchError(null);
-            } catch (error) {
-                console.error('Unexpected Error:', error.message);
-                setFetchError('An unexpected error occurred. Please try again.');
-                setGetraces(null);
+            setLoading(true);
+            setFetchError(null);
+
+            const { data: sess, error: sessErr } = await supabase.auth.getSession();
+
+            if (sessErr || !sess || !sess.session) {
+                setFetchError("Session expired. Please log in again.");
+                setLoading(false);
+                return;
             }
-        };        
+
+            const user = sess.session.user;
+            if (!user?.email) {
+                setFetchError("No user found in session.");
+                setLoading(false);
+                return;
+            }
+
+            const { data: userData, error: userErr } = await supabase
+                .from("app_users")
+                .select("user_id")
+                .eq("email", user.email);
+
+            if (userErr) {
+                setFetchError("Error fetching user data.");
+                setLoading(false);
+                return;
+            }
+
+            if (!userData || userData.length === 0) {
+                setFetchError("User not found in app_users.");
+                setLoading(false);
+                return;
+            }
+
+            const u_id = userData[0].user_id;
+
+            const { data: raceList, error: raceErr } = await supabase
+                .from("user_created_race")
+                .select("*")
+                .eq("race_creator", u_id)
+                .order("race_id", { ascending: false });
+
+            if (raceErr) {
+                setFetchError("Error fetching races.");
+                setLoading(false);
+                return;
+            }
+
+            setRaces(raceList || []);
+            setLoading(false);
+        };
 
         fetchRaces();
     }, [refresh]);
 
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut();
-
-        if (error) {
-            console.error('Logout Error:', error.message);
-        } else {
-            window.location.href = '/login';
-        }
-    };
-
-    const handleDelete = () => {
-        setRefresh(prev => !prev);
-    };
+    const handleDelete = () => setRefresh(prev => !prev);
 
     return (
         <div className="createdr-body">
-            {/* Headerbar */}
             <Header />
-            
-            {/* Sidebar */}
             <Sidebar />
 
-            {/* Main Content */}
             <div className="createdr-main-content">
-                <div className='createdr-main-content-header'>
+                <div className="createdr-main-content-header">
                     <h2>Your Races</h2>
-                </div> 
-                {/* Created Races Display */}
+                </div>
+
                 <div className="createdr-main-container">
-                    {fetchError && <p className='error'>{fetchError}</p>}
-                    {getraces ? (
+
+                    {/* Loading Indicator */}
+                    {loading && <p>Loading race data...</p>}
+
+                    {/* Errors */}
+                    {!loading && fetchError && (
+                        <p className="error">{fetchError}</p>
+                    )}
+
+                    {/* No Races */}
+                    {!loading && !fetchError && races.length === 0 && (
+                        <p>You have not created any races yet.</p>
+                    )}
+
+                    {/* Races */}
+                    {!loading && races.length > 0 && (
                         <div>
-                            {getraces.map(output => (
-                                <RaceCard key={output.race_id} output={output} onDelete={handleDelete} />
+                            {races.map(race => (
+                                <RaceCard 
+                                    key={race.race_id}
+                                    output={race}
+                                    onDelete={handleDelete}
+                                />
                             ))}
                         </div>
-                    ) : (
-                        <p>No races found or loading...</p>
                     )}
+
                 </div>
-            </div>  
+            </div>
         </div>
     );
 };
 
-export default MadeEvents;
+export default CreatedRaces;

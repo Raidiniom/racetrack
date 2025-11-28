@@ -8,43 +8,38 @@ const JoinCard = ({ output, onLeave }) => {
     const handleLeave = async (e) => {
         e.preventDefault();
 
-        const username = localStorage.getItem('lsusername');
-        if (!username) {
-            setFetchError('Please log in to cancel your participation.');
-            return;
-        }
-
         try {
-            // Fetch user ID
-            const { data: user, error: userError } = await supabase
-                .from('app_users')
-                .select('user_id')
-                .eq('username', username)
-                .single();
+            const { data: sess, error: nosess } = await supabase.auth.getSession();
 
-            if (userError) {
-                console.error('Error fetching user:', userError);
+            if (nosess) {
                 setFetchError('User not found!');
                 return;
             }
 
-            const user_participant = user.user_id;
-            const parsedRaceId = output.race_id
+            const user_participant = sess.session.user;
 
-            if (isNaN(parsedRaceId)) {
-                setFetchError('Invalid race ID!');
+            const { data: userData, error: userError} = await supabase
+                .from('app_users')
+                .select('user_id')
+                .eq('email', user_participant.email)
+                .single()
+
+            if (userError) {
+                setFetchError('Failed to retrieve user ID!');
                 return;
             }
+
+            const userId = userData.user_id;
+            const raceId = output.race_id;
 
             // Delete the participant record
             const { error: deleteError } = await supabase
                 .from('participant_list')
                 .delete()
-                .eq('from_race', parsedRaceId)
-                .eq('user_participant', user_participant);
+                .eq('user_participant', userId)
+                .eq('from_race', raceId)
 
             if (deleteError) {
-                console.error('Error canceling participation:', deleteError);
                 setFetchError('Error canceling participation!');
                 return;
             }
@@ -53,11 +48,10 @@ const JoinCard = ({ output, onLeave }) => {
             const { data: race, error: raceError } = await supabase
                 .from('user_created_race')
                 .select('current_participant')
-                .eq('race_id', parsedRaceId)
+                .eq('race_id', raceId)
                 .single();
 
             if (raceError) {
-                console.error('Error fetching race data:', raceError);
                 setFetchError('Error fetching race data!');
                 return;
             }
@@ -67,11 +61,10 @@ const JoinCard = ({ output, onLeave }) => {
             const { error: updateError } = await supabase
                 .from('user_created_race')
                 .update({ current_participant: updatedParticipantCount })
-                .eq('race_id', parsedRaceId)
+                .eq('race_id', raceId)
                 .single();
 
             if (updateError) {
-                console.error('Error updating participant count:', updateError);
                 setFetchError('Error updating participant count!');
                 return;
             }
@@ -79,9 +72,9 @@ const JoinCard = ({ output, onLeave }) => {
             setFetchError(null);
             alert('Successfully canceled participation!');
 
-            if (onLeave) onLeave(); 
+            if (onLeave) onLeave(raceId); 
         } catch (error) {
-            console.error('Unexpected error:', error);
+            console.error('[ERROR] -> ', error);
             setFetchError('Unexpected error occurred!');
         }
     };
@@ -96,15 +89,15 @@ const JoinCard = ({ output, onLeave }) => {
             </div>
                 <div className='joinedraces-card-details-container'>
                     <div class="joinedraces-card-details-wrapper">
-                        <img src="img/distance-icon.png" alt="distance" class="icon"/>
+                        <img src="img/distance-icon.png" alt="distance" class="joinraces-icon"/>
                         <div><label class="joinedraces-card-details">Track Distance:</label> {output.race_distance} KM</div>
                     </div>
                     <div class="joinedraces-card-details-wrapper">
-                        <img src="img/loc-icon.png" alt="icon" class="icon"/>
+                        <img src="img/loc-icon.png" alt="icon" class="joinraces-icon"/>
                         <div><label class="joinedraces-card-details">Location:</label> {output.location}</div>
                     </div>
                     <div class="joinedraces-card-details-wrapper">
-                        <img src="img/calendar-icon.png" alt="icon" class="icon"/>
+                        <img src="img/calendar-icon.png" alt="icon" class="joinraces-icon"/>
                         <div><label class="joinedraces-card-details">Start Date:</label> {output.start_date}</div>
                         <div><label class="joinedraces-card-details">Registration Date:</label> {output.registration_date}</div>
                     </div>
@@ -113,7 +106,7 @@ const JoinCard = ({ output, onLeave }) => {
                         <NavLink to={`/view-races/${output.race_id}`}>
                             <button className="more-button">View Event</button>
                         </NavLink>
-                        <button className="join-button" onClick={handleLeave}>Cancel Participation</button>
+                        <button className="join-button" onClick={handleLeave}>Leave Race</button>
                     </div>
             {fetchError && <p className='error'>{fetchError}</p>}
         </div>

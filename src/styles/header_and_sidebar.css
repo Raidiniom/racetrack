@@ -6,6 +6,7 @@
         "header header"
         "sidebar main";
     height: 90vh;
+
 }
 
 .gen-headerbar {
@@ -103,10 +104,10 @@
 .notification-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
-    font-size: 15px; 
+    font-size: 11px; 
     text-transform: uppercase;
-    width: 200px;
-    padding: 7px 0;
+    width: 150px;
+    padding: 5px 0;
     text-align: center;
     border-radius: 25px;
     border: 2px solid #CB8925;

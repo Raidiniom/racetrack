@@ -61,13 +61,11 @@ const JoinedEvent = () => {
                 }
 
                 // Ensure user_id is a number
-                const u_id = parseInt(userData.user_id, 10);
-                if (isNaN(u_id)) {
+                const u_id = userData.user_id
+                if (!u_id) {
                     setFetchError('Invalid user ID.');
                     return;
                 }
-        
-                console.log('Fetching races for user ID:', u_id);
 
                 // Fetch races that the user has joined
                 const { data: participantData, error: participantError } = await supabase
@@ -105,10 +103,6 @@ const JoinedEvent = () => {
 
         fetchJoinedRaces();
     }, [refresh]);
-
-    const handleLogout = () => {
-        localStorage.removeItem('lsusername');
-    };
 
     const handleCancel = () => {
         // Trigger re-fetch by updating `refresh` state
