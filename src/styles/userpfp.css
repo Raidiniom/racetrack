@@ -320,3 +320,9 @@ input[type="checkbox"] {
     font-size: 14px;
     margin-top: 10px;
 }
+
+.pf-icon {
+    margin-right: -5px;
+    width: 30px;
+    height: auto;
+}
