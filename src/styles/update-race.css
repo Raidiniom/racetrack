@@ -1,403 +1,190 @@
-.updatec-body {
+.update-body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../styles/img/banner_f.png');
     background-size: cover;
     background-position: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+
 }
 
-.update-desc {
-    margin-bottom: 50px;
+.update-main {
+    width: 70%;
+    /* tighter */
+    margin: 0 auto;
+    /* centers the entire block */
+    padding: 2rem;
+    color: white;
+    overflow: visible;
 }
 
-.update-viewraces-main-content {
-    grid-area: main;
-    display: flex;
-    flex-direction: column;
-
-    padding: 1.5vw;
-    background-color: transparent;
-    height: 100%;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    overscroll-behavior: contain;
+.update-main::-webkit-scrollbar {
+    display: none;
 }
 
-.update-viewraces-main-content-header {
+
+.update-title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.update-viewraces-main-content-header h2 {
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-}
-
-.update-viewraces-main-container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-}
-
-.update-viewraces-card {
-    background-color: #cecece;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-.update-viewraces-card-racetitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    position: relative;
-    color: #1C1C1C;
-}
-
-.update-viewraces-card .update-viewraces-card-racetitle::before {
-    content: '';
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    height: 3px;
-    width: 220%;
-    background: #1C1C1C;
-}
-
-.update-viewraces-card-banner-container {
-    width: 100%;
-    background: #e0e0e0;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    overflow: hidden;
-}
-
-.update-viewraces-card-banner {
-    width: 50%;
-    height: 50%;
-    object-fit: scale-down;
-    display: block;
-    border-radius: 10px;
-    margin: 15px;
-}
-
-.update-viewraces-card-details-container {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-
-.update-viewraces-card-details-wrapper {
-    display: flex;
-    gap: 10px;
     align-items: center;
     margin-bottom: 15px;
 }
 
-
-.update-viewraces-icon {
-    margin-right: -5px;
-    width: 30px;
-    height: auto;
+.update-title h2 {
+    font-size: 32px;
+    font-weight: 700;
 }
 
-.update-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* FORM CARD */
+.update-form {
     width: 100%;
-}
-
-.update-event-button {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bolder;
-    font-size: 15px;
-    text-transform: uppercase;
-    width: 200px;
-    padding: 12px 0;
-    border-radius: 25px;
-    border: 2px solid #CB8925;
-    background: transparent;
-    color: #2c2c2c;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.update-event-button:hover {
-    background-color: #CB8925;
-    color: #d9d9d9;
-}
-
-
-
-/* -------------------------------------- */
-/* ----------- MODAL SECTION ------------ */
-/* -------------------------------------- */
-
-.modal-up {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5000;
-}
-
-.modal-content {
-    width: 90%;
-    max-width: 900px;
-    background: #fff;
+    background-color: #f5f5f5;
+    padding: 28px;
     border-radius: 12px;
-    padding: 25px;
-    position: relative;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+
 }
 
-
-/* -------------------------------------- */
-/* ---------- TWO COLUMN MODAL ---------- */
-/* -------------------------------------- */
-
-.modal-form-columns {
+/* GRID (OPTION A) */
+.update-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
     margin-top: 20px;
 }
 
-/* Left side (banner) */
-.modal-left {
-    background: #f8f8f8;
-    padding: 15px;
-    border-radius: 10px;
+/* LEFT COLUMN */
+.update-left {
     display: flex;
     flex-direction: column;
+    gap: 18px;
 }
 
-.modal-left img {
+/* RIGHT COLUMN */
+.update-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* LABEL */
+.update-section-label,
+.update-label {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.update-section-label-header {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+/* BANNER PREVIEW */
+.update-banner-box {
+    background: #f6f6f6;
+    border: 2px dashed #cb8925;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.update-banner-img {
     width: 100%;
     border-radius: 10px;
     object-fit: contain;
 }
 
-.modal-left .modal-field {
-    width: 100%;
-    margin-bottom: 10px;    /* or smaller */
-}
-
-/* Textarea should fill only the field, not create extra height */
-.modal-left textarea {
-    width: 100%;
-    min-height: 110px;
-    max-height: 120px;      /* hard cap so it does not overflow */
-    resize: vertical;       /* user can resize, but only within limits */
-    overflow-y: auto;       /* adds scroll instead of stretching */
-}
-
-
-/* RIGHT SIDE: input fields */
-.modal-right {
-    background: #f8f8f8;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Label + input grouping */
-.modal-field {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Text labels */
-.modal-field label {
+.update-no-banner {
+    text-align: center;
     font-weight: 600;
-    margin-bottom: 5px;
-    color: #444;
+    color: #555;
 }
 
-/* Inputs + textareas */
-.modal-content form input,
-.modal-content form textarea {
+/* INPUT FIELDS */
+.update-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-input {
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;      /* ✔ obey parent width */
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 15px;
+    width: 100%;
     box-sizing: border-box;
 }
 
+/* Applies ONLY to the Description textarea */
+.update-textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
 
-/* -------------------------------------- */
-/* ---------- MODAL ETC.       ---------- */
-/* -------------------------------------- */
-
-.modal-section-label {
-    font-size: 16px;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 8px;
-    display: block;
-    letter-spacing: 0.3px;
-}
-.modal-section-label.top-gap {
-    margin-top: 18px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.4;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
 
-.close {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    width: 32px;
-    height: 32px;
-
+.update-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 22px;
-    font-weight: 700;
-    color: #555;
-
-    background: #f1f1f1;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-.close:active {
-    transform: scale(0.95);
-}
-
-.modal-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.modal-content form label {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-
-
-.modal-content form button {
-    padding: 10px 20px;
-    background-color: #ffedba;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal-content form button:hover {
-    background-color: #19a3ff9c;
-    color: #000000;
-}
-
-/* -------------------------------------- */
-/* ---------- PREVIEW BANNER   ---------- */
-/* -------------------------------------- */
-
-.banner-preview-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f6f6f6;
-    border: 2px dashed #cb8925;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 10px;
-    align-self: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.banner-preview-container:hover {
-    background-color: #fff7e6;
-    transform: scale(1.02);
-}
-
-.banner-preview-container p {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.banner-preview-image {
+    gap: 20px;
     width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 0.4s ease-in;
-}
-
-/* -------------------------------------- */
-/* ---------- MODAL FORM STYLES --------- */
-/* -------------------------------------- */
-
-.modal-content h2 {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #333;
-    letter-spacing: 0.5px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 
-
-/* Submit button */
-.modal-content form button[type="submit"] {
-    margin-top: 20px;
-    padding: 12px 18px;
-    font-size: 16px;
-    font-weight: 700;
-    background-color: #cb8925;
-    color: white;
-    border: none;
+/* SUBMIT BUTTON */
+.update-submit-btn {
+    margin-top: 25px;
+    padding: 12px;
+    width: 200px;
     border-radius: 25px;
     cursor: pointer;
+
+    background: transparent;
+    border: 2px solid #cb8925;
+
+    font-weight: 700;
+    text-transform: uppercase;
     transition: 0.3s;
 }
 
-.modal-content form button[type="submit"]:hover {
-    background-color: #a86f1f;
+
+.update-back-btn {
+    margin-top: 25px;
+    padding: 12px;
+    width: 200px;
+    border-radius: 25px;
+    cursor: pointer;
+
+    background: transparent;
+    border: 2px solid #666;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.update-submit-btn:hover {
+    background: #cb8925;
+    color: white;
 }
+
+.update-back-btn:hover {
+    background: #666;
+    color: white;
+}
+
