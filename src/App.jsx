@@ -42,8 +42,9 @@ function App() {
 
   return (
       <BrowserRouter>
-      {/* Ang nav kay maoy ei comment out para ma wagtang siya sa top sa site */}
-         <nav>
+      {/* This is an All Access Header, it use for quick access to pages for testing, debugging, and UI live changes
+          -> Comment this out when presenting */}
+         {/* <nav>
           <p>Access to all Pages</p>
           <Link to='/'>| Landing Page |</Link>
           <Link to='/dashboard'>| Dashboard |</Link>
@@ -59,7 +60,7 @@ function App() {
           <Link to='/notifications'>| Notification |</Link>
           <Link to='/eula'>| EULA Page |</Link>
           <Link to='/tos'>| TOS Page |</Link>
-        </nav>
+        </nav> */}
 
         <Routes>
           <Route path='/' element={<Landing />} />

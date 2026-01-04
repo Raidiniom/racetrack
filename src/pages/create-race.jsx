@@ -9,7 +9,7 @@ import '../styles/header_and_sidebar.css'
 import supabase from "../config/supabaseclient"
 import { uploadBanner } from '../config/cloudinaryclient'
 import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
+import { getCategoryNumberByDistance } from '../services/categoryServices'
 
 
 const Db = () => {
@@ -38,6 +38,8 @@ const Db = () => {
             setFormError('Please Fill all Fields!');
             return;
         }
+
+        const raceCategory = await getCategoryNumberByDistance(trackkm);
 
         const { data: sess, error: nosess } = await supabase.auth.getSession();
 
@@ -89,6 +91,7 @@ const Db = () => {
                 race_creator: racemaker,
                 location: location,
                 race_banner_url: uploadURL,
+                category_id: raceCategory,
             })
             .select('race_id');
 
